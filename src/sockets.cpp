@@ -18,7 +18,7 @@ Sockets::Sockets(bool ipv6, std::string ip, int port) {
 }
 
 Sockets::Sockets(InitParams params)
-        : Sockets::Sockets(params.getIpv6(), params.getIp(), params.getPort()) {}
+        : Sockets::Sockets(params.isIPv6(), params.getIP(), params.getPort()) {}
 
 void Sockets::launch_demo_v01() {
     int create_socket;
@@ -44,7 +44,7 @@ void Sockets::launch_demo_v01() {
     printf("The socket was created\n");
 
     if (this->ipv6) {
-        // ip v6
+        // host v6
         memset(&addr_ipv6, 0, sizeof(addr_ipv6));
         addr_ipv6.sin6_family = AF_INET6;
         inet_pton(AF_INET6, this->ip.c_str(), &(addr_ipv6.sin6_addr));

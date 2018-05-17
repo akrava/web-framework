@@ -2,16 +2,15 @@
 #include <string>
 
 class InitParams {
-    bool run_app;
-    bool ipv6;
-    std::string ip;
+    bool IPv6;
     int port;
-    std::string log_filename;
+    std::string host;
+    std::string logFilePath;
 public:
+    InitParams();
     InitParams(int argc, char ** argv);
-    bool getIpv6();
-    std::string getIp();
+    bool isIPv6();
+    const char * getIP();
     int getPort();
+    std::string getFilePath();
 };
-
-
