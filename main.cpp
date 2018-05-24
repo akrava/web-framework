@@ -1,7 +1,8 @@
 #include <init_params.h>
-#include <sockets.h>
+#include <socket.h>
 #include <iostream>
 #include "runtime_exception.h"
+#include <app.h>
 
 int main (int argc, char ** argv) {
     InitParams cur;
@@ -11,7 +12,9 @@ int main (int argc, char ** argv) {
         std::cerr << err.what() << std::endl;
         return EXIT_FAILURE;
     }
-    Sockets socket = Sockets(cur);
-    socket.launch_demo_v01();
+    App website = App(cur);
+    website.init();
+    //std::cout << "YES!";
+    website.run();
     return 0;
 }

@@ -5,7 +5,7 @@ include_directories(include)
 set(CMAKE_CXX_STANDARD 11)
 
 add_executable(${PROJECT_NAME} main.cpp
-        src/sockets.cpp include/sockets.h
+        src/socket.cpp include/socket.h
         src/app.cpp include/app.h
         src/init_params.cpp
-        include/init_params.h include/runtime_exception.h)
+        include/init_params.h include/runtime_exception.h src/handler.cpp include/handler.h src/context.cpp include/context.h src/log_manager.cpp include/log_manager.h)
