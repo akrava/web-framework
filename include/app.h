@@ -19,8 +19,7 @@
 class App {
     Socket socket;
     std::list<Handler> handlersChain;
-    Context request;
-    Context response;
+    Context context;
     logManager log;
 public:
     App(std::string & ip, int port = 80, bool isIPv6 = false, const char * logFilePath = nullptr);
