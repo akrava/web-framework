@@ -11,7 +11,7 @@ Context::Context(Request & request) : request(request), response() { }
 Context::Context(Request & request, Response & response) : request(request), response(response) { }
 
 Request Context::getRequest() {
-   // return request;
+    return request;
 }
 
 Response Context::getResponse() {

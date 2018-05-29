@@ -1,9 +1,6 @@
 #pragma once
-
 #include <http.h>
 #include <uri.h>
-#include "uri.h"
-#include "headers.h"
 #include <headers.h>
 #include <request.h>
 #include <response.h>
@@ -11,7 +8,6 @@
 
 class Context {
     Request request;
-    // for response
     Response response;
 public:
     Context();

@@ -10,7 +10,9 @@ public:
     Headers();
     Headers(std::string & httpHeaders);
     Headers(std::unordered_map<std::string, std::string> headers);
+    std::string toString();
     std::unordered_map<std::string, std::string> getHeaders();
     void setHeaders(std::unordered_map<std::string, std::string> headers);
+    void add(const char * key, const char * value);
 };
 

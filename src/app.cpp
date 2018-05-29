@@ -1,6 +1,9 @@
 #include <app.h>
 #include <runtime_exception.h>
 #include <iostream>
+#include <parser_http.h>
+#include <request.h>
+#include <response.h>
 
 App::App(std::string & ip, int port, bool isIPv6, const char *logFilePath) : socket(ip, port, isIPv6) {
 
@@ -25,17 +28,23 @@ bool App::init() {
     return true;
 }
 
-void App::addHandler(Handler handler) {
-
+void App::addHandler(Handler * handler) {
+    handler->setContext(&context);
+    if (handler->isRouted()) {
+        handlersRoutes.insert({handler->getRoute(), handler});
+    } else {
+        handlersChain.push_back(handler);
+    }
 }
 
-void App::addHandler(std::list<Handler> handlerList) {
-
-}
-
-void App::addHandler(std::vector<Handler> handlerList) {
-
-}
+//
+//void App::addHandler(std::list<Handler> handlerList) {
+//
+//}
+//
+//void App::addHandler(std::vector<Handler> handlerList) {
+//
+//}
 
 void App::run() {
     std::string d;
@@ -44,22 +53,35 @@ void App::run() {
         try {
             d = socket.getData();
 
-            std::string ex = "<!doctype html><html><body><center><h1>TEST</h1></center><h2>/</h2><h3>? - ?</h3><p>.,.... </p></body></html>";
+            Request request = ParserHTTP::getRequestFromStr(d);
+            context.setRequest(request);
 
-            std::string q1("HTTP/1.1 200 OK\r\n");
-            socket.reciveData(q1);
+            for (auto * cur : handlersChain) {
+                cur->exec();
+            }
 
-            std::string q2("Content-length: 109\r\n");
-            socket.reciveData(q2);
+            if (handlersRoutes.find(request.getURI().getUri()) != handlersRoutes.end()) {
+                handlersRoutes[request.getURI().getUri()]->exec();
+            }
 
-            std::string q3("Content-Type: text/html; charset=utf-8\r\n");
-            socket.reciveData(q3);
+//            std::string ex = "<!doctype html><html><body><center><h1>TEST</h1></center><h2>/</h2><h3>? - ?</h3><p>.,.... </p></body></html>";
+//
+//            std::string q1("HTTP/1.1 200 OK\r\n");
+//            socket.reciveData(q1);
+//
+//            std::string q2("Content-length: 109\r\n");
+//            socket.reciveData(q2);
+//
+//            std::string q3("Content-Type: text/html; charset=utf-8\r\n");
+//            socket.reciveData(q3);
+//
+//            std::string q4("Connection: close\r\n\r\n");
+//            socket.reciveData(q4);
+            auto dd = context.getResponse();
+            std::string rsponse = ParserHTTP::getStrFromResponse(dd);
 
-            std::string q4("Connection: close\r\n\r\n");
-            socket.reciveData(q4);
+            socket.reciveData(rsponse);
 
-
-            socket.reciveData(ex);
         } catch (RuntimeException & err) {
             std::cerr << err.what() << std::endl;
             break;

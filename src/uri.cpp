@@ -7,6 +7,17 @@ URI::URI() {
     uri = string();
     params =  unordered_map<string, string>();
 }
+//
+//URI::URI(const char * str) {
+//    params =  unordered_map<string, string>();
+//    if (str) {
+//        raw_data = string(str);
+//        uri = string(str);
+//    } else  {
+//        raw_data = string();
+//        uri = string();
+//    }
+//}
 
 URI::URI(std::string & uri) {
     raw_data = uri;
