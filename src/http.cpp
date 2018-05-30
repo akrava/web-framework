@@ -64,10 +64,12 @@ std::string HTTP::getReasonPhrase(int code) {
         case 206: return "Partial Content";
         case 300: return "Multiple Choices";
         case 301: return "Moved Permanently";
-        case 302: return "Moved Temporarily";
+        case 302: return "Found";
         case 303: return "See Other";
         case 304: return "Not Modified";
         case 305: return "Use Proxy";
+        case 307: return "Temporary Redirect";
+        case 308: return "Permanent Redirect";
         case 400: return "Bad Request";
         case 401: return "Unauthorized";
         case 402: return "Payment Required";

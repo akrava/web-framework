@@ -17,4 +17,7 @@ public:
     Response getResponse();
     void setRequest(Request & request);
     void setResponse(Response & response);
+    void setPermanentlyRedirect(const char * uri);
+    void setTemporaryRedirect(const char * uri);
+    void setRedirect(const char * uri, int code);
 };

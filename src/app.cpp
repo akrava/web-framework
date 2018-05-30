@@ -6,16 +6,33 @@
 #include <response.h>
 
 App::App(std::string & ip, int port, bool isIPv6, const char *logFilePath) : socket(ip, port, isIPv6) {
-
+    redirects = std::list<RedirectResponse>();
     // todo: logging in file- / console- stream
 }
 
 App::App(InitParams params) : socket(params) {
-
+    redirects = std::list<RedirectResponse>();
     // todo: logging init also
     params.getFilePath();
 }
 
+void App::addPermanentlyRedirect(const char * uri, const char * target) {
+    RedirectResponse res = RedirectResponse(uri, target);
+    res.setPermanent();
+    redirects.push_back(res);
+}
+
+void App::addTemporaryRedirect(const char * uri, const char * target) {
+    RedirectResponse res = RedirectResponse(uri, target);
+    res.setTemporary();
+    redirects.push_back(res);
+}
+
+void App::addRedirect(const char * uri, const char * target, int code) {
+    RedirectResponse res = RedirectResponse(uri, target);
+    res.setRedirectCode(code);
+    redirects.push_back(res);
+}
 
 
 bool App::init() {
@@ -55,6 +72,15 @@ void App::run() {
 
             Request request = ParserHTTP::getRequestFromStr(d);
             context.setRequest(request);
+
+            for (auto & cur : redirects) {
+                if (cur.getRedirectUri() == request.getURI().getUri()) {
+                    std::string ttt = ParserHTTP::getStrFromResponse(cur);
+                    socket.reciveData(ttt);
+                    continue;
+                }
+            }
+
 
             for (auto * cur : handlersChain) {
                 cur->exec();

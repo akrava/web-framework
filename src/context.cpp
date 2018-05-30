@@ -25,3 +25,17 @@ void Context::setRequest(Request & request) {
 void Context::setResponse(Response & response) {
     this->response = response;
 }
+
+void Context::setPermanentlyRedirect(const char * uri) {
+    setRedirect(uri, 301);
+}
+
+void Context::setTemporaryRedirect(const char * uri) {
+    setRedirect(uri, 302);
+}
+
+void Context::setRedirect(const char * uri, int code) {
+    response.setStatus(code);
+    response.getHeaders()->add("Location", uri);
+}
+

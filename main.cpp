@@ -93,6 +93,10 @@ int main (int argc, char ** argv) {
     website.addHandler(dada);
     website.addHandler(sdf);
     website.addHandler(sdsf);
+    website.addPermanentlyRedirect("/index", "/");
+    website.addPermanentlyRedirect("/index.html", "/");
+    website.addPermanentlyRedirect("/index.php", "/");
+    website.addPermanentlyRedirect("/old", "/main");
 
     website.run();
     return 0;
