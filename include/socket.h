@@ -13,6 +13,7 @@ class Socket {
 public:
     Socket(InitParams params);
     Socket(std::string ip, int port, bool isIPv6);
+    ~Socket();
     void init();
     std::string getData();
     void reciveData(std::string & data);

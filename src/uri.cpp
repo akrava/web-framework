@@ -1,3 +1,4 @@
+#include <parser_http.h>
 #include "uri.h"
 
 using namespace std;
@@ -21,8 +22,7 @@ URI::URI() {
 
 URI::URI(std::string & uri) {
     raw_data = uri;
-    this->uri = uri;
-    params =  unordered_map<string, string>();
+    setParamsAndUri(uri);
 }
 
 void URI::setRawData(string & uri) {
@@ -37,4 +37,31 @@ string URI::getUri() {
 
 unordered_map<std::string, std::string> URI::getParams() {
     return params;
+}
+
+void URI::setParamsAndUri(std::string &uri) {
+    string path;
+    size_t startParamsPos = uri.find('?');
+    if (startParamsPos == string::npos) {
+        path = ParserHTTP::urlDecode(uri);
+    } else {
+        path = uri.substr(0, startParamsPos);
+        path = ParserHTTP::urlDecode(path);
+        size_t startKeyPos = startParamsPos + 1;
+        while  (startKeyPos < uri.length()) {
+            size_t endKeyPos = uri.find('=', startKeyPos);
+            if (endKeyPos == string::npos) break;
+            string key = uri.substr(startKeyPos, endKeyPos - startKeyPos);
+            size_t endValuePos = uri.find('&', endKeyPos + 1);
+            if (endValuePos == string::npos) {
+                endValuePos = uri.length();
+            }
+            string value = uri.substr(endKeyPos + 1, endValuePos - endKeyPos - 1);
+            key = ParserHTTP::urlDecode(key);
+            value = ParserHTTP::urlDecode(value);
+            params.insert({key, value});
+            startKeyPos = endValuePos + 1;
+        }
+    }
+    this->uri = path;
 }

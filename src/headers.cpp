@@ -11,7 +11,7 @@ Headers::Headers() {
 Headers::Headers(string & httpHeaders) : Headers() {
     size_t startKeyPos = 0;
     while (startKeyPos < httpHeaders.length()) {
-        size_t endKeyPos = 0 + httpHeaders.find(": ", startKeyPos);
+        size_t endKeyPos = httpHeaders.find(": ", startKeyPos);
         if (endKeyPos == string::npos) return;
         string key = httpHeaders.substr(startKeyPos, endKeyPos - startKeyPos);
         size_t endValuePos = httpHeaders.find("\r\n", endKeyPos + 2);

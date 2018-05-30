@@ -29,6 +29,10 @@ Socket::Socket(InitParams params)
         : Socket::Socket(params.getIP(), params.getPort(), params.isIPv6()) {}
 
 
+Socket::~Socket() {
+    close(socket_fd);
+}
+
 void Socket::init() {
     auto * address = (sockaddr_in *)socketAddress;
     auto * address6 = (sockaddr_in6 *)socketAddress;
@@ -71,7 +75,7 @@ void Socket::init() {
 
 std::string Socket::getData() {
     sockaddr_in sender{};
-    socklen_t len;
+    socklen_t len = sizeof(sender);
 
     client_fd = accept(socket_fd, (sockaddr *)&sender, &len);
 
@@ -122,6 +126,7 @@ void Socket::reciveData(std::string & data) {
         dataLength -= numSent;
     }
 }
+
 
 //
 //void Socket::launch_demo_v01() {
