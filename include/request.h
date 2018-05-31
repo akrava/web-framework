@@ -7,10 +7,10 @@
 
 class Request {
     HTTP::Method method;
-    URI uri;
+    URI * uri;
     HTTP::Version version;
-    Headers headers;
-    MessageBody body;
+    Headers * headers;
+    MessageBody * body;
 public:
     Request();
     Request(HTTP::Method method, std::string & URI, HTTP::Version version,
@@ -21,8 +21,8 @@ public:
     void setHeaders(Headers & headers);
     void setMessageBody(MessageBody & body);
     HTTP::Method getMethod();
-    URI getURI();
+    URI * getURI();
     HTTP::Version getVersion();
-    Headers getHeaders();
-    MessageBody getMessageBody();
+    Headers * getHeaders();
+    MessageBody * getMessageBody();
 };

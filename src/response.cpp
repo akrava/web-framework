@@ -7,11 +7,11 @@ Response::Response() :  body() {
 	version = HTTP::Version::HTTP_UNDEFINED;
 	status = 501;
 	headers = new Headers();
-	//body = MessageBody();
+	body = new MessageBody();
 }
 
 Response::Response(HTTP::Version version, int status, Headers & headers,
-				   MessageBody & body) : body(body) {
+				   MessageBody & body) : body(new MessageBody(body)) {
 	this->version = version;
 	this->status = status;
 	this->headers = new Headers(headers);
@@ -30,7 +30,7 @@ void Response::setHeaders(Headers & headers) {
 }
 
 void Response::setBody(MessageBody & body) {
-	this->body = body;
+	this->body = new MessageBody(body);
 }
 
 HTTP::Version Response::getVersion() {
@@ -45,6 +45,6 @@ Headers * Response::getHeaders() {
 	return headers;
 }
 
-MessageBody Response::getBody() {
+MessageBody * Response::getBody() {
 	return body;
 }

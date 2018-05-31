@@ -7,7 +7,7 @@ class Response {
     HTTP::Version version;
     int status;
     Headers * headers;
-    MessageBody body;
+    MessageBody * body;
 public:
     Response();
     Response(HTTP::Version version, int status, Headers & headers,
@@ -19,5 +19,5 @@ public:
     HTTP::Version getVersion();
     int getStatus();
     Headers * getHeaders();
-    MessageBody getBody();
+    MessageBody * getBody();
 };

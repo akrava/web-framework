@@ -26,8 +26,9 @@ Headers::Headers(string & httpHeaders) : Headers() {
 
 std::string Headers::toString() {
     string result = string();
-    for (pair<string, string> el : headers) {
-        result += el.first + ": " + el.second + "\r\n";
+    for (auto it = headers.begin(); it != headers.end(); it++) {
+        if (it != headers.begin()) result += "\r\n";
+        result += it->first + ": " + it->second;
     }
     return result;
 }
@@ -45,5 +46,17 @@ unordered_map<string, string> Headers::getHeaders() {
 }
 
 void Headers::add(const char *key, const char *value) {
+    auto iterator = headers.find(key);
+    if (iterator != headers.end()) {
+        iterator->second = value;
+        return;
+    }
     headers.insert({key, value});
+}
+
+bool Headers::getValue(const char * key, std::string & value) {
+    auto iterator = headers.find(key);
+    if (iterator == headers.end()) return false;
+    value = iterator->second;
+    return true;
 }

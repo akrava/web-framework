@@ -9,12 +9,14 @@
 #include <handler.h>
 #include <unordered_map>
 #include "redirect_response.h"
+#include "middleware.h"
 
 class App {
     Socket socket;
     std::unordered_map<std::string, Handler *> handlersRoutes;
     std::list<Handler *> handlersChain;
     std::list<RedirectResponse> redirects;
+    std::vector<Middleware *> middlewareList;
     Context context;
     logManager log;
 public:
@@ -25,6 +27,7 @@ public:
     void addPermanentlyRedirect(const char * uri, const char * target);
     void addTemporaryRedirect(const char * uri, const char * target);
     void addRedirect(const char * uri, const char * target, int code);
+    void addMiddleware(Middleware * middleware);
     //void addHandler(std::list<Handler> & handlerList);
     //void addHandler(std::vector<Handler> & handlerList);
     void run();

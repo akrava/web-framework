@@ -36,7 +36,7 @@ string ParserHTTP::getStrFromResponse(Response & response) {
     string version = HTTP::getVersion(response.getVersion());
     string status = std::to_string(response.getStatus());
     string reasonPhrase = HTTP::getReasonPhrase(response.getStatus());
-    string body = response.getBody().getBody();
+    string body = response.getBody()->getBody();
     response.getHeaders()->add("Content-length", std::to_string(body.length()).c_str());
     response.getHeaders()->add("Connection", "close");
     string headers = response.getHeaders()->toString();
