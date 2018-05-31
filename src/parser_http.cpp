@@ -43,12 +43,22 @@ string ParserHTTP::getStrFromResponse(Response & response) {
     return version + " " + status + " " + reasonPhrase + "\r\n" + headers + "\r\n\r\n" + body;
 }
 
+static char reservedSymbols[] {'/', '-', '_', '.', '~', ';', '?', ':', '@', '&', '=', '+',
+                                '!', '*', '(', ')', ',', '$', '#'};
+
+static bool containsArr(const char * symbols, int len_arr, char c) {
+    for (int i = 0; i < len_arr; i++) {
+        if (symbols[i] == c) return true;
+    }
+    return false;
+}
+
 string ParserHTTP::urlEncode(const string &value) {
     ostringstream escaped;
     escaped.fill('0');
     escaped << hex;
     for (auto & c : value) {
-        if (isalnum(c) || c == '/' || c == '-' || c == '_' || c == '.' || c == '~') {
+        if (isalnum(c) || containsArr(reservedSymbols, sizeof(reservedSymbols) / sizeof(char), c)) {
             escaped << c;
         } else {
             escaped << uppercase;
@@ -59,11 +69,11 @@ string ParserHTTP::urlEncode(const string &value) {
     return escaped.str();
 }
 
-string ParserHTTP::urlDecode(const string &value) {
+string ParserHTTP::urlDecode(const string & value) {
     ostringstream result;
     for (size_t i = 0; i < value.length(); i++) {
         string::value_type c = value[i];
-        if (isalnum(c) || c == '/' || c == '-' || c == '_' || c == '.' || c == '~') {
+        if (isalnum(c) || containsArr(reservedSymbols, sizeof(reservedSymbols) / sizeof(char), c)) {
             result << c;
         } else if (c == '%' && i + 2 < value.length()) {
             string hex = string();
@@ -72,9 +82,10 @@ string ParserHTTP::urlDecode(const string &value) {
             }
             hex += value[++i];
             hex += value[++i];
-
             auto cur = (unsigned char) stoi(hex, nullptr, 16);
             result << cur;
+        } else {
+            return value;
         }
     }
     return result.str();
