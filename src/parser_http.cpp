@@ -68,8 +68,7 @@ string ParserHTTP::urlDecode(const string &value) {
         } else if (c == '%' && i + 2 < value.length()) {
             string hex = string();
             if (!isxdigit(value[i + 1]) || !isxdigit(value[i + 2])) {
-                i = value.find('%', i + 1);
-                continue;
+                return value;
             }
             hex += value[++i];
             hex += value[++i];
