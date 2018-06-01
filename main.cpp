@@ -6,6 +6,7 @@
 #include <handler.h>
 #include <middleware.h>
 #include <json_middleware.h>
+#include <cookie_middleware.h>
 
 class HandlerCommon : public Handler {
     void exec() {
@@ -81,6 +82,40 @@ public:
     }
 };
 
+
+class HandlerCookie : public Handler {
+public:
+    HandlerCookie(const char * ds, HTTP::Method m) :Handler(ds, m) {}
+    void exec() {
+
+
+        Middleware * f = this->getContext()->getMiddlewareByNameID("cookie");
+
+        if (f) {
+            auto * j = (CookieMiddleware *) (void *) f;
+
+            int val = 0;
+            auto iterator = j->getMap()->find("Val");
+            if (iterator != j->getMap()->end()) {
+                val = std::stoi(iterator->second);
+            }
+            val++;
+            CookieEntity some = CookieEntity(std::to_string(val).c_str());
+            j->addCooike("Val", some);
+            j->insertInResponse();
+
+            std::string str = getContext()->getResponse()->getBody()->getBody();
+            size_t  pos = str.find("</body></html>");
+            std::string inject = "<p>Val: ";
+            inject += std::to_string(val);
+            inject += "</p>";
+            str.insert(pos, inject);
+            MessageBody ffff(str);
+            getContext()->getResponse()->setBody(ffff);
+        }
+    }
+};
+
 class HandlerContact : public Handler {
 public:
     HandlerContact(const char * ds, HTTP::Method m) :Handler(ds, m) {}
@@ -113,17 +148,23 @@ int main (int argc, char ** argv) {
     HandlerMain * sdf = new HandlerMain("/main", HTTP::Method::GET);
     HandlerContact * sdsf = new HandlerContact("/contact", HTTP::Method::GET);
     HandlerJson * nbv = new HandlerJson("/api", HTTP::Method::GET);
+    HandlerCookie * cookies = new HandlerCookie("/cookie", HTTP::Method::GET);
     website.addHandler(dada);
     website.addHandler(sdf);
     website.addHandler(sdsf);
     website.addHandler(nbv);
+    website.addHandler(cookies);
     website.addPermanentlyRedirect("/index", "/");
     website.addPermanentlyRedirect("/index.html", "/");
     website.addPermanentlyRedirect("/index.php", "/");
     website.addPermanentlyRedirect("/old", "/main");
 
     JsonMiddleware * json = new JsonMiddleware("json", nullptr, nullptr);
+    CookieMiddleware * cookie = new CookieMiddleware("cookie", nullptr, nullptr);
+
     website.addMiddleware(json);
+    website.addMiddleware(cookie);
+
     website.run();
     return 0;
 }
