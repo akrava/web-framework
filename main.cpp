@@ -8,6 +8,7 @@
 #include <json_middleware.h>
 #include <cookie_middleware.h>
 #include <form_middleware.h>
+#include <html_middleware.h>
 
 class HandlerCommon : public Handler {
     void exec() {
@@ -166,6 +167,25 @@ public:
     }
 };
 
+class HandlerHtml : public Handler {
+public:
+    HandlerHtml(const char * ds, HTTP::Method m) :Handler(ds, m) {}
+    void exec() {
+        Middleware *f = this->getContext()->getMiddlewareByNameID("html");
+        if (f) {
+            auto *j = (HtmlMiddleware *) (void *) f;
+            j->getContext()->insert({"names", mstch::array{
+                    mstch::map{{"name", std::string{"Chris"}}},
+                    mstch::map{{"name", std::string{"Mark"}}},
+                    mstch::map{{"name", std::string{"Scott"}}}
+            }});
+            std::string view{"{{#names}}<p>Hi <b>{{name}}</b>!</p></br>{{/names}}"};
+            j->setView(view);
+            j->exec();
+        }
+    }
+};
+
 int main (int argc, char ** argv) {
     InitParams cur;
     try {
@@ -184,6 +204,7 @@ int main (int argc, char ** argv) {
     HandlerJson * nbv = new HandlerJson("/api", HTTP::Method::GET);
     HandlerCookie * cookies = new HandlerCookie("/cookie", HTTP::Method::GET);
     HandlerForm * forms_h = new HandlerForm("/post", HTTP::Method::GET);
+    HandlerHtml * html_h = new HandlerHtml("/html", HTTP::Method::GET);
 
     website.addHandler(dada);
     website.addHandler(sdf);
@@ -191,6 +212,7 @@ int main (int argc, char ** argv) {
     website.addHandler(nbv);
     website.addHandler(cookies);
     website.addHandler(forms_h);
+    website.addHandler(html_h);
 
     website.addPermanentlyRedirect("/index", "/");
     website.addPermanentlyRedirect("/index.html", "/");
@@ -200,10 +222,12 @@ int main (int argc, char ** argv) {
     JsonMiddleware * json = new JsonMiddleware("json", nullptr, nullptr);
     CookieMiddleware * cookie = new CookieMiddleware("cookie", nullptr, nullptr);
     FormMiddleware * form = new FormMiddleware("form", nullptr, nullptr);
+    HtmlMiddleware * html = new HtmlMiddleware("html", nullptr, nullptr);
 
     website.addMiddleware(json);
     website.addMiddleware(cookie);
     website.addMiddleware(form);
+    website.addMiddleware(html);
 
     website.run();
     return 0;
