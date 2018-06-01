@@ -12,6 +12,7 @@
 #include <string>
 #include <cerrno>
 #include <runtime_exception.h>
+#include <sys/time.h>
 
 using namespace std;
 
@@ -94,24 +95,28 @@ std::string Socket::getData() {
     int numRead = recv(client_fd, buffer, 1024, 0);
     if (numRead < 1) {
         if (numRead == 0) {
-            printf("The client was not read from: disconnected\n");
+            printf("The client was not read from: disconnected\n"
+                   "The client was not read from: disconnected\n"
+                   "The client was not read from: disconnected\n"
+                   "The client was not read from: disconnected\nThe client was not read from: disconnected\nThe client was not read from: disconnected\nThe client was not read from: disconnected\nThe client was not read from: disconnected\nThe client was not read from: disconnected\n");
         } else {
             perror("The client was not read from");
         }
+        perror("The client was not read from");
         close(client_fd);
-
+        return std::string();
     }
     data += buffer;
     //printf("%.*s\n", numRead, buffer);
 
-    std::cout << data;
+   // std::cout << data;
     std::cout << std::endl << "OK" << std::endl;
     return data;
 }
 
 void Socket::reciveData(std::string & data) {
     auto * p_data = data.c_str();
-    std::cout << std::endl << p_data << std::endl;
+    //std::cout << std::endl << p_data << std::endl;
     size_t dataLength = data.length();
     while (dataLength > 0) {
         ssize_t numSent = send(client_fd, p_data, dataLength, 0);
@@ -121,11 +126,14 @@ void Socket::reciveData(std::string & data) {
             } else {
                 perror("The client was not written to");
             }
+            close(client_fd);
+            return;
         }
         p_data += numSent;
         dataLength -= numSent;
     }
     close(client_fd);
+    std::cout << "recived" << std::endl;
 }
 
 

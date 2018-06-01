@@ -84,6 +84,8 @@ void App::run() {
         try {
             d = socket.getData();
 
+            if (d == "") continue;
+
             Request request = ParserHTTP::getRequestFromStr(d);
             context.setRequest(request);
 

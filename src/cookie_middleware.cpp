@@ -50,4 +50,5 @@ void CookieMiddleware::insertInResponse() {
         std::string value = it.first + '=' + it.second.toString();
         response->getHeaders()->add("Set-Cookie", value.c_str());
     }
+    map->clear();
 }
