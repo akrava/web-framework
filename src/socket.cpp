@@ -125,6 +125,7 @@ void Socket::reciveData(std::string & data) {
         p_data += numSent;
         dataLength -= numSent;
     }
+    close(client_fd);
 }
 
 
