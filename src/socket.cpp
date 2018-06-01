@@ -45,6 +45,12 @@ void Socket::init() {
         throw RuntimeException(string("The socket was not created: ") + strerror(errno));
     }
 
+    int opt = 1;
+    if (setsockopt(socket_fd, SOL_SOCKET, SO_REUSEADDR, (char *)&opt, sizeof(opt)) < 0) {
+        //ToDo log
+        throw RuntimeException(string("The options for socket were not set: ") + strerror(errno));
+    }
+
     // todo log
     printf("The socket was created\n");
     if (ipv6) {
@@ -106,6 +112,7 @@ std::string Socket::getData() {
         close(client_fd);
         return std::string();
     }
+    buffer[numRead] = 0;
     data += buffer;
     //printf("%.*s\n", numRead, buffer);
 

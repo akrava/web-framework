@@ -7,6 +7,7 @@
 #include <middleware.h>
 #include <json_middleware.h>
 #include <cookie_middleware.h>
+#include <form_middleware.h>
 
 class HandlerCommon : public Handler {
     void exec() {
@@ -116,6 +117,39 @@ public:
     }
 };
 
+class HandlerForm : public Handler {
+public:
+    HandlerForm(const char * ds, HTTP::Method m) :Handler(ds, m) {}
+    void exec() {
+
+
+        Middleware * f = this->getContext()->getMiddlewareByNameID("form");
+
+        if (f) {
+            auto * j = (FormMiddleware *) (void *) f;
+
+
+            std::string str = getContext()->getResponse()->getBody()->getBody();
+            size_t  pos = str.find("</body></html>");
+            std::string inject = "<hr/><hr/><p>DATA FROM FORM: </p> <table>";
+
+
+            for (std::pair<std::string, std::string> some : *f->getMap()) {
+                inject += "<tr><td>";
+                inject += some.first;
+                inject += "</td><td>";
+                inject += some.second;
+                inject += "</td></tr>";
+            }
+
+            inject += "</table>";
+            str.insert(pos, inject);
+            MessageBody ffff(str);
+            getContext()->getResponse()->setBody(ffff);
+        }
+    }
+};
+
 class HandlerContact : public Handler {
 public:
     HandlerContact(const char * ds, HTTP::Method m) :Handler(ds, m) {}
@@ -149,11 +183,15 @@ int main (int argc, char ** argv) {
     HandlerContact * sdsf = new HandlerContact("/contact", HTTP::Method::GET);
     HandlerJson * nbv = new HandlerJson("/api", HTTP::Method::GET);
     HandlerCookie * cookies = new HandlerCookie("/cookie", HTTP::Method::GET);
+    HandlerForm * forms_h = new HandlerForm("/post", HTTP::Method::GET);
+
     website.addHandler(dada);
     website.addHandler(sdf);
     website.addHandler(sdsf);
     website.addHandler(nbv);
     website.addHandler(cookies);
+    website.addHandler(forms_h);
+
     website.addPermanentlyRedirect("/index", "/");
     website.addPermanentlyRedirect("/index.html", "/");
     website.addPermanentlyRedirect("/index.php", "/");
@@ -161,9 +199,11 @@ int main (int argc, char ** argv) {
 
     JsonMiddleware * json = new JsonMiddleware("json", nullptr, nullptr);
     CookieMiddleware * cookie = new CookieMiddleware("cookie", nullptr, nullptr);
+    FormMiddleware * form = new FormMiddleware("form", nullptr, nullptr);
 
     website.addMiddleware(json);
     website.addMiddleware(cookie);
+    website.addMiddleware(form);
 
     website.run();
     return 0;
