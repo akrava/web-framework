@@ -7,13 +7,17 @@
 #include <message_body.h>
 #include "middleware.h"
 #include <vector>
+#include <db_manager.h>
 
 class Context {
     Request * request;
     Response * response;
     std::vector<Middleware *> * middlewareList;
+    DBManager * db;
 public:
     Context();
+    void setDB(DBManager * db);
+    DBManager * getDB();
     Context(Request & request);
     Context(Request & request, Response & response, std::vector<Middleware *> * middlewareList);
     Request * getRequest();

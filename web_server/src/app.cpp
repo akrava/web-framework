@@ -4,8 +4,6 @@
 #include <parser_http.h>
 #include <request.h>
 #include <response.h>
-
-//
 #include "json_middleware.h"
 
 App::App(std::string & ip, int port, bool isIPv6, const char *logFilePath) : socket(ip, port, isIPv6) {
@@ -78,6 +76,8 @@ void App::addHandler(Handler * handler) {
 
 void App::run() {
     context.setMiddlewareList(&middlewareList);
+    DBManager * db = new DBManager("./../db/db_file");
+    context.setDB(db);
     std::string d;
     while (true) {
 

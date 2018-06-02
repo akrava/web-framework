@@ -4,16 +4,25 @@
 
 using namespace std;
 
-Context::Context() : response(), request() { this->middlewareList = nullptr; }
+Context::Context() : response(), request() { this->middlewareList = nullptr; this->db = nullptr;}
 
-Context::Context(Request & request) : request(new Request(request)), response() {  this->middlewareList = nullptr; }
+Context::Context(Request & request) : request(new Request(request)), response() {  this->middlewareList = nullptr; this->db = nullptr; }
 
 Context::Context(Request & request, Response & response, vector<Middleware *> * middlewareList) : request(new Request(request)), response(new Response(response)) {
     this->middlewareList = middlewareList;
+    this->db = nullptr;
     }
 
 Request * Context::getRequest() {
     return request;
+}
+
+void Context::setDB(DBManager * db) {
+    this->db =db;
+}
+
+DBManager * Context::getDB() {
+    return db;
 }
 
 Response * Context::getResponse() {

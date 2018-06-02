@@ -1,8 +1,8 @@
 #include "json_middleware.h"
 
 JsonMiddleware::JsonMiddleware(const char * nameID, Request * request, Response * response) : Middleware (nameID, request, response) {
-  jsonRequest = nlohmann::json();
-  jsonResponse = nlohmann::json();
+  jsonRequest = new nlohmann::json();
+  jsonResponse = new nlohmann::json();
   errorDeserialize = false;
 }
 
@@ -16,15 +16,15 @@ bool JsonMiddleware::autoExec() {
 }
 
 void JsonMiddleware::exec() {
-    jsonRequest = nlohmann::json::parse(request->getMessageBody()->getBody(), nullptr, false);
-    if (jsonRequest.is_discarded()) {
+    jsonRequest = new nlohmann::json(nlohmann::json::parse(request->getMessageBody()->getBody(), nullptr, false));
+    if (jsonRequest->is_discarded()) {
         errorDeserialize = true;
     }
 }
 
 void JsonMiddleware::setEchoReply() {
-    jsonResponse = {
-            {"data", jsonRequest.is_discarded() ? nlohmann::json(nullptr) : jsonRequest},
+    jsonResponse = new nlohmann::json{
+            {"data", jsonRequest->is_discarded() ? nlohmann::json(nullptr) : (*jsonRequest)},
             {"Echo mode enabled", true},
             {"middleware", "JSON"}
     };
@@ -33,6 +33,14 @@ void JsonMiddleware::setEchoReply() {
 
 void JsonMiddleware::fillResponse() {
     response->getHeaders()->add("Content-Type", "application/json");
-    std::string res = jsonResponse.dump();
+    std::string res = jsonResponse->dump();
     response->getBody()->setBody(res);
+}
+
+nlohmann::json * JsonMiddleware::getJsonRequest() {
+    return jsonRequest;
+}
+
+nlohmann::json * JsonMiddleware::getJsonResponse() {
+    return jsonResponse;
 }

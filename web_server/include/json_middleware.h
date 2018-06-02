@@ -4,14 +4,16 @@
 #include <nlohmann/json.hpp>
 
 class JsonMiddleware : public Middleware {
-    nlohmann::json jsonRequest;
-    nlohmann::json jsonResponse;
+    nlohmann::json * jsonRequest;
+    nlohmann::json * jsonResponse;
     bool errorDeserialize;
 public:
     JsonMiddleware(const char * nameID, Request * request, Response * response);
     bool autoExec();
     void exec();
     void setEchoReply();
+    nlohmann::json * getJsonRequest();
+    nlohmann::json * getJsonResponse();
     void fillResponse();
 };
 
