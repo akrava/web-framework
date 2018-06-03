@@ -1,10 +1,10 @@
-html{
+html {
     font-family: sans-serif;
     height: 100%;
 }
 
 body {
-    margin-top: 20px;
+    margin: 20px 0 20px 0;
     background: rgb(147,206,222);
     background: -moz-linear-gradient(top, rgb(147,206,222) 0%, rgb(105, 174, 219) 41%, rgb(51, 142, 191) 100%);
     background: -webkit-linear-gradient(top, rgb(147,206,222) 0%, rgb(105, 174, 219) 41%, rgb(51, 142, 191) 100%);
@@ -57,6 +57,13 @@ div {
 #history {
     height: 100%;
     margin-left: 70%;
+}
+
+#history > span {
+    position: relative;
+    bottom: 12px;
+    left: 45px;
+    font-size: 12px;
 }
 
 #menu {
@@ -160,8 +167,7 @@ div {
 
 #links > ul {
     padding: 0;
-    margin-top: 8px;
-    margin-bottom: 6px;
+    margin: 10px 0 10px 0;
 }
 
 #links > ul > li {
@@ -172,7 +178,7 @@ div {
 }
 
 #links > ul > li > a {
-    font-size: 1.3em;
+    font-size: 1.04em;
     color: #292492;
 }
 
@@ -186,7 +192,7 @@ a {
 }
 
 #wrapper {
-    margin-top: -5px;
+    margin-top: 10px;
 }
 
 #info {
@@ -223,4 +229,56 @@ a {
 
 .submit {
     padding: 0;
+    cursor: pointer;
+}
+
+img.banner {
+    width: 700px;
+    margin: auto;
+    display: block;
+}
+
+h1.info {
+    padding-top: 12px;
+    text-align: center;
+    color: darkslateblue;
+}
+
+p.info {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+p.first {
+    font-size: 25px;
+    padding-top: 10px;
+    color: #000d56;
+}
+
+tr.row.receipt:hover {
+    background-color: #ebebeb;
+}
+
+td.value , td.name {
+    border-bottom: 1px dashed #565656;
+    padding: 15px;
+    text-align: left;
+}
+
+td.value  {
+    font-weight: bold;
+}
+
+table#receipt {
+    border-collapse: separate;
+    margin-left: 25px;
+    margin-bottom: 35px;
+    border: 1px solid #13134a;
+    border-radius: 5px;
+}
+
+span.error {
+    color: #bc0e0e;
+    font-size: 16px;
+    margin-left: 20px;
 }

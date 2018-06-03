@@ -10,4 +10,5 @@ class FileHandler : public Handler {
 public:
     FileHandler(const char * route, const char * filePath, const char * mimeType, bool isBinary);
     void exec();
+    static bool loadFile(const char * filePath, std::string & data);
 };

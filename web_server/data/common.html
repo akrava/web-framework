@@ -16,41 +16,39 @@
                 <div id = "history">
                     <p>Журнал квитанцій:</p>
                     <ul>
-                        <li><a href="/">1234578</a>,</li>
-                        <li><a href="/">1234578</a>,</li>
-                        <li><a href="/">1234578</a>,</li>
-                        <li><a href="/">1234578</a></li>
+                        {{#history_receipt}}
+                            <li><a href="{{uri_receipt}}?cargo_number={{num}}">{{num}}</a></li>
+                        {{/history_receipt}}
                     </ul>
+                    {{^history_receipt}}
+                        <span>Ви ще нічого не шукали :(</span>
+                    {{/history_receipt}}
                 </div>
             </div>
             <div id = "links">
                 <ul>
-
-                    <li><a href="/">link</a></li>
-
+                    {{#pages_nav_bar}}
+                    <li><a href="{{link}}">{{name}}</a></li>
+                    {{/pages_nav_bar}}
                 </ul>
             </div>
         </div>
         <div id = "wrapper">
             <div id = "menu">
-                <form id="track"  action="/" method="GET">
+                <form id="track" action="{{uri_receipt}}" method="GET">
                     <p>Відстежити вантаж</p>
                     <input placeholder="Номер квитанції" value="" name="cargo_number" id="cargo_number" type="text">
                     <input class="submit" name="" value="&#9205;" type="submit">
                     <div style="clear: both"></div>
                 </form>
                 <ul>
-                    <li><a href="/">link</a></li>
-                    <li><a href="/">link</a></li>
-                    <li><a href="/">link</a></li>
-                    <li><a href="/">link</a></li>
-                    <li><a href="/">link</a></li>
-                    <li><a href="/">link</a></li>
-                    <li><a href="/">link</a></li>
+                    {{#pages_menu}}
+                    <li><a href="{{link}}">{{name}}</a></li>
+                    {{/pages_menu}}
                 </ul>
             </div>
             <div id = "content">
-                <p>Content...</p>
+                {{{content}}}
             </div>
             <div style="clear: both"></div>
         </div>

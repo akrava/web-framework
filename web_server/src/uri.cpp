@@ -65,3 +65,10 @@ void URI::setParamsAndUri(std::string &uri) {
     }
     this->uri = path;
 }
+
+bool URI::getValueFromParam(const char *key, std::string &value) {
+    auto iterator = params.find(key);
+    if (iterator == params.end()) return false;
+    value = iterator->second;
+    return true;
+}

@@ -82,6 +82,7 @@ void App::run() {
     while (true) {
 
         try {
+
             d = socket.getData();
 
             if (d == "") continue;
@@ -108,6 +109,7 @@ void App::run() {
             }
 
             if (handlersRoutes.find(request.getURI()->getUri()) != handlersRoutes.end()) {
+                context.getResponse()->setStatus(200);
                 handlersRoutes[request.getURI()->getUri()]->exec();
             }
 

@@ -1,0 +1,12 @@
+<p class="first">Відстеження вантажу за номером</p>
+<table id="receipt">
+    {{#receipt}}
+    <tr class="receipt row">
+        <td class="name">{{name}}</td>
+        <td class="value">{{value}}</td>
+    </tr>
+    {{/receipt}}
+</table>
+{{^receipt}}
+<span class="error">Не знайдено вантаж за введеним номером :(</span>
+{{/receipt}}

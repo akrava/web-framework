@@ -12,6 +12,8 @@ CookieMiddleware::CookieMiddleware(const char * nameID, Request * request, Respo
 }
 
 bool CookieMiddleware::autoExec() {
+    map->clear();
+    responseCookies.clear();
     for (auto & it : request->getHeaders()->getHeaders()) {
         if (it.first == "Cookie") return true;
     }
@@ -46,9 +48,14 @@ void CookieMiddleware::exec() {
 }
 
 void CookieMiddleware::insertInResponse() {
+    std::string value;
+    bool isFirst = true;
     for (auto & it : responseCookies) {
-        std::string value = it.first + '=' + it.second.toString();
-        response->getHeaders()->add("Set-Cookie", value.c_str());
+        if (!isFirst) {
+            value += "\r\nSet-Cookie: ";
+        }
+        value += it.first + '=' + it.second.toString();
+        isFirst = false;
     }
-    map->clear();
+    if (!responseCookies.empty()) response->getHeaders()->add("Set-Cookie", value.c_str());
 }

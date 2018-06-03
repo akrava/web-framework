@@ -48,3 +48,15 @@ void FileHandler::exec() {
     getContext()->getResponse()->setBody(body);
     getContext()->getResponse()->getHeaders()->add("Content-Type", mimeType.c_str());
 }
+
+bool FileHandler::loadFile(const char *filePath, std::string & data) {
+    std::ifstream in(filePath, std::ifstream::in);
+    if (in.is_open()) {
+        std::stringstream str_stream;
+        str_stream << in.rdbuf();
+        data = str_stream.str();
+        in.close();
+        return true;
+    }
+    return false;
+}

@@ -16,86 +16,331 @@
 
 class HandlerCommon : public Handler {
 public:
-    HandlerCommon(const char * ds, HTTP::Method m) : Handler(ds, m) {}
+    HandlerCommon() : Handler() {}
     void exec() {
-
-        std::string headers_1("Content-Type: text/html; charset=utf-8");
-        Headers header = Headers(headers_1);
-
-        std::string body_html("<!doctype html><html><body><center><h1>TEST</h1></center><p>");
-
-        body_html += getContext()->getRequest()->getURI()->getUri();
-
-        body_html += "</p><table>";
-        for (std::pair<std::string, std::string> some : getContext()->getRequest()->getHeaders()->getHeaders()) {
-            body_html += "<tr><td>";
-            body_html += some.first;
-            body_html += "</td><td>";
-            body_html += some.second;
-            body_html += "</td></tr>";
+        Request * request = getContext()->getRequest();
+        Response * response = getContext()->getResponse();
+        response->setVersion(HTTP::Version::HTTP_1_1);
+        if (request->getMethod() == HTTP::Method::UNDEFINED
+                || request->getVersion() == HTTP::Version::HTTP_UNDEFINED) {
+            response->setStatus(400);
+        } else if (request->getVersion() != HTTP::Version::HTTP_1_1) {
+            response->setStatus(505);
+        } else {
+            response->setStatus(404);
         }
-
-        body_html += "</table><hr/><hr/><table>";
-
-        for (std::pair<std::string, std::string> some : getContext()->getRequest()->getURI()->getParams()) {
-            body_html += "<tr><td>";
-            body_html += some.first;
-            body_html += "</td><td>";
-            body_html += some.second;
-            body_html += "</td></tr>";
-        }
-
-        body_html += "</table></body></html>";
-
-        MessageBody message_body = MessageBody(body_html);
-
-        getContext()->getResponse()->setVersion(HTTP::Version::HTTP_1_1);
-        getContext()->getResponse()->setStatus(200);
-        getContext()->getResponse()->setHeaders(header);
-        getContext()->getResponse()->setBody(message_body);
     }
 };
 
-class HandlerMain : public Handler {
+class HandlerTemplate : public Handler {
 public:
-    HandlerMain() : Handler(){}
+    HandlerTemplate() : Handler() {}
     void exec() {
-        std::string headrs_main("Content-Type: text/html; charset=utf-8");
-        Headers headers_obj = Headers(headrs_main);
+        Request * request = getContext()->getRequest();
+        Response * response = getContext()->getResponse();
+        response->getHeaders()->add("Content-Type", "text/html; charset=utf-8");
+        std::string template_str;
+        bool found_template = FileHandler::loadFile("../data/common.html", template_str);
+        std::string data = "<html><head><title>";
+        data += std::to_string(response->getStatus());
+        data += " " + HTTP::getReasonPhrase(response->getStatus());
+        data += "</title></head><body><h1>";
+        data += std::to_string(response->getStatus()) + " ";
+        data += HTTP::getReasonPhrase(response->getStatus());
+        data += "</h1><hr><address>Web-framework (c++) 2018</address></body></html>";
+        response->getBody()->setBody(data);
+        if (found_template) {
+            Middleware * middleware = getContext()->getMiddlewareByNameID("html");
+            if (!middleware) return;
+            auto * html = (HtmlMiddleware *) (void *) middleware;
+            html->setView(template_str);
+        }
+    }
+};
 
-        std::ifstream in("../data/common.html", std::ifstream::in);
+
+class HandlerCookie : public Handler {
+public:
+    HandlerCookie() : Handler() {}
+    void exec() {
+        Request * request = getContext()->getRequest();
+        Response * response = getContext()->getResponse();
+        Middleware * middleware_html = getContext()->getMiddlewareByNameID("html");
+        if (!middleware_html) return;
+        auto * html = (HtmlMiddleware *) (void *) middleware_html;
+        Middleware * middleware_cookie = getContext()->getMiddlewareByNameID("cookie");
+        if (!middleware_cookie) return;
+        auto * cookie = (CookieMiddleware *) (void *) middleware_cookie;
+        mstch::array receipts_num;
         std::string temp;
-        if (in.is_open()) {
-            std::stringstream str_stream;
-            str_stream << in.rdbuf();
-            temp = str_stream.str();
-            in.close();
+        for (int i = 1; i <= 4; i++) {
+            std::string varName = "receipts_num";
+            varName += std::to_string(i);
+            if (cookie->getValueFromMap(varName.c_str(), temp)) {
+                mstch::map current;
+                current.insert({"num", temp});
+                receipts_num.push_back(current);
+            }
         }
+        html->getContext()->insert({"history_receipt", receipts_num});
+    }
+};
 
-        Middleware * middleware = this->getContext()->getMiddlewareByNameID("html");
+
+class HandlerRenderTemplate : public Handler {
+public:
+    HandlerRenderTemplate() : Handler() {}
+    void exec() {
+        Request * request = getContext()->getRequest();
+        Response * response = getContext()->getResponse();
+        Middleware * middleware = getContext()->getMiddlewareByNameID("html");
+        DBManager * db = getContext()->getDB();
         if (!middleware) return;
+        auto * html = (HtmlMiddleware *) (void *) middleware;
+        if (html->getView().empty()) return;
 
-        auto *html = (HtmlMiddleware *) (void *) middleware;
-
-        std::vector<std::vector<std::string>> res_tabl;
-
-        char * data_temp[] = { (char *)(getContext()->getRequest()->getURI()->getUri()).c_str() };
-        getContext()->getDB()->execQuery("SELECT * FROM pages WHERE uri=?",res_tabl, data_temp, 1);
-
-        std::string res_val_title;
-        if (!(res_tabl.empty() || res_tabl[0].empty())) {
-            res_val_title = res_tabl[0][2];
+        // !!
+        std::vector<std::vector<std::string>> result_pages_nav_bar;
+        if (!db->execQuery(
+                "SELECT name, link FROM pages WHERE type = 'nav_bar'",
+                result_pages_nav_bar,
+                nullptr,
+                0)
+        ) return;
+        mstch::array array_pages_nav_bar;
+        for (auto & it :  result_pages_nav_bar) {
+            if (it.size() != 2) continue;
+            mstch::map current;
+            current.insert({"name", it[0]});
+            current.insert({"link", it[1]});
+            array_pages_nav_bar.push_back(current);
         }
+        html->getContext()->insert({"pages_nav_bar", array_pages_nav_bar});
+        // !
 
+        // !
+        std::vector<std::vector<std::string>> result_pages_menu;
+        if (!db->execQuery(
+                "SELECT name, link FROM pages WHERE type = 'menu'",
+                result_pages_menu,
+                nullptr,
+                0)
+        ) return;
+        mstch::array array_pages_menu;
+        for (auto & it :  result_pages_menu) {
+            if (it.size() != 2) continue;
+            mstch::map current;
+            current.insert({"name", it[0]});
+            current.insert({"link", it[1]});
+            array_pages_menu.push_back(current);
+        }
+        html->getContext()->insert({"pages_menu", array_pages_menu});
+        // !
 
-        html->getContext()->insert({"title",  res_val_title});
-        html->setView(temp);
-        getContext()->getResponse()->setVersion(HTTP::Version::HTTP_1_1);
-        getContext()->getResponse()->setStatus(200);
-        getContext()->getResponse()->setHeaders(headers_obj);
+        // !!
+        std::vector<std::vector<std::string>> result_uri_receipt;
+        if (!db->execQuery(
+                "SELECT data FROM site WHERE value = 'uri_receipt'",
+                result_uri_receipt,
+                nullptr,
+                0)
+        ) return;
+        if (result_uri_receipt.size() != 1 || result_uri_receipt[0].size() != 1) return;
+        html->getContext()->insert({"uri_receipt", std::string{result_uri_receipt[0][0]}});
+        // !!
+
+        // !!
+        if (request->getURI()->getUri().empty()) return;
+        char * data[] = { (char *)request->getURI()->getUri().c_str()};
+        std::vector<std::vector<std::string>> result_title;
+        if (!db->execQuery(
+                "SELECT title FROM pages WHERE link = ?",
+                result_title,
+                data,
+                1)
+        ) return;
+        // !!
+
+        std::string prev = response->getBody()->getBody();
+        std::string title;
+        std::string body;
+        if (result_title.size() == 1 && result_title[0].size() == 1)  {
+            title = std::string{result_title[0][0]};
+        } else {
+            size_t start_t = prev.find("<title>");
+            size_t end_t = prev.find("</title>");
+            if (end_t != std::string::npos && end_t > start_t) {
+                title = prev.substr(start_t + 7, end_t - start_t - 7);
+            } else {
+                title = "Server Error";
+            }
+        }
+        size_t start_b = prev.find("<body>");
+        size_t end_b = prev.find("<hr>");
+        if (start_b != std::string::npos && end_b > start_b) {
+            body = prev.substr(start_b + 6, end_b - start_b - 6);
+        } else {
+            body = "<h1>Server Error</h1>";
+        }
+        html->getContext()->insert({"title", title});
+        html->getContext()->insert({"content", body});
         html->exec();
     }
 };
+
+class HandlerIndex : public Handler {
+public:
+    HandlerIndex(const char * ds, HTTP::Method m) : Handler(ds, m) {}
+    void exec() {
+        Request * request = getContext()->getRequest();
+        Response * response = getContext()->getResponse();
+        Middleware * middleware = getContext()->getMiddlewareByNameID("html");
+        DBManager * db = getContext()->getDB();
+        if (!middleware) return;
+        auto * html = (HtmlMiddleware *) (void *) middleware;
+        if (html->getView().empty()) return;
+
+        auto body = html->getContext()->find("content");
+
+        std::string template_index;
+        if (!FileHandler::loadFile("../data/index.html", template_index)) return;
+        mstch::map index_content;
+        index_content.insert({"header", std::string{"Logistic company #1"}});
+
+        // !!
+        std::vector<std::vector<std::string>> result_text;
+        if (!db->execQuery(
+                "SELECT data FROM site WHERE value = 'index_text'",
+                result_text,
+                nullptr,
+                0)
+        ) return;
+        if (result_text.size() != 1 || result_text[0].size() != 1) return;
+        //
+        index_content.insert({"text", result_text[0][0]});
+
+        std::string content = mstch::render(template_index, index_content);
+        body->second = content;
+        html->exec();
+    }
+};
+
+
+class HandlerTrack : public Handler {
+public:
+    HandlerTrack(const char * ds, HTTP::Method m) : Handler(ds, m) {}
+    void exec() {
+        Request * request = getContext()->getRequest();
+        Response * response = getContext()->getResponse();
+        Middleware * middleware = getContext()->getMiddlewareByNameID("html");
+        DBManager * db = getContext()->getDB();
+        if (!middleware) return;
+        auto * html = (HtmlMiddleware *) (void *) middleware;
+        if (html->getView().empty()) return;
+
+        auto body = html->getContext()->find("content");
+
+        std::string template_track;
+        if (!FileHandler::loadFile("../data/track.html", template_track)) return;
+        mstch::map track_content;
+
+        std::string num;
+        if (!request->getURI()->getValueFromParam("cargo_number", num)) {
+            std::string content = mstch::render(template_track, track_content);
+            body->second = content;
+            html->exec();
+            return;
+        }
+
+        char * data[] = {(char *)num.c_str()};
+        std::vector<std::vector<std::string>> result_receipt;
+        if (!db->execQuery(
+                "SELECT receipts.sender, receipts.receiver, receipts.date_dep, receipts.date_arr, "
+                "cities.name, receipts.price FROM receipts INNER JOIN cities "
+                "ON receipts.city_id = cities.id WHERE num = ?",
+                result_receipt,
+                data,
+                1)
+        ) return;
+        if (result_receipt.size() != 1 || result_receipt[0].size() != 6) {
+            std::string content = mstch::render(template_track, track_content);
+            body->second = content;
+            html->exec();
+            return;
+        }
+
+        //
+        Middleware * middleware_cookie = getContext()->getMiddlewareByNameID("cookie");
+        if (!middleware_cookie) return;
+        auto * cookie = (CookieMiddleware *) (void *) middleware_cookie;
+        std::string temp;
+        bool toShift = false;
+        for (int i = 1; i <= 4; i++) {
+            std::string varName = "receipts_num";
+            varName += std::to_string(i);
+            if (cookie->getValueFromMap(varName.c_str(), temp) && temp != num) {
+                toShift = true;
+            } else {
+                CookieEntity cur{num.c_str()};
+                cookie->addCooike(varName.c_str(), cur);
+                toShift = false;
+                break;
+            }
+        }
+        for (int i = 4; i > 1 && toShift; i--) {
+            std::string varName = "receipts_num" + std::to_string(i);
+            std::string varNamePrev = "receipts_num" + std::to_string(i - 1);
+            std::string prevVal;
+            cookie->getValueFromMap(varNamePrev.c_str(), prevVal);
+            CookieEntity cur{prevVal.c_str()};
+            cookie->addCooike(varName.c_str(), cur);
+        }
+        if (toShift) {
+            CookieEntity cur{num.c_str()};
+            cookie->addCooike("receipts_num1", cur);
+        }
+        cookie->insertInResponse();
+        //
+
+
+        //
+        std::string date_dep = result_receipt[0][2];
+        std::time_t dep = std::stoi(date_dep);
+        std::tm * ptm = std::localtime(&dep);
+        char buffer[100];
+        std::strftime(buffer, sizeof(buffer), "%A, %d.%m.%Y %H:%M:%S", ptm);
+        result_receipt[0][2] = buffer;
+        //
+
+        //
+        std::string date_arr = result_receipt[0][3];
+        std::time_t arr = std::stoi(date_arr);
+        std::tm * ptm2 = std::localtime(&arr);
+        char buffer2[100];
+        std::strftime(buffer2, sizeof(buffer2), "%A, %d.%m.%Y %H:%M:%S", ptm2);
+        result_receipt[0][3] = buffer2;
+        //
+
+
+        mstch::array array_table_receipt;
+        const char * names_table[] ={"Номер відправлення", "Відправник", "Отримувач",
+                                     "Дата відправленя", "Дата прибуття", "Поточне місцезнаходження",
+                                     "Вартість, грн."};
+        for (int i = 0; i < sizeof(names_table) / sizeof(const char *); i++) {
+            mstch::map cur{{"name", std::string{names_table[i]}}, {"value", i == 0 ? std::string{num} : std::string{result_receipt[0][i - 1]}}};
+            array_table_receipt.push_back(cur);
+        }
+
+        track_content.insert({"receipt", array_table_receipt});
+        std::string content = mstch::render(template_track, track_content);
+        body->second = content;
+        html->exec();
+    }
+};
+
+
+
+
 
 
 class HandlerJson : public Handler {
@@ -114,40 +359,6 @@ public:
     }
 };
 
-
-class HandlerCookie : public Handler {
-public:
-    HandlerCookie(const char * ds, HTTP::Method m) :Handler(ds, m) {}
-    void exec() {
-
-        Middleware * middleware = this->getContext()->getMiddlewareByNameID("cookie");
-
-        if (!middleware) return;
-
-        auto * cookie = (CookieMiddleware *) (void *) middleware;
-
-        int val = 0;
-        auto iterator = cookie->getMap()->find("Val");
-        if (iterator != cookie->getMap()->end()) {
-            val = std::stoi(iterator->second);
-        }
-        val++;
-
-        CookieEntity some = CookieEntity(std::to_string(val).c_str());
-        cookie->addCooike("Val", some);
-        cookie->insertInResponse();
-
-        std::string str = getContext()->getResponse()->getBody()->getBody();
-        size_t  pos = str.find("</body></html>");
-        std::string inject = "<p>Val: ";
-        inject += std::to_string(val);
-        inject += "</p>";
-        str.insert(pos, inject);
-        MessageBody message(str);
-        getContext()->getResponse()->setBody(message);
-
-    }
-};
 
 class HandlerForm : public Handler {
 public:
@@ -250,51 +461,7 @@ static int callback(void *data, int argc, char **argv, char **azColName){
     return 0;
 }
 
-class HandlerTrack : public Handler {
-public:
-    HandlerTrack(const char * ds, HTTP::Method m) :Handler(ds, m) {}
-    void exec() {
-        Middleware *middleware = this->getContext()->getMiddlewareByNameID("html");
 
-        if (!middleware) return;
-
-        auto *html = (HtmlMiddleware *) (void *) middleware;
-
-
-        sqlite3 *db;
-        char *zErrMsg = 0;
-        int rc;
-        char *sql;
-
-
-        /* Open database */
-        rc = sqlite3_open("../../db/db_file", &db);
-
-        if (rc) {
-            fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(db));
-        } else {
-            fprintf(stderr, "Opened database successfully\n");
-        }
-
-        /* Create SQL statement */
-        sql = "SELECT * FROM RECEIPT";
-
-        rc = sqlite3_exec(db, sql, callback, (void*)html, &zErrMsg);
-
-        if (rc != SQLITE_OK) {
-            fprintf(stderr, "SQL error: %s\n", zErrMsg);
-            sqlite3_free(zErrMsg);
-        } else {
-            fprintf(stdout, "Operation done successfully\n");
-        }
-        sqlite3_close(db);
-
-        std::string view{"{{#receipts}}<p>{{info}}</p></br>{{/receipts}}"};
-        html->setView(view);
-        html->exec();
-
-    }
-};
 
 
 
@@ -306,31 +473,48 @@ int main (int argc, char ** argv) {
         std::cerr << err.what() << std::endl;
         return EXIT_FAILURE;
     }
-    App website = App(cur);
-    website.init();
-    //std::cout << "YES!";
 
-    HandlerCommon * dada = new HandlerCommon("/main", HTTP::Method::GET);
-    HandlerMain * sdf = new HandlerMain();
+    App website = App(cur);
+
+    website.init();
+
+
+    HandlerCommon * dada = new HandlerCommon();
+    HandlerTemplate * sdf = new HandlerTemplate();
+    HandlerCookie * xcv =  new HandlerCookie();
+    HandlerRenderTemplate * sdfsd = new HandlerRenderTemplate();
+
+    HandlerIndex * index = new HandlerIndex("/", HTTP::Method::GET);
+    HandlerTrack * track = new HandlerTrack("/track", HTTP::Method::GET);
+
+    //
     HandlerContact * sdsf = new HandlerContact("/contact", HTTP::Method::GET);
     HandlerJson * nbv = new HandlerJson("/api", HTTP::Method::GET);
-    HandlerCookie * cookies = new HandlerCookie("/cookie", HTTP::Method::GET);
+    //HandlerCookie * cookies = new HandlerCookie("/cookie", HTTP::Method::GET);
     HandlerForm * forms_h = new HandlerForm("/post", HTTP::Method::GET);
     HandlerHtml * html_h = new HandlerHtml("/html", HTTP::Method::GET);
-    HandlerTrack * track = new HandlerTrack("/db", HTTP::Method::GET);
+    //HandlerTrack * track = new HandlerTrack("/db", HTTP::Method::GET);
+
     FileHandler * css = new FileHandler("/common.css", "../data/common.css", "text/css", false);
     FileHandler * img = new FileHandler("/logo.jpg", "../data/logo.jpg", "image/jpeg", true);
+    FileHandler * banner = new FileHandler("/banner.jpg", "../data/banner.jpg", "image/jpeg", true);
 
     website.addHandler(dada);
     website.addHandler(sdf);
-    website.addHandler(sdsf);
+    website.addHandler(xcv);
+    website.addHandler(sdfsd);
+
+    website.addHandler(index);
+    website.addHandler(track);
+    ///
     website.addHandler(nbv);
-    website.addHandler(cookies);
     website.addHandler(forms_h);
     website.addHandler(html_h);
     website.addHandler(track);
     website.addHandler(css);
     website.addHandler(img);
+    website.addHandler(banner);
+
 
     website.addPermanentlyRedirect("/index", "/");
     website.addPermanentlyRedirect("/index.html", "/");

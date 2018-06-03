@@ -22,9 +22,7 @@ bool DBManager::execQuery(const char * statement, std::vector<std::vector<std::s
     for (int i = 1; i <= num; i++) {
         if (sqlite3_bind_text(stmt, i, data[i-1], -1, nullptr) != SQLITE_OK) return false;
     }
-
-
-    while (sqlite3_step(stmt) == SQLITE_ROW ) {
+    while (sqlite3_step(stmt) == SQLITE_ROW) {
         std::vector<std::string> row;
         for ( int colIndex = 0; colIndex < sqlite3_column_count( stmt ); colIndex++ ) {
             char * result = (char *)sqlite3_column_text( stmt, colIndex );
@@ -32,7 +30,6 @@ bool DBManager::execQuery(const char * statement, std::vector<std::vector<std::s
         }
         result_vec.push_back(row);
     }
-    if (sqlite3_step(stmt) != SQLITE_OK) return false;
     if (sqlite3_clear_bindings(stmt) != SQLITE_OK) return false;
     if (sqlite3_reset(stmt) != SQLITE_OK) return false;
     return sqlite3_finalize(stmt) == SQLITE_OK;
