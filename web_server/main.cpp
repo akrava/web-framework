@@ -338,9 +338,199 @@ public:
     }
 };
 
+class HandlerCalculate : public Handler {
+public:
+    HandlerCalculate(const char * ds, HTTP::Method m) : Handler(ds, m) {}
+    void exec() {
+        Request * request = getContext()->getRequest();
+        Response * response = getContext()->getResponse();
+        Middleware * middleware = getContext()->getMiddlewareByNameID("html");
+        DBManager * db = getContext()->getDB();
+        if (!middleware) return;
+        auto * html = (HtmlMiddleware *) (void *) middleware;
+        if (html->getView().empty()) return;
+
+        auto body = html->getContext()->find("content");
+
+        std::string template_calculate;
+        if (!FileHandler::loadFile("../data/calculate.html", template_calculate)) return;
+        mstch::map calculate_content;
+
+        std::vector<std::vector<std::string>> result_cities;
+        if (!db->execQuery(
+                "SELECT id, name FROM cities",
+                result_cities,
+                nullptr,
+                0)
+        ) return;
+
+
+        mstch::array array_table_cities;
+        for (auto & it : result_cities) {
+            if (it.size() != 2) continue;
+            mstch::map cur{{"id", it[0]}, {"name", it[1]}};
+            array_table_cities.push_back(cur);
+        }
+
+
+        // !!
+        std::vector<std::vector<std::string>> result_uri;
+        if (!db->execQuery(
+                "SELECT data FROM site WHERE value = 'uri_calculate'",
+                result_uri,
+                nullptr,
+                0)
+        ) return;
+        if (result_uri.size() != 1 || result_uri[0].size() != 1) return;
+
+        calculate_content.insert({"uri_calculate", result_uri[0][0]});
+
+        calculate_content.insert({"cities", array_table_cities});
+        std::string content = mstch::render(template_calculate, calculate_content);
+        body->second = content;
+        html->exec();
+    }
+};
+
+class HandlerCalculatePost : public Handler {
+public:
+    HandlerCalculatePost(const char * ds, HTTP::Method m) : Handler(ds, m) {}
+    void exec() {
+        Request * request = getContext()->getRequest();
+        Response * response = getContext()->getResponse();
+        Middleware * middleware = getContext()->getMiddlewareByNameID("html");
+        DBManager * db = getContext()->getDB();
+        if (!middleware) return;
+        auto * html = (HtmlMiddleware *) (void *) middleware;
+        if (html->getView().empty()) return;
+
+        Middleware * middleware_form = getContext()->getMiddlewareByNameID("form");
+        if (!middleware_form) return;
+        auto * form = (FormMiddleware *) (void *) middleware_form;
+
+        bool error = false;
+
+        std::string departure_str;
+        std::string arrive_str;
+        std::string weight_str;
+        std::string height_str;
+        std::string length_str;
+        std::string width_str;
+
+        if (!form->getValueFromMap("departure", departure_str)) error = true;
+        if (!form->getValueFromMap("arrive", arrive_str)) error = true;
+        if (!form->getValueFromMap("weight", weight_str)) error = true;
+        if (!form->getValueFromMap("height", height_str)) error = true;
+        if (!form->getValueFromMap("length", length_str)) error = true;
+        if (!form->getValueFromMap("width", width_str)) error = true;
+
+        double weight;
+        double height;
+        double length;
+        double width;
+
+
+        std::vector<std::vector<std::string>> result_prices_config;
+        if (!db->execQuery(
+                "SELECT data FROM site WHERE value = 'weight_price' OR  value = 'volume_price'",
+                result_prices_config,
+                nullptr,
+                0)
+        ) return;
+
+        double weight_config;
+        double volume_config;
+
+
+        if (result_prices_config.size() != 2 || result_prices_config[0].size() != 1
+            || result_prices_config[1].size() != 1) {
+            error = true;
+        }
+
+        bool inCity = false;
+        if (departure_str == arrive_str) inCity = true;
+
+        char * data[] = { (char *)departure_str.c_str(), (char *)arrive_str.c_str()};
+        std::vector<std::vector<std::string>> result_price_city;
+        if (!db->execQuery(
+                "SELECT warehouse_price FROM cities WHERE id = ? OR id = ?",
+                result_price_city,
+                data,
+                2)
+        ) return;
+
+        if (result_price_city.size() != 2 || result_price_city[0].size() != 1
+            || result_price_city[1].size() != 1) {
+            error = true;
+        }
+
+        double city_tax_first;
+        double city_tax_second;
+
+
+        try {
+            weight = std::stod(weight_str);
+            height = std::stod(height_str);
+            length = std::stod(length_str);
+            width = std::stod(width_str);
+            weight_config = std::stod(result_prices_config[0][0]);
+            volume_config = std::stod(result_prices_config[1][0]);
+            city_tax_first = std::stod(result_price_city[0][0]);
+            if (inCity) {
+                city_tax_second = 0;
+            } else {
+                city_tax_second = std::stod(result_price_city[1][0]);
+            }
+
+        } catch (std::invalid_argument & err) {
+            error = true;
+        } catch (std::out_of_range & err) {
+            error = true;
+        }
+
+
+        double price = (weight * weight_config + ((length*height*width)/1000000)*volume_config) * (city_tax_first + city_tax_second);
 
 
 
+        auto body = html->getContext()->find("content");
+
+        std::string content;
+        content = "<h1>" + std::to_string(price) + "</h1>";
+
+//        std::string template_calculate;
+//        if (!FileHandler::loadFile("../data/calculate.html", template_calculate)) return;
+//        mstch::map calculate_content;
+
+
+
+
+//        mstch::array array_table_cities;
+//        for (auto & it : result_cities) {
+//            if (it.size() != 2) continue;
+//            mstch::map cur{{"id", it[0]}, {"name", it[1]}};
+//            array_table_cities.push_back(cur);
+//        }
+
+
+        // !!
+//        std::vector<std::vector<std::string>> result_uri;
+//        if (!db->execQuery(
+//                "SELECT data FROM site WHERE value = 'uri_calculate'",
+//                result_uri,
+//                nullptr,
+//                0)
+//                ) return;
+//        if (result_uri.size() != 1 || result_uri[0].size() != 1) return;
+//
+//        calculate_content.insert({"uri_calculate", result_uri[0][0]});
+//
+//        calculate_content.insert({"cities", array_table_cities});
+//        std::string content = mstch::render(template_calculate, calculate_content);
+        body->second = content;
+        html->exec();
+    }
+};
 
 
 class HandlerJson : public Handler {
@@ -432,37 +622,6 @@ public:
 };
 
 
-static int callback(void *data, int argc, char **argv, char **azColName){
-    int i;
-
-    HtmlMiddleware * html = (HtmlMiddleware *)data;
-
-    std::string price;
-    std::string reciver;
-    std::string sender;
-    std::string num;
-
-    for (i = 0; i<argc; i++){
-        if (!strcmp(azColName[i], "price")) {
-            price = argv[i];
-        } else if (!strcmp(azColName[i], "reciver")) {
-            reciver = argv[i];
-        } else if (!strcmp(azColName[i], "sender")) {
-            sender = argv[i];
-        } else if (!strcmp(azColName[i], "num")) {
-            num = argv[i];
-        }
-    }
-
-    html->getContext()->insert({"receipts", mstch::array{
-            mstch::map{{"info", num + " " + reciver + " " + sender + " " + price}}
-    }});
-
-    return 0;
-}
-
-
-
 
 
 int main (int argc, char ** argv) {
@@ -486,6 +645,8 @@ int main (int argc, char ** argv) {
 
     HandlerIndex * index = new HandlerIndex("/", HTTP::Method::GET);
     HandlerTrack * track = new HandlerTrack("/track", HTTP::Method::GET);
+    HandlerCalculate * calc = new HandlerCalculate("/calculate", HTTP::Method::GET);
+    HandlerCalculatePost * post = new HandlerCalculatePost("/calculate_post", HTTP::Method::POST);
 
     //
     HandlerContact * sdsf = new HandlerContact("/contact", HTTP::Method::GET);
@@ -506,6 +667,8 @@ int main (int argc, char ** argv) {
 
     website.addHandler(index);
     website.addHandler(track);
+    website.addHandler(calc);
+    website.addHandler(post);
     ///
     website.addHandler(nbv);
     website.addHandler(forms_h);
