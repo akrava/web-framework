@@ -1,0 +1,47 @@
+<p class="first">Перелік відділень компанії</p>
+<form id="map" action="{{uri_map}}" method="GET">
+    <label for="target">Виберіть місто/країну для перегляду відділень: </label>
+    <select id="target" required name="target">
+        <optgroup label="Cities">
+            {{#cities}}
+            <option {{#selected}}selected{{/selected}} value="city-{{id}}">{{name}}</option>
+            {{/cities}}
+        </optgroup>
+        <optgroup label="Countries">
+            {{#countries}}
+            <option {{#selected}}selected{{/selected}} value="country-{{id}}">{{name}}</option>
+            {{/countries}}
+        </optgroup>
+    </select>
+    <input type="submit" value="Переглянути">
+</form>
+<table id="map-data" class="data">
+    <tr class="map row">
+        <th class="name">Номер</th>
+        <th class="name">Місто</th>
+        <th class="name">Країна</th>
+        <th class="name">Адреса</th>
+        <th class="name">Графік роботи</th>
+    </tr>
+    {{#departments}}
+    <tr class="map row">
+        <td class="value">{{num}}</td>
+        <td class="value">{{city}}</td>
+        <td class="value">{{country}}</td>
+        <td class="value">{{address}}</td>
+        <td class="value">{{timetable}}</td>
+    </tr>
+    {{/departments}}
+    {{^departments}}
+    <tr class="map row">
+        <td class="one-cell" colspan="5">
+            {{#error}}
+            <span class="error">На жаль, заданої інформації не знайдено</span>
+            {{/error}}
+            {{^error}}
+            <span class="info">Скористайтесь формою вище задля відображення результатів</span>
+            {{/error}}
+        </td>
+    </tr>
+    {{/departments}}
+</table>

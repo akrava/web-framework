@@ -15,10 +15,6 @@ body {
     background-attachment: fixed;
 }
 
-div {
-    //border: black 1px solid;
-}
-
 #main {
     width: 80%;
     margin: auto;
@@ -117,6 +113,7 @@ div {
     height: 100%;
     margin-left: 30%;
     padding-left: 10px;
+    padding-right: 15px;
 }
 
 #logo > a {
@@ -287,12 +284,13 @@ tr.calculate.row > td.value {
     font-weight: normal;
 }
 
-tr.calculate.row > td.value >input[type="text"] {
+tr.calculate.row > td.value >input[type="number"] {
     width: 45px;
 }
 
 tr.calculate.row > td.value > label {
-    margin-right: 10px;
+    margin-right: 7px;
+    margin-left: 3px;
 }
 
 form#calculate > table {
@@ -327,4 +325,89 @@ form#calculate > table {
 
 input[type="submit"], input[type="reset"] {
     cursor: pointer;
+}
+
+.rate {
+    font-weight: bold;
+    color: #02022a;
+}
+
+.info {
+    margin-left: 10px;
+    text-align: justify;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
+}
+
+#estimate > table.data {
+    margin-bottom: -3px;
+}
+
+#estimate > .send-table {
+    width: 364px;
+}
+
+#estimate > .send-table > input[type="submit"] {
+    margin-left: 20px;
+}
+
+#estimate > .send-table > input[type="reset"] {
+    margin-right: 20px;
+}
+
+form#map {
+    margin-left: 20px;
+    margin-bottom: 25px;
+}
+
+#map > label {
+    margin-right: 10px;
+}
+
+#map > input[type="submit"] {
+    padding: 0;
+    margin-left: 20px;
+}
+
+.map.row > .one-cell {
+    text-align: center;
+    padding: 15px;
+}
+
+.map.row > th {
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+    padding: 10px;
+    background-color: #c4d5ff;
+}
+
+.map.row > th:last-child {
+    border-right:none;
+}
+
+#map-data {
+    margin-bottom: 20px;
+    width: calc(100% - 43px);
+    margin-left: 25px;
+}
+
+tr.map.row > td.value {
+    padding: 10px;
+    font-weight: normal;
+    border-right: 1px solid black;
+    font-size: 14px;
+}
+
+tr.map.row > td.value:last-child {
+    border-right: none;
 }

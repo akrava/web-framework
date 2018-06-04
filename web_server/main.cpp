@@ -373,6 +373,26 @@ public:
         }
 
 
+        //
+        std::vector<std::vector<std::string>> result_cargo_types;
+        if (!db->execQuery(
+                "SELECT id, name FROM cargo_types",
+                result_cargo_types,
+                nullptr,
+                0)
+        ) return;
+
+
+        mstch::array array_cargo_types;
+        for (auto & it : result_cargo_types) {
+            if (it.size() != 2) continue;
+            mstch::map cur{{"id", it[0]}, {"name", it[1]}};
+            array_cargo_types.push_back(cur);
+        }
+
+        //
+
+
         // !!
         std::vector<std::vector<std::string>> result_uri;
         if (!db->execQuery(
@@ -386,11 +406,18 @@ public:
         calculate_content.insert({"uri_calculate", result_uri[0][0]});
 
         calculate_content.insert({"cities", array_table_cities});
+        calculate_content.insert({"cargo_types", array_cargo_types});
         std::string content = mstch::render(template_calculate, calculate_content);
         body->second = content;
         html->exec();
     }
 };
+
+static std::string toString(double val, int precision = 2) {
+    std::stringstream stream;
+    stream << std::fixed << std::setprecision(precision) << val;
+    return stream.str();
+}
 
 class HandlerCalculatePost : public Handler {
 public:
@@ -416,6 +443,7 @@ public:
         std::string height_str;
         std::string length_str;
         std::string width_str;
+        std::string cargo_str;
 
         if (!form->getValueFromMap("departure", departure_str)) error = true;
         if (!form->getValueFromMap("arrive", arrive_str)) error = true;
@@ -423,12 +451,7 @@ public:
         if (!form->getValueFromMap("height", height_str)) error = true;
         if (!form->getValueFromMap("length", length_str)) error = true;
         if (!form->getValueFromMap("width", width_str)) error = true;
-
-        double weight;
-        double height;
-        double length;
-        double width;
-
+        if (!form->getValueFromMap("cargo_type", cargo_str)) error = true;
 
         std::vector<std::vector<std::string>> result_prices_config;
         if (!db->execQuery(
@@ -438,17 +461,12 @@ public:
                 0)
         ) return;
 
-        double weight_config;
-        double volume_config;
-
-
         if (result_prices_config.size() != 2 || result_prices_config[0].size() != 1
             || result_prices_config[1].size() != 1) {
-            error = true;
+            return;
         }
 
-        bool inCity = false;
-        if (departure_str == arrive_str) inCity = true;
+        bool inCity = departure_str == arrive_str;
 
         char * data[] = { (char *)departure_str.c_str(), (char *)arrive_str.c_str()};
         std::vector<std::vector<std::string>> result_price_city;
@@ -459,15 +477,35 @@ public:
                 2)
         ) return;
 
-        if (result_price_city.size() != 2 || result_price_city[0].size() != 1
-            || result_price_city[1].size() != 1) {
-            error = true;
+        if ((!inCity && (result_price_city.size() != 2 || result_price_city[0].size() != 1
+            || result_price_city[1].size() != 1))
+            || (inCity && (result_price_city.size() != 1 || result_price_city[0].size() != 1))) {
+            return;
         }
 
-        double city_tax_first;
-        double city_tax_second;
+        char * temp[] = { (char *)cargo_str.c_str()};
+        std::vector<std::vector<std::string>> result_cargo_conf;
+        if (!db->execQuery(
+                "SELECT price_koeff FROM cargo_types WHERE id = ?",
+                result_cargo_conf,
+                temp,
+                1)
+        ) return;
 
+        if (result_cargo_conf.size() != 1 || result_cargo_conf[0].size() != 1) return;
 
+        double city_tax_first = 0;
+        double city_tax_second = 0;
+
+        double weight = 0;
+        double height = 0;
+        double length = 0;
+        double width = 0;
+
+        double cargo_config = 0;
+
+        double weight_config = 0;
+        double volume_config = 0;
         try {
             weight = std::stod(weight_str);
             height = std::stod(height_str);
@@ -476,57 +514,293 @@ public:
             weight_config = std::stod(result_prices_config[0][0]);
             volume_config = std::stod(result_prices_config[1][0]);
             city_tax_first = std::stod(result_price_city[0][0]);
+            cargo_config = std::stod(result_cargo_conf[0][0]);
             if (inCity) {
-                city_tax_second = 0;
+                city_tax_second = city_tax_first;
             } else {
                 city_tax_second = std::stod(result_price_city[1][0]);
             }
-
         } catch (std::invalid_argument & err) {
             error = true;
         } catch (std::out_of_range & err) {
             error = true;
         }
 
+        if (weight <= 0 || height <= 0 || length <= 0 || width <= 0) error = true;
 
-        double price = (weight * weight_config + ((length*height*width)/1000000)*volume_config) * (city_tax_first + city_tax_second);
+        std::string template_info;
+        if (!FileHandler::loadFile("../data/info.html", template_info)) return;
+        mstch::map info_content{{"header", std::string{"Вартість доставки"}}};
+
+        if (error) {
+            info_content.insert({"content", std::string{"<span class = \"error\">Некоректні введені дані! Спробуйте ще раз.</span>"}});
+        } else {
+            double price = weight * weight_config + ((length * height * width) / 1e6) * volume_config + fabs(city_tax_first - city_tax_second) * weight / 10;
+            price *= cargo_config;
+            std::string body = "<p>Орієнтована вартість доставки становить <span class=\"rate\">";
+            body += toString(price) + "</span> грн.</p><p><i>Введена вага: ";
+            body += toString(weight) + " кг, об'єм: " + toString((length * height * width)/ 1e6, 4) + " м<sup>3</sup></i></p>";
+            info_content.insert({"content", body});
+        }
+
+        auto body = html->getContext()->find("content");
+        std::string content = mstch::render(template_info, info_content);
+        body->second = content;
+        html->exec();
+    }
+};
 
 
+class HandlerEstimate : public Handler {
+public:
+    HandlerEstimate(const char * ds, HTTP::Method m) : Handler(ds, m) {}
+    void exec() {
+        Request * request = getContext()->getRequest();
+        Response * response = getContext()->getResponse();
+        Middleware * middleware = getContext()->getMiddlewareByNameID("html");
+        DBManager * db = getContext()->getDB();
+        if (!middleware) return;
+        auto * html = (HtmlMiddleware *) (void *) middleware;
+        if (html->getView().empty()) return;
 
         auto body = html->getContext()->find("content");
 
-        std::string content;
-        content = "<h1>" + std::to_string(price) + "</h1>";
+        std::string template_calculate;
+        if (!FileHandler::loadFile("../data/estimate.html", template_calculate)) return;
+        mstch::map calculate_content;
 
-//        std::string template_calculate;
-//        if (!FileHandler::loadFile("../data/calculate.html", template_calculate)) return;
-//        mstch::map calculate_content;
+        std::vector<std::vector<std::string>> result_cities;
+        if (!db->execQuery(
+                "SELECT id, name FROM cities",
+                result_cities,
+                nullptr,
+                0)
+        ) return;
 
 
-
-
-//        mstch::array array_table_cities;
-//        for (auto & it : result_cities) {
-//            if (it.size() != 2) continue;
-//            mstch::map cur{{"id", it[0]}, {"name", it[1]}};
-//            array_table_cities.push_back(cur);
-//        }
+        mstch::array array_table_cities;
+        for (auto & it : result_cities) {
+            if (it.size() != 2) continue;
+            mstch::map cur{{"id", it[0]}, {"name", it[1]}};
+            array_table_cities.push_back(cur);
+        }
 
 
         // !!
-//        std::vector<std::vector<std::string>> result_uri;
-//        if (!db->execQuery(
-//                "SELECT data FROM site WHERE value = 'uri_calculate'",
-//                result_uri,
-//                nullptr,
-//                0)
-//                ) return;
-//        if (result_uri.size() != 1 || result_uri[0].size() != 1) return;
-//
-//        calculate_content.insert({"uri_calculate", result_uri[0][0]});
-//
-//        calculate_content.insert({"cities", array_table_cities});
-//        std::string content = mstch::render(template_calculate, calculate_content);
+        std::vector<std::vector<std::string>> result_uri;
+        if (!db->execQuery(
+                "SELECT data FROM site WHERE value = 'uri_estimate'",
+                result_uri,
+                nullptr,
+                0)
+                ) return;
+        if (result_uri.size() != 1 || result_uri[0].size() != 1) return;
+
+        calculate_content.insert({"uri_estimate", result_uri[0][0]});
+
+        calculate_content.insert({"cities", array_table_cities});
+
+        std::string content = mstch::render(template_calculate, calculate_content);
+        body->second = content;
+        html->exec();
+    }
+};
+
+static std::time_t toTime_t(std::string & date, const char * format = "%Y-%m-%d") {
+    std::tm tm{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, nullptr};
+    std::istringstream ss(date);
+    ss >> std::get_time(&tm, format);
+    std::time_t time = mktime(&tm);
+    return time;
+}
+
+
+class HandlerEstimatePost : public Handler {
+public:
+    HandlerEstimatePost(const char * ds, HTTP::Method m) : Handler(ds, m) {}
+    void exec() {
+        Request * request = getContext()->getRequest();
+        Response * response = getContext()->getResponse();
+        Middleware * middleware = getContext()->getMiddlewareByNameID("html");
+        DBManager * db = getContext()->getDB();
+        if (!middleware) return;
+        auto * html = (HtmlMiddleware *) (void *) middleware;
+        if (html->getView().empty()) return;
+
+        Middleware * middleware_form = getContext()->getMiddlewareByNameID("form");
+        if (!middleware_form) return;
+        auto * form = (FormMiddleware *) (void *) middleware_form;
+
+        bool error = false;
+
+        std::string arrive_city_str;
+        std::string departure_city_str;
+        std::string departure_date_str;
+
+        if (!form->getValueFromMap("arrive", arrive_city_str)) error = true;
+        if (!form->getValueFromMap("departure_city", departure_city_str)) error = true;
+        if (!form->getValueFromMap("departure_date", departure_date_str)) error = true;
+
+        std::time_t time_departure = toTime_t(departure_date_str);
+
+
+        bool inCity = departure_city_str == arrive_city_str;
+
+        char * data[] = { (char *)arrive_city_str.c_str(), (char *)departure_city_str.c_str()};
+        std::vector<std::vector<std::string>> result_dates_city;
+        if (!db->execQuery(
+                "SELECT warehouse_days, name FROM cities WHERE id = ? OR id = ?",
+                result_dates_city,
+                data,
+                2)
+        ) return;
+
+        if ((!inCity && (result_dates_city.size() != 2 || result_dates_city[0].size() != 2
+            || result_dates_city[1].size() != 2))
+            || (inCity && (result_dates_city.size() != 1 || result_dates_city[0].size() != 2))) {
+            return;
+        }
+
+        int days_city_arrive = 0;
+        int days_city_departure = 0;
+
+        try {
+            days_city_arrive = std::stoi(result_dates_city[0][0]);
+            days_city_departure = inCity ? days_city_arrive - 3 : std::stoi(result_dates_city[1][0]);
+        } catch (std::invalid_argument & err) {
+            error = true;
+        } catch (std::out_of_range & err) {
+            error = true;
+        }
+
+        std::string template_info;
+        if (!FileHandler::loadFile("../data/info.html", template_info)) return;
+        mstch::map info_content{{"header", std::string{"Термін доставки вантажу"}}};
+
+        if (error) {
+            info_content.insert({"content", std::string{"<span class = \"error\">Некоректні введені дані! Спробуйте ще раз.</span>"}});
+        } else {
+
+            std::tm * tm = std::localtime(&time_departure);
+            tm->tm_mday += abs(days_city_arrive - days_city_departure);
+            mktime(tm);
+
+            char buffer[100];
+            std::strftime(buffer, sizeof(buffer), "%d.%m.%Y", tm);
+            std::string arrive_str = buffer;
+
+            std::string body = "<p>Орієнтована дата доставки: <span class=\"rate\">";
+            body += arrive_str + "</span></p><p><i>Доставка вантажу триватиме ";
+            if (inCity) {
+                body += "по місту <b>" + result_dates_city[0][1] + "</b> ";
+            } else {
+                body += "з <b>" + result_dates_city[0][1] + "</b> до <b>" + result_dates_city[1][1] + "</b> ";
+            }
+            body += "<b>" + std::to_string(abs(days_city_arrive - days_city_departure)) + "</b> днів(-і)";
+            info_content.insert({"content", body});
+        }
+        auto body = html->getContext()->find("content");
+        std::string content = mstch::render(template_info, info_content);
+        body->second = content;
+        html->exec();
+    }
+};
+
+
+class HandlerMap : public Handler {
+public:
+    HandlerMap(const char * ds, HTTP::Method m) : Handler(ds, m) {}
+    void exec() {
+        Request * request = getContext()->getRequest();
+        Response * response = getContext()->getResponse();
+        Middleware * middleware = getContext()->getMiddlewareByNameID("html");
+        DBManager * db = getContext()->getDB();
+        if (!middleware) return;
+        auto * html = (HtmlMiddleware *) (void *) middleware;
+        if (html->getView().empty()) return;
+
+        auto body = html->getContext()->find("content");
+
+        std::string template_map;
+        if (!FileHandler::loadFile("../data/map.html", template_map)) return;
+        mstch::map map_content;
+
+        std::string curTarget;
+        request->getURI()->getValueFromParam("target", curTarget);
+
+        std::vector<std::vector<std::string>> result_cities;
+        if (!db->execQuery(
+                "SELECT id, name FROM cities",
+                result_cities,
+                nullptr,
+                0)
+        ) return;
+
+
+        mstch::array array_table_cities;
+        for (auto & it : result_cities) {
+            if (it.size() != 2) continue;
+            mstch::map cur{{"id", it[0]}, {"name", it[1]}, {"selected", it[0].insert(0, "city-") == curTarget}};
+            array_table_cities.push_back(cur);
+        }
+
+
+        std::vector<std::vector<std::string>> result_countries;
+        if (!db->execQuery(
+                "SELECT id, name FROM districts",
+                result_countries,
+                nullptr,
+                0)
+        ) return;
+
+
+        mstch::array array_table_countries;
+        for (auto & it : result_countries) {
+            if (it.size() != 2) continue;
+            mstch::map cur{{"id", it[0]}, {"name", it[1]}, {"selected", it[0].insert(0, "country-") == curTarget}};
+            array_table_countries.push_back(cur);
+        }
+
+        std::string city_id = "0";
+        std::string country_id = "0";
+        size_t endKeyCityPos = curTarget.find("city-");
+        size_t endKeyCountryPos = curTarget.find("country-");
+        if (endKeyCityPos == 0) {
+            city_id = curTarget.substr(sizeof("city-") - 1);
+        } else if (endKeyCountryPos == 0) {
+            country_id = curTarget.substr(sizeof("country-") - 1);
+        }
+
+        char * data[] = { (char *)city_id.c_str(), (char *)country_id.c_str() };
+        std::vector<std::vector<std::string>> table;
+        if (!db->execQuery(
+                "SELECT departments.num, cities.name, districts.name, departments.address, "
+                "departments.timetable_weekdays, departments.timetable_weekend FROM departments "
+                "INNER JOIN cities ON departments.city_id = cities.id INNER JOIN districts ON "
+                "cities.disrtict_id = districts.id WHERE cities.id = ? OR districts.id = ?",
+                table,
+                data,
+                2)
+        ) return;
+
+        mstch::array array_departments;
+        for (auto & it : table) {
+            if (it.size() != 6) continue;
+            mstch::map cur{{"num", it[0]}, {"city", it[1]}, {"country", it[2]},
+                           {"address", it[3]}, {"timetable", it[4] + std::string{'\n'} + it[5]}};
+            array_departments.push_back(cur);
+        }
+
+
+
+
+        map_content.insert({"departments", array_departments});
+        map_content.insert({"error", array_departments.empty() ? !curTarget.empty() : false});
+        map_content.insert({"uri_map", request->getURI()->getUri()});
+        map_content.insert({"cities", array_table_cities});
+        map_content.insert({"countries", array_table_countries});
+
+        std::string content = mstch::render(template_map, map_content);
         body->second = content;
         html->exec();
     }
@@ -647,7 +921,9 @@ int main (int argc, char ** argv) {
     HandlerTrack * track = new HandlerTrack("/track", HTTP::Method::GET);
     HandlerCalculate * calc = new HandlerCalculate("/calculate", HTTP::Method::GET);
     HandlerCalculatePost * post = new HandlerCalculatePost("/calculate_post", HTTP::Method::POST);
-
+    HandlerEstimate * est = new HandlerEstimate("/estimate", HTTP::Method::GET);
+    HandlerEstimatePost * est_post = new HandlerEstimatePost("/estimate_post", HTTP::Method::POST);
+    HandlerMap * map = new HandlerMap("/map", HTTP::Method::GET);
     //
     HandlerContact * sdsf = new HandlerContact("/contact", HTTP::Method::GET);
     HandlerJson * nbv = new HandlerJson("/api", HTTP::Method::GET);
@@ -669,6 +945,9 @@ int main (int argc, char ** argv) {
     website.addHandler(track);
     website.addHandler(calc);
     website.addHandler(post);
+    website.addHandler(est);
+    website.addHandler(est_post);
+    website.addHandler(map);
     ///
     website.addHandler(nbv);
     website.addHandler(forms_h);

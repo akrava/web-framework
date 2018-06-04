@@ -22,17 +22,27 @@
             </td>
         </tr>
         <tr class="calculate row">
+            <td class="name">Вид відправлення</td>
+            <td class="value">
+                <select id="cargo_type" required name="cargo_type">
+                    {{#cargo_types}}
+                    <option value="{{id}}">{{name}}</option>
+                    {{/cargo_types}}
+                </select>
+            </td>
+        </tr>
+        <tr class="calculate row">
             <td class="name">Фактична вага</td>
             <td class="value">
-                <input required id="weight" name="weight" type="text"><label for="weight">кг</label>
+                <input required id="weight" name="weight" type="number" step=".01"><label for="weight">кг</label>
             </td>
         </tr>
         <tr class="calculate row">
             <td class="name">Габарати вантажу, см</td>
             <td class="value">
-                <input required id="width" name="width" type="text"><label for="width">Ш</label>
-                <input required id="height" name="height" type="text"><label for="height">В</label>
-                <input required id="length" name="length" type="text"><label for="length">Г</label>
+                <input required id="width" name="width" type="number" step=".01"><label for="width">Ш</label>
+                <input required id="height" name="height" type="number" step=".01"><label for="height">В</label>
+                <input required id="length" name="length" type="number" step=".01"><label for="length">Г</label>
             </td>
         </tr>
     </table>
