@@ -26,7 +26,7 @@ bool DBManager::execQuery(const char * statement, std::vector<std::vector<std::s
         std::vector<std::string> row;
         for ( int colIndex = 0; colIndex < sqlite3_column_count( stmt ); colIndex++ ) {
             char * result = (char *)sqlite3_column_text( stmt, colIndex );
-            row.emplace_back(result);
+            row.emplace_back(result ? result : "");
         }
         result_vec.push_back(row);
     }

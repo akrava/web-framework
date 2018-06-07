@@ -33,7 +33,7 @@ void JsonMiddleware::setEchoReply() {
 
 void JsonMiddleware::fillResponse() {
     response->getHeaders()->add("Content-Type", "application/json");
-    std::string res = jsonResponse->dump();
+    std::string res = jsonResponse->dump(1,'\n');
     response->getBody()->setBody(res);
 }
 

@@ -734,7 +734,7 @@ public:
                 result_cities,
                 nullptr,
                 0)
-        ) return;
+                ) return;
 
 
         mstch::array array_table_cities;
@@ -751,7 +751,7 @@ public:
                 result_countries,
                 nullptr,
                 0)
-        ) return;
+                ) return;
 
 
         mstch::array array_table_countries;
@@ -787,7 +787,7 @@ public:
         for (auto & it : table) {
             if (it.size() != 6) continue;
             mstch::map cur{{"num", it[0]}, {"city", it[1]}, {"country", it[2]},
-                           {"address", it[3]}, {"timetable", it[4] + std::string{'\n'} + it[5]}};
+                           {"address", it[3]}, {"timetable", "Пн - Пт: " + it[4] + std::string{"\nСб - Нд: "} + it[5]}};
             array_departments.push_back(cur);
         }
 
@@ -807,93 +807,496 @@ public:
 };
 
 
-class HandlerJson : public Handler {
+
+class HandlerOrder : public Handler {
 public:
-    HandlerJson(const char * ds, HTTP::Method m) :Handler(ds, m) {}
+    HandlerOrder(const char * ds, HTTP::Method m) : Handler(ds, m) {}
     void exec() {
-
-        Middleware * middleware = this->getContext()->getMiddlewareByNameID("json");
-
+        Request * request = getContext()->getRequest();
+        Response * response = getContext()->getResponse();
+        Middleware * middleware = getContext()->getMiddlewareByNameID("html");
+        DBManager * db = getContext()->getDB();
         if (!middleware) return;
+        auto * html = (HtmlMiddleware *) (void *) middleware;
+        if (html->getView().empty()) return;
 
-        auto * json = (JsonMiddleware *) (void *) middleware;
-        json->setEchoReply();
-        json->fillResponse();
+        auto body = html->getContext()->find("content");
 
-    }
-};
+        std::string template_order;
+        if (!FileHandler::loadFile("../data/order.html", template_order)) return;
+        mstch::map order_content;
+
+        std::vector<std::vector<std::string>> result_cities;
+        if (!db->execQuery(
+                "SELECT id, name FROM cities",
+                result_cities,
+                nullptr,
+                0)
+        ) return;
 
 
-class HandlerForm : public Handler {
-public:
-    HandlerForm(const char * ds, HTTP::Method m) :Handler(ds, m) {}
-    void exec() {
-
-        Middleware * middleware = this->getContext()->getMiddlewareByNameID("form");
-        if (!middleware) return;
-
-        auto * form = (FormMiddleware *) (void *) middleware;
-
-        std::string str = getContext()->getResponse()->getBody()->getBody();
-        size_t  pos = str.find("</body></html>");
-        std::string inject = "<hr/><hr/><p>DATA FROM FORM: </p> <table>";
-
-        for (std::pair<std::string, std::string> some : *form->getMap()) {
-            inject += "<tr><td>";
-            inject += some.first;
-            inject += "</td><td>";
-            inject += some.second;
-            inject += "</td></tr>";
+        mstch::array array_table_cities;
+        for (auto & it : result_cities) {
+            if (it.size() != 2) continue;
+            mstch::map cur{{"id", it[0]}, {"name", it[1]}};
+            array_table_cities.push_back(cur);
         }
 
-        inject += "</table>";
-        str.insert(pos, inject);
-        MessageBody body_m(str);
-        getContext()->getResponse()->setBody(body_m);
 
+        // !!
+        std::vector<std::vector<std::string>> result_uri;
+        if (!db->execQuery(
+                "SELECT data FROM site WHERE value = 'uri_order'",
+                result_uri,
+                nullptr,
+                0)
+        ) return;
+        if (result_uri.size() != 1 || result_uri[0].size() != 1) return;
+
+        order_content.insert({"uri_order", result_uri[0][0]});
+
+        order_content.insert({"cities", array_table_cities});
+
+        std::string content = mstch::render(template_order, order_content);
+        body->second = content;
+        html->exec();
     }
 };
 
-class HandlerContact : public Handler {
+
+class HandlerOrderPost : public Handler {
 public:
-    HandlerContact(const char * ds, HTTP::Method m) :Handler(ds, m) {}
+    HandlerOrderPost(const char * ds, HTTP::Method m) : Handler(ds, m) {}
     void exec() {
-        std::string fdg("Content-Type: text/html; charset=utf-8");
+        Request * request = getContext()->getRequest();
+        Response * response = getContext()->getResponse();
+        Middleware * middleware = getContext()->getMiddlewareByNameID("html");
+        DBManager * db = getContext()->getDB();
+        if (!middleware) return;
+        auto * html = (HtmlMiddleware *) (void *) middleware;
+        if (html->getView().empty()) return;
 
-        Headers ddd = Headers(fdg);
-        std::string body("<!doctype html><html><body><center><h1>!Contact</h1></center><p>some text and other..</p></body></html>");
-        MessageBody message = MessageBody(body);
+        Middleware * middleware_form = getContext()->getMiddlewareByNameID("form");
+        if (!middleware_form) return;
+        auto * form = (FormMiddleware *) (void *) middleware_form;
 
-        Response response_obj = Response(HTTP::Version::HTTP_1_1, 200, ddd,  message);
+        bool error = false;
 
-        getContext()->setResponse(response_obj);
+        std::string city_str;
+        std::string name_str;
+        std::string email_str;
+        std::string phone_str;
+        std::string address_str;
+        std::string comment_str;
+
+        if (!form->getValueFromMap("city", city_str)) error = true;
+        if (!form->getValueFromMap("name", name_str)) error = true;
+        if (!form->getValueFromMap("email", email_str)) error = true;
+        if (!form->getValueFromMap("phone", phone_str)) error = true;
+        if (!form->getValueFromMap("address", address_str)) error = true;
+        if (!form->getValueFromMap("comment", comment_str)) error = true;
+
+
+        time_t raw_time;
+        tm * time_cur;
+        char time_str[100];
+        time(&raw_time);
+        time_cur = localtime(&raw_time);
+        strftime(time_str, sizeof(time_str), "%Y-%m-%d %H:%M:%S", time_cur);
+
+
+        const char * data[] = {
+                city_str.c_str(),
+                name_str.c_str(),
+                email_str.c_str(),
+                phone_str.c_str(),
+                address_str.c_str(),
+                comment_str.size() == 0 ? "NULL" : comment_str.c_str(),
+                time_str
+        };
+
+
+        std::vector<std::vector<std::string>> res_query;
+        if (!db->execQuery(
+                "INSERT INTO orders (`city_id`, `name`,`email`,`phone`,`address`,`comment`,`date_order`) "
+                "VALUES (?, ?, ?, ?, ?, ?, ?);",
+                res_query,
+                (char **)data,
+                7)
+        ) return;
+
+        if (!res_query.empty()) error = true;
+
+
+        std::string template_info;
+        if (!FileHandler::loadFile("../data/info.html", template_info)) return;
+        mstch::map info_content{{"header", std::string{"Результат заповнення заявки"}}};
+
+        if (error) {
+            info_content.insert({"content", std::string{"<span class = \"error\">Некоректні введені дані! Спробуйте ще раз.</span>"}});
+        } else {
+            info_content.insert({"content", std::string{"<p>Дякуємо, <b>" + name_str + "</b>, вашу заявку прийнято!"}});
+        }
+        auto body = html->getContext()->find("content");
+        std::string content = mstch::render(template_info, info_content);
+        body->second = content;
+        html->exec();
     }
 };
 
-class HandlerHtml : public Handler {
+
+class HandlerCommonInfo : public Handler {
+    std::string key_in_db;
 public:
-    HandlerHtml(const char * ds, HTTP::Method m) :Handler(ds, m) {}
+    HandlerCommonInfo(const char * key_in_db, const char * ds, HTTP::Method m) : Handler(ds, m) {
+        this->key_in_db = key_in_db;
+    }
+    const char * getKey() { return key_in_db.c_str(); }
     void exec() {
-        Middleware * middleware = this->getContext()->getMiddlewareByNameID("html");
+        Request * request = getContext()->getRequest();
+        Response * response = getContext()->getResponse();
+        Middleware * middleware = getContext()->getMiddlewareByNameID("html");
+        DBManager * db = getContext()->getDB();
+        if (!middleware) return;
+        auto * html = (HtmlMiddleware *) (void *) middleware;
+        if (html->getView().empty()) return;
+
+        Middleware * middleware_form = getContext()->getMiddlewareByNameID("form");
+        if (!middleware_form) return;
+        auto * form = (FormMiddleware *) (void *) middleware_form;
+
+
+
+        const char * data[] = {getKey()};
+        std::vector<std::vector<std::string>> result_data;
+        if (!db->execQuery(
+                "SELECT data FROM site WHERE value = ?",
+                result_data,
+                (char **)data,
+                1)
+        ) return;
+        if (result_data.size() != 1 || result_data[0].size() != 1) return;
+
+
+        const char * uri[] = {request->getURI()->getUri().c_str()};
+        std::vector<std::vector<std::string>> result_header;
+        if (!db->execQuery(
+                "SELECT title FROM pages WHERE link = ?",
+                result_header,
+                (char **)uri,
+                1)
+        ) return;
+        if (result_header.size() != 1 || result_header[0].size() != 1) return;
+
+
+        std::string template_info;
+        if (!FileHandler::loadFile("../data/info.html", template_info)) return;
+        mstch::map info_content{{"header", result_header[0][0]}};
+
+
+        info_content.insert({"content", result_data[0][0]});
+
+        auto body = html->getContext()->find("content");
+        std::string content = mstch::render(template_info, info_content);
+        body->second = content;
+        html->exec();
+    }
+};
+
+
+class HandlerNews : public Handler {
+public:
+    HandlerNews(const char * ds, HTTP::Method m) : Handler(ds, m) {}
+    void exec() {
+        Request * request = getContext()->getRequest();
+        Response * response = getContext()->getResponse();
+        Middleware * middleware = getContext()->getMiddlewareByNameID("html");
+        DBManager * db = getContext()->getDB();
+        if (!middleware) return;
+        auto * html = (HtmlMiddleware *) (void *) middleware;
+        if (html->getView().empty()) return;
+
+        auto body = html->getContext()->find("content");
+
+        std::string template_news;
+        if (!FileHandler::loadFile("../data/news.html", template_news)) return;
+        mstch::map news_content;
+
+
+        news_content.insert({"uri_news", request->getURI()->getUri()});
+
+
+        std::string currentNewspaper;
+
+        if (request->getURI()->getValueFromParam("current", currentNewspaper)) {
+
+
+            const char * dat[] = {currentNewspaper.c_str()};
+            std::vector<std::vector<std::string>> article;
+            if (!db->execQuery(
+                    "SELECT header, img, text, date FROM news WHERE id = ?",
+                    article,
+                    (char **)dat,
+                    1)
+            ) return;
+
+            if (article.size() != 1 || article[0].size() != 4) return;
+
+            mstch::map article_context{{"title", article[0][0]}, {"content", article[0][2]}};
+
+            if (!article[0][1].empty()) {
+                article_context.insert({"img", article[0][1]});
+            }
+
+            std::time_t date = std::stoi(article[0][3]);
+            std::tm * ptm = std::localtime(&date);
+            char f_date[100];
+            char s_date[100];
+            std::strftime(f_date, sizeof(f_date), "%Y-%m-%d %H:%M", ptm);
+            std::strftime(s_date, sizeof(s_date), "%d.%m.%Y", ptm);
+            article_context.insert({"full_date", std::string{f_date}});
+            article_context.insert({"date", std::string{s_date}});
+
+            news_content.insert({"newspaper", article_context});
+
+        } else {
+
+            std::vector<std::vector<std::string>> result_news;
+            if (!db->execQuery(
+                    "SELECT id, header, text, date FROM news",
+                    result_news,
+                    nullptr,
+                    0)
+            ) return;
+
+            mstch::array array_news;
+            for (auto & it : result_news) {
+                if (it.size() != 4) continue;
+
+                std::time_t date = std::stoi(it[3]);
+                std::tm * ptm = std::localtime(&date);
+                char f_date[100];
+                char s_date[100];
+                std::strftime(f_date, sizeof(f_date), "%Y-%m-%d %H:%M", ptm);
+                std::strftime(s_date, sizeof(s_date), "%b %d", ptm);
+
+                mstch::map cur{{"id", it[0]}, {"title", it[1]}, {"content", it[2]},
+                               {"full_date", std::string{f_date}}, {"date", std::string{s_date}}};
+                array_news.push_back(cur);
+            }
+            news_content.insert({"news", array_news});
+        }
+
+
+        body->second = mstch::render(template_news, news_content);
+        html->exec();
+    }
+};
+
+
+class HandlerFeedback : public Handler {
+public:
+    HandlerFeedback(const char * ds, HTTP::Method m) : Handler(ds, m) {}
+    void exec() {
+        Request * request = getContext()->getRequest();
+        Response * response = getContext()->getResponse();
+        Middleware * middleware = getContext()->getMiddlewareByNameID("html");
+        DBManager * db = getContext()->getDB();
+        if (!middleware) return;
+        auto * html = (HtmlMiddleware *) (void *) middleware;
+        if (html->getView().empty()) return;
+
+        auto body = html->getContext()->find("content");
+
+        std::string template_order;
+        if (!FileHandler::loadFile("../data/feedback.html", template_order)) return;
+        mstch::map order_content;
+
+
+
+
+        // !!
+        std::vector<std::vector<std::string>> result_uri;
+        if (!db->execQuery(
+                "SELECT data FROM site WHERE value = 'uri_feedback_post'",
+                result_uri,
+                nullptr,
+                0)
+        ) return;
+        if (result_uri.size() != 1 || result_uri[0].size() != 1) return;
+
+        order_content.insert({"uri_feedback", result_uri[0][0]});
+
+
+        std::string content = mstch::render(template_order, order_content);
+        body->second = content;
+        html->exec();
+    }
+};
+
+
+class HandlerFeedbackPost : public Handler {
+public:
+    HandlerFeedbackPost(const char * ds, HTTP::Method m) : Handler(ds, m) {}
+    void exec() {
+        Request * request = getContext()->getRequest();
+        Response * response = getContext()->getResponse();
+        Middleware * middleware = getContext()->getMiddlewareByNameID("html");
+        DBManager * db = getContext()->getDB();
+        if (!middleware) return;
+        auto * html = (HtmlMiddleware *) (void *) middleware;
+        if (html->getView().empty()) return;
+
+        Middleware * middleware_form = getContext()->getMiddlewareByNameID("form");
+        if (!middleware_form) return;
+        auto * form = (FormMiddleware *) (void *) middleware_form;
+
+        bool error = false;
+
+        std::string name_str;
+        std::string email_str;
+        std::string comment_str;
+
+        if (!form->getValueFromMap("name", name_str)) error = true;
+        if (!form->getValueFromMap("email", email_str)) error = true;
+        if (!form->getValueFromMap("comment", comment_str)) error = true;
+
+
+
+
+
+        const char * data[] = {
+                name_str.c_str(),
+                email_str.c_str(),
+                comment_str.c_str()
+        };
+
+
+        std::vector<std::vector<std::string>> res_query;
+        if (!db->execQuery(
+                "INSERT INTO reviews ( `name`,`email`,`text`) "
+                "VALUES (?, ?, ?);",
+                res_query,
+                (char **)data,
+                3)
+        ) return;
+
+        if (!res_query.empty()) error = true;
+
+
+        std::string template_info;
+        if (!FileHandler::loadFile("../data/info.html", template_info)) return;
+        mstch::map info_content{{"header", std::string{"Feedback"}}};
+
+        if (error) {
+            info_content.insert({"content", std::string{"<span class = \"error\">Некоректні введені дані! Спробуйте ще раз.</span>"}});
+        } else {
+            info_content.insert({"content", std::string{"<p>Дякуємо, <b>" + name_str + "</b>, вашу відгук буде врахован!"}});
+        }
+        auto body = html->getContext()->find("content");
+        std::string content = mstch::render(template_info, info_content);
+        body->second = content;
+        html->exec();
+    }
+};
+
+
+class HandlerApi : public Handler {
+public:
+    HandlerApi(const char * ds, HTTP::Method m) :Handler(ds, m) {}
+    void exec() {
+
+        Request * request = getContext()->getRequest();
+        Response * response = getContext()->getResponse();
+        Middleware * middleware = getContext()->getMiddlewareByNameID("html");
+        DBManager * db = getContext()->getDB();
+        if (!middleware) return;
+        auto * html = (HtmlMiddleware *) (void *) middleware;
+        if (html->getView().empty()) return;
+
+        Middleware * m_json = this->getContext()->getMiddlewareByNameID("json");
+
         if (!middleware) return;
 
-        auto *html = (HtmlMiddleware *) (void *) middleware;
-        html->getContext()->insert({"names", mstch::array{
-                mstch::map{{"name", std::string{"Chris"}}},
-                mstch::map{{"name", std::string{"Mark"}}},
-                mstch::map{{"name", std::string{"Scott"}}}
-        }});
-        html->getContext()->insert({"test", mstch::array{
-                mstch::map{{"some", std::string{"first line"}}},
-                mstch::map{{"some", std::string{"second line"}}},
-                mstch::map{{"some", std::string{"third line"}}}
-        }});
-        std::string view{"{{#names}}<p>Hi <b>{{name}}</b>!</p></br>{{/names}}{{#test}}<h5>{{some}}</h5></br>{{/test}}"};
-        html->setView(view);
-        html->exec();
+        auto * json = (JsonMiddleware *) (void *) m_json;
+
+        if (json->getJsonRequest()->empty()) {
+
+            std::string template_info;
+            if (!FileHandler::loadFile("../data/info.html", template_info)) return;
+            mstch::map info_content{{"header", std::string{"API"}}};
+
+
+            info_content.insert({"content", std::string{"<p>API версії 1.1.0 дозволяє отримувати дані про вантаж "
+                                                        "за його номером у форматі <code>json</code>.</p>"
+                                                        "<p>Для цього на сторінку <code>/api</code> відправте <code>json</code> об'єкт із полем "
+                                                        " <code>cargo_number</code> значенням якого є номер шуканого відправлення. У "
+                                                        "відповідь отримаєте <code>json</code> об'єкт із полем <code>status</code>, у разі <code>false</code> "
+                                                        "означатиме, що даного номера немає в базі. В противному випадку"
+                                                        " дані будуть представлені, як в прикладі нижче:"}});
+
+            auto body = html->getContext()->find("content");
+            std::string content = mstch::render(template_info, info_content);
+            body->second = content;
+            html->exec();
+
+
+        } else {
+            json->getJsonResponse()["status"] = false;
+
+            int num;
+
+            if (!json->getJsonRequest()->is_object()) {
+                json->fillResponse();
+                return;
+            }
+
+            auto it = json->getJsonRequest()->find("cargo_number");
+
+            if (it == json->getJsonRequest()->end()) {
+                json->fillResponse();
+                return;
+            }
+
+            nlohmann::json obj = json->getJsonRequest()["cargo_number"];
+
+            if (!obj.is_number()) {
+                json->fillResponse();
+                return;
+            }
+
+            int number = json->getJsonRequest()["cargo_number"];
+
+
+
+
+            char * data[] = {(char *)std::to_string(number).c_str()};
+            std::vector<std::vector<std::string>> result_receipt;
+            if (!db->execQuery(
+                    "SELECT receipts.sender, receipts.receiver, receipts.date_dep, receipts.date_arr, "
+                    "cities.name, receipts.price FROM receipts INNER JOIN cities "
+                    "ON receipts.city_id = cities.id WHERE num = ?",
+                    result_receipt,
+                    data,
+            1)
+            ) return;
+            if (result_receipt.size() != 1 || result_receipt[0].size() != 6) {
+                json->fillResponse();
+                return;
+            }
+
+            json->getJsonResponse()->clear();
+
+
+
+           // json->getJsonResponse(){};
+
+
+        }
 
     }
 };
+
 
 
 
@@ -924,17 +1327,25 @@ int main (int argc, char ** argv) {
     HandlerEstimate * est = new HandlerEstimate("/estimate", HTTP::Method::GET);
     HandlerEstimatePost * est_post = new HandlerEstimatePost("/estimate_post", HTTP::Method::POST);
     HandlerMap * map = new HandlerMap("/map", HTTP::Method::GET);
+    HandlerOrder * order = new HandlerOrder("/order", HTTP::Method::GET);
+    HandlerOrderPost * post_order = new HandlerOrderPost("/order_post", HTTP::Method::POST);
+    HandlerCommonInfo * about = new HandlerCommonInfo("about_content", "/about", HTTP::Method::GET);
+    HandlerCommonInfo * privacy = new HandlerCommonInfo("privacy_content", "/privacy_policy", HTTP::Method::GET);
+    HandlerNews * news = new HandlerNews("/news", HTTP::Method::GET);
+    HandlerFeedback * feed = new HandlerFeedback("/feedback", HTTP::Method::GET);
+    HandlerFeedbackPost * feed_post = new HandlerFeedbackPost("/feedback_post",  HTTP::Method::POST);
+    HandlerCommonInfo * time = new HandlerCommonInfo("timetable_content", "/timetable", HTTP::Method::GET);
+
     //
-    HandlerContact * sdsf = new HandlerContact("/contact", HTTP::Method::GET);
-    HandlerJson * nbv = new HandlerJson("/api", HTTP::Method::GET);
+
+    HandlerApi * nbv = new HandlerApi("/api", HTTP::Method::GET);
     //HandlerCookie * cookies = new HandlerCookie("/cookie", HTTP::Method::GET);
-    HandlerForm * forms_h = new HandlerForm("/post", HTTP::Method::GET);
-    HandlerHtml * html_h = new HandlerHtml("/html", HTTP::Method::GET);
     //HandlerTrack * track = new HandlerTrack("/db", HTTP::Method::GET);
 
     FileHandler * css = new FileHandler("/common.css", "../data/common.css", "text/css", false);
     FileHandler * img = new FileHandler("/logo.jpg", "../data/logo.jpg", "image/jpeg", true);
     FileHandler * banner = new FileHandler("/banner.jpg", "../data/banner.jpg", "image/jpeg", true);
+    FileHandler * img_news = new FileHandler("/news.png", "../data/news.png", "image/png", true);
 
     website.addHandler(dada);
     website.addHandler(sdf);
@@ -948,14 +1359,21 @@ int main (int argc, char ** argv) {
     website.addHandler(est);
     website.addHandler(est_post);
     website.addHandler(map);
+    website.addHandler(order);
+    website.addHandler(post_order);
+    website.addHandler(about);
+    website.addHandler(privacy);
+    website.addHandler(news);
+    website.addHandler(feed);
+    website.addHandler(feed_post);
+    website.addHandler(time);
     ///
     website.addHandler(nbv);
-    website.addHandler(forms_h);
-    website.addHandler(html_h);
     website.addHandler(track);
     website.addHandler(css);
     website.addHandler(img);
     website.addHandler(banner);
+    website.addHandler(img_news);
 
 
     website.addPermanentlyRedirect("/index", "/");

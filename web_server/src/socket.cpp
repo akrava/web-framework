@@ -98,22 +98,37 @@ std::string Socket::getData() {
 
     auto * buffer = new char[1024];
 
-    int numRead = recv(client_fd, buffer, 1024, 0);
+    ssize_t numRead = recv(client_fd, buffer, 1024, 0);
     if (numRead < 1) {
-        if (numRead == 0) {
-            printf("The client was not read from: disconnected\n"
-                   "The client was not read from: disconnected\n"
-                   "The client was not read from: disconnected\n"
-                   "The client was not read from: disconnected\nThe client was not read from: disconnected\nThe client was not read from: disconnected\nThe client was not read from: disconnected\nThe client was not read from: disconnected\nThe client was not read from: disconnected\n");
-        } else {
-            perror("The client was not read from");
-        }
+        perror("The client was not read from");
         perror("The client was not read from");
         close(client_fd);
         return std::string();
     }
     buffer[numRead] = 0;
     data += buffer;
+
+    size_t length = 0;
+    size_t cur = 0;
+    size_t startKey = data.find("Content-Length: ");
+    size_t endValue = data.find("\r\n", startKey + 16);
+    size_t startBody = data.find("\r\n\r\n");
+    if (startKey != std::string::npos && endValue != std::string::npos && startBody != std::string::npos) {
+        std::string length_str = data.substr(startKey + 16, endValue - startKey - 16);
+        length = std::stoul(length_str);
+        cur = data.length() - startBody - 3;
+    }
+    while (cur < length) {
+        ssize_t length_cur = recv(client_fd, buffer, 1024, 0);
+        if (numRead < 1) {
+            perror("The client was not read from");
+            close(client_fd);
+            return std::string();
+        }
+        buffer[length_cur] = 0;
+        cur += length_cur;
+        data += buffer;
+    }
     //printf("%.*s\n", numRead, buffer);
 
    // std::cout << data;

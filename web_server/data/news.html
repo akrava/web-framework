@@ -1,0 +1,31 @@
+<p class="first">Новини компанії</p>
+{{#newspaper}}
+    <h3>{{title}}</h3>
+    <div class="info newspaper">
+        <p>
+            {{#img}}
+                <img src="{{img}}" class="img-news">
+            {{/img}}
+            {{content}}
+        </p>
+    </div>
+    {{#img}}
+        <div style="clear: both; margin-bottom: 16px;"></div>
+    {{/img}}
+    <a href="{{uri_news}}" class="link">Повернутися до переліку новин</a>
+    <p class="date">Опубліковано: <time datetime="{{full_date}}">{{date}}</time></p>
+{{/newspaper}}
+{{^newspaper}}
+    {{#news}}
+    <article class="news">
+        <header>
+            <a href="{{uri_news}}?current={{id}}"><h4>{{title}}</h4></a>
+        </header>
+        <p>{{content}}</p>
+        <a href="{{uri_news}}?current={{id}}"><span>Дізнатися більше...</span></a>
+        <footer>
+            <p>Опубліковано: <time datetime="{{full_date}}">{{date}}</time></p>
+        </footer>
+    </article>
+    {{/news}}
+{{/newspaper}}

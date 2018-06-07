@@ -73,7 +73,9 @@ string ParserHTTP::urlDecode(const string & value) {
     ostringstream result;
     for (size_t i = 0; i < value.length(); i++) {
         string::value_type c = value[i];
-        if (isalnum(c) || containsArr(reservedSymbols, sizeof(reservedSymbols) / sizeof(char), c)) {
+        if (c == '+') {
+            result << ' ';
+        } else if (isalnum(c) || containsArr(reservedSymbols, sizeof(reservedSymbols) / sizeof(char), c)) {
             result << c;
         } else if (c == '%' && i + 2 < value.length()) {
             string hex = string();

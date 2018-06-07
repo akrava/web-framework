@@ -236,6 +236,7 @@ img.banner {
 }
 
 h1.info {
+    margin-top: 25px;
     padding-top: 12px;
     text-align: center;
     color: darkslateblue;
@@ -335,6 +336,7 @@ input[type="submit"], input[type="reset"] {
 .info {
     margin-left: 10px;
     text-align: justify;
+    line-height: 140%;
 }
 
 input[type=number] {
@@ -406,8 +408,109 @@ tr.map.row > td.value {
     font-weight: normal;
     border-right: 1px solid black;
     font-size: 14px;
+    white-space: pre;
 }
 
 tr.map.row > td.value:last-child {
     border-right: none;
+}
+
+textarea {
+    resize: vertical;
+}
+
+#order > table.data {
+    margin-bottom: -3px;
+}
+
+#order > .send-table {
+    width: 518px;
+}
+
+td.value > label[for="phone"] {
+    font-weight: normal;
+    font-size: 12px;
+    vertical-align: baseline;
+    font-style: italic;
+}
+
+article.news {
+    padding: 15px;
+    margin-left: 15px;
+    border-radius: 5px;
+    box-shadow: 0 1px 2px #908c8c;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+article.news:last-child {
+    margin-bottom: 35px;
+}
+
+article.news > footer {
+    text-align: right;
+}
+
+article.news > footer > p {
+    margin-bottom: 2px;
+}
+
+article.news > a {
+    float: left;
+}
+
+article.news:hover {
+    box-shadow: 0 1px 2px #464a90;
+}
+
+article.news > header > a > h4{
+    margin: 0;
+    margin-top: 5px;
+    color: #0c035a;
+    font-size: 19px;
+    font-weight: normal;
+}
+
+article.news > p {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+a.link {
+    float: left;
+}
+
+p.date {
+    text-align: right;
+}
+
+h3 {
+    margin-left: 10px;
+    color: #00093c;
+}
+
+div.info.newspaper{
+    margin-bottom: 30px;
+}
+
+.img-news {
+    float: right;
+    margin-left: 20px;
+}
+
+#feedback > .send-table {
+    width: 489px;
+}
+
+#feedback > .data {
+    margin-bottom: -3px;
+}
+
+code {
+    padding: 2px 4px;
+    font-size: 120%;
+    color: #c7254e;
+    background-color: #e9dee1;
+    border-radius: 4px;
 }
