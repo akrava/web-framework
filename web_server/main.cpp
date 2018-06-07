@@ -1216,7 +1216,7 @@ public:
 
         Middleware * m_json = this->getContext()->getMiddlewareByNameID("json");
 
-        if (!middleware) return;
+        if (!m_json) return;
 
         auto * json = (JsonMiddleware *) (void *) m_json;
 
@@ -1233,7 +1233,17 @@ public:
                                                         " <code>cargo_number</code> значенням якого є номер шуканого відправлення. У "
                                                         "відповідь отримаєте <code>json</code> об'єкт із полем <code>status</code>, у разі <code>false</code> "
                                                         "означатиме, що даного номера немає в базі. В противному випадку"
-                                                        " дані будуть представлені, як в прикладі нижче:"}});
+                                                        " дані будуть представлені, як в прикладі нижче:<br>"
+                                                        "<code>{\n"
+                                                        "    \"current_city\": \"New York\",\n"
+                                                        "    \"date_arrive\": \"Sunday, 03.06.2018 21:54:12\",\n"
+                                                        "    \"date_departure\": \"Friday, 01.06.2018 15:23:34\",\n"
+                                                        "    \"num\": 568903,\n"
+                                                        "    \"price\": 234.46,\n"
+                                                        "    \"receiver\": \"John Doe\",\n"
+                                                        "    \"sender\": \"Uncle Tom\",\n"
+                                                        "    \"status\": true\n"
+                                                        "}</code>"}});
 
             auto body = html->getContext()->find("content");
             std::string content = mstch::render(template_info, info_content);
@@ -1242,7 +1252,7 @@ public:
 
 
         } else {
-            json->getJsonResponse()["status"] = false;
+            (*json->getJsonResponse())["status"] = false;
 
             int num;
 
@@ -1258,14 +1268,14 @@ public:
                 return;
             }
 
-            nlohmann::json obj = json->getJsonRequest()["cargo_number"];
+            nlohmann::json obj = (*json->getJsonRequest())["cargo_number"];
 
             if (!obj.is_number()) {
                 json->fillResponse();
                 return;
             }
 
-            int number = json->getJsonRequest()["cargo_number"];
+            int number = (*json->getJsonRequest())["cargo_number"];
 
 
 
@@ -1278,7 +1288,7 @@ public:
                     "ON receipts.city_id = cities.id WHERE num = ?",
                     result_receipt,
                     data,
-            1)
+                    1)
             ) return;
             if (result_receipt.size() != 1 || result_receipt[0].size() != 6) {
                 json->fillResponse();
@@ -1288,10 +1298,34 @@ public:
             json->getJsonResponse()->clear();
 
 
+            std::string date_dep = result_receipt[0][2];
+            std::time_t dep = std::stoi(date_dep);
+            std::tm * ptm = std::localtime(&dep);
+            char buffer[100];
+            std::strftime(buffer, sizeof(buffer), "%A, %d.%m.%Y %H:%M:%S", ptm);
+            result_receipt[0][2] = buffer;
+            //
 
-           // json->getJsonResponse(){};
+            //
+            std::string date_arr = result_receipt[0][3];
+            std::time_t arr = std::stoi(date_arr);
+            std::tm * ptm2 = std::localtime(&arr);
+            char buffer2[100];
+            std::strftime(buffer2, sizeof(buffer2), "%A, %d.%m.%Y %H:%M:%S", ptm2);
+            result_receipt[0][3] = buffer2;
+            //
 
 
+            (*json->getJsonResponse())["status"] = true;
+            (*json->getJsonResponse())["sender"] = result_receipt[0][0];
+            (*json->getJsonResponse())["receiver"] = result_receipt[0][1];
+            (*json->getJsonResponse())["date_departure"] = result_receipt[0][2];
+            (*json->getJsonResponse())["date_arrive"] = result_receipt[0][3];
+            (*json->getJsonResponse())["current_city"] = result_receipt[0][4];
+            (*json->getJsonResponse())["price"] = std::stod(result_receipt[0][5]);
+            (*json->getJsonResponse())["num"] = number;
+
+            json->fillResponse();
         }
 
     }

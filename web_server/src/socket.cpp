@@ -114,9 +114,13 @@ std::string Socket::getData() {
     size_t endValue = data.find("\r\n", startKey + 16);
     size_t startBody = data.find("\r\n\r\n");
     if (startKey != std::string::npos && endValue != std::string::npos && startBody != std::string::npos) {
-        std::string length_str = data.substr(startKey + 16, endValue - startKey - 16);
-        length = std::stoul(length_str);
-        cur = data.length() - startBody - 3;
+        try {
+            std::string length_str = data.substr(startKey + 16, endValue - startKey - 16);
+            length = std::stoul(length_str);
+            cur = data.length() - startBody - 3;
+        } catch (out_of_range & err) {
+        } catch (invalid_argument & err) {
+        }
     }
     while (cur < length) {
         ssize_t length_cur = recv(client_fd, buffer, 1024, 0);
