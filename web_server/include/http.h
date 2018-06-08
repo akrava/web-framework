@@ -2,10 +2,12 @@
 
 #include <string>
 
+
+/**
+ *
+ */
 class HTTP {
-
 public:
-
 	/**
 	*   Flags to define combinations of HTTP Request methods
 	*/
@@ -22,6 +24,10 @@ public:
 		PATCH,
         ANY
 	};
+
+	/**
+	 *
+	 */
 	enum Version {
         HTTP_UNDEFINED,
 	    HTTP_0_9,
@@ -30,8 +36,32 @@ public:
         HTTP_2_0,
         HTTP_ANY
 	};
+
+	/**
+	 *
+	 * @param str
+	 * @return
+	 */
     static HTTP::Method getMethod(std::string & str);
+
+    /**
+     *
+     * @param str
+     * @return
+     */
     static HTTP::Version getVersion(std::string & str);
+
+    /**
+     *
+     * @param version
+     * @return
+     */
     static std::string getVersion(HTTP::Version version);
+
+    /**
+     *
+     * @param code
+     * @return
+     */
     static std::string getReasonPhrase(int code);
 };

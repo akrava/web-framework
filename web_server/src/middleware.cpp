@@ -35,3 +35,8 @@ bool Middleware::getValueFromMap(const char * key, std::string & value) {
 std::unordered_map<std::string, std::string> * Middleware::getMap() {
     return map;
 }
+
+Middleware::~Middleware() {
+    delete map;
+    map = nullptr;
+}

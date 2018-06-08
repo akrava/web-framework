@@ -2,61 +2,41 @@
 #include <runtime_exception.h>
 #include <iostream>
 #include <parser_http.h>
-#include <request.h>
-#include <response.h>
-#include "json_middleware.h"
+#include <default_response.h>
+#define __DB "./../db/db_file"
 
-App::App(std::string & ip, int port, bool isIPv6, const char *logFilePath) : socket(ip, port, isIPv6) {
-    redirects = std::list<RedirectResponse>();
-    middlewareList = std::vector<Middleware *>();
-    // todo: logging in file- / console- stream
+using namespace std;
+
+App::App(string & ip, int port, bool isIPv6, const char *logFilePath)
+        : socket(ip, port, isIPv6), log(logFilePath)
+{
+    handlersRoutes = unordered_map<string, Handler *>();
+    handlersChain = list<Handler *>();
+    redirects = list<RedirectResponse>();
+    middlewareList = vector<Middleware *>();
 }
 
-App::App(InitParams params) : socket(params) {
-    redirects = std::list<RedirectResponse>();
-    middlewareList = std::vector<Middleware *>();
-    // todo: logging init also
-    params.getFilePath();
+App::App(InitParams & params) : socket(params), log(params.getFilePath().c_str()) {
+    handlersRoutes = unordered_map<string, Handler *>();
+    handlersChain = list<Handler *>();
+    redirects = list<RedirectResponse>();
+    middlewareList = vector<Middleware *>();
 }
-
-void App::addMiddleware(Middleware * middleware) {
-    // todo
-    Response rs;
-    context.setResponse(rs);
-    middleware->setContent(context.getRequest(), context.getResponse());
-    middlewareList.push_back(middleware);
-}
-
-void App::addPermanentlyRedirect(const char * uri, const char * target) {
-    RedirectResponse res = RedirectResponse(uri, target);
-    res.setPermanent();
-    redirects.push_back(res);
-}
-
-void App::addTemporaryRedirect(const char * uri, const char * target) {
-    RedirectResponse res = RedirectResponse(uri, target);
-    res.setTemporary();
-    redirects.push_back(res);
-}
-
-void App::addRedirect(const char * uri, const char * target, int code) {
-    RedirectResponse res = RedirectResponse(uri, target);
-    res.setRedirectCode(code);
-    redirects.push_back(res);
-}
-
 
 bool App::init() {
     try {
         socket.init();
     } catch (RuntimeException & err) {
         std::cerr << err.what() << std::endl;
+        log << err.what();
         return false;
     }
+    log << "Launched successfully on " + socket.toString();
     return true;
 }
 
 void App::addHandler(Handler * handler) {
+    log << "Added handler";
     handler->setContext(&context);
     if (handler->isRouted()) {
         handlersRoutes.insert({handler->getRoute(), handler});
@@ -65,71 +45,107 @@ void App::addHandler(Handler * handler) {
     }
 }
 
-//
-//void App::addHandler(std::list<Handler> handlerList) {
-//
-//}
-//
-//void App::addHandler(std::vector<Handler> handlerList) {
-//
-//}
+void App::addMiddleware(Middleware * middleware) {
+    middleware->setContent(context.getRequest(), context.getResponse());
+    middlewareList.push_back(middleware);
+    log << "Added middleware " + middleware->getNameID();
+}
+
+void App::addPermanentlyRedirect(const char * uri, const char * target) {
+    //RedirectResponse res = RedirectResponse();
+    //res.setPermanent();
+    redirects.emplace_back(uri, target);
+    redirects.back().setPermanent();
+    log << "Added permanently redirect: " + string{uri} + " to " + target;
+}
+
+void App::addTemporaryRedirect(const char * uri, const char * target) {
+    RedirectResponse res = RedirectResponse(uri, target);
+    res.setTemporary();
+    redirects.push_back(res);
+    log << "Added temporary redirect: " + string{uri} + " to " + target;
+}
+
+void App::addRedirect(const char * uri, const char * target, int code) {
+    RedirectResponse res = RedirectResponse(uri, target);
+    res.setRedirectCode(code);
+    redirects.push_back(res);
+    log << "Added " + to_string(code) + " redirect: " + string{uri} + " to " + target;
+}
 
 void App::run() {
     context.setMiddlewareList(&middlewareList);
-    DBManager * db = new DBManager("./../db/db_file");
+    auto * db = new DBManager(__DB);
     context.setDB(db);
-    std::string d;
-    while (true) {
-
+    log << "Running application";
+    bool run = true;
+    while (run) {
+        string request_str;
         try {
-
-            d = socket.getData();
-
-            if (d == "") continue;
-
-            Request request = ParserHTTP::getRequestFromStr(d);
-            context.setRequest(request);
-
-            for (auto & cur : redirects) {
-                if (cur.getRedirectUri() == request.getURI()->getUri()) {
-                    std::string ttt = ParserHTTP::getStrFromResponse(cur);
-                    socket.reciveData(ttt);
-                    continue;
-                }
-            }
-
-            for (auto * cur : middlewareList) {
-                cur->setContent(context.getRequest(), context.getResponse());
-                if (cur->autoExec()) cur->exec();
-            }
-
-
-            for (auto * cur : handlersChain) {
-                cur->exec();
-            }
-
-            if (handlersRoutes.find(request.getURI()->getUri()) != handlersRoutes.end()) {
-                context.getResponse()->setStatus(200);
-                handlersRoutes[request.getURI()->getUri()]->exec();
-            }
-
-            auto dd = context.getResponse();
-            std::string rsponse = ParserHTTP::getStrFromResponse(*dd);
-
-            socket.reciveData(rsponse);
-
-
-
+            request_str = socket.getData();
         } catch (RuntimeException & err) {
-            std::cerr << err.what() << std::endl;
+            cerr << err.what() << endl;
+            log << err.what();
             break;
         }
-        if (d== "exit") break;
+        Request * request = ParserHTTP::getRequestFromStr(request_str);
+        log << "Got request: " + request->getURI()->getRawData();
+        context.setRequest(request);
+        for (auto & cur : redirects) {
+            if (cur.getRedirectUri() == request->getURI()->getUri()) {
+                string data = ParserHTTP::getStrFromResponse(cur);
+                socket.receiveData(data);
+                continue;
+            }
+        }
+        for (auto * cur : middlewareList) {
+            cur->setContent(context.getRequest(), context.getResponse());
+            if (cur->autoExec()) cur->exec();
+        }
+        bool executed = !handlersChain.empty();
+        for (auto * cur : handlersChain) {
+            cur->exec();
+        }
+        auto handler_route = handlersRoutes.find(request->getURI()->getUri());
+        if (handler_route != handlersRoutes.end()
+            && (handler_route->second->getMethod() == HTTP::Method::ANY
+                || handler_route->second->getMethod() == request->getMethod()))
+        {
+            context.getResponse()->setStatus(200);
+            handlersRoutes[request->getURI()->getUri()]->exec();
+            executed = true;
+        } else if ((handler_route != handlersRoutes.end())) {
+            auto * res = new DefaultResponse{405};
+            context.setResponse(res);
+        }
+        if (!executed) {
+            auto * res = new DefaultResponse{-1, "Add some handlers..."};
+            context.setResponse(res);
+        }
+        auto * response = context.getResponse();
+        string response_str = ParserHTTP::getStrFromResponse(*response);
+        try {
+            socket.receiveData(response_str);
+        } catch (RuntimeException & err) {
+            cerr << err.what() << endl;
+            log << err.what();
+            break;
+        }
+        if (context.isClosed()) run = false;
     }
-
-
+    log << "Got close event. Closing application";
+    cout << "Host shutdown";
 }
 
-void App::close() {
-
+App::~App() {
+    log << "App destroyed";
+    for (auto it : handlersRoutes) {
+        delete it.second;
+    }
+    for (auto * it : handlersChain) {
+        delete it;
+    }
+    for (auto * it : middlewareList) {
+        delete it;
+    }
 }

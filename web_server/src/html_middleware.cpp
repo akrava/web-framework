@@ -28,3 +28,7 @@ void HtmlMiddleware::setView(std::string & view) {
 std::string HtmlMiddleware::getView() {
     return view;
 }
+
+HtmlMiddleware::~HtmlMiddleware() {
+    delete context;
+}

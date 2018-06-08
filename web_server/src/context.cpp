@@ -4,21 +4,21 @@
 
 using namespace std;
 
-Context::Context() : response(), request() { this->middlewareList = nullptr; this->db = nullptr;}
-
-Context::Context(Request & request) : request(new Request(request)), response() {  this->middlewareList = nullptr; this->db = nullptr; }
-
-Context::Context(Request & request, Response & response, vector<Middleware *> * middlewareList) : request(new Request(request)), response(new Response(response)) {
-    this->middlewareList = middlewareList;
+Context::Context()  {
+    closeApp = false;
+    request = new Request();
+    response = new Response();
+    this->middlewareList = nullptr;
     this->db = nullptr;
-    }
+}
 
 Request * Context::getRequest() {
     return request;
 }
 
 void Context::setDB(DBManager * db) {
-    this->db =db;
+    delete this->db;
+    this->db = db;
 }
 
 DBManager * Context::getDB() {
@@ -29,12 +29,14 @@ Response * Context::getResponse() {
     return response;
 }
 
-void Context::setRequest(Request & request) {
-    this->request = new Request(request);
+void Context::setRequest(Request * request) {
+    delete this->request;
+    this->request = request;
 }
 
-void Context::setResponse(Response & response) {
-    this->response = new Response(response);
+void Context::setResponse(Response * response) {
+    delete this->response;
+    this->response = response;
 }
 
 void Context::setPermanentlyRedirect(const char * uri) {
@@ -59,5 +61,22 @@ Middleware * Context::getMiddlewareByNameID(const char *nameID) {
 
 void Context::setMiddlewareList(std::vector<Middleware *> *middlewareList) {
     this->middlewareList = middlewareList;
+}
+
+void Context::emmitCloseEvent() {
+    closeApp = true;
+}
+
+bool Context::isClosed() {
+    return closeApp;
+}
+
+Context::~Context() {
+    delete request;
+    delete response;
+    delete db;
+    request = nullptr;
+    response = nullptr;
+    db = nullptr;
 }
 

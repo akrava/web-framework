@@ -3,7 +3,7 @@
 #include <uri.h>
 #include "uri.h"
 
-Request::Request() : uri(), headers(), body() {
+Request::Request() {
 	method = HTTP::Method::UNDEFINED;
 	version = HTTP::Version::HTTP_UNDEFINED;
     this->uri = new URI();
@@ -17,26 +17,6 @@ Request::Request(HTTP::Method method, std::string & uri, HTTP::Version version,
 	this->method = method;
 	this->version = version;
 	this->uri = new URI(uri);
-}
-
-void Request::setMethod(HTTP::Method method) {
-	this->method = method;
-}
-
-void Request::setURI(URI & uri) {
-	this->uri = new URI(uri);
-}
-
-void Request::setVersion(HTTP::Version version) {
-	this->version = version;
-}
-
-void Request::setHeaders(Headers & headers) {
-	this->headers = new Headers(headers);
-}
-
-void Request::setMessageBody(MessageBody & body) {
-	this->body = new MessageBody(body);
 }
 
 HTTP::Method Request::getMethod() {
@@ -57,4 +37,13 @@ Headers * Request::getHeaders() {
 
 MessageBody * Request::getMessageBody() {
 	return body;
+}
+
+Request::~Request() {
+	delete uri;
+	delete headers;
+	delete body;
+	uri = nullptr;
+	headers = nullptr;
+	body = nullptr;
 }

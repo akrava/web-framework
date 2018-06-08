@@ -1,7 +1,11 @@
 #pragma once
+
 #include <exception>
 #include <string>
 
+/**
+ *
+ */
 class RuntimeException : public std::exception {
     std::string _error;
 public:

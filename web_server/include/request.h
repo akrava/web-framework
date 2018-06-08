@@ -5,6 +5,9 @@
 #include <uri.h>
 #include <headers.h>
 
+/**
+ *
+ */
 class Request {
     HTTP::Method method;
     URI * uri;
@@ -12,17 +15,51 @@ class Request {
     Headers * headers;
     MessageBody * body;
 public:
+    /**
+     *
+     */
     Request();
+
+    /**
+     *
+     * @param method
+     * @param URI
+     * @param version
+     * @param headers
+     * @param body
+     */
     Request(HTTP::Method method, std::string & URI, HTTP::Version version,
             std::string & headers, std::string & body);
-    void setMethod(HTTP::Method method);
-    void setURI(URI & uri);
-    void setVersion(HTTP::Version version);
-    void setHeaders(Headers & headers);
-    void setMessageBody(MessageBody & body);
+
+
+    ~Request();
+    /**
+     *
+     * @return
+     */
     HTTP::Method getMethod();
+
+    /**
+     *
+     * @return
+     */
     URI * getURI();
+
+    /**
+     *
+     * @return
+     */
     HTTP::Version getVersion();
+
+    /**
+     *
+     * @return
+     */
     Headers * getHeaders();
+
+    /**
+     *
+     * @return
+     */
     MessageBody * getMessageBody();
 };

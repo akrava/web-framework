@@ -3,7 +3,7 @@
 #include <headers.h>
 #include <http.h>
 
-Response::Response() :  body() {
+Response::Response() {
 	version = HTTP::Version::HTTP_UNDEFINED;
 	status = 501;
 	headers = new Headers();
@@ -26,10 +26,12 @@ void Response::setStatus(int status) {
 }
 
 void Response::setHeaders(Headers & headers) {
+	delete this->headers;
 	this->headers = new Headers(headers);
 }
 
 void Response::setBody(MessageBody & body) {
+	delete this->body;
 	this->body = new MessageBody(body);
 }
 
@@ -47,4 +49,11 @@ Headers * Response::getHeaders() {
 
 MessageBody * Response::getBody() {
 	return body;
+}
+
+Response::~Response() {
+	delete headers;
+	headers = nullptr;
+	delete body;
+	body = nullptr;
 }

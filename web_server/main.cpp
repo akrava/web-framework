@@ -282,7 +282,7 @@ public:
                 toShift = true;
             } else {
                 CookieEntity cur{num.c_str()};
-                cookie->addCooike(varName.c_str(), cur);
+                cookie->addCookie(varName.c_str(), cur);
                 toShift = false;
                 break;
             }
@@ -293,11 +293,11 @@ public:
             std::string prevVal;
             cookie->getValueFromMap(varNamePrev.c_str(), prevVal);
             CookieEntity cur{prevVal.c_str()};
-            cookie->addCooike(varName.c_str(), cur);
+            cookie->addCookie(varName.c_str(), cur);
         }
         if (toShift) {
             CookieEntity cur{num.c_str()};
-            cookie->addCooike("receipts_num1", cur);
+            cookie->addCookie("receipts_num1", cur);
         }
         cookie->insertInResponse();
         //
@@ -1331,7 +1331,13 @@ public:
     }
 };
 
-
+class HandlerExit : public Handler {
+public:
+    HandlerExit(const char * ds, HTTP::Method m) :Handler(ds, m) {}
+    void exec() {
+        this->getContext()->emmitCloseEvent();
+    }
+};
 
 
 
@@ -1370,9 +1376,12 @@ int main (int argc, char ** argv) {
     HandlerFeedbackPost * feed_post = new HandlerFeedbackPost("/feedback_post",  HTTP::Method::POST);
     HandlerCommonInfo * time = new HandlerCommonInfo("timetable_content", "/timetable", HTTP::Method::GET);
 
+
+    HandlerExit * xxxxxx = new HandlerExit("/exit", HTTP::Method::GET);
+    website.addHandler(xxxxxx);
     //
 
-    HandlerApi * nbv = new HandlerApi("/api", HTTP::Method::GET);
+    HandlerApi * nbv = new HandlerApi("/api", HTTP::Method::ANY);
     //HandlerCookie * cookies = new HandlerCookie("/cookie", HTTP::Method::GET);
     //HandlerTrack * track = new HandlerTrack("/db", HTTP::Method::GET);
 

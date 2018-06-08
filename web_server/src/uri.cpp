@@ -4,8 +4,8 @@
 using namespace std;
 
 URI::URI() {
-    raw_data = string();
     uri = string();
+    raw_data = string();
     params =  unordered_map<string, string>();
 }
 //
@@ -23,12 +23,6 @@ URI::URI() {
 URI::URI(std::string & uri) {
     raw_data = uri;
     setParamsAndUri(uri);
-}
-
-void URI::setRawData(string & uri) {
-    raw_data = uri;
-    params =  unordered_map<string, string>();
-    this->uri = uri;
 }
 
 string URI::getUri() {
@@ -71,4 +65,8 @@ bool URI::getValueFromParam(const char *key, std::string &value) {
     if (iterator == params.end()) return false;
     value = iterator->second;
     return true;
+}
+
+std::string URI::getRawData() {
+    return raw_data;
 }

@@ -22,14 +22,6 @@ void JsonMiddleware::exec() {
     }
 }
 
-void JsonMiddleware::setEchoReply() {
-    jsonResponse = new nlohmann::json{
-            {"data", jsonRequest->is_discarded() ? nlohmann::json(nullptr) : (*jsonRequest)},
-            {"Echo mode enabled", true},
-            {"middleware", "JSON"}
-    };
-}
-
 
 void JsonMiddleware::fillResponse() {
     response->getHeaders()->add("Content-Type", "application/json");
@@ -43,4 +35,9 @@ nlohmann::json * JsonMiddleware::getJsonRequest() {
 
 nlohmann::json * JsonMiddleware::getJsonResponse() {
     return jsonResponse;
+}
+
+JsonMiddleware::~JsonMiddleware() {
+    delete jsonResponse;
+    delete jsonRequest;
 }

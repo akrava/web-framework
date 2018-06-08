@@ -32,6 +32,7 @@ Socket::Socket(InitParams params)
 
 Socket::~Socket() {
     close(socket_fd);
+    free(socketAddress);
 }
 
 void Socket::init() {
@@ -99,10 +100,11 @@ std::string Socket::getData() {
     auto * buffer = new char[1024];
 
     ssize_t numRead = recv(client_fd, buffer, 1024, 0);
-    if (numRead < 1) {
+    if (numRead < 0) {
         perror("The client was not read from");
         perror("The client was not read from");
         close(client_fd);
+        delete [] buffer;
         return std::string();
     }
     buffer[numRead] = 0;
@@ -127,6 +129,7 @@ std::string Socket::getData() {
         if (numRead < 1) {
             perror("The client was not read from");
             close(client_fd);
+            delete[] buffer;
             return std::string();
         }
         buffer[length_cur] = 0;
@@ -136,11 +139,14 @@ std::string Socket::getData() {
     //printf("%.*s\n", numRead, buffer);
 
    // std::cout << data;
+
+    delete [] buffer;
+
     std::cout << std::endl << "OK" << std::endl;
     return data;
 }
 
-void Socket::reciveData(std::string & data) {
+void Socket::receiveData(std::string &data) {
     auto * p_data = data.c_str();
     //std::cout << std::endl << p_data << std::endl;
     size_t dataLength = data.length();
@@ -160,6 +166,10 @@ void Socket::reciveData(std::string & data) {
     }
     close(client_fd);
     std::cout << "recived" << std::endl;
+}
+
+std::string Socket::toString() {
+    return "ip: " + ip + " port: " + std::to_string(port);
 }
 
 

@@ -8,28 +8,28 @@
 
 using namespace std;
 
-Request ParserHTTP::getRequestFromStr(string & str) {
+Request * ParserHTTP::getRequestFromStr(string & str) {
     //
     size_t methodEndPos = str.find(' ');
-    if (methodEndPos == string::npos) return Request();
+    if (methodEndPos == string::npos) return new Request();
     string methodStr = str.substr(0, methodEndPos);
     HTTP::Method method = HTTP::getMethod(methodStr);
     //
     size_t uriEndPos = str.find(' ', methodEndPos + 1);
-    if (uriEndPos == string::npos) return Request();
+    if (uriEndPos == string::npos) return new Request();
     string uriStr = str.substr(methodEndPos + 1, uriEndPos - methodEndPos - 1);
     //
     size_t versionEndPos = str.find("\r\n", uriEndPos + 1);
-    if (versionEndPos == string::npos) return Request();
+    if (versionEndPos == string::npos) return new Request();
     string versionStr = str.substr(uriEndPos + 1, versionEndPos - uriEndPos - 1);
     HTTP::Version version = HTTP::getVersion(versionStr);
     //
     size_t headersEndPos = str.find("\r\n\r\n", versionEndPos + 2);
-    if (headersEndPos == string::npos) return Request();
+    if (headersEndPos == string::npos) return new Request();
     string headersStr = str.substr(versionEndPos + 2, headersEndPos - versionEndPos - 2);
     //
     string bodyStr = str.substr(headersEndPos + 4);
-    return Request(method, uriStr, version, headersStr, bodyStr);
+    return new Request(method, uriStr, version, headersStr, bodyStr);
 }
 
 string ParserHTTP::getStrFromResponse(Response & response) {
@@ -91,4 +91,14 @@ string ParserHTTP::urlDecode(const string & value) {
         }
     }
     return result.str();
+}
+
+std::string ParserHTTP::getTime(const time_t * time_struct, const char * format) {
+    time_t raw_time = time_struct ? *time_struct : time(&raw_time);
+    tm * time_cur;
+    time_cur = localtime(&raw_time);
+    char time_str[1024];
+    strftime(time_str, sizeof(time_str), format, time_cur);
+    std::string res{time_str};
+    return res;
 }

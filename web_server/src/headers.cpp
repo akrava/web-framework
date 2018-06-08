@@ -33,14 +33,6 @@ std::string Headers::toString() {
     return result;
 }
 
-Headers::Headers(unordered_map<string, string> headers) {
-    this->headers = headers;
-}
-
-void Headers::setHeaders(unordered_map<string, string> headers) {
-    this->headers = headers;
-}
-
 unordered_map<string, string> Headers::getHeaders() {
     return headers;
 }
@@ -59,4 +51,8 @@ bool Headers::getValue(const char * key, std::string & value) {
     if (iterator == headers.end()) return false;
     value = iterator->second;
     return true;
+}
+
+Headers::~Headers() {
+    headers.clear();
 }

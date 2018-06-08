@@ -22,3 +22,7 @@ std::string Handler::getRoute() {
 void Handler::setContext(Context *context) {
     this->context = context;
 }
+
+HTTP::Method Handler::getMethod() {
+    return method;
+}

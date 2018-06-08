@@ -20,7 +20,7 @@ bool CookieMiddleware::autoExec() {
     return false;
 }
 
-void CookieMiddleware::addCooike(const char * key, CookieEntity & value) {
+void CookieMiddleware::addCookie(const char *key, CookieEntity &value) {
     auto iterator = responseCookies.find(key);
     if (iterator != responseCookies.end()) {
         responseCookies.erase(iterator);
