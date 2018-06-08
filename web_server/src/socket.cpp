@@ -5,6 +5,7 @@
 #include <cstring>
 #include <runtime_exception.h>
 #include <sys/time.h>
+#define __BUFFER_SIZE 1024
 
 using namespace std;
 
@@ -65,8 +66,8 @@ std::string Socket::getData() {
     cout << "A client is connected from " << inet_ntoa(sender.sin_addr) << ":"
          << to_string(ntohs(sender.sin_port)) << endl;
     string data;
-    auto * buffer = new char[1024];
-    ssize_t numRead = recv(client_fd, buffer, sizeof(buffer), 0);
+    auto * buffer = new char[__BUFFER_SIZE + 1];
+    ssize_t numRead = recv(client_fd, buffer, __BUFFER_SIZE, 0);
     if (numRead < 0) {
         perror("The client was not read from");
         close(client_fd);
@@ -90,7 +91,7 @@ std::string Socket::getData() {
         }
     }
     while (cur < length) {
-        ssize_t length_cur = recv(client_fd, buffer, sizeof(buffer), 0);
+        ssize_t length_cur = recv(client_fd, buffer, 1024, 0);
         if (numRead < 1) {
             perror("The client was not read from");
             close(client_fd);

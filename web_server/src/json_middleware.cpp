@@ -7,6 +7,8 @@ JsonMiddleware::JsonMiddleware(const char * nameID) : Middleware (nameID) {
 }
 
 bool JsonMiddleware::autoExec() {
+    jsonResponse->clear();
+    jsonRequest->clear();
     std::string value;
     if (request->getHeaders()->getValue("Content-Type", value)) {
         return value.find("application/json") == 0;
@@ -16,6 +18,7 @@ bool JsonMiddleware::autoExec() {
 }
 
 void JsonMiddleware::exec() {
+    delete jsonRequest;
     jsonRequest = new nlohmann::json(nlohmann::json::parse(
             request->getMessageBody()->getBody(),
             nullptr,
@@ -44,4 +47,6 @@ nlohmann::json * JsonMiddleware::getJsonResponse() {
 JsonMiddleware::~JsonMiddleware() {
     delete jsonResponse;
     delete jsonRequest;
+    jsonRequest = nullptr;
+    jsonResponse = nullptr;
 }
