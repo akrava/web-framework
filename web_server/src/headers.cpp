@@ -1,5 +1,4 @@
-#include "headers.h"
-#include <string>
+#include <headers.h>
 
 using namespace std;
 
@@ -46,7 +45,7 @@ void Headers::add(const char *key, const char *value) {
     headers.insert({key, value});
 }
 
-bool Headers::getValue(const char * key, std::string & value) {
+bool Headers::getValue(const char * key, string & value) {
     auto iterator = headers.find(key);
     if (iterator == headers.end()) return false;
     value = iterator->second;

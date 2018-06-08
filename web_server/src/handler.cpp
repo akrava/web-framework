@@ -1,8 +1,10 @@
-#include "handler.h"
+#include <handler.h>
+
+using namespace std;
 
 Handler::Handler(const char * route, HTTP::Method method) {
     context = nullptr;
-    this->route = route ? std::string(route) : std::string();
+    this->route = route ? string(route) : string();
     hasRoute = route != nullptr;
     this->method = method;
 }

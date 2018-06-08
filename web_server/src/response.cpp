@@ -1,7 +1,6 @@
 #include <response.h>
-#include <message_body.h>
-#include <headers.h>
-#include <http.h>
+
+using namespace std;
 
 Response::Response() {
 	version = HTTP::Version::HTTP_UNDEFINED;
@@ -10,11 +9,11 @@ Response::Response() {
 	body = new MessageBody();
 }
 
-Response::Response(HTTP::Version version, int status, Headers & headers,
-				   MessageBody & body) : body(new MessageBody(body)) {
+Response::Response(HTTP::Version version, int status, Headers & headers, MessageBody & body) {
 	this->version = version;
 	this->status = status;
 	this->headers = new Headers(headers);
+	this->body = new MessageBody(body);
 }
 
 void Response::setVersion(HTTP::Version version) {

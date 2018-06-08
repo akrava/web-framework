@@ -1,6 +1,6 @@
-#include "json_middleware.h"
+#include <json_middleware.h>
 
-JsonMiddleware::JsonMiddleware(const char * nameID, Request * request, Response * response) : Middleware (nameID, request, response) {
+JsonMiddleware::JsonMiddleware(const char * nameID) : Middleware (nameID) {
   jsonRequest = new nlohmann::json();
   jsonResponse = new nlohmann::json();
   errorDeserialize = false;
@@ -16,7 +16,11 @@ bool JsonMiddleware::autoExec() {
 }
 
 void JsonMiddleware::exec() {
-    jsonRequest = new nlohmann::json(nlohmann::json::parse(request->getMessageBody()->getBody(), nullptr, false));
+    jsonRequest = new nlohmann::json(nlohmann::json::parse(
+            request->getMessageBody()->getBody(),
+            nullptr,
+            false)
+    );
     if (jsonRequest->is_discarded()) {
         errorDeserialize = true;
     }

@@ -1,6 +1,4 @@
-#include <string>
 #include <cookie_entity.h>
-#include <http.h>
 #include <parser_http.h>
 
 

@@ -4,11 +4,11 @@
 #include <cstring>
 #include <fstream>
 #include <sstream>
-#include <arpa/inet.h>
-#include "runtime_exception.h"
+#include <runtime_exception.h>
 #include <sys/socket.h>
 #include <cerrno>
 #include <netdb.h>
+#include <arpa/inet.h>
 
 using namespace std;
 
@@ -24,7 +24,7 @@ static bool isValidFilePath(const char * filePath);
 static bool isValidIPv4Block(string & block);
 static bool isValidIPv6Block(string & block);
 static bool isValidHostBlock(string & block);
-static string getIPfromDomain(string & domain, bool isHttps, bool * IPv6);
+static string getIpFromDomain(string &domain, bool isHttps, bool *IPv6);
 
 InitParams::InitParams() {
     port = -1;
@@ -44,11 +44,14 @@ InitParams::InitParams(int argc, char ** argv) : InitParams() {
         string errorMsg = "Error while initializing. Try --help";
         for (int i = 1; i < argc; i++) {
             if ((!strcmp("--help", argv[1]) || !strcmp("-h", argv[1])) && argc == 2) {
-                cout << "Usage: " << argv[0] << " host address (IPv4/IPv6/domain) : port (default - 80)" << std::endl
-                     << "And some extra: --log [-l] and filename OR --help [-h]" << endl
-                     << "Hint: IPv6 must be inside [] brackets; domain should start as http://" << std::endl;
+                cout << "Usage: " << argv[0] << " host address (IPv4/IPv6/domain) : port (default - 80)"
+                     << std::endl << "And some extra: --log [-l] and filename OR --help [-h]" << endl
+                     << "Hint: IPv6 must be inside [] brackets; domain should start as http://"
+                     << std::endl;
             } else if (logFilePath.empty() && (!strcmp("--log", argv[i]) || !strcmp("-l", argv[i]))) {
-                if (i + 1 == argc) throw RuntimeException("Error while initializing: no file path is given");
+                if (i + 1 == argc) {
+                    throw RuntimeException("Error while initializing: no file path is given");
+                }
                 string path = string();
                 path += argv[i + 1];
                 if (!isValidFilePath(path.c_str())) {
@@ -70,7 +73,9 @@ InitParams::InitParams(int argc, char ** argv) : InitParams() {
                 if (*argv[i] == '[') {
                     bool correctVersion = false;
                     string IPv6(argv[i], 1, portPosition - 2) ;
-                    if (isValidIP(IPv6, &correctVersion) && correctVersion && domain[portPosition - 1] == ']') {
+                    if (isValidIP(IPv6, &correctVersion)
+                        && correctVersion && domain[portPosition - 1] == ']')
+                    {
                         host = IPv6;
                         this->IPv6 = true;
                     } else {
@@ -86,13 +91,13 @@ InitParams::InitParams(int argc, char ** argv) : InitParams() {
                         string curDomain = IPv4.substr(8);
                         if (!isValidHostName(curDomain)) throw RuntimeException(errorMsg);
                         bool checkIfIPv6;
-                        host = getIPfromDomain(curDomain, false, &checkIfIPv6);
+                        host = getIpFromDomain(curDomain, false, &checkIfIPv6);
                         IPv6 = checkIfIPv6;
                     } else if (domain.find_first_of("https://") == 0 && domain.length() > 9) {
                         string curDomain = IPv4.substr(9);
                         if (!isValidHostName(curDomain)) throw RuntimeException(errorMsg);
                         bool checkIfIPv6;
-                        host = getIPfromDomain(curDomain, true, &checkIfIPv6);
+                        host = getIpFromDomain(curDomain, true, &checkIfIPv6);
                         IPv6 = checkIfIPv6;
                     } else {
                         throw RuntimeException(errorMsg);
@@ -198,7 +203,7 @@ static bool isValidHostBlock(string & block) {
 static bool isValidIPv4Block(string & block) {
     int num = 0;
     if (!block.empty() && block.size() <= 3) {
-        for (int i = 0; i < block.size(); i++) {
+        for (size_t i = 0; i < block.size(); i++) {
             char c = block[i];
             if (!isdigit(c) || (i == 0 && c == '0' && block.size() > 1)) {
                 return false;
@@ -223,8 +228,8 @@ static bool isValidIPv6Block(string & block) {
     return false;
 }
 
-static string getIPfromDomain(string & domain, bool isHttps, bool * IPv6) {
-    struct addrinfo hints, * serverInfo;
+static string getIpFromDomain(string &domain, bool isHttps, bool *IPv6) {
+    addrinfo hints, * serverInfo;
     int error;
     string ip;
     memset(&hints, 0, sizeof hints);

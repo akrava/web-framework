@@ -92,7 +92,7 @@ void App::run() {
         log << "Got request: " + request->getURI()->getRawData();
         context.setRequest(request);
         for (auto & cur : redirects) {
-            if (cur.getRedirectUri() == request->getURI()->getUri()) {
+            if (cur.getRedirectUri() == request->getURI()->getPath()) {
                 string data = ParserHTTP::getStrFromResponse(cur);
                 socket.receiveData(data);
                 continue;
@@ -106,13 +106,13 @@ void App::run() {
         for (auto * cur : handlersChain) {
             cur->exec();
         }
-        auto handler_route = handlersRoutes.find(request->getURI()->getUri());
+        auto handler_route = handlersRoutes.find(request->getURI()->getPath());
         if (handler_route != handlersRoutes.end()
             && (handler_route->second->getMethod() == HTTP::Method::ANY
                 || handler_route->second->getMethod() == request->getMethod()))
         {
             context.getResponse()->setStatus(200);
-            handlersRoutes[request->getURI()->getUri()]->exec();
+            handlersRoutes[request->getURI()->getPath()]->exec();
             executed = true;
         } else if ((handler_route != handlersRoutes.end())) {
             auto * res = new DefaultResponse{405};

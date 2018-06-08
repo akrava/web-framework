@@ -150,8 +150,8 @@ public:
         // !!
 
         // !!
-        if (request->getURI()->getUri().empty()) return;
-        char * data[] = { (char *)request->getURI()->getUri().c_str()};
+        if (request->getURI()->getPath().empty()) return;
+        char * data[] = { (char *) request->getURI()->getPath().c_str()};
         std::vector<std::vector<std::string>> result_title;
         if (!db->execQuery(
                 "SELECT title FROM pages WHERE link = ?",
@@ -796,7 +796,7 @@ public:
 
         map_content.insert({"departments", array_departments});
         map_content.insert({"error", array_departments.empty() ? !curTarget.empty() : false});
-        map_content.insert({"uri_map", request->getURI()->getUri()});
+        map_content.insert({"uri_map", request->getURI()->getPath()});
         map_content.insert({"cities", array_table_cities});
         map_content.insert({"countries", array_table_countries});
 
@@ -978,7 +978,7 @@ public:
         if (result_data.size() != 1 || result_data[0].size() != 1) return;
 
 
-        const char * uri[] = {request->getURI()->getUri().c_str()};
+        const char * uri[] = {request->getURI()->getPath().c_str()};
         std::vector<std::vector<std::string>> result_header;
         if (!db->execQuery(
                 "SELECT title FROM pages WHERE link = ?",
@@ -1023,7 +1023,7 @@ public:
         mstch::map news_content;
 
 
-        news_content.insert({"uri_news", request->getURI()->getUri()});
+        news_content.insert({"uri_news", request->getURI()->getPath()});
 
 
         std::string currentNewspaper;
@@ -1335,7 +1335,7 @@ class HandlerExit : public Handler {
 public:
     HandlerExit(const char * ds, HTTP::Method m) :Handler(ds, m) {}
     void exec() {
-        this->getContext()->emmitCloseEvent();
+        this->getContext()->emitCloseEvent();
     }
 };
 
@@ -1424,10 +1424,10 @@ int main (int argc, char ** argv) {
     website.addPermanentlyRedirect("/index.php", "/");
     website.addPermanentlyRedirect("/old", "/main");
 
-    JsonMiddleware * json = new JsonMiddleware("json", nullptr, nullptr);
-    CookieMiddleware * cookie = new CookieMiddleware("cookie", nullptr, nullptr);
-    FormMiddleware * form = new FormMiddleware("form", nullptr, nullptr);
-    HtmlMiddleware * html = new HtmlMiddleware("html", nullptr, nullptr);
+    JsonMiddleware * json = new JsonMiddleware("json");
+    CookieMiddleware * cookie = new CookieMiddleware("cookie");
+    FormMiddleware * form = new FormMiddleware("form");
+    HtmlMiddleware * html = new HtmlMiddleware("html");
 
     website.addMiddleware(json);
     website.addMiddleware(cookie);

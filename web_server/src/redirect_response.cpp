@@ -1,5 +1,3 @@
-#include "redirect_response.h"
-#include <string>
 #include <redirect_response.h>
 
 RedirectResponse::RedirectResponse(const char * redirectUri, const char * targetUri) {

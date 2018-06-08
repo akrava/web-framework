@@ -1,5 +1,5 @@
 #include <parser_http.h>
-#include "uri.h"
+#include <uri.h>
 
 using namespace std;
 
@@ -8,32 +8,21 @@ URI::URI() {
     raw_data = string();
     params =  unordered_map<string, string>();
 }
-//
-//URI::URI(const char * str) {
-//    params =  unordered_map<string, string>();
-//    if (str) {
-//        raw_data = string(str);
-//        uri = string(str);
-//    } else  {
-//        raw_data = string();
-//        uri = string();
-//    }
-//}
 
 URI::URI(std::string & uri) {
     raw_data = uri;
     setParamsAndUri(uri);
 }
 
-string URI::getUri() {
+string URI::getPath() {
     return uri;
 }
 
-unordered_map<std::string, std::string> URI::getParams() {
+unordered_map<string, string> URI::getParams() {
     return params;
 }
 
-void URI::setParamsAndUri(std::string &uri) {
+void URI::setParamsAndUri(string & uri) {
     string path;
     size_t startParamsPos = uri.find('?');
     if (startParamsPos == string::npos) {
@@ -60,7 +49,7 @@ void URI::setParamsAndUri(std::string &uri) {
     this->uri = path;
 }
 
-bool URI::getValueFromParam(const char *key, std::string &value) {
+bool URI::getValueFromParam(const char *key, string & value) {
     auto iterator = params.find(key);
     if (iterator == params.end()) return false;
     value = iterator->second;

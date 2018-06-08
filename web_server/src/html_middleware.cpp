@@ -1,7 +1,6 @@
-#include "html_middleware.h"
+#include <html_middleware.h>
 
-HtmlMiddleware::HtmlMiddleware(const char * nameID, Request * request, Response * response)
-                                : Middleware(nameID, request, response) {
+HtmlMiddleware::HtmlMiddleware(const char * nameID) : Middleware(nameID) {
     view = std::string();
     this->context = new mstch::map();
 }

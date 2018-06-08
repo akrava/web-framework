@@ -1,6 +1,4 @@
-#include "context.h"
-#include "response.h"
-#include "request.h"
+#include <context.h>
 
 using namespace std;
 
@@ -8,8 +6,8 @@ Context::Context()  {
     closeApp = false;
     request = new Request();
     response = new Response();
-    this->middlewareList = nullptr;
-    this->db = nullptr;
+    middlewareList = nullptr;
+    db = nullptr;
 }
 
 Request * Context::getRequest() {
@@ -59,11 +57,12 @@ Middleware * Context::getMiddlewareByNameID(const char *nameID) {
     return nullptr;
 }
 
-void Context::setMiddlewareList(std::vector<Middleware *> *middlewareList) {
+void Context::setMiddlewareList(vector<Middleware *> *middlewareList) {
+    delete this->middlewareList;
     this->middlewareList = middlewareList;
 }
 
-void Context::emmitCloseEvent() {
+void Context::emitCloseEvent() {
     closeApp = true;
 }
 
@@ -79,4 +78,3 @@ Context::~Context() {
     response = nullptr;
     db = nullptr;
 }
-

@@ -1,17 +1,19 @@
-#include "middleware.h"
+#include <middleware.h>
 
-Middleware::Middleware(const char * nameID, Request * request, Response * response) {
-    this->request = request;
-    this->response = response;
+using namespace std;
+
+Middleware::Middleware(const char * nameID) {
+    this->request = nullptr;
+    this->response = nullptr;
     this->nameID = nameID;
-    map = new std::unordered_map<std::string, std::string>();
+    map = new unordered_map<string, string>();
 }
 
 std::string Middleware::getNameID() {
     return nameID;
 }
 
-void Middleware::setContent(Request *request, Response *response) {
+void Middleware::setContent(Request * request, Response * response) {
     this->request = request;
     this->response = response;
 }
@@ -25,14 +27,14 @@ void Middleware::addValueToMap(const char * key, const char * value) {
     map->insert({key, value});
 }
 
-bool Middleware::getValueFromMap(const char * key, std::string & value) {
+bool Middleware::getValueFromMap(const char * key, string & value) {
     auto iterator = map->find(key);
     if (iterator == map->end()) return false;
     value = iterator->second;
     return true;
 }
 
-std::unordered_map<std::string, std::string> * Middleware::getMap() {
+unordered_map<string, string> * Middleware::getMap() {
     return map;
 }
 

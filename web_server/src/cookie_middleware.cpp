@@ -1,14 +1,9 @@
-//#include <cookie_middleware.h>
-//#include <response.h>
-//#include <request.h>
-#include "cookie_middleware.h"
-#include <middleware.h>
+#include <cookie_middleware.h>
 
 using namespace std;
 
-CookieMiddleware::CookieMiddleware(const char * nameID, Request * request, Response * response)
-                                        : Middleware (nameID, request, response) {
-    this->responseCookies = std::unordered_map<string, CookieEntity>();
+CookieMiddleware::CookieMiddleware(const char * nameID) : Middleware (nameID) {
+    this->responseCookies = unordered_map<string, CookieEntity>();
 }
 
 bool CookieMiddleware::autoExec() {
@@ -30,7 +25,7 @@ void CookieMiddleware::addCookie(const char *key, CookieEntity &value) {
 
 void CookieMiddleware::exec() {
     map->clear();
-    std::string values;
+    string values;
     if (!request->getHeaders()->getValue("Cookie", values)) return;
     size_t startKeyPos = 0;
     while (startKeyPos < values.length()) {
@@ -48,7 +43,7 @@ void CookieMiddleware::exec() {
 }
 
 void CookieMiddleware::insertInResponse() {
-    std::string value;
+    string value;
     bool isFirst = true;
     for (auto & it : responseCookies) {
         if (!isFirst) {

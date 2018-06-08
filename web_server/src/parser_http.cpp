@@ -9,25 +9,24 @@
 using namespace std;
 
 Request * ParserHTTP::getRequestFromStr(string & str) {
-    //
     size_t methodEndPos = str.find(' ');
     if (methodEndPos == string::npos) return new Request();
     string methodStr = str.substr(0, methodEndPos);
     HTTP::Method method = HTTP::getMethod(methodStr);
-    //
+
     size_t uriEndPos = str.find(' ', methodEndPos + 1);
     if (uriEndPos == string::npos) return new Request();
     string uriStr = str.substr(methodEndPos + 1, uriEndPos - methodEndPos - 1);
-    //
+
     size_t versionEndPos = str.find("\r\n", uriEndPos + 1);
     if (versionEndPos == string::npos) return new Request();
     string versionStr = str.substr(uriEndPos + 1, versionEndPos - uriEndPos - 1);
     HTTP::Version version = HTTP::getVersion(versionStr);
-    //
+
     size_t headersEndPos = str.find("\r\n\r\n", versionEndPos + 2);
     if (headersEndPos == string::npos) return new Request();
     string headersStr = str.substr(versionEndPos + 2, headersEndPos - versionEndPos - 2);
-    //
+
     string bodyStr = str.substr(headersEndPos + 4);
     return new Request(method, uriStr, version, headersStr, bodyStr);
 }

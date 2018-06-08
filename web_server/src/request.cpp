@@ -1,7 +1,6 @@
 #include <request.h>
-#include <headers.h>
-#include <uri.h>
-#include "uri.h"
+
+using namespace std;
 
 Request::Request() {
 	method = HTTP::Method::UNDEFINED;
@@ -9,14 +8,16 @@ Request::Request() {
     this->uri = new URI();
     this->headers = new Headers();
     this->body = new MessageBody();
-
 }
 
 Request::Request(HTTP::Method method, std::string & uri, HTTP::Version version,
-				 std::string & headers, std::string & body) : headers(new Headers(headers)), body(new MessageBody(body)) {
+				 std::string & headers, std::string & body)
+{
 	this->method = method;
 	this->version = version;
 	this->uri = new URI(uri);
+	this->headers = new Headers(headers);
+	this->body = new MessageBody(body);
 }
 
 HTTP::Method Request::getMethod() {

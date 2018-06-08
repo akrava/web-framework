@@ -24,81 +24,119 @@ class Context {
     bool closeApp;
 public:
     /**
-     *
+     * Constructor create an object of this class: creating Request and Response objects,
+     *      and setting NULL to db and middlewareList
      */
     Context();
 
+    /**
+     * Deleting Request, Response and DB objects, if they are not NULL
+     */
     ~Context();
 
     /**
+     * Method sets the object of database, created by DBManager. All handlers can access it
      *
      * @param db
+     *      Object of class DBManager
      */
     void setDB(DBManager * db);
 
     /**
+     * Returns db, if wasn't set - nullptr
      *
      * @return
+     *      Object of class DBManager
      */
     DBManager * getDB();
 
     /**
+     * Gives current request
      *
      * @return
+     *      object of Request class
      */
     Request * getRequest();
 
     /**
+     * Gives current response. Could be modified by previous handlers
      *
      * @return
+     *      object of Response class
      */
     Response * getResponse();
 
     /**
+     * Deleting existing Request and setting new one
      *
      * @param request
+     *      object of Request class (could be inherited)
      */
     void setRequest(Request * request);
 
     /**
+     * Deleting existing Response and setting new one
      *
      * @param response
+     *      object of Response class (could be inherited)
      */
     void setResponse(Response * response);
 
     /**
+     * sets vector of Middleware objects, which can be accessed by handlers
      *
      * @param middlewareList
+     *      std::vector of Middleware objects
      */
     void setMiddlewareList(std::vector<Middleware *> * middlewareList);
 
     /**
+     * Set permanent (code 301) redirect headers to Response
      *
      * @param uri
+     *      destination uri, where current request will be redirected
      */
     void setPermanentlyRedirect(const char * uri);
 
     /**
+     * Set temporary (code 302) redirect headers to Response
      *
      * @param uri
+     *      destination uri, where current request will be redirected
      */
     void setTemporaryRedirect(const char * uri);
 
     /**
+     * Set redirect headers to Response
      *
      * @param uri
+     *      destination uri, where current request will be redirected
      * @param code
+     *      http code of redirect
      */
     void setRedirect(const char * uri, int code);
 
     /**
+     * Method returns added Middleware by id (in string)
      *
      * @param nameID
+     *      id of middleware, which was set at startup
      * @return
+     *      object of Middleware (could be inherited)
      */
     Middleware * getMiddlewareByNameID(const char * nameID);
 
-    void emmitCloseEvent();
+    /**
+     * Emit signal to stop executing operation. Handler, which used this will
+     *      be last executed handler in app
+     */
+    void emitCloseEvent();
 
+    /**
+     * Checks, if handlers emitted CloseEvent
+     *
+     * @return
+     *      true, if there were emitted close event, false otherwise
+     */
     bool isClosed();
 };
