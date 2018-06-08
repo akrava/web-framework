@@ -1182,14 +1182,6 @@ public:
     }
 };
 
-class HandlerExit : public Handler {
-public:
-    HandlerExit(const char * ds, HTTP::Method m) :Handler(ds, m) {}
-    void exec() {
-        this->getContext()->emitCloseEvent();
-    }
-};
-
 
 int main (int argc, char ** argv) {
     InitParams cur;
@@ -1222,11 +1214,6 @@ int main (int argc, char ** argv) {
     auto * feed_post = new HandlerFeedbackPost("/feedback_post",  HTTP::Method::POST);
     auto * time = new HandlerCommonInfo("timetable_content", "/timetable", HTTP::Method::GET);
     auto * api = new HandlerApi("/api", HTTP::Method::ANY);
-
-    // TODO delete
-    HandlerExit * xxxxxx = new HandlerExit("/exit", HTTP::Method::GET);
-    website.addHandler(xxxxxx);
-    //
 
     auto * css = new FileHandler("/common.css", "../data/common.css", "text/css", false);
     auto * img = new FileHandler("/logo.jpg", "../data/logo.jpg", "image/jpeg", true);

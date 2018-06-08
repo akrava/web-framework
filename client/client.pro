@@ -12,11 +12,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
         main_window.cpp \
-    client.cpp
+    client.cpp \
+    json_highlighter.cpp
 
 HEADERS += \
         main_window.h \
-    client.h
+    client.h \
+    json_highlighter.h
 
 FORMS += \
         main_window.ui

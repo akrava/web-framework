@@ -53,7 +53,7 @@ public:
     /**
      * get date stamp in string in format from time_t
      *
-     * @param tm
+     * @param time_struct
      *      required time in time_t, if nullptr - execute current time
      * @param format
      *      format of representing date in string

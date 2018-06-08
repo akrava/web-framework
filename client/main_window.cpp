@@ -1,5 +1,6 @@
 #include "main_window.h"
 #include "ui_main_window.h"
+#include "json_highlighter.h"
 #include <QHostAddress>
 #include <QMessageBox>
 
@@ -13,6 +14,9 @@ MainWindow::MainWindow(QWidget *parent) :
     QRegExp ipRegex ("^" + ipRange  + "\\." + ipRange + "\\." + ipRange  + "\\." + ipRange + "\\:" + portRange + "\\/.*" + "$");
     QRegExpValidator * ipValidator = new QRegExpValidator(ipRegex, this);
     ui->AddressValue->setValidator(ipValidator);
+
+    Highlighter * json_req = new Highlighter(ui->jsonRequest->document());
+    Highlighter * json_res = new Highlighter(ui->jsonResponse->document());
 }
 
 MainWindow::~MainWindow() {
@@ -36,31 +40,58 @@ void MainWindow::on_MethodValue_currentIndexChanged(const QString &arg1) {
 }
 
 void MainWindow::on_sendButton_clicked() {
-    QString data = ui->firstLineValue->text();
-    data += "\r\n";
-    data += ui->headersRequest->toPlainText();
-    data += "\r\n\r\n";
-    data += ui->bodeRequest->toPlainText();
+    QString data;
+    if (ui->tabWidget->currentIndex() == 0) {
+        data = onSendRawData();
+    } else {
+        data = onSendJson();
+    }
     Client c = Client();
     QHostAddress addr = QHostAddress(ui->AddressValue->text().left(ui->AddressValue->text().indexOf(':')));
-    QString datas = ui->AddressValue->text().mid(ui->AddressValue->text().indexOf(':') + 1, ui->AddressValue->text().indexOf('/') - ui->AddressValue->text().indexOf(':') - 1);
-    int port = datas.toInt();
+    QString address_str = ui->AddressValue->text().mid(ui->AddressValue->text().indexOf(':') + 1, ui->AddressValue->text().indexOf('/') - ui->AddressValue->text().indexOf(':') - 1);
+    int port = address_str.toInt();
     if (!c.setupConnection(addr, port)) {
-        QMessageBox::critical(this, datas, c.what());
+        QMessageBox::critical(this, address_str, c.what());
         return;
     }
-
     if (!c.sendData(data)) {
-        QMessageBox::critical(this, "err", c.what());
+        QMessageBox::critical(this, "error", c.what());
         return;
     }
-    QString ddd;
-    if (!c.reciveData(ddd)) {
-        QMessageBox::critical(this, "err", c.what());
+    QString recieved_from_host;
+    if (!c.reciveData(recieved_from_host)) {
+        QMessageBox::critical(this, "error", c.what());
         return;
     }
     c.closeConnection();
-    ui->responseData->setPlainText(ddd);
+    if (ui->tabWidget->currentIndex() == 0) {
+        ui->responseData->setPlainText(recieved_from_host);
+    } else {
+        int posStart = recieved_from_host.indexOf("\r\n\r\n");
+        QString received = recieved_from_host.mid(posStart+4);
+        ui->jsonResponse->setPlainText(received);
+    }
+}
+
+QString MainWindow::onSendRawData() {
+    QString data = ui->firstLineValue->text();
+    data += "\r\n";
+    data += prepeareToSend();
+    data += "\r\n\r\n";
+    data += ui->bodeRequest->toPlainText();
+    return data;
+}
+
+QString MainWindow::onSendJson() {
+    QString data = ui->firstLineValue->text();
+    data += "\r\n";
+    int count = ui->jsonRequest->toPlainText().length();
+    data += "Content-Length: " + QString::number(count);
+    data += "\r\n";
+    data += "Content-Type: application/json";
+    data += "\r\n\r\n";
+    data += ui->jsonRequest->toPlainText();
+    return data;
 }
 
 void MainWindow::updateLineFirstRequest() {
@@ -70,4 +101,21 @@ void MainWindow::updateLineFirstRequest() {
     firstLine += ui->AddressValue->text().mid(ui->AddressValue->text().indexOf('/'));
     firstLine += " HTTP/1.1";
     ui->firstLineValue->setText(firstLine);
+}
+
+QString MainWindow::prepeareToSend() {
+     QString data_headers = ui->headersRequest->toPlainText();
+     QString parsed;
+     for (auto & c : data_headers) {
+        if (c != '\n') {
+            parsed += c;
+        } else {
+            parsed += '\r';
+            parsed += c;
+        }
+     }
+     if (parsed.endsWith("\r\n")) {
+         parsed.left(parsed.length() - 2);
+     }
+     return parsed;
 }
