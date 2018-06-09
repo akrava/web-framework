@@ -8,6 +8,7 @@
 #include <file_handler.h>
 #include <runtime_exception.h>
 #include <parser_http.h>
+#define __PATH_TO_DATA "../data"
 
 using namespace std;
 
@@ -35,7 +36,7 @@ public:
     void exec() {
         getContext()->getResponse()->getHeaders()->add("Content-Type", "text/html; charset=utf-8");
         string template_str;
-        bool found_template = FileHandler::loadFile("../data/common.html", template_str);
+        bool found_template = FileHandler::loadFile(__PATH_TO_DATA"/common.html", template_str);
         string data = "<html><head><title>";
         data += to_string(getContext()->getResponse()->getStatus());
         data += " " + HTTP::getReasonPhrase(getContext()->getResponse()->getStatus());
@@ -185,7 +186,7 @@ public:
         auto body = html->getContext()->find("content");
 
         string template_index;
-        if (!FileHandler::loadFile("../data/index.html", template_index)) return;
+        if (!FileHandler::loadFile(__PATH_TO_DATA"/index.html", template_index)) return;
         mstch::map index_content;
         index_content.insert({"header", string{"Logistic company #1"}});
         
@@ -220,7 +221,7 @@ public:
         auto body = html->getContext()->find("content");
 
         string template_track;
-        if (!FileHandler::loadFile("../data/track.html", template_track)) return;
+        if (!FileHandler::loadFile(__PATH_TO_DATA"/track.html", template_track)) return;
         mstch::map track_content;
 
         string num;
@@ -317,7 +318,7 @@ public:
         auto body = html->getContext()->find("content");
 
         string template_calculate;
-        if (!FileHandler::loadFile("../data/calculate.html", template_calculate)) return;
+        if (!FileHandler::loadFile(__PATH_TO_DATA"/calculate.html", template_calculate)) return;
         mstch::map calculate_content;
 
         vector<vector<string>> result_cities;
@@ -482,7 +483,7 @@ public:
         if (weight <= 0 || height <= 0 || length <= 0 || width <= 0) error = true;
 
         string template_info;
-        if (!FileHandler::loadFile("../data/info.html", template_info)) return;
+        if (!FileHandler::loadFile(__PATH_TO_DATA"/info.html", template_info)) return;
         mstch::map info_content{{"header", string{"Вартість доставки"}}};
 
         if (error) {
@@ -520,7 +521,7 @@ public:
         auto body = html->getContext()->find("content");
 
         string template_calculate;
-        if (!FileHandler::loadFile("../data/estimate.html", template_calculate)) return;
+        if (!FileHandler::loadFile(__PATH_TO_DATA"/estimate.html", template_calculate)) return;
         mstch::map calculate_content;
 
         vector<vector<string>> result_cities;
@@ -618,7 +619,7 @@ public:
         }
 
         string template_info;
-        if (!FileHandler::loadFile("../data/info.html", template_info)) return;
+        if (!FileHandler::loadFile(__PATH_TO_DATA"/info.html", template_info)) return;
         mstch::map info_content{{"header", string{"Термін доставки вантажу"}}};
 
         if (error) {
@@ -665,7 +666,7 @@ public:
         auto body = html->getContext()->find("content");
 
         string template_map;
-        if (!FileHandler::loadFile("../data/map.html", template_map)) return;
+        if (!FileHandler::loadFile(__PATH_TO_DATA"/map.html", template_map)) return;
         mstch::map map_content;
 
         string curTarget;
@@ -768,7 +769,7 @@ public:
         if (html->getView().empty()) return;
         auto body = html->getContext()->find("content");
         string template_order;
-        if (!FileHandler::loadFile("../data/order.html", template_order)) return;
+        if (!FileHandler::loadFile(__PATH_TO_DATA"/order.html", template_order)) return;
         mstch::map order_content;
 
         vector<vector<string>> result_cities;
@@ -856,7 +857,7 @@ public:
         if (!res_query.empty()) error = true;
 
         string template_info;
-        if (!FileHandler::loadFile("../data/info.html", template_info)) return;
+        if (!FileHandler::loadFile(__PATH_TO_DATA"/info.html", template_info)) return;
         mstch::map info_content{{"header", string{"Результат заповнення заявки"}}};
 
         if (error) {
@@ -913,7 +914,7 @@ public:
         if (result_header.size() != 1 || result_header[0].size() != 1) return;
 
         string template_info;
-        if (!FileHandler::loadFile("../data/info.html", template_info)) return;
+        if (!FileHandler::loadFile(__PATH_TO_DATA"/info.html", template_info)) return;
         mstch::map info_content{{"header", result_header[0][0]}};
 
         info_content.insert({"content", result_data[0][0]});
@@ -939,7 +940,7 @@ public:
         auto body = html->getContext()->find("content");
 
         string template_news;
-        if (!FileHandler::loadFile("../data/news.html", template_news)) return;
+        if (!FileHandler::loadFile(__PATH_TO_DATA"/news.html", template_news)) return;
         mstch::map news_content;
 
         news_content.insert({"uri_news", request->getURI()->getPath()});
@@ -1009,7 +1010,7 @@ public:
         auto body = html->getContext()->find("content");
 
         string template_order;
-        if (!FileHandler::loadFile("../data/feedback.html", template_order)) return;
+        if (!FileHandler::loadFile(__PATH_TO_DATA"/feedback.html", template_order)) return;
         mstch::map order_content;
 
         vector<vector<string>> result_uri;
@@ -1072,7 +1073,7 @@ public:
         if (!res_query.empty()) error = true;
 
         string template_info;
-        if (!FileHandler::loadFile("../data/info.html", template_info)) return;
+        if (!FileHandler::loadFile(__PATH_TO_DATA"/info.html", template_info)) return;
         mstch::map info_content{{"header", string{"Feedback"}}};
 
         if (error) {
@@ -1107,7 +1108,7 @@ public:
         auto * json = (JsonMiddleware *) (void *) m_json;
         if (json->getJsonRequest()->empty()) {
             string template_info;
-            if (!FileHandler::loadFile("../data/info.html", template_info)) return;
+            if (!FileHandler::loadFile(__PATH_TO_DATA"/info.html", template_info)) return;
             mstch::map info_content{{"header", string{"API"}}};
 
 
@@ -1215,10 +1216,10 @@ int main (int argc, char ** argv) {
     auto * time = new HandlerCommonInfo("timetable_content", "/timetable", HTTP::Method::GET);
     auto * api = new HandlerApi("/api", HTTP::Method::ANY);
 
-    auto * css = new FileHandler("/common.css", "../data/common.css", "text/css", false);
-    auto * img = new FileHandler("/logo.jpg", "../data/logo.jpg", "image/jpeg", true);
-    auto * banner = new FileHandler("/banner.jpg", "../data/banner.jpg", "image/jpeg", true);
-    auto * img_news = new FileHandler("/news.png", "../data/news.png", "image/png", true);
+    auto * css = new FileHandler("/common.css", __PATH_TO_DATA"/common.css", "text/css", false);
+    auto * img = new FileHandler("/logo.jpg", __PATH_TO_DATA"/logo.jpg", "image/jpeg", true);
+    auto * banner = new FileHandler("/banner.jpg", __PATH_TO_DATA"/banner.jpg", "image/jpeg", true);
+    auto * img_news = new FileHandler("/news.png", __PATH_TO_DATA"/news.png", "image/png", true);
 
     website.addHandler(common);
     website.addHandler(template_h);

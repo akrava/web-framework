@@ -134,7 +134,7 @@ void App::run() {
         if (context.isClosed()) run = false;
     }
     log << "Got close event. Closing application";
-    cout << "Host shutdown";
+    cout << "Host shutdown" << endl;
 }
 
 App::~App() {

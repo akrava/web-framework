@@ -48,6 +48,7 @@ InitParams::InitParams(int argc, char ** argv) : InitParams() {
                      << std::endl << "And some extra: --log [-l] and filename OR --help [-h]" << endl
                      << "Hint: IPv6 must be inside [] brackets; domain should start as http://"
                      << std::endl;
+                throw RuntimeException("Try again");
             } else if (logFilePath.empty() && (!strcmp("--log", argv[i]) || !strcmp("-l", argv[i]))) {
                 if (i + 1 == argc) {
                     throw RuntimeException("Error while initializing: no file path is given");
