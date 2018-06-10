@@ -120,7 +120,7 @@ void Socket::receiveData(string & data) {
         dataLength -= numSent;
     }
     close(client_fd);
-    cout << "received data" << endl;
+    cout << "received " << data.length() << " bytes of data" << endl;
 }
 
 std::string Socket::toString() {
