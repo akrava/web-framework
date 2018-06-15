@@ -75,8 +75,6 @@ void App::addRedirect(const char * uri, const char * target, int code) {
 
 void App::run() {
     context.setMiddlewareList(&middlewareList);
-    auto * db = new DBManager(__DB);
-    context.setDB(db);
     log << "Running application";
     bool run = true;
     while (run) {

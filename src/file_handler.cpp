@@ -1,6 +1,8 @@
 #include <file_handler.h>
 #include <fstream>
 #include <sstream>
+#include <iostream>
+
 #define __MAX_SIZE_CACHED 5120
 
 using namespace std;
@@ -52,6 +54,7 @@ void FileHandler::exec() {
 
 bool FileHandler::loadFile(const char *filePath, string & data) {
     ifstream in(filePath, ifstream::in);
+    cout << filePath << endl;
     if (in.is_open()) {
         stringstream str_stream;
         str_stream << in.rdbuf();

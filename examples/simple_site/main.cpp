@@ -1,14 +1,20 @@
-#include <init_params.h>
+#include <akrava/web-server/app.h>
+#include <akrava/web-server/file_handler.h>
+#include <akrava/web-server/html_middleware.h>
+#include <akrava/web-server/cookie_middleware.h>
+#include <akrava/web-server/parser_http.h>
+#include <akrava/web-server/form_middleware.h>
+#include <akrava/web-server/json_middleware.h>
+#include <akrava/web-server/runtime_exception.h>
+#include <sstream>
+#include <iomanip>
 #include <iostream>
-#include <app.h>
-#include <json_middleware.h>
-#include <cookie_middleware.h>
-#include <form_middleware.h>
-#include <html_middleware.h>
-#include <file_handler.h>
-#include <runtime_exception.h>
-#include <parser_http.h>
-#define __PATH_TO_DATA "../data"
+#include <cerrno>
+#include "DatabaseMiddleware.h"
+
+#define __PATH_TO_DATA "/../data"
+
+std::string cwdir;
 
 using namespace std;
 
@@ -36,7 +42,7 @@ public:
     void exec() {
         getContext()->getResponse()->getHeaders()->add("Content-Type", "text/html; charset=utf-8");
         string template_str;
-        bool found_template = FileHandler::loadFile(__PATH_TO_DATA"/common.html", template_str);
+        bool found_template = FileHandler::loadFile((cwdir + __PATH_TO_DATA"/common.html").c_str(), template_str);
         string data = "<html><head><title>";
         data += to_string(getContext()->getResponse()->getStatus());
         data += " " + HTTP::getReasonPhrase(getContext()->getResponse()->getStatus());
@@ -87,7 +93,7 @@ public:
         Request * request = getContext()->getRequest();
         Response * response = getContext()->getResponse();
         Middleware * middleware = getContext()->getMiddlewareByNameID("html");
-        DBManager * db = getContext()->getDB();
+        DatabaseMiddleware * db = (DatabaseMiddleware *) getContext()->getMiddlewareByNameID("db");
         if (!middleware) return;
         auto * html = (HtmlMiddleware *) (void *) middleware;
         if (html->getView().empty()) return;
@@ -178,7 +184,7 @@ public:
     HandlerIndex(const char * ds, HTTP::Method m) : Handler(ds, m) {}
     void exec() {
         Middleware * middleware = getContext()->getMiddlewareByNameID("html");
-        DBManager * db = getContext()->getDB();
+        DatabaseMiddleware * db = (DatabaseMiddleware *) getContext()->getMiddlewareByNameID("db");
         if (!middleware) return;
         auto * html = (HtmlMiddleware *) (void *) middleware;
         if (html->getView().empty()) return;
@@ -186,7 +192,7 @@ public:
         auto body = html->getContext()->find("content");
 
         string template_index;
-        if (!FileHandler::loadFile(__PATH_TO_DATA"/index.html", template_index)) return;
+        if (!FileHandler::loadFile((cwdir + __PATH_TO_DATA"/index.html").c_str(), template_index)) return;
         mstch::map index_content;
         index_content.insert({"header", string{"Logistic company #1"}});
         
@@ -213,7 +219,7 @@ public:
     void exec() {
         Request * request = getContext()->getRequest();
         Middleware * middleware = getContext()->getMiddlewareByNameID("html");
-        DBManager * db = getContext()->getDB();
+        DatabaseMiddleware * db = (DatabaseMiddleware *) getContext()->getMiddlewareByNameID("db");
         if (!middleware) return;
         auto * html = (HtmlMiddleware *) (void *) middleware;
         if (html->getView().empty()) return;
@@ -221,7 +227,7 @@ public:
         auto body = html->getContext()->find("content");
 
         string template_track;
-        if (!FileHandler::loadFile(__PATH_TO_DATA"/track.html", template_track)) return;
+        if (!FileHandler::loadFile((cwdir + __PATH_TO_DATA"/track.html").c_str(), template_track)) return;
         mstch::map track_content;
 
         string num;
@@ -310,7 +316,7 @@ public:
     HandlerCalculate(const char * ds, HTTP::Method m) : Handler(ds, m) {}
     void exec() {
         Middleware * middleware = getContext()->getMiddlewareByNameID("html");
-        DBManager * db = getContext()->getDB();
+        DatabaseMiddleware * db = (DatabaseMiddleware *) getContext()->getMiddlewareByNameID("db");
         if (!middleware) return;
         auto * html = (HtmlMiddleware *) (void *) middleware;
         if (html->getView().empty()) return;
@@ -318,7 +324,7 @@ public:
         auto body = html->getContext()->find("content");
 
         string template_calculate;
-        if (!FileHandler::loadFile(__PATH_TO_DATA"/calculate.html", template_calculate)) return;
+        if (!FileHandler::loadFile((cwdir + __PATH_TO_DATA"/calculate.html").c_str(), template_calculate)) return;
         mstch::map calculate_content;
 
         vector<vector<string>> result_cities;
@@ -382,7 +388,7 @@ public:
     HandlerCalculatePost(const char * ds, HTTP::Method m) : Handler(ds, m) {}
     void exec() {
         Middleware * middleware = getContext()->getMiddlewareByNameID("html");
-        DBManager * db = getContext()->getDB();
+        DatabaseMiddleware * db = (DatabaseMiddleware *) getContext()->getMiddlewareByNameID("db");
         if (!middleware) return;
         auto * html = (HtmlMiddleware *) (void *) middleware;
         if (html->getView().empty()) return;
@@ -483,7 +489,7 @@ public:
         if (weight <= 0 || height <= 0 || length <= 0 || width <= 0) error = true;
 
         string template_info;
-        if (!FileHandler::loadFile(__PATH_TO_DATA"/info.html", template_info)) return;
+        if (!FileHandler::loadFile((cwdir + __PATH_TO_DATA"/info.html").c_str(), template_info)) return;
         mstch::map info_content{{"header", string{"Вартість доставки"}}};
 
         if (error) {
@@ -514,14 +520,14 @@ public:
     HandlerEstimate(const char * ds, HTTP::Method m) : Handler(ds, m) {}
     void exec() {
         Middleware * middleware = getContext()->getMiddlewareByNameID("html");
-        DBManager * db = getContext()->getDB();
+        DatabaseMiddleware * db = (DatabaseMiddleware *) getContext()->getMiddlewareByNameID("db");
         if (!middleware) return;
         auto * html = (HtmlMiddleware *) (void *) middleware;
         if (html->getView().empty()) return;
         auto body = html->getContext()->find("content");
 
         string template_calculate;
-        if (!FileHandler::loadFile(__PATH_TO_DATA"/estimate.html", template_calculate)) return;
+        if (!FileHandler::loadFile((cwdir + __PATH_TO_DATA"/estimate.html").c_str(), template_calculate)) return;
         mstch::map calculate_content;
 
         vector<vector<string>> result_cities;
@@ -569,7 +575,7 @@ public:
     HandlerEstimatePost(const char * ds, HTTP::Method m) : Handler(ds, m) {}
     void exec() {
         Middleware * middleware = getContext()->getMiddlewareByNameID("html");
-        DBManager * db = getContext()->getDB();
+        DatabaseMiddleware * db = (DatabaseMiddleware *) getContext()->getMiddlewareByNameID("db");
         if (!middleware) return;
         auto * html = (HtmlMiddleware *) (void *) middleware;
         if (html->getView().empty()) return;
@@ -619,7 +625,7 @@ public:
         }
 
         string template_info;
-        if (!FileHandler::loadFile(__PATH_TO_DATA"/info.html", template_info)) return;
+        if (!FileHandler::loadFile((cwdir + __PATH_TO_DATA"/info.html").c_str(), template_info)) return;
         mstch::map info_content{{"header", string{"Термін доставки вантажу"}}};
 
         if (error) {
@@ -659,14 +665,14 @@ public:
     void exec() {
         Request * request = getContext()->getRequest();
         Middleware * middleware = getContext()->getMiddlewareByNameID("html");
-        DBManager * db = getContext()->getDB();
+        DatabaseMiddleware * db = (DatabaseMiddleware *) getContext()->getMiddlewareByNameID("db");
         if (!middleware) return;
         auto * html = (HtmlMiddleware *) (void *) middleware;
         if (html->getView().empty()) return;
         auto body = html->getContext()->find("content");
 
         string template_map;
-        if (!FileHandler::loadFile(__PATH_TO_DATA"/map.html", template_map)) return;
+        if (!FileHandler::loadFile((cwdir + __PATH_TO_DATA"/map.html").c_str(), template_map)) return;
         mstch::map map_content;
 
         string curTarget;
@@ -763,13 +769,13 @@ public:
     HandlerOrder(const char * ds, HTTP::Method m) : Handler(ds, m) {}
     void exec() {
         Middleware * middleware = getContext()->getMiddlewareByNameID("html");
-        DBManager * db = getContext()->getDB();
+        DatabaseMiddleware * db = (DatabaseMiddleware *) getContext()->getMiddlewareByNameID("db");
         if (!middleware) return;
         auto * html = (HtmlMiddleware *) (void *) middleware;
         if (html->getView().empty()) return;
         auto body = html->getContext()->find("content");
         string template_order;
-        if (!FileHandler::loadFile(__PATH_TO_DATA"/order.html", template_order)) return;
+        if (!FileHandler::loadFile((cwdir + __PATH_TO_DATA"/order.html").c_str(), template_order)) return;
         mstch::map order_content;
 
         vector<vector<string>> result_cities;
@@ -810,7 +816,7 @@ public:
     HandlerOrderPost(const char * ds, HTTP::Method m) : Handler(ds, m) {}
     void exec() {
         Middleware * middleware = getContext()->getMiddlewareByNameID("html");
-        DBManager * db = getContext()->getDB();
+        DatabaseMiddleware * db = (DatabaseMiddleware *) getContext()->getMiddlewareByNameID("db");
         if (!middleware) return;
         auto * html = (HtmlMiddleware *) (void *) middleware;
         if (html->getView().empty()) return;
@@ -857,7 +863,7 @@ public:
         if (!res_query.empty()) error = true;
 
         string template_info;
-        if (!FileHandler::loadFile(__PATH_TO_DATA"/info.html", template_info)) return;
+        if (!FileHandler::loadFile((cwdir + __PATH_TO_DATA"/info.html").c_str(), template_info)) return;
         mstch::map info_content{{"header", string{"Результат заповнення заявки"}}};
 
         if (error) {
@@ -888,7 +894,7 @@ public:
     void exec() {
         Request * request = getContext()->getRequest();
         Middleware * middleware = getContext()->getMiddlewareByNameID("html");
-        DBManager * db = getContext()->getDB();
+        DatabaseMiddleware * db = (DatabaseMiddleware *) getContext()->getMiddlewareByNameID("db");
         if (!middleware) return;
         auto * html = (HtmlMiddleware *) (void *) middleware;
         if (html->getView().empty()) return;
@@ -914,7 +920,7 @@ public:
         if (result_header.size() != 1 || result_header[0].size() != 1) return;
 
         string template_info;
-        if (!FileHandler::loadFile(__PATH_TO_DATA"/info.html", template_info)) return;
+        if (!FileHandler::loadFile((cwdir + __PATH_TO_DATA"/info.html").c_str(), template_info)) return;
         mstch::map info_content{{"header", result_header[0][0]}};
 
         info_content.insert({"content", result_data[0][0]});
@@ -932,7 +938,7 @@ public:
     void exec() {
         Request * request = getContext()->getRequest();
         Middleware * middleware = getContext()->getMiddlewareByNameID("html");
-        DBManager * db = getContext()->getDB();
+        DatabaseMiddleware * db = (DatabaseMiddleware *) getContext()->getMiddlewareByNameID("db");
         if (!middleware) return;
         auto * html = (HtmlMiddleware *) (void *) middleware;
         if (html->getView().empty()) return;
@@ -940,7 +946,7 @@ public:
         auto body = html->getContext()->find("content");
 
         string template_news;
-        if (!FileHandler::loadFile(__PATH_TO_DATA"/news.html", template_news)) return;
+        if (!FileHandler::loadFile((cwdir + __PATH_TO_DATA"/news.html").c_str(), template_news)) return;
         mstch::map news_content;
 
         news_content.insert({"uri_news", request->getURI()->getPath()});
@@ -1002,7 +1008,7 @@ public:
     HandlerFeedback(const char * ds, HTTP::Method m) : Handler(ds, m) {}
     void exec() {
         Middleware * middleware = getContext()->getMiddlewareByNameID("html");
-        DBManager * db = getContext()->getDB();
+        DatabaseMiddleware * db = (DatabaseMiddleware *) getContext()->getMiddlewareByNameID("db");
         if (!middleware) return;
         auto * html = (HtmlMiddleware *) (void *) middleware;
         if (html->getView().empty()) return;
@@ -1010,7 +1016,7 @@ public:
         auto body = html->getContext()->find("content");
 
         string template_order;
-        if (!FileHandler::loadFile(__PATH_TO_DATA"/feedback.html", template_order)) return;
+        if (!FileHandler::loadFile((cwdir + __PATH_TO_DATA"/feedback.html").c_str(), template_order)) return;
         mstch::map order_content;
 
         vector<vector<string>> result_uri;
@@ -1036,7 +1042,7 @@ public:
     HandlerFeedbackPost(const char * ds, HTTP::Method m) : Handler(ds, m) {}
     void exec() {
         Middleware * middleware = getContext()->getMiddlewareByNameID("html");
-        DBManager * db = getContext()->getDB();
+        DatabaseMiddleware * db = (DatabaseMiddleware *) getContext()->getMiddlewareByNameID("db");
         if (!middleware) return;
         auto * html = (HtmlMiddleware *) (void *) middleware;
         if (html->getView().empty()) return;
@@ -1073,7 +1079,7 @@ public:
         if (!res_query.empty()) error = true;
 
         string template_info;
-        if (!FileHandler::loadFile(__PATH_TO_DATA"/info.html", template_info)) return;
+        if (!FileHandler::loadFile((cwdir + __PATH_TO_DATA"/info.html").c_str(), template_info)) return;
         mstch::map info_content{{"header", string{"Feedback"}}};
 
         if (error) {
@@ -1099,7 +1105,7 @@ public:
     HandlerApi(const char * ds, HTTP::Method m) :Handler(ds, m) {}
     void exec() {
         Middleware * middleware = getContext()->getMiddlewareByNameID("html");
-        DBManager * db = getContext()->getDB();
+        DatabaseMiddleware * db = (DatabaseMiddleware *) getContext()->getMiddlewareByNameID("db");
         if (!middleware) return;
         auto * html = (HtmlMiddleware *) (void *) middleware;
         if (html->getView().empty()) return;
@@ -1108,7 +1114,7 @@ public:
         auto * json = (JsonMiddleware *) (void *) m_json;
         if (json->getJsonRequest()->empty()) {
             string template_info;
-            if (!FileHandler::loadFile(__PATH_TO_DATA"/info.html", template_info)) return;
+            if (!FileHandler::loadFile((cwdir + __PATH_TO_DATA"/info.html").c_str(), template_info)) return;
             mstch::map info_content{{"header", string{"API"}}};
 
 
@@ -1185,6 +1191,10 @@ public:
 
 
 int main (int argc, char ** argv) {
+    char cwd[1024];
+    if (getcwd(cwd, sizeof(cwd)) != NULL)
+        cwdir = cwd;
+
     InitParams cur;
     try {
         cur = InitParams(argc, argv);
@@ -1216,10 +1226,10 @@ int main (int argc, char ** argv) {
     auto * time = new HandlerCommonInfo("timetable_content", "/timetable", HTTP::Method::GET);
     auto * api = new HandlerApi("/api", HTTP::Method::ANY);
 
-    auto * css = new FileHandler("/common.css", __PATH_TO_DATA"/common.css", "text/css", false);
-    auto * img = new FileHandler("/logo.jpg", __PATH_TO_DATA"/logo.jpg", "image/jpeg", true);
-    auto * banner = new FileHandler("/banner.jpg", __PATH_TO_DATA"/banner.jpg", "image/jpeg", true);
-    auto * img_news = new FileHandler("/news.png", __PATH_TO_DATA"/news.png", "image/png", true);
+    auto * css = new FileHandler("/common.css", (cwdir + __PATH_TO_DATA"/common.css").c_str(), "text/css", false);
+    auto * img = new FileHandler("/logo.jpg", (cwdir + __PATH_TO_DATA"/logo.jpg").c_str(), "image/jpeg", true);
+    auto * banner = new FileHandler("/banner.jpg", (cwdir + __PATH_TO_DATA"/banner.jpg").c_str(), "image/jpeg", true);
+    auto * img_news = new FileHandler("/news.png", (cwdir + __PATH_TO_DATA"/news.png").c_str(), "image/png", true);
 
     website.addHandler(common);
     website.addHandler(template_h);
@@ -1255,11 +1265,13 @@ int main (int argc, char ** argv) {
     auto * cookie = new CookieMiddleware("cookie");
     auto * form = new FormMiddleware("form");
     auto * html = new HtmlMiddleware("html");
+    auto * db = new DatabaseMiddleware("db", (cwdir + "/../db/db_file").c_str());
 
     website.addMiddleware(json);
     website.addMiddleware(cookie);
     website.addMiddleware(form);
     website.addMiddleware(html);
+    website.addMiddleware(db);
 
     website.run();
     return EXIT_SUCCESS;

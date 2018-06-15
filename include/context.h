@@ -1,10 +1,9 @@
 #pragma once
 
 #include <vector>
-#include <request.h>
-#include <response.h>
-#include <middleware.h>
-#include <db_manager.h>
+#include "request.h"
+#include "response.h"
+#include "middleware.h"
 
 
 /**
@@ -20,7 +19,6 @@ class Context {
     Request * request;
     Response * response;
     std::vector<Middleware *> * middlewareList;
-    DBManager * db;
     bool closeApp;
 public:
     /**
@@ -33,22 +31,6 @@ public:
      * Deleting Request, Response and DB objects, if they are not NULL
      */
     ~Context();
-
-    /**
-     * Method sets the object of database, created by DBManager. All handlers can access it
-     *
-     * @param db
-     *      Object of class DBManager
-     */
-    void setDB(DBManager * db);
-
-    /**
-     * Returns db, if wasn't set - nullptr
-     *
-     * @return
-     *      Object of class DBManager
-     */
-    DBManager * getDB();
 
     /**
      * Gives current request

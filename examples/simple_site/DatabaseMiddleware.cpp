@@ -1,20 +1,18 @@
-#include <string>
-#include <vector>
-#include <db_manager.h>
+#include "DatabaseMiddleware.h"
 
 using namespace std;
 
-DBManager::DBManager(const char * filePath) {
+DatabaseMiddleware::DatabaseMiddleware(const char *nameID, const char * filePath) : Middleware(nameID) {
     sqlite3_open(filePath, &db);
 }
 
-DBManager::~DBManager() {
+DatabaseMiddleware::~DatabaseMiddleware() {
     sqlite3_close(db);
 }
 
-bool DBManager::execQuery(const char * statement, vector<vector<string>> & result_vec,
-                          char * data[], int num)
-{
+bool
+DatabaseMiddleware::execQuery(const char *statement, std::vector<std::vector<std::string>> &result_vec, char **data,
+                              int num) {
     sqlite3_stmt* stmt = nullptr;
     int status = sqlite3_prepare_v2(db, statement, -1, &stmt, nullptr);
     if (status != SQLITE_OK) return false;

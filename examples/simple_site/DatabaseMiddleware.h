@@ -1,27 +1,16 @@
 #pragma once
 
-#include <sqlite3.h>
 
-/**
- * @brief allow perform sql queries to db
- *
- * Realisation of wrapper for SQLite database
- */
-class DBManager {
+#include <sqlite3.h>
+#include <akrava/web-server/middleware.h>
+#include <vector>
+
+class DatabaseMiddleware : public Middleware {
     sqlite3 *db;
 public:
-    /**
-     * Opening database
-     *
-     * @param filePath
-     *      file path to database
-     */
-    DBManager(const char * filePath);
+    DatabaseMiddleware(const char *nameID, const char * filePath);
 
-    /**
-     * Closing opened connection to db
-     */
-    ~DBManager();
+    ~DatabaseMiddleware();
 
     /**
      * Execute SQL statement, with binding values by escaping with '?' in statement
@@ -40,4 +29,15 @@ public:
      */
     bool execQuery(const char * statement, std::vector<std::vector<std::string>> & result_vec,
                    char * data[], int num);
+
+
+    bool autoExec() {
+        return false;
+    }
+
+
+    void exec() {
+
+    }
 };
+

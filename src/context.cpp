@@ -7,20 +7,10 @@ Context::Context()  {
     request = new Request();
     response = new Response();
     middlewareList = nullptr;
-    db = nullptr;
 }
 
 Request * Context::getRequest() {
     return request;
-}
-
-void Context::setDB(DBManager * db) {
-    delete this->db;
-    this->db = db;
-}
-
-DBManager * Context::getDB() {
-    return db;
 }
 
 Response * Context::getResponse() {
@@ -73,8 +63,6 @@ bool Context::isClosed() {
 Context::~Context() {
     delete request;
     delete response;
-    delete db;
     request = nullptr;
     response = nullptr;
-    db = nullptr;
 }
