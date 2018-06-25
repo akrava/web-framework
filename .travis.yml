@@ -11,8 +11,8 @@ addons:
       - g++-5
       - cmake
 before_install:
-  - ln -s /usr/bin/gcc-5 /usr/local/bin/gcc
-  - ln -s /usr/bin/g++-5 /usr/local/bin/g++
+  - sudo ln -s /usr/bin/gcc-5 /usr/local/bin/gcc
+  - sudo ln -s /usr/bin/g++-5 /usr/local/bin/g++
   - export CC=/usr/bin/gcc-5
   - export CXX=/usr/bin/g++-5
   - gcc -v && g++ -v && cmake --version
