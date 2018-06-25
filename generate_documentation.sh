@@ -21,6 +21,8 @@ echo "" > .nojekyll
 
 echo 'Generating Doxygen code documentation...'
 
+ls
+
 doxygen $DOXYFILE 2>&1 | tee doxygen.log
 
 ################################################################################
