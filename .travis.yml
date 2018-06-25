@@ -10,18 +10,14 @@ install:
   - wget https://github.com/libcheck/check/releases/download/0.11.0/check-0.11.0.tar.gz
   - tar -xzvf check-0.11.0.tar.gz
   - pushd check-0.11.0 && ./configure --prefix=/usr && make && sudo make install && popd
-  - ls
-  - mkdir mstch
-  - cd mstch
   - git clone https://github.com/no1msd/mstch.git
-  - ls
+  - cd mstch
   - cmake .
   - make
   - sudo make install
   - cd ..
-  - mkdir json
-  - cd json
   - git clone https://github.com/nlohmann/json.git
+  - cd json
   - cmake .
   - make
   - sudo make install
