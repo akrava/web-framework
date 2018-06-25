@@ -6,6 +6,7 @@ before_install:
   - sudo apt-get -qq update
   - sudo apt-get install lcov
   - sudo apt-get install git
+  - sudo apt-get install libboost-all-dev
 install:
   - wget https://github.com/libcheck/check/releases/download/0.11.0/check-0.11.0.tar.gz
   - tar -xzvf check-0.11.0.tar.gz
