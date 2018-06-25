@@ -13,20 +13,14 @@ install:
   - mkdir mstch
   - cd mstch
   - git clone https://github.com/no1msd/mstch.git
-  - mkdir build
-  - cd build
-  - ls ..
-  - cmake ..
+  - cmake .
   - make
   - sudo make install
-  - cd ..
   - cd ..
   - mkdir json
   - cd json
   - git clone https://github.com/nlohmann/json.git
-  - mkdir build
-  - cd build
-  - cmake ..
+  - cmake .
   - make
   - sudo make install
 before_script:
