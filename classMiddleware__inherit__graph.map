@@ -1,0 +1,6 @@
+<map id="Middleware" name="Middleware">
+<area shape="rect" id="node2" href="$classCookieMiddleware.html" title="inherited class to parse cookie from http request " alt="" coords="5,292,153,428"/>
+<area shape="rect" id="node3" href="$classFormMiddleware.html" title="inherited class to parse application/x&#45;www&#45;form&#45;urlencoded " alt="" coords="179,307,317,413"/>
+<area shape="rect" id="node4" href="$classHtmlMiddleware.html" title="inherited class to render html pages from templates " alt="" coords="341,277,485,443"/>
+<area shape="rect" id="node5" href="$classJsonMiddleware.html" title="inherited class to perform any actions with json data " alt="" coords="509,277,656,443"/>
+</map>
