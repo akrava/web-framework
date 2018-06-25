@@ -35,8 +35,9 @@ install:
   - cmake .
   - make
   - sudo make install
+  - cd ..
 before_script:
   - cmake .
 script:
   - make
-  - make install
+  - sudo make install
