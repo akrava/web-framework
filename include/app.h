@@ -135,5 +135,5 @@ public:
      *      from clients all added handlers and middleware create a response and send it
      *      to client.
      */
-    void run();
+    bool run();
 };

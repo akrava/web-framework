@@ -1273,6 +1273,5 @@ int main (int argc, char ** argv) {
     website.addMiddleware(html);
     website.addMiddleware(db);
 
-    website.run();
-    return EXIT_SUCCESS;
+    return website.run();
 }

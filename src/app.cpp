@@ -3,7 +3,6 @@
 #include <iostream>
 #include <parser_http.h>
 #include <default_response.h>
-#define __DB "./../db/db_file"
 
 using namespace std;
 
@@ -73,10 +72,11 @@ void App::addRedirect(const char * uri, const char * target, int code) {
     log << "Added " + to_string(code) + " redirect: " + string{uri} + " to " + target;
 }
 
-void App::run() {
+bool App::run() {
     context.setMiddlewareList(&middlewareList);
     log << "Running application";
     bool run = true;
+    bool error = false;
     while (run) {
         string request_str;
         try {
@@ -84,6 +84,7 @@ void App::run() {
         } catch (RuntimeException & err) {
             cerr << err.what() << endl;
             log << err.what();
+            error = true;
             break;
         }
         Request * request = ParserHTTP::getRequestFromStr(request_str);
@@ -127,12 +128,14 @@ void App::run() {
         } catch (RuntimeException & err) {
             cerr << err.what() << endl;
             log << err.what();
+            error = true;
             break;
         }
         if (context.isClosed()) run = false;
     }
     log << "Got close event. Closing application";
     cout << "Host shutdown" << endl;
+    return !error;
 }
 
 App::~App() {

@@ -217,6 +217,10 @@ a {
     padding: 0 30px;
 }
 
+#track > input[type="text"] {
+    width: 70%;
+}
+
 #footer > p {
     margin: 0;
     font-size: 13px;
