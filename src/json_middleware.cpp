@@ -50,3 +50,10 @@ JsonMiddleware::~JsonMiddleware() {
     jsonRequest = nullptr;
     jsonResponse = nullptr;
 }
+
+void JsonMiddleware::clear() {
+    Middleware::clear();
+    if (jsonRequest) jsonRequest->clear();
+    if (jsonResponse) jsonResponse->clear();
+    errorDeserialize = false;
+}

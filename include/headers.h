@@ -66,4 +66,9 @@ public:
      *      true if value exists, false otherwise
      */
     bool getValue(const char * key, std::string & value);
+
+    /**
+     * delete all data
+     */
+    void clear();
 };

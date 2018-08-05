@@ -61,4 +61,9 @@ public:
      *      template view string
      */
     std::string getView();
+
+    /**
+     * delete all data, saved in internal values, set to default
+     */
+     void clear();
 };

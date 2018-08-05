@@ -42,3 +42,7 @@ Middleware::~Middleware() {
     delete map;
     map = nullptr;
 }
+
+void Middleware::clear() {
+    if (map) map->clear();
+}

@@ -60,4 +60,9 @@ public:
      * set response body with serialized json data from jsonResponse
      */
     void fillResponse();
+
+    /**
+     * delete all data, saved in internal values, set to default
+     */
+     void clear();
 };

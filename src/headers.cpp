@@ -55,3 +55,7 @@ bool Headers::getValue(const char * key, string & value) {
 Headers::~Headers() {
     headers.clear();
 }
+
+void Headers::clear() {
+    headers.clear();
+}

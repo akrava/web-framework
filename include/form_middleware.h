@@ -29,4 +29,9 @@ public:
      * parse form in http request
      */
     void exec();
+
+    /**
+     * delete all data, saved in internal values, set to default
+     */
+    void clear() { Middleware::clear(); }
 };

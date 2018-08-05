@@ -17,3 +17,7 @@ void MessageBody::setBody(std::string & body) {
 std::string MessageBody::getBody() {
     return body;
 }
+
+void MessageBody::clear() {
+    body.clear();
+}

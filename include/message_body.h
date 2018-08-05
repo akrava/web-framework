@@ -38,4 +38,9 @@ public:
      *      http body
      */
     std::string getBody();
+
+    /**
+     * delete all data
+     */
+    void clear();
 };

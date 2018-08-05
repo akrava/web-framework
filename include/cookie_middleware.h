@@ -46,4 +46,9 @@ public:
      * set response cookies in response headers
      */
     void insertInResponse();
+
+    /**
+     * delete all data, saved in internal values, set to default
+     */
+     void clear();
 };

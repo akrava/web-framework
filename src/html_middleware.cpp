@@ -31,3 +31,9 @@ std::string HtmlMiddleware::getView() {
 HtmlMiddleware::~HtmlMiddleware() {
     delete context;
 }
+
+void HtmlMiddleware::clear() {
+    Middleware::clear();
+    view.clear();
+    if (map) map->clear();
+}

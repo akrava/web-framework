@@ -54,3 +54,8 @@ void CookieMiddleware::insertInResponse() {
     }
     if (!responseCookies.empty()) response->getHeaders()->add("Set-Cookie", value.c_str());
 }
+
+void CookieMiddleware::clear() {
+    Middleware::clear();
+    responseCookies.clear();
+}

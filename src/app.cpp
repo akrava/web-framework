@@ -26,7 +26,7 @@ bool App::init() {
     try {
         socket.init();
     } catch (RuntimeException & err) {
-        std::cerr << err.what() << std::endl;
+        cerr << err.what() << endl;
         log << err.what();
         return false;
     }
@@ -51,8 +51,6 @@ void App::addMiddleware(Middleware * middleware) {
 }
 
 void App::addPermanentlyRedirect(const char * uri, const char * target) {
-    //RedirectResponse res = RedirectResponse();
-    //res.setPermanent();
     redirects.emplace_back(uri, target);
     redirects.back().setPermanent();
     log << "Added permanently redirect: " + string{uri} + " to " + target;
@@ -98,6 +96,7 @@ bool App::run() {
             }
         }
         for (auto * cur : middlewareList) {
+            cur->clear();
             cur->setContent(context.getRequest(), context.getResponse());
             if (cur->autoExec()) cur->exec();
         }

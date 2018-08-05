@@ -90,4 +90,9 @@ public:
      *      name id
      */
     std::string getNameID();
+
+    /**
+     * delete all data, saved in internal values, set to default
+     */
+    virtual void clear();
 };
