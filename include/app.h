@@ -46,7 +46,7 @@ public:
      * @param logFilePath
      *      if you want to create log file, give a file path, or null otherwise
      */
-    explicit App(std::string & ip, int port = 80, bool isIPv6 = false, const char * logFilePath = nullptr);
+    explicit App(const char * ip = "127.0.0.1", int port = 80, bool isIPv6 = false, const char * logFilePath = nullptr);
 
     /**
      * Create a new web application, by command line arguments using InitParams object

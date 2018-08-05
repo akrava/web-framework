@@ -29,7 +29,7 @@ public:
      * Filling object with host address information to do method init in future
      *
      * @param ip
-     *      host address ip as string (IPv4 or IPv6)
+     *      host address ip (IPv4 or IPv6)
      *
      * @param port
      *      host address port
@@ -37,7 +37,7 @@ public:
      * @param isIPv6
      *      if argument ip is version 6 set true, false otherwise
      */
-    Socket(std::string ip, int port, bool isIPv6);
+    Socket(const char * ip, int port, bool isIPv6);
 
     /**
      * closing opened host socket

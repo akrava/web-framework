@@ -6,7 +6,7 @@
 
 using namespace std;
 
-App::App(string & ip, int port, bool isIPv6, const char *logFilePath)
+App::App(const char * ip, int port, bool isIPv6, const char *logFilePath)
         : socket(ip, port, isIPv6), log(logFilePath)
 {
     handlersRoutes = unordered_map<string, Handler *>();

@@ -9,7 +9,7 @@
 
 using namespace std;
 
-Socket::Socket(string ip, int port, bool isIPv6) {
+Socket::Socket(const char * ip, int port, bool isIPv6) {
     this->ip = ip;
     this->port = port;
     this->ipv6 = isIPv6;
