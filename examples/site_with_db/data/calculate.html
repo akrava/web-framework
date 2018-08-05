@@ -1,0 +1,55 @@
+<p class="first">Розрахунок вартості доставки</p>
+<form id="calculate" action="{{uri_calculate}}" method="POST">
+    <div class="wrapper table">
+        <table class="data">
+            <tr class="calculate row">
+                <td class="name">Місто відправник</td>
+                <td class="value">
+                    <select id="departure" required name="departure">
+                        {{#cities}}
+                        <option value="{{id}}">{{name}}</option>
+                        {{/cities}}
+                    </select>
+                </td>
+            </tr>
+            <tr class="calculate row">
+                <td class="name">Місто одержувач</td>
+                <td class="value">
+                    <select id="arrive" required name="arrive">
+                        {{#cities}}
+                        <option value="{{id}}">{{name}}</option>
+                        {{/cities}}
+                    </select>
+                </td>
+            </tr>
+            <tr class="calculate row">
+                <td class="name">Вид відправлення</td>
+                <td class="value">
+                    <select id="cargo_type" required name="cargo_type">
+                        {{#cargo_types}}
+                        <option value="{{id}}">{{name}}</option>
+                        {{/cargo_types}}
+                    </select>
+                </td>
+            </tr>
+            <tr class="calculate row">
+                <td class="name">Фактична вага</td>
+                <td class="value">
+                    <input required id="weight" name="weight" type="number" step=".01"><label for="weight">кг</label>
+                </td>
+            </tr>
+            <tr class="calculate row">
+                <td class="name">Габарати вантажу, см</td>
+                <td class="value">
+                    <input required id="width" name="width" type="number" step=".01"><label for="width">Ш</label>
+                    <input required id="height" name="height" type="number" step=".01"><label for="height">В</label>
+                    <input required id="length" name="length" type="number" step=".01"><label for="length">Г</label>
+                </td>
+            </tr>
+        </table>
+        <div class="send-table">
+            <input type="submit" value="Розрахувати вартість">
+            <input type="reset" value="Очистити">
+        </div>
+    </div>
+</form>
