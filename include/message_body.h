@@ -24,6 +24,14 @@ public:
     MessageBody(std::string & body);
 
     /**
+     * Create http body from input string
+     *
+     * @param body
+     *      input string
+     */
+    MessageBody(const char * body);
+
+    /**
      * set http body as string
      *
      * @param body
