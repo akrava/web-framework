@@ -102,26 +102,28 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">public</span>:</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <a class="code" href="classResponse.html#aa9b6e391d77fce8daca8bac13730ec8e">Response</a>();</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <a class="code" href="classResponse.html#aa9b6e391d77fce8daca8bac13730ec8e">Response</a>(<a class="code" href="classHTTP.html#a1c8cb74462f162826b91c3c14afae23a">HTTP::Version</a> version, <span class="keywordtype">int</span> status, <a class="code" href="classHeaders.html">Headers</a> &amp; headers, <a class="code" href="classMessageBody.html">MessageBody</a> &amp; body);</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <a class="code" href="classResponse.html#a2a4a6403aaefce73725f17cf63896f84">~Response</a>();</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classResponse.html#a69491a96e5de5676387be620d123100d">setVersion</a>(<a class="code" href="classHTTP.html#a1c8cb74462f162826b91c3c14afae23a">HTTP::Version</a> version);</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classResponse.html#a74720570239e4c20409813f00263edf8">setStatus</a>(<span class="keywordtype">int</span> status);</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classResponse.html#a1a2f10df7f5e4f68d9058ac896b10185">setHeaders</a>(<a class="code" href="classHeaders.html">Headers</a> &amp; headers);</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classResponse.html#a289e9ceae9fdf09882fe140a69be5f84">setBody</a>(<a class="code" href="classMessageBody.html">MessageBody</a> &amp; body);</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <a class="code" href="classHTTP.html#a1c8cb74462f162826b91c3c14afae23a">HTTP::Version</a> <a class="code" href="classResponse.html#a38f6ea697935cd1204e588d0a9d2f055">getVersion</a>();</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classResponse.html#add38d1612d2e70e25257697eb1a3f578">getStatus</a>();</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <a class="code" href="classHeaders.html">Headers</a> * <a class="code" href="classResponse.html#adf54221c2433ca22da5124429e5f6b72">getHeaders</a>();</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <a class="code" href="classMessageBody.html">MessageBody</a> * <a class="code" href="classResponse.html#ada27e6fd073292030302dc4ff34fb60f">getBody</a>();</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;};</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <a class="code" href="classResponse.html#aa9b6e391d77fce8daca8bac13730ec8e">Response</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> * body);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <a class="code" href="classResponse.html#aa9b6e391d77fce8daca8bac13730ec8e">Response</a>(<a class="code" href="classHTTP.html#a1c8cb74462f162826b91c3c14afae23a">HTTP::Version</a> version, <span class="keywordtype">int</span> status, <a class="code" href="classHeaders.html">Headers</a> &amp; headers, <a class="code" href="classMessageBody.html">MessageBody</a> &amp; body);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <a class="code" href="classResponse.html#a2a4a6403aaefce73725f17cf63896f84">~Response</a>();</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classResponse.html#a69491a96e5de5676387be620d123100d">setVersion</a>(<a class="code" href="classHTTP.html#a1c8cb74462f162826b91c3c14afae23a">HTTP::Version</a> version);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classResponse.html#a74720570239e4c20409813f00263edf8">setStatus</a>(<span class="keywordtype">int</span> status);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classResponse.html#a1a2f10df7f5e4f68d9058ac896b10185">setHeaders</a>(<a class="code" href="classHeaders.html">Headers</a> &amp; headers);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classResponse.html#a289e9ceae9fdf09882fe140a69be5f84">setBody</a>(<a class="code" href="classMessageBody.html">MessageBody</a> &amp; body);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <a class="code" href="classHTTP.html#a1c8cb74462f162826b91c3c14afae23a">HTTP::Version</a> <a class="code" href="classResponse.html#a38f6ea697935cd1204e588d0a9d2f055">getVersion</a>();</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classResponse.html#add38d1612d2e70e25257697eb1a3f578">getStatus</a>();</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <a class="code" href="classHeaders.html">Headers</a> * <a class="code" href="classResponse.html#adf54221c2433ca22da5124429e5f6b72">getHeaders</a>();</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    <a class="code" href="classMessageBody.html">MessageBody</a> * <a class="code" href="classResponse.html#ada27e6fd073292030302dc4ff34fb60f">getBody</a>();</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;};</div>
 <div class="ttc" id="classMessageBody_html"><div class="ttname"><a href="classMessageBody.html">MessageBody</a></div><div class="ttdoc">wrapper class for http body </div><div class="ttdef"><b>Definition:</b> message_body.h:10</div></div>
 <div class="ttc" id="classResponse_html_aa9b6e391d77fce8daca8bac13730ec8e"><div class="ttname"><a href="classResponse.html#aa9b6e391d77fce8daca8bac13730ec8e">Response::Response</a></div><div class="ttdeci">Response()</div></div>
 <div class="ttc" id="classResponse_html"><div class="ttname"><a href="classResponse.html">Response</a></div><div class="ttdoc">class wrapper of HTTP response </div><div class="ttdef"><b>Definition:</b> response.h:12</div></div>

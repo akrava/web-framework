@@ -100,7 +100,7 @@ Inheritance diagram for Response:</div>
 <div class="dyncontent">
 <div class="center"><img src="classResponse__inherit__graph.png" border="0" usemap="#Response_inherit__map" alt="Inheritance graph"/></div>
 <map name="Response_inherit__map" id="Response_inherit__map">
-<area shape="rect" id="node2" href="classDefaultResponse.html" title="Response class which is intended to make sample html pages on status codes. " alt="" coords="5,307,147,384"/><area shape="rect" id="node3" href="classRedirectResponse.html" title="Response class which is intended to make http redirects. " alt="" coords="171,277,321,413"/></map>
+<area shape="rect" id="node2" href="classDefaultResponse.html" title="Response class which is intended to make sample html pages on status codes. " alt="" coords="5,323,147,400"/><area shape="rect" id="node3" href="classRedirectResponse.html" title="Response class which is intended to make http redirects. " alt="" coords="171,293,321,429"/></map>
 </div>
 <div class="dynheader">
 Collaboration diagram for Response:</div>
@@ -114,6 +114,8 @@ Collaboration diagram for Response:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:aa9b6e391d77fce8daca8bac13730ec8e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classResponse.html#aa9b6e391d77fce8daca8bac13730ec8e">Response</a> ()</td></tr>
 <tr class="separator:aa9b6e391d77fce8daca8bac13730ec8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a61843a26013e8a6833b40f694aecedf7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classResponse.html#a61843a26013e8a6833b40f694aecedf7">Response</a> (const char *body)</td></tr>
+<tr class="separator:a61843a26013e8a6833b40f694aecedf7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1ed0e4d732dddf227f72464ae11e4802"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classResponse.html#a1ed0e4d732dddf227f72464ae11e4802">Response</a> (<a class="el" href="classHTTP.html#a1c8cb74462f162826b91c3c14afae23a">HTTP::Version</a> version, int status, <a class="el" href="classHeaders.html">Headers</a> &amp;headers, <a class="el" href="classMessageBody.html">MessageBody</a> &amp;body)</td></tr>
 <tr class="separator:a1ed0e4d732dddf227f72464ae11e4802"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2a4a6403aaefce73725f17cf63896f84"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classResponse.html#a2a4a6403aaefce73725f17cf63896f84">~Response</a> ()</td></tr>
@@ -152,6 +154,29 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Create empty response with code status 501 and http version HTTP_UNDEFINED </p>
+
+</div>
+</div>
+<a class="anchor" id="a61843a26013e8a6833b40f694aecedf7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Response::Response </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>body</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Create response with body s <a class="el" href="classMessageBody.html" title="wrapper class for http body ">MessageBody</a> object and other default params: http version 1.1, ttp response code status 200 and empty headers</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">body</td><td>http response body as <a class="el" href="classMessageBody.html" title="wrapper class for http body ">MessageBody</a> object </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

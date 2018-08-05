@@ -1,18 +1,18 @@
-Warning: ignoring unsupported tag `ALLOW_UNICODE_NAMES    =' at line 79, file /home/travis/build/akrava/web-framework/Doxyfile_html
-Warning: ignoring unsupported tag `OUTPUT_TEXT_DIRECTION  =' at line 102, file /home/travis/build/akrava/web-framework/Doxyfile_html
-Warning: ignoring unsupported tag `TOC_INCLUDE_HEADINGS   =' at line 322, file /home/travis/build/akrava/web-framework/Doxyfile_html
-Warning: ignoring unsupported tag `GROUP_NESTED_COMPOUNDS =' at line 379, file /home/travis/build/akrava/web-framework/Doxyfile_html
-Warning: ignoring unsupported tag `HIDE_COMPOUND_REFERENCE=' at line 550, file /home/travis/build/akrava/web-framework/Doxyfile_html
-Warning: ignoring unsupported tag `WARN_AS_ERROR          =' at line 774, file /home/travis/build/akrava/web-framework/Doxyfile_html
-Warning: ignoring unsupported tag `HTML_DYNAMIC_MENUS     =' at line 1246, file /home/travis/build/akrava/web-framework/Doxyfile_html
-Warning: ignoring unsupported tag `LATEX_EXTRA_STYLESHEET =' at line 1762, file /home/travis/build/akrava/web-framework/Doxyfile_html
-Warning: ignoring unsupported tag `LATEX_TIMESTAMP        =' at line 1829, file /home/travis/build/akrava/web-framework/Doxyfile_html
-Warning: ignoring unsupported tag `RTF_SOURCE_CODE        =' at line 1895, file /home/travis/build/akrava/web-framework/Doxyfile_html
-Warning: ignoring unsupported tag `MAN_SUBDIR             =' at line 1930, file /home/travis/build/akrava/web-framework/Doxyfile_html
-Warning: ignoring unsupported tag `DOCBOOK_PROGRAMLISTING =' at line 1993, file /home/travis/build/akrava/web-framework/Doxyfile_html
-Warning: ignoring unsupported tag `PLANTUML_JAR_PATH      =' at line 2422, file /home/travis/build/akrava/web-framework/Doxyfile_html
-Warning: ignoring unsupported tag `PLANTUML_CFG_FILE      =' at line 2427, file /home/travis/build/akrava/web-framework/Doxyfile_html
-Warning: ignoring unsupported tag `PLANTUML_INCLUDE_PATH  =' at line 2432, file /home/travis/build/akrava/web-framework/Doxyfile_html
+Warning: ignoring unsupported tag `ALLOW_UNICODE_NAMES    =' at line 79, file /home/travis/build/akrava/web-framework/docs/Doxyfile_html
+Warning: ignoring unsupported tag `OUTPUT_TEXT_DIRECTION  =' at line 102, file /home/travis/build/akrava/web-framework/docs/Doxyfile_html
+Warning: ignoring unsupported tag `TOC_INCLUDE_HEADINGS   =' at line 322, file /home/travis/build/akrava/web-framework/docs/Doxyfile_html
+Warning: ignoring unsupported tag `GROUP_NESTED_COMPOUNDS =' at line 379, file /home/travis/build/akrava/web-framework/docs/Doxyfile_html
+Warning: ignoring unsupported tag `HIDE_COMPOUND_REFERENCE=' at line 550, file /home/travis/build/akrava/web-framework/docs/Doxyfile_html
+Warning: ignoring unsupported tag `WARN_AS_ERROR          =' at line 774, file /home/travis/build/akrava/web-framework/docs/Doxyfile_html
+Warning: ignoring unsupported tag `HTML_DYNAMIC_MENUS     =' at line 1246, file /home/travis/build/akrava/web-framework/docs/Doxyfile_html
+Warning: ignoring unsupported tag `LATEX_EXTRA_STYLESHEET =' at line 1762, file /home/travis/build/akrava/web-framework/docs/Doxyfile_html
+Warning: ignoring unsupported tag `LATEX_TIMESTAMP        =' at line 1829, file /home/travis/build/akrava/web-framework/docs/Doxyfile_html
+Warning: ignoring unsupported tag `RTF_SOURCE_CODE        =' at line 1895, file /home/travis/build/akrava/web-framework/docs/Doxyfile_html
+Warning: ignoring unsupported tag `MAN_SUBDIR             =' at line 1930, file /home/travis/build/akrava/web-framework/docs/Doxyfile_html
+Warning: ignoring unsupported tag `DOCBOOK_PROGRAMLISTING =' at line 1993, file /home/travis/build/akrava/web-framework/docs/Doxyfile_html
+Warning: ignoring unsupported tag `PLANTUML_JAR_PATH      =' at line 2422, file /home/travis/build/akrava/web-framework/docs/Doxyfile_html
+Warning: ignoring unsupported tag `PLANTUML_CFG_FILE      =' at line 2427, file /home/travis/build/akrava/web-framework/docs/Doxyfile_html
+Warning: ignoring unsupported tag `PLANTUML_INCLUDE_PATH  =' at line 2432, file /home/travis/build/akrava/web-framework/docs/Doxyfile_html
 Searching for include files...
 Searching for example files...
 Searching for images...
@@ -354,5 +354,5 @@ Patching output file 45/48
 Patching output file 46/48
 Patching output file 47/48
 Patching output file 48/48
-lookup cache used 330/65536 hits=1356 misses=345
+lookup cache used 338/65536 hits=1392 misses=353
 finished...

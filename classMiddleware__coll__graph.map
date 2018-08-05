@@ -1,4 +1,4 @@
 <map id="Middleware" name="Middleware">
-<area shape="rect" id="node2" href="$classResponse.html" title="class wrapper of HTTP response " alt="" coords="5,5,115,229"/>
-<area shape="rect" id="node3" href="$classRequest.html" title="class wrapper of HTTP request " alt="" coords="139,27,281,207"/>
+<area shape="rect" id="node2" href="$classResponse.html" title="class wrapper of HTTP response " alt="" coords="5,6,115,245"/>
+<area shape="rect" id="node3" href="$classRequest.html" title="class wrapper of HTTP request " alt="" coords="139,35,281,215"/>
 </map>

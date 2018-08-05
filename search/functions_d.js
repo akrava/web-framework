@@ -17,5 +17,5 @@ var searchData=
   ['settemporaryredirect',['setTemporaryRedirect',['../classContext.html#a4d4803bcd72832cc87d140567264359f',1,'Context']]],
   ['setversion',['setVersion',['../classResponse.html#a69491a96e5de5676387be620d123100d',1,'Response']]],
   ['setview',['setView',['../classHtmlMiddleware.html#af3baa498a97bb645e8623c518f2a1e67',1,'HtmlMiddleware']]],
-  ['socket',['Socket',['../classSocket.html#a0ca7a4ef8732a3f91cbeb7cd9eb06917',1,'Socket::Socket(InitParams params)'],['../classSocket.html#a9d576e5bb9a364d0473edfbd4450cd2f',1,'Socket::Socket(std::string ip, int port, bool isIPv6)']]]
+  ['socket',['Socket',['../classSocket.html#a0ca7a4ef8732a3f91cbeb7cd9eb06917',1,'Socket::Socket(InitParams params)'],['../classSocket.html#abca0d8d8feb926b68f746af7f42a0ec1',1,'Socket::Socket(const char *ip, int port, bool isIPv6)']]]
 ];

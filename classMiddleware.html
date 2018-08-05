@@ -101,14 +101,14 @@ Inheritance diagram for Middleware:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMiddleware__inherit__graph.png" border="0" usemap="#Middleware_inherit__map" alt="Inheritance graph"/></div>
 <map name="Middleware_inherit__map" id="Middleware_inherit__map">
-<area shape="rect" id="node2" href="classCookieMiddleware.html" title="inherited class to parse cookie from http request " alt="" coords="5,292,153,428"/><area shape="rect" id="node3" href="classFormMiddleware.html" title="inherited class to parse application/x&#45;www&#45;form&#45;urlencoded " alt="" coords="179,307,317,413"/><area shape="rect" id="node4" href="classHtmlMiddleware.html" title="inherited class to render html pages from templates " alt="" coords="341,277,485,443"/><area shape="rect" id="node5" href="classJsonMiddleware.html" title="inherited class to perform any actions with json data " alt="" coords="509,277,656,443"/></map>
+<area shape="rect" id="node2" href="classCookieMiddleware.html" title="inherited class to parse cookie from http request " alt="" coords="5,309,153,459"/><area shape="rect" id="node3" href="classFormMiddleware.html" title="inherited class to parse application/x&#45;www&#45;form&#45;urlencoded " alt="" coords="179,323,317,445"/><area shape="rect" id="node4" href="classHtmlMiddleware.html" title="inherited class to render html pages from templates " alt="" coords="341,294,485,474"/><area shape="rect" id="node5" href="classJsonMiddleware.html" title="inherited class to perform any actions with json data " alt="" coords="509,294,656,474"/></map>
 </div>
 <div class="dynheader">
 Collaboration diagram for Middleware:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMiddleware__coll__graph.png" border="0" usemap="#Middleware_coll__map" alt="Collaboration graph"/></div>
 <map name="Middleware_coll__map" id="Middleware_coll__map">
-<area shape="rect" id="node2" href="classResponse.html" title="class wrapper of HTTP response " alt="" coords="5,5,115,229"/><area shape="rect" id="node3" href="classRequest.html" title="class wrapper of HTTP request " alt="" coords="139,27,281,207"/></map>
+<area shape="rect" id="node2" href="classResponse.html" title="class wrapper of HTTP response " alt="" coords="5,6,115,245"/><area shape="rect" id="node3" href="classRequest.html" title="class wrapper of HTTP request " alt="" coords="139,35,281,215"/></map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -132,6 +132,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a37d46da167012da356cc400e425de92c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aec55361dbc6bdbad3930a15cefebfcfb"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMiddleware.html#aec55361dbc6bdbad3930a15cefebfcfb">getNameID</a> ()</td></tr>
 <tr class="separator:aec55361dbc6bdbad3930a15cefebfcfb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7471bbdee18140fdcea8440401f8466"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMiddleware.html#af7471bbdee18140fdcea8440401f8466">clear</a> ()</td></tr>
+<tr class="separator:af7471bbdee18140fdcea8440401f8466"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -252,6 +254,32 @@ Protected Attributes</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>true, if need do exec with current request, false otherwise </dd></dl>
 
 <p>Implemented in <a class="el" href="classJsonMiddleware.html#a05c891e2888c2be7047ba87f4a0547e1">JsonMiddleware</a>, <a class="el" href="classHtmlMiddleware.html#a76ed61e165b494f1c88a0fc187299e55">HtmlMiddleware</a>, <a class="el" href="classCookieMiddleware.html#ab98db48b0cace8ef0a9154cab54cf46f">CookieMiddleware</a>, and <a class="el" href="classFormMiddleware.html#ae53e6df2b45356f521db65518f191636">FormMiddleware</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="af7471bbdee18140fdcea8440401f8466"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void Middleware::clear </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>delete all data, saved in internal values, set to default </p>
+
+<p>Reimplemented in <a class="el" href="classHtmlMiddleware.html#a59f4f0b6f47810e9d61d280a4ab3b1e4">HtmlMiddleware</a>, <a class="el" href="classJsonMiddleware.html#aa0213dd235fa80ff2f85adc8fa5f1e45">JsonMiddleware</a>, <a class="el" href="classCookieMiddleware.html#a176dfb146353f79f73d18879819129c3">CookieMiddleware</a>, and <a class="el" href="classFormMiddleware.html#af084a6aa3dfef7a16b4f7811a426ed3d">FormMiddleware</a>.</p>
 
 </div>
 </div>

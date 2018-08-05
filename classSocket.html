@@ -107,8 +107,8 @@ Collaboration diagram for Socket:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a0ca7a4ef8732a3f91cbeb7cd9eb06917"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSocket.html#a0ca7a4ef8732a3f91cbeb7cd9eb06917">Socket</a> (<a class="el" href="classInitParams.html">InitParams</a> params)</td></tr>
 <tr class="separator:a0ca7a4ef8732a3f91cbeb7cd9eb06917"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9d576e5bb9a364d0473edfbd4450cd2f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSocket.html#a9d576e5bb9a364d0473edfbd4450cd2f">Socket</a> (std::string ip, int port, bool isIPv6)</td></tr>
-<tr class="separator:a9d576e5bb9a364d0473edfbd4450cd2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abca0d8d8feb926b68f746af7f42a0ec1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSocket.html#abca0d8d8feb926b68f746af7f42a0ec1">Socket</a> (const char *ip, int port, bool isIPv6)</td></tr>
+<tr class="separator:abca0d8d8feb926b68f746af7f42a0ec1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeac4eb6379a543d38ed88977d3b6630a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSocket.html#aeac4eb6379a543d38ed88977d3b6630a">~Socket</a> ()</td></tr>
 <tr class="separator:aeac4eb6379a543d38ed88977d3b6630a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaa2c673cbcfcaf3141d22ffb62be6eb0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSocket.html#aaa2c673cbcfcaf3141d22ffb62be6eb0">init</a> ()</td></tr>
@@ -147,14 +147,14 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a9d576e5bb9a364d0473edfbd4450cd2f"></a>
+<a class="anchor" id="abca0d8d8feb926b68f746af7f42a0ec1"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">Socket::Socket </td>
           <td>(</td>
-          <td class="paramtype">std::string&#160;</td>
+          <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>ip</em>, </td>
         </tr>
         <tr>
@@ -179,7 +179,7 @@ Public Member Functions</h2></td></tr>
 <p>Filling object with host address information to do method init in future</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">ip</td><td>host address ip as string (IPv4 or IPv6)</td></tr>
+    <tr><td class="paramname">ip</td><td>host address ip (IPv4 or IPv6)</td></tr>
     <tr><td class="paramname">port</td><td>host address port</td></tr>
     <tr><td class="paramname">isIPv6</td><td>if argument ip is version 6 set true, false otherwise </td></tr>
   </table>
