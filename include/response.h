@@ -21,6 +21,16 @@ public:
     Response();
 
     /**
+     * Create response with body s MessageBody object and other
+     *      default params: http version 1.1, ttp response code
+     *      status 200 and empty headers
+     *
+     * @param body
+     *      http response body as MessageBody object
+     */
+    Response(const char * body);
+
+    /**
      * Create response and fill it with declared arguments
      *
      * @param version

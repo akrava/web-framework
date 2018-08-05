@@ -9,6 +9,13 @@ Response::Response() {
 	body = new MessageBody();
 }
 
+Response::Response(const char * body) {
+	version = HTTP::Version::HTTP_1_1;
+	status = 200;
+	headers = new Headers();
+	this->body = new MessageBody(body);
+}
+
 Response::Response(HTTP::Version version, int status, Headers & headers, MessageBody & body) {
 	this->version = version;
 	this->status = status;
