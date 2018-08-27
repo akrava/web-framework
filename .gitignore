@@ -52,5 +52,7 @@ Mkfile.old
 dkms.conf
 
 # temporary build parts
+build/
 cmake-build-*/
 .idea/
+.vscode/

@@ -1,6 +1,6 @@
-# JSON for Modern C++
+# Web framework on C++
 
-These pages contain the API documentation of JSON for Modern C++, a C++11 header-only JSON class.
+These pages contain the documentation of simple web framework on c++ designed to easily create web pages, etc
 
 ## Contents
 
