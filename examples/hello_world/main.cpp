@@ -6,8 +6,7 @@ using namespace std;
 class HelloWorldHandler : public Handler {
 public:
     void exec() {
-        auto * res = new Response("Hello world");
-        this->getContext()->setResponse(res);
+        this->getContext()->setResponse(new Response("Hello world"));
     }
 };
 
@@ -19,9 +18,8 @@ int main () {
         cerr << "error opening app at " << IP << ":" << PORT << endl;
         return EXIT_FAILURE;
     } else {
-        cout << "app opened successfully at " << IP << ":" << PORT << endl;
+        cout << "App opened successfully at " << IP << ":" << PORT << endl;
     }
-    auto * handler = new HelloWorldHandler();
-    hello_world.addHandler(handler);
+    hello_world.addHandler(new HelloWorldHandler());
     return hello_world.run();
 }
