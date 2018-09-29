@@ -42,7 +42,7 @@ public:
     void exec() {
         getContext()->getResponse()->getHeaders()->add("Content-Type", "text/html; charset=utf-8");
         string template_str;
-        bool found_template = FileHandler::loadFile((cwdir + __PATH_TO_DATA"/common.html").c_str(), template_str);
+        bool found_template = FileHandler::loadFile((cwdir + __PATH_TO_DATA"/common.mustache").c_str(), template_str);
         string data = "<html><head><title>";
         data += to_string(getContext()->getResponse()->getStatus());
         data += " " + HTTP::getReasonPhrase(getContext()->getResponse()->getStatus());
@@ -192,7 +192,7 @@ public:
         auto body = html->getContext()->find("content");
 
         string template_index;
-        if (!FileHandler::loadFile((cwdir + __PATH_TO_DATA"/index.html").c_str(), template_index)) return;
+        if (!FileHandler::loadFile((cwdir + __PATH_TO_DATA"/index.mustache").c_str(), template_index)) return;
         mstch::map index_content;
         index_content.insert({"header", string{"Logistic company #1"}});
         
@@ -227,7 +227,7 @@ public:
         auto body = html->getContext()->find("content");
 
         string template_track;
-        if (!FileHandler::loadFile((cwdir + __PATH_TO_DATA"/track.html").c_str(), template_track)) return;
+        if (!FileHandler::loadFile((cwdir + __PATH_TO_DATA"/track.mustache").c_str(), template_track)) return;
         mstch::map track_content;
 
         string num;
@@ -324,7 +324,7 @@ public:
         auto body = html->getContext()->find("content");
 
         string template_calculate;
-        if (!FileHandler::loadFile((cwdir + __PATH_TO_DATA"/calculate.html").c_str(), template_calculate)) return;
+        if (!FileHandler::loadFile((cwdir + __PATH_TO_DATA"/calculate.mustache").c_str(), template_calculate)) return;
         mstch::map calculate_content;
 
         vector<vector<string>> result_cities;
@@ -489,7 +489,7 @@ public:
         if (weight <= 0 || height <= 0 || length <= 0 || width <= 0) error = true;
 
         string template_info;
-        if (!FileHandler::loadFile((cwdir + __PATH_TO_DATA"/info.html").c_str(), template_info)) return;
+        if (!FileHandler::loadFile((cwdir + __PATH_TO_DATA"/info.mustache").c_str(), template_info)) return;
         mstch::map info_content{{"header", string{"Вартість доставки"}}};
 
         if (error) {
@@ -527,7 +527,7 @@ public:
         auto body = html->getContext()->find("content");
 
         string template_calculate;
-        if (!FileHandler::loadFile((cwdir + __PATH_TO_DATA"/estimate.html").c_str(), template_calculate)) return;
+        if (!FileHandler::loadFile((cwdir + __PATH_TO_DATA"/estimate.mustache").c_str(), template_calculate)) return;
         mstch::map calculate_content;
 
         vector<vector<string>> result_cities;
@@ -625,7 +625,7 @@ public:
         }
 
         string template_info;
-        if (!FileHandler::loadFile((cwdir + __PATH_TO_DATA"/info.html").c_str(), template_info)) return;
+        if (!FileHandler::loadFile((cwdir + __PATH_TO_DATA"/info.mustache").c_str(), template_info)) return;
         mstch::map info_content{{"header", string{"Термін доставки вантажу"}}};
 
         if (error) {
@@ -672,7 +672,7 @@ public:
         auto body = html->getContext()->find("content");
 
         string template_map;
-        if (!FileHandler::loadFile((cwdir + __PATH_TO_DATA"/map.html").c_str(), template_map)) return;
+        if (!FileHandler::loadFile((cwdir + __PATH_TO_DATA"/map.mustache").c_str(), template_map)) return;
         mstch::map map_content;
 
         string curTarget;
@@ -775,7 +775,7 @@ public:
         if (html->getView().empty()) return;
         auto body = html->getContext()->find("content");
         string template_order;
-        if (!FileHandler::loadFile((cwdir + __PATH_TO_DATA"/order.html").c_str(), template_order)) return;
+        if (!FileHandler::loadFile((cwdir + __PATH_TO_DATA"/order.mustache").c_str(), template_order)) return;
         mstch::map order_content;
 
         vector<vector<string>> result_cities;
@@ -863,7 +863,7 @@ public:
         if (!res_query.empty()) error = true;
 
         string template_info;
-        if (!FileHandler::loadFile((cwdir + __PATH_TO_DATA"/info.html").c_str(), template_info)) return;
+        if (!FileHandler::loadFile((cwdir + __PATH_TO_DATA"/info.mustache").c_str(), template_info)) return;
         mstch::map info_content{{"header", string{"Результат заповнення заявки"}}};
 
         if (error) {
@@ -920,7 +920,7 @@ public:
         if (result_header.size() != 1 || result_header[0].size() != 1) return;
 
         string template_info;
-        if (!FileHandler::loadFile((cwdir + __PATH_TO_DATA"/info.html").c_str(), template_info)) return;
+        if (!FileHandler::loadFile((cwdir + __PATH_TO_DATA"/info.mustache").c_str(), template_info)) return;
         mstch::map info_content{{"header", result_header[0][0]}};
 
         info_content.insert({"content", result_data[0][0]});
@@ -946,7 +946,7 @@ public:
         auto body = html->getContext()->find("content");
 
         string template_news;
-        if (!FileHandler::loadFile((cwdir + __PATH_TO_DATA"/news.html").c_str(), template_news)) return;
+        if (!FileHandler::loadFile((cwdir + __PATH_TO_DATA"/news.mustache").c_str(), template_news)) return;
         mstch::map news_content;
 
         news_content.insert({"uri_news", request->getURI()->getPath()});
@@ -1016,7 +1016,7 @@ public:
         auto body = html->getContext()->find("content");
 
         string template_order;
-        if (!FileHandler::loadFile((cwdir + __PATH_TO_DATA"/feedback.html").c_str(), template_order)) return;
+        if (!FileHandler::loadFile((cwdir + __PATH_TO_DATA"/feedback.mustache").c_str(), template_order)) return;
         mstch::map order_content;
 
         vector<vector<string>> result_uri;
@@ -1079,7 +1079,7 @@ public:
         if (!res_query.empty()) error = true;
 
         string template_info;
-        if (!FileHandler::loadFile((cwdir + __PATH_TO_DATA"/info.html").c_str(), template_info)) return;
+        if (!FileHandler::loadFile((cwdir + __PATH_TO_DATA"/info.mustache").c_str(), template_info)) return;
         mstch::map info_content{{"header", string{"Feedback"}}};
 
         if (error) {
@@ -1114,7 +1114,7 @@ public:
         auto * json = (JsonMiddleware *) (void *) m_json;
         if (json->getJsonRequest()->empty()) {
             string template_info;
-            if (!FileHandler::loadFile((cwdir + __PATH_TO_DATA"/info.html").c_str(), template_info)) return;
+            if (!FileHandler::loadFile((cwdir + __PATH_TO_DATA"/info.mustache").c_str(), template_info)) return;
             mstch::map info_content{{"header", string{"API"}}};
 
 
@@ -1204,74 +1204,41 @@ int main (int argc, char ** argv) {
     }
     App website = App(cur);
     website.init();
-    auto * common = new HandlerCommon();
-    auto * template_h = new HandlerTemplate();
-    auto * cookie_h =  new HandlerCookie();
-    auto * renderTemplate = new HandlerRenderTemplate();
 
-    auto * index = new HandlerIndex("/", HTTP::Method::GET);
-    auto * track = new HandlerTrack("/track", HTTP::Method::GET);
-    auto * calc = new HandlerCalculate("/calculate", HTTP::Method::GET);
-    auto * calc_post = new HandlerCalculatePost("/calculate_post", HTTP::Method::POST);
-    auto * est = new HandlerEstimate("/estimate", HTTP::Method::GET);
-    auto * est_post = new HandlerEstimatePost("/estimate_post", HTTP::Method::POST);
-    auto * map = new HandlerMap("/map", HTTP::Method::GET);
-    auto * order = new HandlerOrder("/order", HTTP::Method::GET);
-    auto * post_order = new HandlerOrderPost("/order_post", HTTP::Method::POST);
-    auto * about = new HandlerCommonInfo("about_content", "/about", HTTP::Method::GET);
-    auto * privacy = new HandlerCommonInfo("privacy_content", "/privacy_policy", HTTP::Method::GET);
-    auto * news = new HandlerNews("/news", HTTP::Method::GET);
-    auto * feed = new HandlerFeedback("/feedback", HTTP::Method::GET);
-    auto * feed_post = new HandlerFeedbackPost("/feedback_post",  HTTP::Method::POST);
-    auto * time = new HandlerCommonInfo("timetable_content", "/timetable", HTTP::Method::GET);
-    auto * api = new HandlerApi("/api", HTTP::Method::ANY);
+    website.addHandler(new HandlerCommon());
+    website.addHandler(new HandlerTemplate());
+    website.addHandler(new HandlerCookie());
+    website.addHandler(new HandlerRenderTemplate());
 
-    auto * css = new FileHandler("/common.css", (cwdir + __PATH_TO_DATA"/common.css").c_str(), "text/css", false);
-    auto * img = new FileHandler("/logo.jpg", (cwdir + __PATH_TO_DATA"/logo.jpg").c_str(), "image/jpeg", true);
-    auto * banner = new FileHandler("/banner.jpg", (cwdir + __PATH_TO_DATA"/banner.jpg").c_str(), "image/jpeg", true);
-    auto * img_news = new FileHandler("/news.png", (cwdir + __PATH_TO_DATA"/news.png").c_str(), "image/png", true);
+    website.addHandler(new HandlerIndex("/", HTTP::Method::GET));
+    website.addHandler(new HandlerCalculate("/calculate", HTTP::Method::GET));
+    website.addHandler(new HandlerCalculatePost("/calculate_post", HTTP::Method::POST));
+    website.addHandler(new HandlerEstimate("/estimate", HTTP::Method::GET));
+    website.addHandler(new HandlerEstimatePost("/estimate_post", HTTP::Method::POST));
+    website.addHandler(new HandlerMap("/map", HTTP::Method::GET));
+    website.addHandler(new HandlerOrder("/order", HTTP::Method::GET));
+    website.addHandler(new HandlerOrderPost("/order_post", HTTP::Method::POST));
+    website.addHandler(new HandlerCommonInfo("about_content", "/about", HTTP::Method::GET));
+    website.addHandler(new HandlerCommonInfo("privacy_content", "/privacy_policy", HTTP::Method::GET));
+    website.addHandler(new HandlerNews("/news", HTTP::Method::GET));
+    website.addHandler(new HandlerFeedback("/feedback", HTTP::Method::GET));
+    website.addHandler(new HandlerFeedbackPost("/feedback_post",  HTTP::Method::POST));
+    website.addHandler(new HandlerCommonInfo("timetable_content", "/timetable", HTTP::Method::GET));
 
-    website.addHandler(common);
-    website.addHandler(template_h);
-    website.addHandler(cookie_h);
-    website.addHandler(renderTemplate);
-
-    website.addHandler(index);
-    website.addHandler(track);
-    website.addHandler(calc);
-    website.addHandler(calc_post);
-    website.addHandler(est);
-    website.addHandler(est_post);
-    website.addHandler(map);
-    website.addHandler(order);
-    website.addHandler(post_order);
-    website.addHandler(about);
-    website.addHandler(privacy);
-    website.addHandler(news);
-    website.addHandler(feed);
-    website.addHandler(feed_post);
-    website.addHandler(time);
-
-    website.addHandler(api);
-    website.addHandler(track);
-    website.addHandler(css);
-    website.addHandler(img);
-    website.addHandler(banner);
-    website.addHandler(img_news);
+    website.addHandler(new HandlerApi("/api", HTTP::Method::ANY));
+    website.addHandler(new HandlerTrack("/track", HTTP::Method::GET));
+    website.addHandler(new FileHandler("/common.css", (cwdir + __PATH_TO_DATA"/common.css").c_str(), "text/css", false));
+    website.addHandler(new FileHandler("/logo.jpg", (cwdir + __PATH_TO_DATA"/logo.jpg").c_str(), "image/jpeg", true));
+    website.addHandler(new FileHandler("/banner.jpg", (cwdir + __PATH_TO_DATA"/banner.jpg").c_str(), "image/jpeg", true));
+    website.addHandler(new FileHandler("/news.png", (cwdir + __PATH_TO_DATA"/news.png").c_str(), "image/png", true));
 
     website.addPermanentlyRedirect("/index", "/");
 
-    auto * json = new JsonMiddleware("json");
-    auto * cookie = new CookieMiddleware("cookie");
-    auto * form = new FormMiddleware("form");
-    auto * html = new HtmlMiddleware("html");
-    auto * db = new DatabaseMiddleware("db", (cwdir + "/../db/db_file").c_str());
-
-    website.addMiddleware(json);
-    website.addMiddleware(cookie);
-    website.addMiddleware(form);
-    website.addMiddleware(html);
-    website.addMiddleware(db);
+    website.addMiddleware(new JsonMiddleware("json"));
+    website.addMiddleware(new CookieMiddleware("cookie"));
+    website.addMiddleware(new FormMiddleware("form"));
+    website.addMiddleware(new HtmlMiddleware("html"));
+    website.addMiddleware(new DatabaseMiddleware("db", (cwdir + "/../db/db_file").c_str()));
 
     return website.run();
 }

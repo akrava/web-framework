@@ -17,11 +17,11 @@
                     <p>Журнал квитанцій:</p>
                     <ul>
                         {{#history_receipt}}
-                            <li><a href="{{uri_receipt}}?cargo_number={{num}}">{{num}}</a></li>
+                        <li><a href="{{uri_receipt}}?cargo_number={{num}}">{{num}}</a></li>
                         {{/history_receipt}}
                     </ul>
                     {{^history_receipt}}
-                        <span>Ви ще нічого не шукали :(</span>
+                    <span>Ви ще нічого не шукали :(</span>
                     {{/history_receipt}}
                 </div>
             </div>
