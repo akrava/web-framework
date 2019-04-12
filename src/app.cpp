@@ -3,34 +3,40 @@
 #include <iostream>
 #include <parser_http.h>
 #include <default_response.h>
+#include "socket_unix_api.h"
+#include "socket_windows_api.h"
 
 using namespace std;
 
+static SocketAPI * getNetwork();
+
 App::App(const char * ip, int port, bool isIPv6, const char *logFilePath)
-        : socket(ip, port, isIPv6), log(logFilePath)
+        : network(ip, port, isIPv6), log(logFilePath)
 {
     handlersRoutes = unordered_map<string, Handler *>();
     handlersChain = list<Handler *>();
     redirects = list<RedirectResponse>();
     middlewareList = vector<Middleware *>();
+    network.setAPI(getNetwork());
 }
 
-App::App(InitParams & params) : socket(params), log(params.getFilePath().c_str()) {
+App::App(InitParams & params) : network(params), log(params.getFilePath().c_str()) {
     handlersRoutes = unordered_map<string, Handler *>();
     handlersChain = list<Handler *>();
     redirects = list<RedirectResponse>();
     middlewareList = vector<Middleware *>();
+    network.setAPI(getNetwork());
 }
 
 bool App::init() {
     try {
-        socket.init();
+        network.init();
     } catch (RuntimeException & err) {
         cerr << err.what() << endl;
         log << err.what();
         return false;
     }
-    log << "Launched successfully on " + socket.toString();
+    log << "Launched successfully on " + network.toString();
     return true;
 }
 
@@ -78,7 +84,7 @@ bool App::run() {
     while (run) {
         string request_str;
         try {
-            request_str = socket.getData();
+            request_str = network.readData();
         } catch (RuntimeException & err) {
             cerr << err.what() << endl;
             log << err.what();
@@ -91,7 +97,7 @@ bool App::run() {
         for (auto & cur : redirects) {
             if (cur.getRedirectUri() == request->getURI()->getPath()) {
                 string data = ParserHTTP::getStrFromResponse(cur);
-                socket.receiveData(data);
+                network.receiveData(data);
                 continue;
             }
         }
@@ -123,7 +129,7 @@ bool App::run() {
         auto * response = context.getResponse();
         string response_str = ParserHTTP::getStrFromResponse(*response);
         try {
-            socket.receiveData(response_str);
+            network.receiveData(response_str);
         } catch (RuntimeException & err) {
             cerr << err.what() << endl;
             log << err.what();
@@ -139,7 +145,7 @@ bool App::run() {
 
 App::~App() {
     log << "App destroyed";
-    for (auto it : handlersRoutes) {
+    for (auto & it : handlersRoutes) {
         delete it.second;
     }
     for (auto * it : handlersChain) {
@@ -148,4 +154,14 @@ App::~App() {
     for (auto * it : middlewareList) {
         delete it;
     }
+}
+
+static SocketAPI * getNetwork() {
+    #ifdef __linux__
+        return new SocketUnixAPI();
+    #elif _WIN32
+        return new SocketWindowsAPI();
+    #else
+        return null;
+    #endif
 }

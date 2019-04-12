@@ -1,13 +1,12 @@
 #pragma once
 
-#include "response.h"
-#include "response.h"
 #include <string>
 #include <list>
 #include <vector>
 #include <unordered_map>
+#include "response.h"
 #include "handler.h"
-#include "socket.h"
+#include "network.h"
 #include "redirect_response.h"
 #include "log_manager.h"
 #include "middleware.h"
@@ -25,7 +24,8 @@
  *      adjust it.
  */
 class App {
-    Socket socket;
+    // Socket socket;
+    Network network;
     std::unordered_map<std::string, Handler *> handlersRoutes;
     std::list<Handler *> handlersChain;
     std::list<RedirectResponse> redirects;

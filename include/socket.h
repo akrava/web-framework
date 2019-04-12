@@ -23,7 +23,7 @@ public:
      * @param params
      *      object of class InitParams with info about host address
      */
-    Socket(InitParams params);
+    explicit Socket(InitParams params);
 
     /**
      * Filling object with host address information to do method init in future

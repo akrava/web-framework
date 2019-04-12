@@ -15,9 +15,19 @@ public:
      * create RuntimeException with error explanation
      *
      * @param error
-     *      explanation of thrown error
+     *      explanation of thrown error as std::string
      */
     explicit RuntimeException(const std::string & error) {
+        _error = error;
+    }
+
+    /**
+     * create RuntimeException with error explanation
+     *
+     * @param error
+     *      explanation of thrown error as const char *
+     */
+    explicit RuntimeException(const char * error) {
         _error = error;
     }
 
