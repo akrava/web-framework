@@ -1,0 +1,4 @@
+<map id="SocketAPI" name="SocketAPI">
+<area shape="rect" id="node2" href="$classSocketUnixAPI.html" title="{SocketUnixAPI\n||+ ~SocketUnixAPI()\l+ init()\l+ getData()\l+ receiveData()\l}" alt="" coords="5,177,144,298"/>
+<area shape="rect" id="node3" href="$classSocketWindowsAPI.html" title="{SocketWindowsAPI\n||}" alt="" coords="169,199,308,276"/>
+</map>

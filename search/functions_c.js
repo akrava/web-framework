@@ -1,9 +1,4 @@
 var searchData=
 [
-  ['receivedata',['receiveData',['../classSocket.html#a5e5ffe75a37ec1515ff10a37540dedd9',1,'Socket']]],
-  ['redirectresponse',['RedirectResponse',['../classRedirectResponse.html#af2e14f870e5f948d66f355d8790b4048',1,'RedirectResponse']]],
-  ['request',['Request',['../classRequest.html#afaf8d8928de7ffff8a3767589489bd33',1,'Request::Request()'],['../classRequest.html#af254f8559831b8021f477d1f8bd4ee74',1,'Request::Request(HTTP::Method method, std::string &amp;URI, HTTP::Version version, std::string &amp;headers, std::string &amp;body)']]],
-  ['response',['Response',['../classResponse.html#aa9b6e391d77fce8daca8bac13730ec8e',1,'Response::Response()'],['../classResponse.html#a61843a26013e8a6833b40f694aecedf7',1,'Response::Response(const char *body)'],['../classResponse.html#a1ed0e4d732dddf227f72464ae11e4802',1,'Response::Response(HTTP::Version version, int status, Headers &amp;headers, MessageBody &amp;body)']]],
-  ['run',['run',['../classApp.html#a0e00b75967cb19a41f09a95aa3193275',1,'App']]],
-  ['runtimeexception',['RuntimeException',['../classRuntimeException.html#af8348c53f2c27df0506c5c67662c280e',1,'RuntimeException']]]
+  ['operator_3c_3c',['operator&lt;&lt;',['../classLogManager.html#a8b293ab105d5a15c1b164bd7665e9a52',1,'LogManager::operator&lt;&lt;(const char *data)'],['../classLogManager.html#abec146707a345b1fe4f9ecd93f44971d',1,'LogManager::operator&lt;&lt;(std::string data)']]]
 ];

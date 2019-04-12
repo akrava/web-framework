@@ -3,7 +3,7 @@ var searchData=
   ['get',['GET',['../classHTTP.html#aa9e5b42dac8b6629d834aa12f66b3ad9ae277691958ed026ac8fb9e19276b823f',1,'HTTP']]],
   ['getbody',['getBody',['../classMessageBody.html#a9ae13a5c808bdc28386a0acdf6db9425',1,'MessageBody::getBody()'],['../classResponse.html#ada27e6fd073292030302dc4ff34fb60f',1,'Response::getBody()']]],
   ['getcontext',['getContext',['../classHandler.html#a1251ff0f085ad8b043a5261dc3811cd5',1,'Handler::getContext()'],['../classHtmlMiddleware.html#a64a3bec682e8ed9886e9dc6ccbd43834',1,'HtmlMiddleware::getContext()']]],
-  ['getdata',['getData',['../classSocket.html#a4ca6f75989d387db0b9e6fc61fa21161',1,'Socket']]],
+  ['getdata',['getData',['../classSocket.html#a4ca6f75989d387db0b9e6fc61fa21161',1,'Socket::getData()'],['../classSocketAPI.html#ab7dfcb178d77096848602f62dc40795a',1,'SocketAPI::getData()'],['../classSocketUnixAPI.html#af5953f9d78e7e86b0715778e0369e638',1,'SocketUnixAPI::getData()']]],
   ['getfilepath',['getFilePath',['../classInitParams.html#aa8c634bb7a8842050fffc3d1fdd11226',1,'InitParams']]],
   ['getheaders',['getHeaders',['../classHeaders.html#a99a2a456eb820a2484778a6a46b6aca7',1,'Headers::getHeaders()'],['../classRequest.html#a8a021b9ab488d255a276557672ffe388',1,'Request::getHeaders()'],['../classResponse.html#adf54221c2433ca22da5124429e5f6b72',1,'Response::getHeaders()']]],
   ['getip',['getIP',['../classInitParams.html#a172df66117967b1291c57bb97d878130',1,'InitParams']]],

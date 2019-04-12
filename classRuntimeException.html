@@ -114,6 +114,8 @@ Collaboration diagram for RuntimeException:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:af8348c53f2c27df0506c5c67662c280e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRuntimeException.html#af8348c53f2c27df0506c5c67662c280e">RuntimeException</a> (const std::string &amp;error)</td></tr>
 <tr class="separator:af8348c53f2c27df0506c5c67662c280e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1a41a7736ff40a8f91c50011f7f17d2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRuntimeException.html#ad1a41a7736ff40a8f91c50011f7f17d2">RuntimeException</a> (const char *error)</td></tr>
+<tr class="separator:ad1a41a7736ff40a8f91c50011f7f17d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac1354e4cd1bd1fee70979a90b80d7097"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRuntimeException.html#ac1354e4cd1bd1fee70979a90b80d7097">what</a> () const noexceptoverride</td></tr>
 <tr class="separator:ac1354e4cd1bd1fee70979a90b80d7097"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -145,7 +147,38 @@ Public Member Functions</h2></td></tr>
 <p>create <a class="el" href="classRuntimeException.html" title="exception class for program errors ">RuntimeException</a> with error explanation</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">error</td><td>explanation of thrown error </td></tr>
+    <tr><td class="paramname">error</td><td>explanation of thrown error as std::string </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ad1a41a7736ff40a8f91c50011f7f17d2"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">RuntimeException::RuntimeException </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>error</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>create <a class="el" href="classRuntimeException.html" title="exception class for program errors ">RuntimeException</a> with error explanation</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">error</td><td>explanation of thrown error as const char * </td></tr>
   </table>
   </dd>
 </dl>
