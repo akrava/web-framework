@@ -9,6 +9,10 @@ find_package(mstch)
 find_package(nlohmann_json)
 find_package(Boost REQUIRED)
 
+file(GLOB APP_SOURCES "src/*.cpp")
+file(GLOB MIDDLEWARE_SOURCES "middleware/*.cpp")
+include_directories("include")
+
 # DEBUG
 include_directories("./../../include")
 file(GLOB SOURCES "./../../src/*.cpp")
@@ -26,11 +30,11 @@ set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -Wall")
 
 #add_library(LIB SHARED libpqxx::pqxx_shared)
 # RELEASE
-#add_executable(${PROJECT_NAME} main.cpp DatabaseMiddleware.cpp DatabaseMiddleware.h)
+#add_executable(${PROJECT_NAME} ${APP_SOURCES} ${MIDDLEWARE_SOURCES} main.cpp DatabaseMiddleware.cpp DatabaseMiddleware.h)
 #target_link_libraries(${PROJECT_NAME} akrava::akrava_web-server nlohmann_json::nlohmann_json mstch::mstch sqlite3)
 
 # DEBUG
-add_executable(${PROJECT_NAME} ${SOURCES} main.cpp DatabaseMiddleware.cpp DatabaseMiddleware.h)
+add_executable(${PROJECT_NAME} ${SOURCES} ${APP_SOURCES} ${MIDDLEWARE_SOURCES} main.cpp src/database_middleware.cpp include/database_middleware.h)
 target_link_libraries(${PROJECT_NAME} nlohmann_json::nlohmann_json mstch::mstch sqlite3)
 # DEBUG
 

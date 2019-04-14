@@ -1,6 +1,5 @@
 #pragma once
 
-
 #include <sqlite3.h>
 #include <akrava/web-server/middleware.h>
 #include <vector>
