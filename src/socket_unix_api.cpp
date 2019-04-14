@@ -1,11 +1,11 @@
 #ifdef __linux__
-#include <socket.h>
 #include <iostream>
 #include <unistd.h>
 #include <arpa/inet.h>
 #include <cstring>
 #include <runtime_exception.h>
 #include <sys/time.h>
+#include <netdb.h>
 #include "socket_unix_api.h"
 #define __BUFFER_SIZE 1024
 
