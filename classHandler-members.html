@@ -90,14 +90,17 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <p>This is the complete list of members for <a class="el" href="classHandler.html">Handler</a>, including all inherited members.</p>
 <table class="directory">
-  <tr class="even"><td class="entry"><a class="el" href="classHandler.html#ac4e1a25f0aa57e8817fb84d594660259">exec</a>()=0</td><td class="entry"><a class="el" href="classHandler.html">Handler</a></td><td class="entry"><span class="mlabel">pure virtual</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classHandler.html#aec7d6c65034170c5f5acacf72ea1cccf">add</a>(Handler *handler)</td><td class="entry"><a class="el" href="classHandler.html">Handler</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classHandler.html#a1305e15cb91a5fe4998cc45a2f11f7f3">cleanNextHandlers</a>()</td><td class="entry"><a class="el" href="classHandler.html">Handler</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classHandler.html#a0084eb12d2f19984131ba25c4ff3acd8">exec</a>()</td><td class="entry"><a class="el" href="classHandler.html">Handler</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
   <tr><td class="entry"><a class="el" href="classHandler.html#a1251ff0f085ad8b043a5261dc3811cd5">getContext</a>()</td><td class="entry"><a class="el" href="classHandler.html">Handler</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classHandler.html#a95a5c01d1fdd7b00506d1da7a926de73">getMethod</a>()</td><td class="entry"><a class="el" href="classHandler.html">Handler</a></td><td class="entry"></td></tr>
   <tr><td class="entry"><a class="el" href="classHandler.html#ad560d98ca0a26143629a6555ab899b42">getRoute</a>()</td><td class="entry"><a class="el" href="classHandler.html">Handler</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classHandler.html#a710a77928bc24cf7958638fe1db4c41b">Handler</a>(const char *route=nullptr, HTTP::Method method=HTTP::Method::ANY)</td><td class="entry"><a class="el" href="classHandler.html">Handler</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classHandler.html#abbce47e92507f5640be217c3543e7d53">Handler</a>(const char *route=nullptr, HTTP::Method method=HTTP::Method::ANY, Handler *next=nullptr)</td><td class="entry"><a class="el" href="classHandler.html">Handler</a></td><td class="entry"><span class="mlabel">explicit</span></td></tr>
   <tr><td class="entry"><a class="el" href="classHandler.html#a66a6e01e4ed09eb147d69e7e99b5e2ff">isRouted</a>()</td><td class="entry"><a class="el" href="classHandler.html">Handler</a></td><td class="entry"></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classHandler.html#a3b9514da18e77326277b7b98ff54d862">setContext</a>(Context *context)</td><td class="entry"><a class="el" href="classHandler.html">Handler</a></td><td class="entry"></td></tr>
-  <tr><td class="entry"><a class="el" href="classHandler.html#aa0eb1d454ce3dbb5de2d99b57fcc0039">~Handler</a>()</td><td class="entry"><a class="el" href="classHandler.html">Handler</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">virtual</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classHandler.html#a84870a45c795a91d72f2d81c0629f7a6">setNext</a>(Handler *next)</td><td class="entry"><a class="el" href="classHandler.html">Handler</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classHandler.html#aae990cbd425b7c030285cba901583ee9">~Handler</a>()=default</td><td class="entry"><a class="el" href="classHandler.html">Handler</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
 </table></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

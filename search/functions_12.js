@@ -2,7 +2,7 @@ var searchData=
 [
   ['_7eapp',['~App',['../classApp.html#a34f1f253b1cef5f4ecbac66eaf6964ec',1,'App']]],
   ['_7econtext',['~Context',['../classContext.html#a2d34e4556448e40693f61d15e091b604',1,'Context']]],
-  ['_7ehandler',['~Handler',['../classHandler.html#aa0eb1d454ce3dbb5de2d99b57fcc0039',1,'Handler']]],
+  ['_7ehandler',['~Handler',['../classHandler.html#aae990cbd425b7c030285cba901583ee9',1,'Handler']]],
   ['_7eheaders',['~Headers',['../classHeaders.html#aa621dc992897aafc0890386cec50b750',1,'Headers']]],
   ['_7ehtmlmiddleware',['~HtmlMiddleware',['../classHtmlMiddleware.html#a7fcf4871b2ed8c637e9307d39d2a188f',1,'HtmlMiddleware']]],
   ['_7ejsonmiddleware',['~JsonMiddleware',['../classJsonMiddleware.html#a8be0fa79d73bfaca587d0ad1024479bd',1,'JsonMiddleware']]],

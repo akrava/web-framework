@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['add',['add',['../classHeaders.html#a3fe8276ca3112acd766af9f009ceffa9',1,'Headers']]],
+  ['add',['add',['../classHandler.html#aec7d6c65034170c5f5acacf72ea1cccf',1,'Handler::add()'],['../classHeaders.html#a3fe8276ca3112acd766af9f009ceffa9',1,'Headers::add()']]],
   ['addcookie',['addCookie',['../classCookieMiddleware.html#a3340766261e01cca8d98f7c606383dad',1,'CookieMiddleware']]],
   ['addhandler',['addHandler',['../classApp.html#a698368f4d3b1318cc6af46efe5e12bc9',1,'App']]],
   ['addmiddleware',['addMiddleware',['../classApp.html#aa80363d379773f502e0a716928efbe77',1,'App']]],

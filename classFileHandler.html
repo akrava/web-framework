@@ -101,14 +101,14 @@ Inheritance diagram for FileHandler:</div>
 <div class="dyncontent">
 <div class="center"><img src="classFileHandler__inherit__graph.png" border="0" usemap="#FileHandler_inherit__map" alt="Inheritance graph"/></div>
 <map name="FileHandler_inherit__map" id="FileHandler_inherit__map">
-<area shape="rect" id="node2" href="classHandler.html" title="object of this class executes every time on new request, this object (and others) construct response ..." alt="" coords="5,6,112,186"/></map>
+<area shape="rect" id="node2" href="classHandler.html" title="object of this class executes every time on new request, this object (and others) construct response ..." alt="" coords="5,5,157,229"/></map>
 </div>
 <div class="dynheader">
 Collaboration diagram for FileHandler:</div>
 <div class="dyncontent">
 <div class="center"><img src="classFileHandler__coll__graph.png" border="0" usemap="#FileHandler_coll__map" alt="Collaboration graph"/></div>
 <map name="FileHandler_coll__map" id="FileHandler_coll__map">
-<area shape="rect" id="node2" href="classHandler.html" title="object of this class executes every time on new request, this object (and others) construct response ..." alt="" coords="5,6,112,186"/></map>
+<area shape="rect" id="node2" href="classHandler.html" title="object of this class executes every time on new request, this object (and others) construct response ..." alt="" coords="5,5,157,229"/></map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -118,10 +118,16 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a5254b5cad0de302a8d0468ce38bebeda"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFileHandler.html#a5254b5cad0de302a8d0468ce38bebeda">exec</a> ()</td></tr>
 <tr class="separator:a5254b5cad0de302a8d0468ce38bebeda"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classHandler"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classHandler')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classHandler.html">Handler</a></td></tr>
-<tr class="memitem:a710a77928bc24cf7958638fe1db4c41b inherit pub_methods_classHandler"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHandler.html#a710a77928bc24cf7958638fe1db4c41b">Handler</a> (const char *route=nullptr, <a class="el" href="classHTTP.html#aa9e5b42dac8b6629d834aa12f66b3ad9">HTTP::Method</a> method=HTTP::Method::ANY)</td></tr>
-<tr class="separator:a710a77928bc24cf7958638fe1db4c41b inherit pub_methods_classHandler"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa0eb1d454ce3dbb5de2d99b57fcc0039 inherit pub_methods_classHandler"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHandler.html#aa0eb1d454ce3dbb5de2d99b57fcc0039">~Handler</a> ()</td></tr>
-<tr class="separator:aa0eb1d454ce3dbb5de2d99b57fcc0039 inherit pub_methods_classHandler"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abbce47e92507f5640be217c3543e7d53 inherit pub_methods_classHandler"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHandler.html#abbce47e92507f5640be217c3543e7d53">Handler</a> (const char *route=nullptr, <a class="el" href="classHTTP.html#aa9e5b42dac8b6629d834aa12f66b3ad9">HTTP::Method</a> method=HTTP::Method::ANY, <a class="el" href="classHandler.html">Handler</a> *next=nullptr)</td></tr>
+<tr class="separator:abbce47e92507f5640be217c3543e7d53 inherit pub_methods_classHandler"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae990cbd425b7c030285cba901583ee9 inherit pub_methods_classHandler"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHandler.html#aae990cbd425b7c030285cba901583ee9">~Handler</a> ()=default</td></tr>
+<tr class="separator:aae990cbd425b7c030285cba901583ee9 inherit pub_methods_classHandler"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a84870a45c795a91d72f2d81c0629f7a6 inherit pub_methods_classHandler"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHandler.html#a84870a45c795a91d72f2d81c0629f7a6">setNext</a> (<a class="el" href="classHandler.html">Handler</a> *next)</td></tr>
+<tr class="separator:a84870a45c795a91d72f2d81c0629f7a6 inherit pub_methods_classHandler"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec7d6c65034170c5f5acacf72ea1cccf inherit pub_methods_classHandler"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHandler.html#aec7d6c65034170c5f5acacf72ea1cccf">add</a> (<a class="el" href="classHandler.html">Handler</a> *handler)</td></tr>
+<tr class="separator:aec7d6c65034170c5f5acacf72ea1cccf inherit pub_methods_classHandler"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1305e15cb91a5fe4998cc45a2f11f7f3 inherit pub_methods_classHandler"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHandler.html#a1305e15cb91a5fe4998cc45a2f11f7f3">cleanNextHandlers</a> ()</td></tr>
+<tr class="separator:a1305e15cb91a5fe4998cc45a2f11f7f3 inherit pub_methods_classHandler"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a66a6e01e4ed09eb147d69e7e99b5e2ff inherit pub_methods_classHandler"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHandler.html#a66a6e01e4ed09eb147d69e7e99b5e2ff">isRouted</a> ()</td></tr>
 <tr class="separator:a66a6e01e4ed09eb147d69e7e99b5e2ff inherit pub_methods_classHandler"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad560d98ca0a26143629a6555ab899b42 inherit pub_methods_classHandler"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHandler.html#ad560d98ca0a26143629a6555ab899b42">getRoute</a> ()</td></tr>
@@ -217,7 +223,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 <p>make http body of response object as file in filePath </p>
 
-<p>Implements <a class="el" href="classHandler.html#ac4e1a25f0aa57e8817fb84d594660259">Handler</a>.</p>
+<p>Reimplemented from <a class="el" href="classHandler.html#a0084eb12d2f19984131ba25c4ff3acd8">Handler</a>.</p>
 
 </div>
 </div>

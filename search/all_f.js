@@ -6,6 +6,7 @@ var searchData=
   ['setcontext',['setContext',['../classHandler.html#a3b9514da18e77326277b7b98ff54d862',1,'Handler']]],
   ['setheaders',['setHeaders',['../classResponse.html#a1a2f10df7f5e4f68d9058ac896b10185',1,'Response']]],
   ['setmiddlewarelist',['setMiddlewareList',['../classContext.html#ae027ca52192ddc50c1ee5e0d23c219f1',1,'Context']]],
+  ['setnext',['setNext',['../classHandler.html#a84870a45c795a91d72f2d81c0629f7a6',1,'Handler']]],
   ['setparamsanduri',['setParamsAndUri',['../classURI.html#ad284f4115eca1f86f92dff9c8ae63d22',1,'URI']]],
   ['setpermanent',['setPermanent',['../classRedirectResponse.html#af8a37d5ffc0e40f84165fc130c7c0175',1,'RedirectResponse']]],
   ['setpermanentlyredirect',['setPermanentlyRedirect',['../classContext.html#ae3e37ba8d3634392a1991dd54928c07f',1,'Context']]],
