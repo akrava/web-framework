@@ -1,7 +1,7 @@
 var searchData=
 [
   ['readdata',['readData',['../classNetwork.html#a012fca7ef282e9b3d5234e58a64c502b',1,'Network']]],
-  ['receivedata',['receiveData',['../classNetwork.html#a9ec754135277e21d6cc0dbb8715a1998',1,'Network::receiveData()'],['../classSocket.html#a5e5ffe75a37ec1515ff10a37540dedd9',1,'Socket::receiveData()'],['../classSocketAPI.html#aa70dcb42fee1eff6a1ffbf8fdd5e9e7f',1,'SocketAPI::receiveData()'],['../classSocketUnixAPI.html#a09171078831b316aa22ab2cec1e43cbd',1,'SocketUnixAPI::receiveData()']]],
+  ['receivedata',['receiveData',['../classNetwork.html#a9ec754135277e21d6cc0dbb8715a1998',1,'Network::receiveData()'],['../classSocketAPI.html#aa70dcb42fee1eff6a1ffbf8fdd5e9e7f',1,'SocketAPI::receiveData()']]],
   ['redirect_5fresponse_2eh',['redirect_response.h',['../redirect__response_8h.html',1,'']]],
   ['redirectresponse',['RedirectResponse',['../classRedirectResponse.html',1,'RedirectResponse'],['../classRedirectResponse.html#af2e14f870e5f948d66f355d8790b4048',1,'RedirectResponse::RedirectResponse()']]],
   ['request',['Request',['../classRequest.html',1,'Request'],['../classRequest.html#afaf8d8928de7ffff8a3767589489bd33',1,'Request::Request()'],['../classRequest.html#af254f8559831b8021f477d1f8bd4ee74',1,'Request::Request(HTTP::Method method, std::string &amp;URI, HTTP::Version version, std::string &amp;headers, std::string &amp;body)'],['../classMiddleware.html#a89e0cfb5e7c7c791d18b68b489c55c70',1,'Middleware::request()']]],

@@ -91,19 +91,23 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a href="socket__api_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"></span></div>
 <div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="classSocketAPI.html">    6</a></span>&#160;<span class="keyword">class </span><a class="code" href="classSocketAPI.html">SocketAPI</a> {</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="classSocketAPI.html#a4f147c3804f38283572c8d8766bceb35">~SocketAPI</a>() = <span class="keywordflow">default</span>;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classSocketAPI.html#a2168fd9d55afb3fd5831337efd46088e">init</a>(std::string ip, <span class="keywordtype">int</span> port, <span class="keywordtype">bool</span> isIpv6) = 0;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keyword">virtual</span> std::string <a class="code" href="classSocketAPI.html#ab7dfcb178d77096848602f62dc40795a">getData</a>() = 0;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classSocketAPI.html#aa70dcb42fee1eff6a1ffbf8fdd5e9e7f">receiveData</a>(<span class="keyword">const</span> std::string &amp; data) = 0;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;};</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    <span class="keyword">static</span> <a class="code" href="classSocketAPI.html">SocketAPI</a> * instance;</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="classSocketAPI.html#a4f147c3804f38283572c8d8766bceb35">~SocketAPI</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classSocketAPI.html#a2168fd9d55afb3fd5831337efd46088e">init</a>(std::string ip, <span class="keywordtype">int</span> port, <span class="keywordtype">bool</span> isIpv6) = 0;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keyword">virtual</span> std::string <a class="code" href="classSocketAPI.html#ab7dfcb178d77096848602f62dc40795a">getData</a>() = 0;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classSocketAPI.html#aa70dcb42fee1eff6a1ffbf8fdd5e9e7f">receiveData</a>(<span class="keyword">const</span> std::string &amp; data) = 0;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keyword">virtual</span> std::string <a class="code" href="classSocketAPI.html#a0eb1a8cdb705c7172b88e8ba93368fe7">getIpFromDomain</a>(std::string &amp;domain, <span class="keywordtype">bool</span> isHttps, <span class="keywordtype">bool</span> *IPv6) = 0;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;};</div>
 <div class="ttc" id="classSocketAPI_html_a4f147c3804f38283572c8d8766bceb35"><div class="ttname"><a href="classSocketAPI.html#a4f147c3804f38283572c8d8766bceb35">SocketAPI::~SocketAPI</a></div><div class="ttdeci">virtual ~SocketAPI()=default</div></div>
 <div class="ttc" id="classSocketAPI_html_ab7dfcb178d77096848602f62dc40795a"><div class="ttname"><a href="classSocketAPI.html#ab7dfcb178d77096848602f62dc40795a">SocketAPI::getData</a></div><div class="ttdeci">virtual std::string getData()=0</div></div>
 <div class="ttc" id="classSocketAPI_html_aa70dcb42fee1eff6a1ffbf8fdd5e9e7f"><div class="ttname"><a href="classSocketAPI.html#aa70dcb42fee1eff6a1ffbf8fdd5e9e7f">SocketAPI::receiveData</a></div><div class="ttdeci">virtual void receiveData(const std::string &amp;data)=0</div></div>
 <div class="ttc" id="classSocketAPI_html_a2168fd9d55afb3fd5831337efd46088e"><div class="ttname"><a href="classSocketAPI.html#a2168fd9d55afb3fd5831337efd46088e">SocketAPI::init</a></div><div class="ttdeci">virtual void init(std::string ip, int port, bool isIpv6)=0</div></div>
+<div class="ttc" id="classSocketAPI_html_a0eb1a8cdb705c7172b88e8ba93368fe7"><div class="ttname"><a href="classSocketAPI.html#a0eb1a8cdb705c7172b88e8ba93368fe7">SocketAPI::getIpFromDomain</a></div><div class="ttdeci">virtual std::string getIpFromDomain(std::string &amp;domain, bool isHttps, bool *IPv6)=0</div></div>
 <div class="ttc" id="classSocketAPI_html"><div class="ttname"><a href="classSocketAPI.html">SocketAPI</a></div><div class="ttdef"><b>Definition:</b> socket_api.h:6</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->

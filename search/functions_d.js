@@ -1,7 +1,7 @@
 var searchData=
 [
   ['readdata',['readData',['../classNetwork.html#a012fca7ef282e9b3d5234e58a64c502b',1,'Network']]],
-  ['receivedata',['receiveData',['../classNetwork.html#a9ec754135277e21d6cc0dbb8715a1998',1,'Network::receiveData()'],['../classSocket.html#a5e5ffe75a37ec1515ff10a37540dedd9',1,'Socket::receiveData()'],['../classSocketAPI.html#aa70dcb42fee1eff6a1ffbf8fdd5e9e7f',1,'SocketAPI::receiveData()'],['../classSocketUnixAPI.html#a09171078831b316aa22ab2cec1e43cbd',1,'SocketUnixAPI::receiveData()']]],
+  ['receivedata',['receiveData',['../classNetwork.html#a9ec754135277e21d6cc0dbb8715a1998',1,'Network::receiveData()'],['../classSocketAPI.html#aa70dcb42fee1eff6a1ffbf8fdd5e9e7f',1,'SocketAPI::receiveData()']]],
   ['redirectresponse',['RedirectResponse',['../classRedirectResponse.html#af2e14f870e5f948d66f355d8790b4048',1,'RedirectResponse']]],
   ['request',['Request',['../classRequest.html#afaf8d8928de7ffff8a3767589489bd33',1,'Request::Request()'],['../classRequest.html#af254f8559831b8021f477d1f8bd4ee74',1,'Request::Request(HTTP::Method method, std::string &amp;URI, HTTP::Version version, std::string &amp;headers, std::string &amp;body)']]],
   ['response',['Response',['../classResponse.html#aa9b6e391d77fce8daca8bac13730ec8e',1,'Response::Response()'],['../classResponse.html#a61843a26013e8a6833b40f694aecedf7',1,'Response::Response(const char *body)'],['../classResponse.html#a1ed0e4d732dddf227f72464ae11e4802',1,'Response::Response(HTTP::Version version, int status, Headers &amp;headers, MessageBody &amp;body)']]],

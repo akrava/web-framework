@@ -9,7 +9,5 @@ var searchData=
   ['_7emiddleware',['~Middleware',['../classMiddleware.html#a60c94c831d222ad736d9e98e04782ba5',1,'Middleware']]],
   ['_7erequest',['~Request',['../classRequest.html#a4d57c725686701f773eb3630630a7ea2',1,'Request']]],
   ['_7eresponse',['~Response',['../classResponse.html#a2a4a6403aaefce73725f17cf63896f84',1,'Response']]],
-  ['_7esocket',['~Socket',['../classSocket.html#aeac4eb6379a543d38ed88977d3b6630a',1,'Socket']]],
-  ['_7esocketapi',['~SocketAPI',['../classSocketAPI.html#a4f147c3804f38283572c8d8766bceb35',1,'SocketAPI']]],
-  ['_7esocketunixapi',['~SocketUnixAPI',['../classSocketUnixAPI.html#a787419be5c0f4ae99f80218eca488451',1,'SocketUnixAPI']]]
+  ['_7esocketapi',['~SocketAPI',['../classSocketAPI.html#a4f147c3804f38283572c8d8766bceb35',1,'SocketAPI']]]
 ];

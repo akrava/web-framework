@@ -18,13 +18,9 @@ var searchData=
   ['settemporaryredirect',['setTemporaryRedirect',['../classContext.html#a4d4803bcd72832cc87d140567264359f',1,'Context']]],
   ['setversion',['setVersion',['../classResponse.html#a69491a96e5de5676387be620d123100d',1,'Response']]],
   ['setview',['setView',['../classHtmlMiddleware.html#af3baa498a97bb645e8623c518f2a1e67',1,'HtmlMiddleware']]],
-  ['socket',['Socket',['../classSocket.html',1,'Socket'],['../classSocket.html#a0ca7a4ef8732a3f91cbeb7cd9eb06917',1,'Socket::Socket(InitParams params)'],['../classSocket.html#abca0d8d8feb926b68f746af7f42a0ec1',1,'Socket::Socket(const char *ip, int port, bool isIPv6)']]],
-  ['socket_2eh',['socket.h',['../socket_8h.html',1,'']]],
   ['socket_5fapi_2eh',['socket_api.h',['../socket__api_8h.html',1,'']]],
   ['socket_5funix_5fapi_2eh',['socket_unix_api.h',['../socket__unix__api_8h.html',1,'']]],
   ['socket_5fwindows_5fapi_2eh',['socket_windows_api.h',['../socket__windows__api_8h.html',1,'']]],
   ['socketapi',['SocketAPI',['../classSocketAPI.html',1,'']]],
-  ['socketimpl',['socketImpl',['../classNetwork.html#a1da84d9aa91a23599e8ab51d62e83f59',1,'Network']]],
-  ['socketunixapi',['SocketUnixAPI',['../classSocketUnixAPI.html',1,'']]],
-  ['socketwindowsapi',['SocketWindowsAPI',['../classSocketWindowsAPI.html',1,'']]]
+  ['socketimpl',['socketImpl',['../classNetwork.html#a1da84d9aa91a23599e8ab51d62e83f59',1,'Network']]]
 ];

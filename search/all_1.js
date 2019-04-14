@@ -7,5 +7,6 @@ var searchData=
   ['cookie_5fentity_2eh',['cookie_entity.h',['../cookie__entity_8h.html',1,'']]],
   ['cookie_5fmiddleware_2eh',['cookie_middleware.h',['../cookie__middleware_8h.html',1,'']]],
   ['cookieentity',['CookieEntity',['../classCookieEntity.html',1,'CookieEntity'],['../classCookieEntity.html#ad83c0ca8ef3c992437659ce37e6b4e61',1,'CookieEntity::CookieEntity()']]],
-  ['cookiemiddleware',['CookieMiddleware',['../classCookieMiddleware.html',1,'CookieMiddleware'],['../classCookieMiddleware.html#a1cf58bf2cd6aa3742541f43489feb099',1,'CookieMiddleware::CookieMiddleware()']]]
+  ['cookiemiddleware',['CookieMiddleware',['../classCookieMiddleware.html',1,'CookieMiddleware'],['../classCookieMiddleware.html#a1cf58bf2cd6aa3742541f43489feb099',1,'CookieMiddleware::CookieMiddleware()']]],
+  ['createnewsocket',['createNewSocket',['../classNetwork.html#aba46f5b8ca128c8142bf1892c992bb38',1,'Network']]]
 ];

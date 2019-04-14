@@ -68,8 +68,6 @@ Preprocessing /home/travis/build/akrava/web-framework/include/response.h...
 Parsing file /home/travis/build/akrava/web-framework/include/response.h...
 Preprocessing /home/travis/build/akrava/web-framework/include/runtime_exception.h...
 Parsing file /home/travis/build/akrava/web-framework/include/runtime_exception.h...
-Preprocessing /home/travis/build/akrava/web-framework/include/socket.h...
-Parsing file /home/travis/build/akrava/web-framework/include/socket.h...
 Preprocessing /home/travis/build/akrava/web-framework/include/socket_api.h...
 Parsing file /home/travis/build/akrava/web-framework/include/socket_api.h...
 Preprocessing /home/travis/build/akrava/web-framework/include/socket_unix_api.h...
@@ -153,7 +151,6 @@ Generating code for file /home/travis/build/akrava/web-framework/include/redirec
 Generating code for file /home/travis/build/akrava/web-framework/include/request.h...
 Generating code for file /home/travis/build/akrava/web-framework/include/response.h...
 Generating code for file /home/travis/build/akrava/web-framework/include/runtime_exception.h...
-Generating code for file /home/travis/build/akrava/web-framework/include/socket.h...
 Generating code for file /home/travis/build/akrava/web-framework/include/socket_api.h...
 Generating code for file /home/travis/build/akrava/web-framework/include/socket_unix_api.h...
 Generating code for file /home/travis/build/akrava/web-framework/include/socket_windows_api.h...
@@ -182,7 +179,6 @@ Generating docs for file /home/travis/build/akrava/web-framework/include/redirec
 Generating docs for file /home/travis/build/akrava/web-framework/include/request.h...
 Generating docs for file /home/travis/build/akrava/web-framework/include/response.h...
 Generating docs for file /home/travis/build/akrava/web-framework/include/runtime_exception.h...
-Generating docs for file /home/travis/build/akrava/web-framework/include/socket.h...
 Generating docs for file /home/travis/build/akrava/web-framework/include/socket_api.h...
 Generating docs for file /home/travis/build/akrava/web-framework/include/socket_unix_api.h...
 Generating docs for file /home/travis/build/akrava/web-framework/include/socket_windows_api.h...
@@ -212,10 +208,7 @@ Generating docs for compound RedirectResponse...
 Generating docs for compound Request...
 Generating docs for compound Response...
 Generating docs for compound RuntimeException...
-Generating docs for compound Socket...
 Generating docs for compound SocketAPI...
-Generating docs for compound SocketUnixAPI...
-Generating docs for compound SocketWindowsAPI...
 Generating docs for compound URI...
 Generating namespace index...
 Generating graph info page...
@@ -237,163 +230,147 @@ Generating example index...
 finalizing index lists...
 Running dot...
 Generating dot graphs using 3 parallel threads...
-Running dot for graph 1/102
-Running dot for graph 2/102
-Running dot for graph 3/102
-Running dot for graph 4/102
-Running dot for graph 5/102
-Running dot for graph 6/102
-Running dot for graph 7/102
-Running dot for graph 8/102
-Running dot for graph 9/102
-Running dot for graph 10/102
-Running dot for graph 11/102
-Running dot for graph 12/102
-Running dot for graph 13/102
-Running dot for graph 14/102
-Running dot for graph 15/102
-Running dot for graph 16/102
-Running dot for graph 17/102
-Running dot for graph 18/102
-Running dot for graph 19/102
-Running dot for graph 20/102
-Running dot for graph 21/102
-Running dot for graph 22/102
-Running dot for graph 23/102
-Running dot for graph 24/102
-Running dot for graph 25/102
-Running dot for graph 26/102
-Running dot for graph 27/102
-Running dot for graph 28/102
-Running dot for graph 29/102
-Running dot for graph 30/102
-Running dot for graph 31/102
-Running dot for graph 32/102
-Running dot for graph 33/102
-Running dot for graph 34/102
-Running dot for graph 35/102
-Running dot for graph 36/102
-Running dot for graph 37/102
-Running dot for graph 38/102
-Running dot for graph 39/102
-Running dot for graph 40/102
-Running dot for graph 41/102
-Running dot for graph 42/102
-Running dot for graph 43/102
-Running dot for graph 44/102
-Running dot for graph 45/102
-Running dot for graph 46/102
-Running dot for graph 47/102
-Running dot for graph 48/102
-Running dot for graph 49/102
-Running dot for graph 50/102
-Running dot for graph 51/102
-Running dot for graph 52/102
-Running dot for graph 53/102
-Running dot for graph 54/102
-Running dot for graph 55/102
-Running dot for graph 56/102
-Running dot for graph 57/102
-Running dot for graph 58/102
-Running dot for graph 59/102
-Running dot for graph 60/102
-Running dot for graph 61/102
-Running dot for graph 62/102
-Running dot for graph 63/102
-Running dot for graph 64/102
-Running dot for graph 65/102
-Running dot for graph 66/102
-Running dot for graph 67/102
-Running dot for graph 68/102
-Running dot for graph 69/102
-Running dot for graph 70/102
-Running dot for graph 71/102
-Running dot for graph 72/102
-Running dot for graph 73/102
-Running dot for graph 74/102
-Running dot for graph 75/102
-Running dot for graph 76/102
-Running dot for graph 77/102
-Running dot for graph 78/102
-Running dot for graph 79/102
-Running dot for graph 80/102
-Running dot for graph 81/102
-Running dot for graph 82/102
-Running dot for graph 83/102
-Running dot for graph 84/102
-Running dot for graph 85/102
-Running dot for graph 86/102
-Running dot for graph 87/102
-Running dot for graph 88/102
-Running dot for graph 89/102
-Running dot for graph 90/102
-Running dot for graph 91/102
-Running dot for graph 92/102
-Running dot for graph 93/102
-Running dot for graph 94/102
-Running dot for graph 95/102
-Running dot for graph 96/102
-Running dot for graph 97/102
-Running dot for graph 98/102
-Running dot for graph 99/102
-Running dot for graph 100/102
-Running dot for graph 101/102
-Running dot for graph 102/102
-Patching output file 1/56
-Patching output file 2/56
-Patching output file 3/56
-Patching output file 4/56
-Patching output file 5/56
-Patching output file 6/56
-Patching output file 7/56
-Patching output file 8/56
-Patching output file 9/56
-Patching output file 10/56
-Patching output file 11/56
-Patching output file 12/56
-Patching output file 13/56
-Patching output file 14/56
-Patching output file 15/56
-Patching output file 16/56
-Patching output file 17/56
-Patching output file 18/56
-Patching output file 19/56
-Patching output file 20/56
-Patching output file 21/56
-Patching output file 22/56
-Patching output file 23/56
-Patching output file 24/56
-Patching output file 25/56
-Patching output file 26/56
-Patching output file 27/56
-Patching output file 28/56
-Patching output file 29/56
-Patching output file 30/56
-Patching output file 31/56
-Patching output file 32/56
-Patching output file 33/56
-Patching output file 34/56
-Patching output file 35/56
-Patching output file 36/56
-Patching output file 37/56
-Patching output file 38/56
-Patching output file 39/56
-Patching output file 40/56
-Patching output file 41/56
-Patching output file 42/56
-Patching output file 43/56
-Patching output file 44/56
-Patching output file 45/56
-Patching output file 46/56
-Patching output file 47/56
-Patching output file 48/56
-Patching output file 49/56
-Patching output file 50/56
-Patching output file 51/56
-Patching output file 52/56
-Patching output file 53/56
-Patching output file 54/56
-Patching output file 55/56
-Patching output file 56/56
-lookup cache used 379/65536 hits=1537 misses=396
+Running dot for graph 1/92
+Running dot for graph 2/92
+Running dot for graph 3/92
+Running dot for graph 4/92
+Running dot for graph 5/92
+Running dot for graph 6/92
+Running dot for graph 7/92
+Running dot for graph 8/92
+Running dot for graph 9/92
+Running dot for graph 10/92
+Running dot for graph 11/92
+Running dot for graph 12/92
+Running dot for graph 13/92
+Running dot for graph 14/92
+Running dot for graph 15/92
+Running dot for graph 16/92
+Running dot for graph 17/92
+Running dot for graph 18/92
+Running dot for graph 19/92
+Running dot for graph 20/92
+Running dot for graph 21/92
+Running dot for graph 22/92
+Running dot for graph 23/92
+Running dot for graph 24/92
+Running dot for graph 25/92
+Running dot for graph 26/92
+Running dot for graph 27/92
+Running dot for graph 28/92
+Running dot for graph 29/92
+Running dot for graph 30/92
+Running dot for graph 31/92
+Running dot for graph 32/92
+Running dot for graph 33/92
+Running dot for graph 34/92
+Running dot for graph 35/92
+Running dot for graph 36/92
+Running dot for graph 37/92
+Running dot for graph 38/92
+Running dot for graph 39/92
+Running dot for graph 40/92
+Running dot for graph 41/92
+Running dot for graph 42/92
+Running dot for graph 43/92
+Running dot for graph 44/92
+Running dot for graph 45/92
+Running dot for graph 46/92
+Running dot for graph 47/92
+Running dot for graph 48/92
+Running dot for graph 49/92
+Running dot for graph 50/92
+Running dot for graph 51/92
+Running dot for graph 52/92
+Running dot for graph 53/92
+Running dot for graph 54/92
+Running dot for graph 55/92
+Running dot for graph 56/92
+Running dot for graph 57/92
+Running dot for graph 58/92
+Running dot for graph 59/92
+Running dot for graph 60/92
+Running dot for graph 61/92
+Running dot for graph 62/92
+Running dot for graph 63/92
+Running dot for graph 64/92
+Running dot for graph 65/92
+Running dot for graph 66/92
+Running dot for graph 67/92
+Running dot for graph 68/92
+Running dot for graph 69/92
+Running dot for graph 70/92
+Running dot for graph 71/92
+Running dot for graph 72/92
+Running dot for graph 73/92
+Running dot for graph 74/92
+Running dot for graph 75/92
+Running dot for graph 76/92
+Running dot for graph 77/92
+Running dot for graph 78/92
+Running dot for graph 79/92
+Running dot for graph 80/92
+Running dot for graph 81/92
+Running dot for graph 82/92
+Running dot for graph 83/92
+Running dot for graph 84/92
+Running dot for graph 85/92
+Running dot for graph 86/92
+Running dot for graph 87/92
+Running dot for graph 88/92
+Running dot for graph 89/92
+Running dot for graph 90/92
+Running dot for graph 91/92
+Running dot for graph 92/92
+Patching output file 1/50
+Patching output file 2/50
+Patching output file 3/50
+Patching output file 4/50
+Patching output file 5/50
+Patching output file 6/50
+Patching output file 7/50
+Patching output file 8/50
+Patching output file 9/50
+Patching output file 10/50
+Patching output file 11/50
+Patching output file 12/50
+Patching output file 13/50
+Patching output file 14/50
+Patching output file 15/50
+Patching output file 16/50
+Patching output file 17/50
+Patching output file 18/50
+Patching output file 19/50
+Patching output file 20/50
+Patching output file 21/50
+Patching output file 22/50
+Patching output file 23/50
+Patching output file 24/50
+Patching output file 25/50
+Patching output file 26/50
+Patching output file 27/50
+Patching output file 28/50
+Patching output file 29/50
+Patching output file 30/50
+Patching output file 31/50
+Patching output file 32/50
+Patching output file 33/50
+Patching output file 34/50
+Patching output file 35/50
+Patching output file 36/50
+Patching output file 37/50
+Patching output file 38/50
+Patching output file 39/50
+Patching output file 40/50
+Patching output file 41/50
+Patching output file 42/50
+Patching output file 43/50
+Patching output file 44/50
+Patching output file 45/50
+Patching output file 46/50
+Patching output file 47/50
+Patching output file 48/50
+Patching output file 49/50
+Patching output file 50/50
+lookup cache used 360/65536 hits=1487 misses=377
 finished...

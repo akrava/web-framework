@@ -89,14 +89,32 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 <a href="socket__windows__api_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="socket__api_8h.html">socket_api.h</a>&quot;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;</div>
-<div class="line"><a name="l00005"></a><span class="lineno"><a class="line" href="classSocketWindowsAPI.html">    5</a></span>&#160;<span class="keyword">class </span><a class="code" href="classSocketWindowsAPI.html">SocketWindowsAPI</a> : <span class="keyword">public</span> <a class="code" href="classSocketAPI.html">SocketAPI</a> {</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#if defined(_WIN32) || defined(_Win64)</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;winsock2.h&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="socket__api_8h.html">socket_api.h</a>&quot;</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;};</div>
-<div class="ttc" id="classSocketWindowsAPI_html"><div class="ttname"><a href="classSocketWindowsAPI.html">SocketWindowsAPI</a></div><div class="ttdef"><b>Definition:</b> socket_windows_api.h:5</div></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">class </span>SocketWindowsAPI : <span class="keyword">public</span> <a class="code" href="classSocketAPI.html">SocketAPI</a> {</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    SOCKET serverSocket;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    SOCKET clientSocket;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    ~SocketWindowsAPI() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSocketAPI.html#a2168fd9d55afb3fd5831337efd46088e">init</a>(std::string ip, <span class="keywordtype">int</span> port, <span class="keywordtype">bool</span> isIpv6) <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    std::string <a class="code" href="classSocketAPI.html#ab7dfcb178d77096848602f62dc40795a">getData</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSocketAPI.html#aa70dcb42fee1eff6a1ffbf8fdd5e9e7f">receiveData</a>(<span class="keyword">const</span> std::string &amp; data) <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    std::string <a class="code" href="classSocketAPI.html#a0eb1a8cdb705c7172b88e8ba93368fe7">getIpFromDomain</a>(std::string &amp;domain, <span class="keywordtype">bool</span> isHttps, <span class="keywordtype">bool</span> *IPv6) <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;};</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#endif // defined(_WIN32) || defined(_Win64)</span></div>
+<div class="ttc" id="classSocketAPI_html_ab7dfcb178d77096848602f62dc40795a"><div class="ttname"><a href="classSocketAPI.html#ab7dfcb178d77096848602f62dc40795a">SocketAPI::getData</a></div><div class="ttdeci">virtual std::string getData()=0</div></div>
+<div class="ttc" id="classSocketAPI_html_aa70dcb42fee1eff6a1ffbf8fdd5e9e7f"><div class="ttname"><a href="classSocketAPI.html#aa70dcb42fee1eff6a1ffbf8fdd5e9e7f">SocketAPI::receiveData</a></div><div class="ttdeci">virtual void receiveData(const std::string &amp;data)=0</div></div>
+<div class="ttc" id="classSocketAPI_html_a2168fd9d55afb3fd5831337efd46088e"><div class="ttname"><a href="classSocketAPI.html#a2168fd9d55afb3fd5831337efd46088e">SocketAPI::init</a></div><div class="ttdeci">virtual void init(std::string ip, int port, bool isIpv6)=0</div></div>
+<div class="ttc" id="classSocketAPI_html_a0eb1a8cdb705c7172b88e8ba93368fe7"><div class="ttname"><a href="classSocketAPI.html#a0eb1a8cdb705c7172b88e8ba93368fe7">SocketAPI::getIpFromDomain</a></div><div class="ttdeci">virtual std::string getIpFromDomain(std::string &amp;domain, bool isHttps, bool *IPv6)=0</div></div>
 <div class="ttc" id="socket__api_8h_html"><div class="ttname"><a href="socket__api_8h.html">socket_api.h</a></div></div>
 <div class="ttc" id="classSocketAPI_html"><div class="ttname"><a href="classSocketAPI.html">SocketAPI</a></div><div class="ttdef"><b>Definition:</b> socket_api.h:6</div></div>
 </div><!-- fragment --></div><!-- contents -->

@@ -85,6 +85,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="classNetwork-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -98,7 +99,7 @@ Collaboration diagram for Network:</div>
 <div class="dyncontent">
 <div class="center"><img src="classNetwork__coll__graph.png" border="0" usemap="#Network_coll__map" alt="Collaboration graph"/></div>
 <map name="Network_coll__map" id="Network_coll__map">
-<area shape="rect" id="node2" href="classSocketAPI.html" title="{SocketAPI\n||+ ~SocketAPI()\l+ init()\l+ getData()\l+ receiveData()\l}" alt="" coords="5,6,117,127"/></map>
+<area shape="rect" id="node2" href="classSocketAPI.html" title="{SocketAPI\n||+ ~SocketAPI()\l+ init()\l+ getData()\l+ receiveData()\l+ getIpFromDomain()\l}" alt="" coords="5,5,152,141"/></map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -117,6 +118,13 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a9ec754135277e21d6cc0dbb8715a1998"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a954f0a299d32f86e9ca1a786d5eaa6d3"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetwork.html#a954f0a299d32f86e9ca1a786d5eaa6d3">toString</a> ()</td></tr>
 <tr class="separator:a954f0a299d32f86e9ca1a786d5eaa6d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:ace8e3409226f8bb7acb28b2b217a6c94"><td class="memItemLeft" align="right" valign="top">static std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetwork.html#ace8e3409226f8bb7acb28b2b217a6c94">getIpFromDomain</a> (std::string &amp;domain, bool isHttps, bool *IPv6)</td></tr>
+<tr class="separator:ace8e3409226f8bb7acb28b2b217a6c94"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aba46f5b8ca128c8142bf1892c992bb38"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classSocketAPI.html">SocketAPI</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetwork.html#aba46f5b8ca128c8142bf1892c992bb38">createNewSocket</a> ()</td></tr>
+<tr class="separator:aba46f5b8ca128c8142bf1892c992bb38"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -187,6 +195,69 @@ Protected Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="aba46f5b8ca128c8142bf1892c992bb38"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="classSocketAPI.html">SocketAPI</a>* Network::createNewSocket </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ace8e3409226f8bb7acb28b2b217a6c94"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static std::string Network::getIpFromDomain </td>
+          <td>(</td>
+          <td class="paramtype">std::string &amp;&#160;</td>
+          <td class="paramname"><em>domain</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>isHttps</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool *&#160;</td>
+          <td class="paramname"><em>IPv6</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a class="anchor" id="a12210a4ad3ad823e59bba7624380a9e9"></a>
 <div class="memitem">
 <div class="memproto">

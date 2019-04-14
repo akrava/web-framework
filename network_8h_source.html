@@ -114,11 +114,17 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classNetwork.html#a9ec754135277e21d6cc0dbb8715a1998">receiveData</a>(<span class="keyword">const</span> std::string &amp; data);</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    std::string <a class="code" href="classNetwork.html#a954f0a299d32f86e9ca1a786d5eaa6d3">toString</a>();</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;};</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keyword">static</span> std::string <a class="code" href="classNetwork.html#ace8e3409226f8bb7acb28b2b217a6c94">getIpFromDomain</a>(std::string &amp;domain, <span class="keywordtype">bool</span> isHttps, <span class="keywordtype">bool</span> *IPv6);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keyword">static</span> <a class="code" href="classSocketAPI.html">SocketAPI</a> * <a class="code" href="classNetwork.html#aba46f5b8ca128c8142bf1892c992bb38">createNewSocket</a>();</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;};</div>
+<div class="ttc" id="classNetwork_html_ace8e3409226f8bb7acb28b2b217a6c94"><div class="ttname"><a href="classNetwork.html#ace8e3409226f8bb7acb28b2b217a6c94">Network::getIpFromDomain</a></div><div class="ttdeci">static std::string getIpFromDomain(std::string &amp;domain, bool isHttps, bool *IPv6)</div></div>
 <div class="ttc" id="init__params_8h_html"><div class="ttname"><a href="init__params_8h.html">init_params.h</a></div></div>
 <div class="ttc" id="classNetwork_html_a12210a4ad3ad823e59bba7624380a9e9"><div class="ttname"><a href="classNetwork.html#a12210a4ad3ad823e59bba7624380a9e9">Network::init</a></div><div class="ttdeci">bool init()</div></div>
 <div class="ttc" id="classInitParams_html"><div class="ttname"><a href="classInitParams.html">InitParams</a></div><div class="ttdoc">InitParams is intended to get web-server configs from command line arguments. </div><div class="ttdef"><b>Definition:</b> init_params.h:10</div></div>
 <div class="ttc" id="classNetwork_html"><div class="ttname"><a href="classNetwork.html">Network</a></div><div class="ttdef"><b>Definition:</b> network.h:9</div></div>
+<div class="ttc" id="classNetwork_html_aba46f5b8ca128c8142bf1892c992bb38"><div class="ttname"><a href="classNetwork.html#aba46f5b8ca128c8142bf1892c992bb38">Network::createNewSocket</a></div><div class="ttdeci">static SocketAPI * createNewSocket()</div></div>
 <div class="ttc" id="classNetwork_html_a935aed4a4790e21d62e89c9ecc48302b"><div class="ttname"><a href="classNetwork.html#a935aed4a4790e21d62e89c9ecc48302b">Network::setAPI</a></div><div class="ttdeci">void setAPI(SocketAPI *api)</div></div>
 <div class="ttc" id="classNetwork_html_a1da84d9aa91a23599e8ab51d62e83f59"><div class="ttname"><a href="classNetwork.html#a1da84d9aa91a23599e8ab51d62e83f59">Network::socketImpl</a></div><div class="ttdeci">SocketAPI * socketImpl</div><div class="ttdef"><b>Definition:</b> network.h:14</div></div>
 <div class="ttc" id="classNetwork_html_a012fca7ef282e9b3d5234e58a64c502b"><div class="ttname"><a href="classNetwork.html#a012fca7ef282e9b3d5234e58a64c502b">Network::readData</a></div><div class="ttdeci">std::string readData()</div></div>

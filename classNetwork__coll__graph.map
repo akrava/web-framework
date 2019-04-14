@@ -1,3 +1,3 @@
 <map id="Network" name="Network">
-<area shape="rect" id="node2" href="$classSocketAPI.html" title="{SocketAPI\n||+ ~SocketAPI()\l+ init()\l+ getData()\l+ receiveData()\l}" alt="" coords="5,6,117,127"/>
+<area shape="rect" id="node2" href="$classSocketAPI.html" title="{SocketAPI\n||+ ~SocketAPI()\l+ init()\l+ getData()\l+ receiveData()\l+ getIpFromDomain()\l}" alt="" coords="5,5,152,141"/>
 </map>

@@ -93,13 +93,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <p><code>#include &lt;<a class="el" href="socket__api_8h_source.html">socket_api.h</a>&gt;</code></p>
 <div class="dynheader">
-Inheritance diagram for SocketAPI:</div>
-<div class="dyncontent">
-<div class="center"><img src="classSocketAPI__inherit__graph.png" border="0" usemap="#SocketAPI_inherit__map" alt="Inheritance graph"/></div>
-<map name="SocketAPI_inherit__map" id="SocketAPI_inherit__map">
-<area shape="rect" id="node2" href="classSocketUnixAPI.html" title="{SocketUnixAPI\n||+ ~SocketUnixAPI()\l+ init()\l+ getData()\l+ receiveData()\l}" alt="" coords="5,177,144,298"/><area shape="rect" id="node3" href="classSocketWindowsAPI.html" title="{SocketWindowsAPI\n||}" alt="" coords="169,199,308,276"/></map>
-</div>
-<div class="dynheader">
 Collaboration diagram for SocketAPI:</div>
 <div class="dyncontent">
 <div class="center"><img src="classSocketAPI__coll__graph.png" border="0" usemap="#SocketAPI_coll__map" alt="Collaboration graph"/></div>
@@ -117,6 +110,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ab7dfcb178d77096848602f62dc40795a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa70dcb42fee1eff6a1ffbf8fdd5e9e7f"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSocketAPI.html#aa70dcb42fee1eff6a1ffbf8fdd5e9e7f">receiveData</a> (const std::string &amp;data)=0</td></tr>
 <tr class="separator:aa70dcb42fee1eff6a1ffbf8fdd5e9e7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0eb1a8cdb705c7172b88e8ba93368fe7"><td class="memItemLeft" align="right" valign="top">virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSocketAPI.html#a0eb1a8cdb705c7172b88e8ba93368fe7">getIpFromDomain</a> (std::string &amp;domain, bool isHttps, bool *IPv6)=0</td></tr>
+<tr class="separator:a0eb1a8cdb705c7172b88e8ba93368fe7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a4f147c3804f38283572c8d8766bceb35"></a>
@@ -164,7 +159,45 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="classSocketUnixAPI.html#af5953f9d78e7e86b0715778e0369e638">SocketUnixAPI</a>.</p>
+</div>
+</div>
+<a class="anchor" id="a0eb1a8cdb705c7172b88e8ba93368fe7"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual std::string SocketAPI::getIpFromDomain </td>
+          <td>(</td>
+          <td class="paramtype">std::string &amp;&#160;</td>
+          <td class="paramname"><em>domain</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>isHttps</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool *&#160;</td>
+          <td class="paramname"><em>IPv6</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -206,8 +239,6 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="classSocketUnixAPI.html#a82dddb9e023aca5847c3e23b5910449b">SocketUnixAPI</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="aa70dcb42fee1eff6a1ffbf8fdd5e9e7f"></a>
@@ -231,8 +262,6 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>Implemented in <a class="el" href="classSocketUnixAPI.html#a09171078831b316aa22ab2cec1e43cbd">SocketUnixAPI</a>.</p>
 
 </div>
 </div>
