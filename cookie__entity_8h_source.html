@@ -92,23 +92,29 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"></span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;ctime&gt;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div>
-<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="classCookieEntity.html">   13</a></span>&#160;<span class="keyword">class </span><a class="code" href="classCookieEntity.html">CookieEntity</a> {</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    std::string value;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    std::time_t expires;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keywordtype">size_t</span> maxAge_sec;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    std::string domain;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    std::string path;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keywordtype">bool</span> httpOnly;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <a class="code" href="classCookieEntity.html#ad83c0ca8ef3c992437659ce37e6b4e61">CookieEntity</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> * value, time_t expires = -1, <span class="keywordtype">size_t</span> maxAge_sec = std::string::npos,</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                 <span class="keyword">const</span> <span class="keywordtype">char</span> * domain = <span class="keyword">nullptr</span>, <span class="keyword">const</span> <span class="keywordtype">char</span> *  path = <span class="keyword">nullptr</span>, <span class="keywordtype">bool</span> httpOnly = <span class="keyword">false</span>);</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    std::string <a class="code" href="classCookieEntity.html#a7acbeacff985e137929fdeab8ef31e82">toString</a>();</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;};</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="entity_8h.html">entity.h</a>&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="classCookieEntity.html">   14</a></span>&#160;<span class="keyword">class </span><a class="code" href="classCookieEntity.html">CookieEntity</a> : <span class="keyword">public</span> <a class="code" href="classEntity.html">Entity</a> {</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    std::string value;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    std::time_t expires;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keywordtype">size_t</span> maxAge_sec;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    std::string domain;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    std::string path;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keywordtype">bool</span> httpOnly;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <a class="code" href="classCookieEntity.html#ad83c0ca8ef3c992437659ce37e6b4e61">CookieEntity</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> * value, time_t expires = -1, <span class="keywordtype">size_t</span> maxAge_sec = std::string::npos,</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                 <span class="keyword">const</span> <span class="keywordtype">char</span> * domain = <span class="keyword">nullptr</span>, <span class="keyword">const</span> <span class="keywordtype">char</span> *  path = <span class="keyword">nullptr</span>, <span class="keywordtype">bool</span> httpOnly = <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    std::string <a class="code" href="classCookieEntity.html#a6f75f7d69507b591c9aea1d152ea8b10">toString</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    std::unique_ptr&lt;Entity&gt; <a class="code" href="classCookieEntity.html#a5ae51770d9ff4cfe94c45aff9aa7354c">clone</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;};</div>
+<div class="ttc" id="entity_8h_html"><div class="ttname"><a href="entity_8h.html">entity.h</a></div></div>
+<div class="ttc" id="classCookieEntity_html_a6f75f7d69507b591c9aea1d152ea8b10"><div class="ttname"><a href="classCookieEntity.html#a6f75f7d69507b591c9aea1d152ea8b10">CookieEntity::toString</a></div><div class="ttdeci">std::string toString() override</div></div>
 <div class="ttc" id="classCookieEntity_html_ad83c0ca8ef3c992437659ce37e6b4e61"><div class="ttname"><a href="classCookieEntity.html#ad83c0ca8ef3c992437659ce37e6b4e61">CookieEntity::CookieEntity</a></div><div class="ttdeci">CookieEntity(const char *value, time_t expires=-1, size_t maxAge_sec=std::string::npos, const char *domain=nullptr, const char *path=nullptr, bool httpOnly=false)</div></div>
-<div class="ttc" id="classCookieEntity_html"><div class="ttname"><a href="classCookieEntity.html">CookieEntity</a></div><div class="ttdoc">Class wrapper for Cookies. Allow you adjust parameters od each http cookie. Used by CookieMiddleware...</div><div class="ttdef"><b>Definition:</b> cookie_entity.h:13</div></div>
-<div class="ttc" id="classCookieEntity_html_a7acbeacff985e137929fdeab8ef31e82"><div class="ttname"><a href="classCookieEntity.html#a7acbeacff985e137929fdeab8ef31e82">CookieEntity::toString</a></div><div class="ttdeci">std::string toString()</div></div>
+<div class="ttc" id="classCookieEntity_html"><div class="ttname"><a href="classCookieEntity.html">CookieEntity</a></div><div class="ttdoc">Class wrapper for Cookies. Allow you adjust parameters od each http cookie. Used by CookieMiddleware...</div><div class="ttdef"><b>Definition:</b> cookie_entity.h:14</div></div>
+<div class="ttc" id="classCookieEntity_html_a5ae51770d9ff4cfe94c45aff9aa7354c"><div class="ttname"><a href="classCookieEntity.html#a5ae51770d9ff4cfe94c45aff9aa7354c">CookieEntity::clone</a></div><div class="ttdeci">std::unique_ptr&lt; Entity &gt; clone() override</div></div>
+<div class="ttc" id="classEntity_html"><div class="ttname"><a href="classEntity.html">Entity</a></div><div class="ttdef"><b>Definition:</b> entity.h:8</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

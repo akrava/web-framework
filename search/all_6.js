@@ -2,6 +2,7 @@ var searchData=
 [
   ['handler',['Handler',['../classHandler.html',1,'Handler'],['../classHandler.html#abbce47e92507f5640be217c3543e7d53',1,'Handler::Handler()']]],
   ['handler_2eh',['handler.h',['../handler_8h.html',1,'']]],
+  ['handlerequest',['handleRequest',['../classHandler.html#ac18b95901da144e89cdb5009107d1dae',1,'Handler']]],
   ['head',['HEAD',['../classHTTP.html#aa9e5b42dac8b6629d834aa12f66b3ad9aebf75068f5f1c7a01aa967482629f728',1,'HTTP']]],
   ['headers',['Headers',['../classHeaders.html',1,'Headers'],['../classHeaders.html#a6059926b5b46d10973122569a14b0868',1,'Headers::Headers()'],['../classHeaders.html#a8397133dbfc6793be8bc10db3342885b',1,'Headers::Headers(std::string &amp;httpHeaders)']]],
   ['headers_2eh',['headers.h',['../headers_8h.html',1,'']]],

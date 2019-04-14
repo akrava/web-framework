@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['jsonmiddleware',['JsonMiddleware',['../classJsonMiddleware.html',1,'']]]
+  ['initparams',['InitParams',['../classInitParams.html',1,'']]]
 ];

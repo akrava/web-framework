@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['uri',['URI',['../classURI.html',1,'']]]
+  ['socketapi',['SocketAPI',['../classSocketAPI.html',1,'']]]
 ];

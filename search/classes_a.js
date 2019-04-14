@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['parserhttp',['ParserHTTP',['../classParserHTTP.html',1,'']]]
+  ['network',['Network',['../classNetwork.html',1,'']]]
 ];

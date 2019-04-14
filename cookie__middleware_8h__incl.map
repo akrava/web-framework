@@ -1,10 +1,11 @@
 <map id="/home/travis/build/akrava/web&#45;framework/include/cookie_middleware.h" name="/home/travis/build/akrava/web&#45;framework/include/cookie_middleware.h">
-<area shape="rect" id="node2" href="$middleware_8h.html" title="middleware.h" alt="" coords="141,109,240,136"/>
-<area shape="rect" id="node11" href="$cookie__entity_8h.html" title="cookie_entity.h" alt="" coords="309,109,419,136"/>
+<area shape="rect" id="node2" href="$middleware_8h.html" title="middleware.h" alt="" coords="149,109,248,136"/>
+<area shape="rect" id="node11" href="$cookie__entity_8h.html" title="cookie_entity.h" alt="" coords="425,109,535,136"/>
 <area shape="rect" id="node3" href="$response_8h.html" title="response.h" alt="" coords="209,184,295,211"/>
 <area shape="rect" id="node9" href="$request_8h.html" title="request.h" alt="" coords="109,184,184,211"/>
 <area shape="rect" id="node4" href="$http_8h.html" title="http.h" alt="" coords="210,259,264,285"/>
 <area shape="rect" id="node6" href="$headers_8h.html" title="headers.h" alt="" coords="107,259,185,285"/>
 <area shape="rect" id="node8" href="$message__body_8h.html" title="message_body.h" alt="" coords="289,259,409,285"/>
 <area shape="rect" id="node10" href="$uri_8h.html" title="uri.h" alt="" coords="37,259,83,285"/>
+<area shape="rect" id="node13" href="$entity_8h.html" title="entity.h" alt="" coords="565,184,629,211"/>
 </map>

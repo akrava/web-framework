@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['logmanager',['LogManager',['../classLogManager.html',1,'']]]
+  ['jsonmiddleware',['JsonMiddleware',['../classJsonMiddleware.html',1,'']]]
 ];

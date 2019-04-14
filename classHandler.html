@@ -88,7 +88,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="classHandler-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">Handler Class Reference</div>  </div>
+<div class="title">Handler Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
 </div><!--header-->
 <div class="contents">
 
@@ -101,7 +101,7 @@ Inheritance diagram for Handler:</div>
 <div class="dyncontent">
 <div class="center"><img src="classHandler__inherit__graph.png" border="0" usemap="#Handler_inherit__map" alt="Inheritance graph"/></div>
 <map name="Handler_inherit__map" id="Handler_inherit__map">
-<area shape="rect" id="node2" href="classFileHandler.html" title="this class allow you to set any file of filesystem as response body " alt="" coords="27,277,135,384"/></map>
+<area shape="rect" id="node2" href="classFileHandler.html" title="this class allow you to set any file of filesystem as response body " alt="" coords="27,293,135,400"/></map>
 </div>
 <div class="dynheader">
 Collaboration diagram for Handler:</div>
@@ -131,8 +131,10 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a95a5c01d1fdd7b00506d1da7a926de73"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3b9514da18e77326277b7b98ff54d862"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHandler.html#a3b9514da18e77326277b7b98ff54d862">setContext</a> (<a class="el" href="classContext.html">Context</a> *context)</td></tr>
 <tr class="separator:a3b9514da18e77326277b7b98ff54d862"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0084eb12d2f19984131ba25c4ff3acd8"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHandler.html#a0084eb12d2f19984131ba25c4ff3acd8">exec</a> ()</td></tr>
-<tr class="separator:a0084eb12d2f19984131ba25c4ff3acd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac18b95901da144e89cdb5009107d1dae"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHandler.html#ac18b95901da144e89cdb5009107d1dae">handleRequest</a> ()</td></tr>
+<tr class="separator:ac18b95901da144e89cdb5009107d1dae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac4e1a25f0aa57e8817fb84d594660259"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHandler.html#ac4e1a25f0aa57e8817fb84d594660259">exec</a> ()=0</td></tr>
+<tr class="separator:ac4e1a25f0aa57e8817fb84d594660259"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
@@ -250,7 +252,7 @@ false </dd></dl>
 
 </div>
 </div>
-<a class="anchor" id="a0084eb12d2f19984131ba25c4ff3acd8"></a>
+<a class="anchor" id="ac4e1a25f0aa57e8817fb84d594660259"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -266,13 +268,13 @@ false </dd></dl>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 <p>this method will be executed on every request (or uri path if set) </p>
 
-<p>Reimplemented in <a class="el" href="classFileHandler.html#a5254b5cad0de302a8d0468ce38bebeda">FileHandler</a>.</p>
+<p>Implemented in <a class="el" href="classFileHandler.html#a5254b5cad0de302a8d0468ce38bebeda">FileHandler</a>.</p>
 
 </div>
 </div>
@@ -332,6 +334,21 @@ false </dd></dl>
 </div><div class="memdoc">
 <p>get route of handler</p>
 <dl class="section return"><dt>Returns</dt><dd>uri http route path </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ac18b95901da144e89cdb5009107d1dae"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Handler::handleRequest </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>
