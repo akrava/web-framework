@@ -23,5 +23,4 @@ void HandlerTemplate::exec() {
         auto * html = (HtmlMiddleware *) (void *) middleware;
         html->setView(template_str);
     }
-    Handler::exec();
 }

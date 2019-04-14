@@ -94,7 +94,18 @@ public:
     void setContext(Context * context);
 
     /**
+     *
+     */
+    void handleRequest();
+
+    /**
      * this method will be executed on every request (or uri path if set)
      */
-    virtual void exec();
+    virtual void exec() = 0;
+private:
+    /**
+     *
+     * @return
+     */
+    bool shouldHandleRequest();
 };

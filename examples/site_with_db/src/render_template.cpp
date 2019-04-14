@@ -92,5 +92,4 @@ void HandlerRenderTemplate::exec() {
     html->getContext()->insert({"title", title});
     html->getContext()->insert({"content", body});
     html->exec();
-    Handler::exec();
 }

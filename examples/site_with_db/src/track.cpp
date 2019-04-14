@@ -100,5 +100,4 @@ void HandlerTrack::exec() {
     string content = mstch::render(template_track, track_content);
     body->second = content;
     html->exec();
-    Handler::exec();
 }

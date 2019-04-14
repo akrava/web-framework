@@ -5,9 +5,8 @@ using namespace std;
 
 class HelloWorldHandler : public Handler {
 public:
-    void exec() {
+    void exec() override {
         this->getContext()->setResponse(new Response("Hello world"));
-        Handler::exec();
     }
 };
 

@@ -73,5 +73,4 @@ void HandlerNews::exec() {
     }
     body->second = mstch::render(template_news, news_content);
     html->exec();
-    Handler::exec();
 }

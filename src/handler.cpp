@@ -22,10 +22,17 @@ void Handler::add(Handler * handler) {
     }
 }
 
-void Handler::exec() {
-    if (next) {
-        next->exec();
+void Handler::handleRequest() {
+    if (shouldHandleRequest()) {
+        exec();
     }
+    if (next) {
+        next->handleRequest();
+    }
+}
+
+bool Handler::shouldHandleRequest() {
+    return method == HTTP::Method::ANY || context->getRequest()->getMethod() == method;
 }
 
 void Handler::cleanNextHandlers() {

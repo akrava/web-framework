@@ -103,5 +103,4 @@ void HandlerMap::exec() {
     string content = mstch::render(template_map, map_content);
     body->second = content;
     html->exec();
-    Handler::exec();
 }

@@ -2,6 +2,7 @@
 
 #include <string>
 #include <ctime>
+#include <entity.h>
 
 /**
  * @brief Class wrapper for Cookies. Allow you adjust parameters od each http cookie.
@@ -10,7 +11,7 @@
  * Object of this class consist of key-value pair, and some options for it, like
  *       date expires, max age, domain, path, option http only
  */
-class CookieEntity {
+class CookieEntity : public Entity {
     std::string value;
     std::time_t expires;
     size_t maxAge_sec;
@@ -44,5 +45,10 @@ public:
      * @return
      *      serialized string like: "<cookie-value>; Expires=<date>; Max-Age=<non-zero-digit> ..."
      */
-    std::string toString();
+    std::string toString() override;
+
+    /**
+     *
+     */
+    std::unique_ptr<Entity> clone() override;
 };

@@ -1,6 +1,7 @@
 #include <cookie_entity.h>
 #include <parser_http.h>
 
+using namespace std;
 
 CookieEntity::CookieEntity(const char * value, time_t expires, size_t maxAge_sec,
                            const char * domain, const char * path, bool httpOnly) {
@@ -23,7 +24,7 @@ std::string CookieEntity::toString() {
         }
     }
     if (maxAge_sec != std::string::npos) {
-        result += "; Max-Age=" + maxAge_sec;
+        result += "; Max-Age=" + to_string(maxAge_sec);
     }
     if (!domain.empty()) {
         result += "; Domain=" + ParserHTTP::urlEncode(domain);
@@ -35,4 +36,8 @@ std::string CookieEntity::toString() {
         result += "; HttpOnly";
     }
     return result;
+}
+
+unique_ptr<Entity> CookieEntity::clone() {
+    return make_unique<CookieEntity>(*this);
 }

@@ -48,17 +48,17 @@ int main (int argc, char ** argv) {
 
     website.addHandler(new HandlerIndex("/", HTTP::Method::GET));
     website.addHandler(new HandlerCalculate("/calculate", HTTP::Method::GET));
-    website.addHandler(new HandlerCalculatePost("/calculate_post", HTTP::Method::POST));
+    website.addHandler(new HandlerCalculatePost("/calculate", HTTP::Method::POST));
     website.addHandler(new HandlerEstimate("/estimate", HTTP::Method::GET));
-    website.addHandler(new HandlerEstimatePost("/estimate_post", HTTP::Method::POST));
+    website.addHandler(new HandlerEstimatePost("/estimate", HTTP::Method::POST));
     website.addHandler(new HandlerMap("/map", HTTP::Method::GET));
     website.addHandler(new HandlerOrder("/order", HTTP::Method::GET));
-    website.addHandler(new HandlerOrderPost("/order_post", HTTP::Method::POST));
+    website.addHandler(new HandlerOrderPost("/order", HTTP::Method::POST));
     website.addHandler(new HandlerCommonInfo("about_content", "/about", HTTP::Method::GET));
     website.addHandler(new HandlerCommonInfo("privacy_content", "/privacy_policy", HTTP::Method::GET));
     website.addHandler(new HandlerNews("/news", HTTP::Method::GET));
     website.addHandler(new HandlerFeedback("/feedback", HTTP::Method::GET));
-    website.addHandler(new HandlerFeedbackPost("/feedback_post",  HTTP::Method::POST));
+    website.addHandler(new HandlerFeedbackPost("/feedback",  HTTP::Method::POST));
     website.addHandler(new HandlerCommonInfo("timetable_content", "/timetable", HTTP::Method::GET));
 
     website.addHandler(new HandlerApi("/api", HTTP::Method::ANY));

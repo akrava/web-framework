@@ -24,5 +24,4 @@ void HandlerCookie::exec() {
         }
     }
     html->getContext()->insert({"history_receipt", receipts_num});
-    Handler::exec();
 }

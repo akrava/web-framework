@@ -113,15 +113,14 @@ bool App::run() {
         }
         bool executed = handler;
         if (handler) {
-            handler->exec();
+            handler->handleRequest();
         }
         auto routedHandler = handlersRoutes[request->getURI()->getPath()];
-        if (routedHandler && (routedHandler->getMethod() == request->getMethod()
-            || routedHandler->getMethod() == HTTP::Method::ANY)) {
+        if (routedHandler) {
             context.getResponse()->setStatus(200);
-            handlersRoutes[request->getURI()->getPath()]->exec();
+            handlersRoutes[request->getURI()->getPath()]->handleRequest();
             executed = true;
-        } else if (routedHandler) {
+        } else if (routedHandler && false) {
             auto * res = new DefaultResponse{405};
             context.setResponse(res);
         }

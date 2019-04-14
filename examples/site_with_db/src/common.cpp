@@ -12,5 +12,4 @@ void HandlerCommon::exec() {
     } else {
         response->setStatus(404);
     }
-    Handler::exec();
 }

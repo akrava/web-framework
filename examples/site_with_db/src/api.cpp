@@ -92,6 +92,5 @@ void HandlerApi::exec() {
         (*json->getJsonResponse())["price"] = stod(result_receipt[0][5]);
         (*json->getJsonResponse())["num"] = number;
         json->fillResponse();
-        Handler::exec();
     }
 }

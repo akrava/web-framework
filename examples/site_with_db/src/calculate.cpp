@@ -66,5 +66,4 @@ void HandlerCalculate::exec() {
     string content = mstch::render(template_calculate, calculate_content);
     body->second = content;
     html->exec();
-    Handler::exec();
 }

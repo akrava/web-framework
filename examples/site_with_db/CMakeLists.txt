@@ -25,7 +25,7 @@ IF (WIN32)
 	include_directories("C:\\Program Files (x86)\\akrava_web-server\\include")
 ENDIF()
 
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -Wall")
 
 #add_library(LIB SHARED libpqxx::pqxx_shared)

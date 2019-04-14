@@ -90,5 +90,4 @@ void HandlerEstimatePost::exec() {
     string content = mstch::render(template_info, info_content);
     body->second = content;
     html->exec();
-    Handler::exec();
 }

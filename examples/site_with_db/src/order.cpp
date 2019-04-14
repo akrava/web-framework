@@ -46,5 +46,4 @@ void HandlerOrder::exec() {
     string content = mstch::render(template_order, order_content);
     body->second = content;
     html->exec();
-    Handler::exec();
 }

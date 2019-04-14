@@ -37,5 +37,4 @@ void HandlerIndex::exec() {
     string content = mstch::render(template_index, index_content);
     body->second = content;
     html->exec();
-    Handler::exec();
 }
