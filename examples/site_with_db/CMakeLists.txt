@@ -4,10 +4,15 @@ project(simple-site)
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "C:\\Program Files\\CMake\\share\\cmake-3.14\\Modules")
 
-find_package(akrava_web-server)
+#find_package(akrava_web-server)
 find_package(mstch)
 find_package(nlohmann_json)
 find_package(Boost REQUIRED)
+
+# DEBUG
+include_directories("./../../include")
+file(GLOB SOURCES "./../../src/*.cpp")
+# DEBUG
 
 IF (WIN32)
 	include_directories("C:\\Program Files (x86)\\nlohmann_json\\include")
@@ -20,8 +25,15 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -Wall")
 
 #add_library(LIB SHARED libpqxx::pqxx_shared)
-add_executable(${PROJECT_NAME} main.cpp DatabaseMiddleware.cpp DatabaseMiddleware.h)
-target_link_libraries(${PROJECT_NAME} akrava::akrava_web-server nlohmann_json::nlohmann_json mstch::mstch sqlite3)
+# RELEASE
+#add_executable(${PROJECT_NAME} main.cpp DatabaseMiddleware.cpp DatabaseMiddleware.h)
+#target_link_libraries(${PROJECT_NAME} akrava::akrava_web-server nlohmann_json::nlohmann_json mstch::mstch sqlite3)
+
+# DEBUG
+add_executable(${PROJECT_NAME} ${SOURCES} main.cpp DatabaseMiddleware.cpp DatabaseMiddleware.h)
+target_link_libraries(${PROJECT_NAME} nlohmann_json::nlohmann_json mstch::mstch sqlite3)
+# DEBUG
+
 
 #target_include_directories(${PROJECT_NAME} PUBLIC "C:\\Program Files\\PostgreSQL\\11\\lib")
 

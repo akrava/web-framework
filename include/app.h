@@ -27,7 +27,7 @@ class App {
     // Socket socket;
     Network network;
     std::unordered_map<std::string, Handler *> handlersRoutes;
-    std::list<Handler *> handlersChain;
+    Handler * handler;
     std::list<RedirectResponse> redirects;
     std::vector<Middleware *> middlewareList;
     Context context;

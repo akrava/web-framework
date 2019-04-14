@@ -7,6 +7,7 @@ class HelloWorldHandler : public Handler {
 public:
     void exec() {
         this->getContext()->setResponse(new Response("Hello world"));
+        Handler::exec();
     }
 };
 

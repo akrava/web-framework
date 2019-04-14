@@ -4,7 +4,6 @@
  *
  */
 class SocketAPI {
-	static SocketAPI * instance;
 public:
     /**
      *

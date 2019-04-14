@@ -11,7 +11,7 @@ App::App(const char * ip, int port, bool isIPv6, const char *logFilePath)
         : network(ip, port, isIPv6), log(logFilePath)
 {
     handlersRoutes = unordered_map<string, Handler *>();
-    handlersChain = list<Handler *>();
+    handler = nullptr;
     redirects = list<RedirectResponse>();
     middlewareList = vector<Middleware *>();
     network.setAPI(Network::createNewSocket());
@@ -19,7 +19,7 @@ App::App(const char * ip, int port, bool isIPv6, const char *logFilePath)
 
 App::App(InitParams & params) : network(params), log(params.getFilePath().c_str()) {
     handlersRoutes = unordered_map<string, Handler *>();
-    handlersChain = list<Handler *>();
+    handler = nullptr;
     redirects = list<RedirectResponse>();
     middlewareList = vector<Middleware *>();
     network.setAPI(Network::createNewSocket());
@@ -41,9 +41,17 @@ void App::addHandler(Handler * handler) {
     log << "Added handler";
     handler->setContext(&context);
     if (handler->isRouted()) {
-        handlersRoutes.insert({handler->getRoute(), handler});
+        if (handlersRoutes[handler->getRoute()]) {
+            handlersRoutes[handler->getRoute()]->add(handler);
+        } else {
+            handlersRoutes[handler->getRoute()] = handler;
+        }
     } else {
-        handlersChain.push_back(handler);
+        if (this->handler) {
+            this->handler->add(handler);
+        } else {
+            this->handler = handler;
+        }
     }
 }
 
@@ -103,19 +111,17 @@ bool App::run() {
             cur->setContent(context.getRequest(), context.getResponse());
             if (cur->autoExec()) cur->exec();
         }
-        bool executed = !handlersChain.empty();
-        for (auto * cur : handlersChain) {
-            cur->exec();
+        bool executed = handler;
+        if (handler) {
+            handler->exec();
         }
-        auto handler_route = handlersRoutes.find(request->getURI()->getPath());
-        if (handler_route != handlersRoutes.end()
-            && (handler_route->second->getMethod() == HTTP::Method::ANY
-                || handler_route->second->getMethod() == request->getMethod()))
-        {
+        auto routedHandler = handlersRoutes[request->getURI()->getPath()];
+        if (routedHandler && (routedHandler->getMethod() == request->getMethod()
+            || routedHandler->getMethod() == HTTP::Method::ANY)) {
             context.getResponse()->setStatus(200);
             handlersRoutes[request->getURI()->getPath()]->exec();
             executed = true;
-        } else if ((handler_route != handlersRoutes.end())) {
+        } else if (routedHandler) {
             auto * res = new DefaultResponse{405};
             context.setResponse(res);
         }
@@ -143,10 +149,10 @@ bool App::run() {
 App::~App() {
     log << "App destroyed";
     for (auto & it : handlersRoutes) {
-        delete it.second;
+        it.second->cleanNextHandlers();
     }
-    for (auto * it : handlersChain) {
-        delete it;
+    if (handler) {
+        handler->cleanNextHandlers();
     }
     for (auto * it : middlewareList) {
         delete it;

@@ -50,6 +50,7 @@ void FileHandler::exec() {
     getContext()->getResponse()->setStatus(200);
     getContext()->getResponse()->setBody(body);
     getContext()->getResponse()->getHeaders()->add("Content-Type", mimeType.c_str());
+    Handler::exec();
 }
 
 bool FileHandler::loadFile(const char *filePath, string & data) {

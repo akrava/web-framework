@@ -36,6 +36,7 @@ public:
         } else {
             response->setStatus(404);
         }
+        Handler::exec();
     }
 };
 
@@ -60,6 +61,7 @@ public:
             auto * html = (HtmlMiddleware *) (void *) middleware;
             html->setView(template_str);
         }
+        Handler::exec();
     }
 };
 
@@ -85,6 +87,7 @@ public:
             }
         }
         html->getContext()->insert({"history_receipt", receipts_num});
+        Handler::exec();
     }
 };
 
@@ -179,6 +182,7 @@ public:
         html->getContext()->insert({"title", title});
         html->getContext()->insert({"content", body});
         html->exec();
+        Handler::exec();
     }
 };
 
@@ -212,6 +216,7 @@ public:
         string content = mstch::render(template_index, index_content);
         body->second = content;
         html->exec();
+        Handler::exec();
     }
 };
 
@@ -311,6 +316,7 @@ public:
         string content = mstch::render(template_track, track_content);
         body->second = content;
         html->exec();
+        Handler::exec();
     }
 };
 
@@ -377,6 +383,7 @@ public:
         string content = mstch::render(template_calculate, calculate_content);
         body->second = content;
         html->exec();
+        Handler::exec();
     }
 };
 
@@ -515,6 +522,7 @@ public:
         string content = mstch::render(template_info, info_content);
         body->second = content;
         html->exec();
+        Handler::exec();
     }
 };
 
@@ -562,6 +570,7 @@ public:
         string content = mstch::render(template_calculate, calculate_content);
         body->second = content;
         html->exec();
+        Handler::exec();
     }
 };
 
@@ -663,6 +672,7 @@ public:
         string content = mstch::render(template_info, info_content);
         body->second = content;
         html->exec();
+        Handler::exec();
     }
 };
 
@@ -766,6 +776,7 @@ public:
         string content = mstch::render(template_map, map_content);
         body->second = content;
         html->exec();
+        Handler::exec();
     }
 };
 
@@ -814,6 +825,7 @@ public:
         string content = mstch::render(template_order, order_content);
         body->second = content;
         html->exec();
+        Handler::exec();
     }
 };
 
@@ -888,6 +900,7 @@ public:
         string content = mstch::render(template_info, info_content);
         body->second = content;
         html->exec();
+        Handler::exec();
     }
 };
 
@@ -936,6 +949,7 @@ public:
         string content = mstch::render(template_info, info_content);
         body->second = content;
         html->exec();
+        Handler::exec();
     }
 };
 
@@ -1007,6 +1021,7 @@ public:
         }
         body->second = mstch::render(template_news, news_content);
         html->exec();
+        Handler::exec();
     }
 };
 
@@ -1040,6 +1055,7 @@ public:
         string content = mstch::render(template_order, order_content);
         body->second = content;
         html->exec();
+        Handler::exec();
     }
 };
 
@@ -1104,6 +1120,7 @@ public:
         string content = mstch::render(template_info, info_content);
         body->second = content;
         html->exec();
+        Handler::exec();
     }
 };
 
@@ -1192,6 +1209,7 @@ public:
             (*json->getJsonResponse())["price"] = stod(result_receipt[0][5]);
             (*json->getJsonResponse())["num"] = number;
             json->fillResponse();
+            Handler::exec();
         }
     }
 };
