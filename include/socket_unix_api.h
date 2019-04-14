@@ -1,4 +1,5 @@
 #pragma once
+#ifdef __linux__
 
 #include <string>
 #include <sys/socket.h>
@@ -28,4 +29,11 @@ public:
      *
      */
     void receiveData(const std::string & data) override;
+
+	/**
+	 *
+	 */
+	std::string getIpFromDomain(std::string &domain, bool isHttps, bool *IPv6) override;
 };
+
+#endif  // __linux__

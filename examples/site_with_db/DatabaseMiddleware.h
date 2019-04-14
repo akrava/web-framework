@@ -1,14 +1,16 @@
 #pragma once
 
 
-#include <sqlite3.h>
+#include <pqxx/connection>
+#include <pqxx/transaction>
 #include <akrava/web-server/middleware.h>
 #include <vector>
 
 class DatabaseMiddleware : public Middleware {
-    sqlite3 *db;
+	pqxx::connection connection;
+	pqxx::work  action;
 public:
-    DatabaseMiddleware(const char *nameID, const char * filePath);
+    DatabaseMiddleware(const char *nameID, const char * connectionString);
 
     ~DatabaseMiddleware();
 

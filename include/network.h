@@ -54,4 +54,14 @@ public:
      *
      */
     std::string toString();
+	
+	/**
+	 *
+	 */
+	static std::string getIpFromDomain(std::string &domain, bool isHttps, bool *IPv6);
+
+	/**
+	 *
+	 */
+	static SocketAPI * createNewSocket();
 };

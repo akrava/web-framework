@@ -11,6 +11,9 @@
 #include <iostream>
 #include <cerrno>
 #include "DatabaseMiddleware.h"
+#ifdef _WIN32 
+	#include <windows.h>
+#endif
 
 #define __PATH_TO_DATA "/../data"
 
@@ -563,8 +566,12 @@ public:
 };
 
 static time_t toTime_t(string & date, const char * format = "%Y-%m-%d") {
-    tm tm{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, nullptr};
-    istringstream ss(date);
+	#ifdef __linux__
+		tm tm{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, nullptr};
+	#else
+		tm tm{ 0, 0, 0, 0, 0, 0, 0, 0, 0};
+	#endif
+	istringstream ss(date);
     ss >> get_time(&tm, format);
     time_t time = mktime(&tm);
     return time;
@@ -1192,8 +1199,15 @@ public:
 
 int main (int argc, char ** argv) {
     char cwd[1024];
-    if (getcwd(cwd, sizeof(cwd)) != NULL)
-        cwdir = cwd;
+    
+	#ifdef __linux__
+		if (getcwd(cwd, sizeof(cwd)) != NULL)
+			cwdir = cwd;
+	#else
+		if (GetModuleFileName(nullptr, cwd, sizeof(cwd)) != NULL)
+			cwdir = cwd;
+	#endif
+	
 
     InitParams cur;
     try {

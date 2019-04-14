@@ -1,5 +1,7 @@
 #include <iostream>
 #include "network.h"
+#include <socket_windows_api.h>
+#include <socket_unix_api.h>
 
 using namespace std;
 
@@ -49,6 +51,16 @@ bool Network::receiveData(const std::string & data) {
     return true;
 }
 
+SocketAPI * Network::createNewSocket() {
+	#ifdef __linux__
+		return new SocketUnixAPI();
+	#elif defined(_WIN32) || defined(_WIN64)
+		return new SocketWindowsAPI();
+	#else
+		return nullptr;
+	#endif
+}
+
 std::string Network::toString() {
     if (!socketImpl) {
         cerr << "Socket implementation is null" << endl;
@@ -58,3 +70,10 @@ std::string Network::toString() {
 }
 
 
+
+std::string Network::getIpFromDomain(string & domain, bool isHttps, bool * IPv6) {
+	auto socketApi = createNewSocket();
+	string result = socketApi->getIpFromDomain(domain, isHttps, IPv6);
+	delete socketApi;
+	return result;
+}

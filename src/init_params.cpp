@@ -5,10 +5,8 @@
 #include <fstream>
 #include <sstream>
 #include <runtime_exception.h>
-#include <sys/socket.h>
 #include <cerrno>
-#include <netdb.h>
-#include <arpa/inet.h>
+#include <network.h>
 
 using namespace std;
 
@@ -24,7 +22,6 @@ static bool isValidFilePath(const char * filePath);
 static bool isValidIPv4Block(string & block);
 static bool isValidIPv6Block(string & block);
 static bool isValidHostBlock(string & block);
-static string getIpFromDomain(string &domain, bool isHttps, bool *IPv6);
 
 InitParams::InitParams() {
     port = -1;
@@ -92,13 +89,13 @@ InitParams::InitParams(int argc, char ** argv) : InitParams() {
                         string curDomain = IPv4.substr(8);
                         if (!isValidHostName(curDomain)) throw RuntimeException(errorMsg);
                         bool checkIfIPv6;
-                        host = getIpFromDomain(curDomain, false, &checkIfIPv6);
+                        host = Network::getIpFromDomain(curDomain, false, &checkIfIPv6);
                         IPv6 = checkIfIPv6;
                     } else if (domain.find_first_of("https://") == 0 && domain.length() > 9) {
                         string curDomain = IPv4.substr(9);
                         if (!isValidHostName(curDomain)) throw RuntimeException(errorMsg);
                         bool checkIfIPv6;
-                        host = getIpFromDomain(curDomain, true, &checkIfIPv6);
+                        host = Network::getIpFromDomain(curDomain, true, &checkIfIPv6);
                         IPv6 = checkIfIPv6;
                     } else {
                         throw RuntimeException(errorMsg);
@@ -227,27 +224,4 @@ static bool isValidIPv6Block(string & block) {
         return true;
     }
     return false;
-}
-
-static string getIpFromDomain(string &domain, bool isHttps, bool *IPv6) {
-    addrinfo hints, * serverInfo;
-    int error;
-    string ip;
-    memset(&hints, 0, sizeof hints);
-    hints.ai_family = AF_UNSPEC;
-    hints.ai_socktype = SOCK_STREAM;
-    if ((error = getaddrinfo(domain.c_str(), isHttps ? "https" : "http", &hints, &serverInfo)) != 0)  {
-        string err = "Error while initializing: Cannot get ip: ";
-        err += gai_strerror(error);
-        throw RuntimeException(err);
-    }
-    for (auto * temp = serverInfo; temp != nullptr; temp = temp->ai_next) {
-        if (temp->ai_flags == AI_PASSIVE && !temp->ai_next) continue;
-        auto *h = (struct sockaddr_in *)temp->ai_addr;
-        ip = inet_ntoa(h->sin_addr);
-        *IPv6 = h->sin_family == AF_INET6;
-        if (temp->ai_next && temp->ai_next->ai_flags == AI_PASSIVE && !temp->ai_next->ai_next) break;
-    }
-    freeaddrinfo(serverInfo);
-    return ip;
 }

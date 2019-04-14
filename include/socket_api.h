@@ -4,6 +4,7 @@
  *
  */
 class SocketAPI {
+	static SocketAPI * instance;
 public:
     /**
      *
@@ -24,4 +25,9 @@ public:
      *
      */
     virtual void receiveData(const std::string & data) = 0;
+
+	/**
+	 *
+	 */
+	virtual std::string getIpFromDomain(std::string &domain, bool isHttps, bool *IPv6) = 0;
 };

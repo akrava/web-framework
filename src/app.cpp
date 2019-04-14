@@ -3,12 +3,9 @@
 #include <iostream>
 #include <parser_http.h>
 #include <default_response.h>
-#include "socket_unix_api.h"
-#include "socket_windows_api.h"
+#include <socket_api.h>
 
 using namespace std;
-
-static SocketAPI * getNetwork();
 
 App::App(const char * ip, int port, bool isIPv6, const char *logFilePath)
         : network(ip, port, isIPv6), log(logFilePath)
@@ -17,7 +14,7 @@ App::App(const char * ip, int port, bool isIPv6, const char *logFilePath)
     handlersChain = list<Handler *>();
     redirects = list<RedirectResponse>();
     middlewareList = vector<Middleware *>();
-    network.setAPI(getNetwork());
+    network.setAPI(Network::createNewSocket());
 }
 
 App::App(InitParams & params) : network(params), log(params.getFilePath().c_str()) {
@@ -25,7 +22,7 @@ App::App(InitParams & params) : network(params), log(params.getFilePath().c_str(
     handlersChain = list<Handler *>();
     redirects = list<RedirectResponse>();
     middlewareList = vector<Middleware *>();
-    network.setAPI(getNetwork());
+    network.setAPI(Network::createNewSocket());
 }
 
 bool App::init() {
@@ -154,14 +151,4 @@ App::~App() {
     for (auto * it : middlewareList) {
         delete it;
     }
-}
-
-static SocketAPI * getNetwork() {
-    #ifdef __linux__
-        return new SocketUnixAPI();
-    #elif _WIN32
-        return new SocketWindowsAPI();
-    #else
-        return null;
-    #endif
 }

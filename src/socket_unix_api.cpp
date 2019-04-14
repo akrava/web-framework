@@ -1,3 +1,4 @@
+#ifdef __linux__
 #include <socket.h>
 #include <iostream>
 #include <unistd.h>
@@ -114,3 +115,28 @@ void SocketUnixAPI::receiveData(const std::string &data) {
     close(client_fd);
     cout << "received " << data.length() << " bytes of data" << endl;
 }
+
+ string SocketUnixAPI::getIpFromDomain(string &domain, bool isHttps, bool *IPv6) {
+	addrinfo hints, *serverInfo;
+	int error;
+	string ip;
+	memset(&hints, 0, sizeof hints);
+	hints.ai_family = AF_UNSPEC;
+	hints.ai_socktype = SOCK_STREAM;
+	if ((error = getaddrinfo(domain.c_str(), isHttps ? "https" : "http", &hints, &serverInfo)) != 0) {
+		string err = "Error while initializing: Cannot get ip: ";
+		err += gai_strerror(error);
+		throw RuntimeException(err);
+	}
+	for (auto * temp = serverInfo; temp != nullptr; temp = temp->ai_next) {
+		if (temp->ai_flags == AI_PASSIVE && !temp->ai_next) continue;
+		auto *h = (struct sockaddr_in *)temp->ai_addr;
+		ip = inet_ntoa(h->sin_addr);
+		*IPv6 = h->sin_family == AF_INET6;
+		if (temp->ai_next && temp->ai_next->ai_flags == AI_PASSIVE && !temp->ai_next->ai_next) break;
+	}
+	freeaddrinfo(serverInfo);
+	return ip;
+}
+
+#endif // __linux__
