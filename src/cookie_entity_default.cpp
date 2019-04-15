@@ -12,3 +12,7 @@ string CookieEntityDefault::toString() {
 unique_ptr<Entity> CookieEntityDefault::clone() {
     return make_unique<CookieEntityDefault>(*this);
 }
+
+void CookieEntityDefault::setValue(std::string value) {
+    this->value = value;
+}

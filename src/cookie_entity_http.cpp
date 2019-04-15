@@ -12,3 +12,7 @@ string CookieEntityHttp::toString() {
 unique_ptr<Entity> CookieEntityHttp::clone() {
     return make_unique<CookieEntityHttp>(*this);
 }
+
+void CookieEntityHttp::setValue(std::string value) {
+    this->value = value;
+}

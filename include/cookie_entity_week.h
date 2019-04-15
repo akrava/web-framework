@@ -23,6 +23,12 @@ public:
 
     /**
      *
+     * @param value
+     */
+    void setValue(std::string value) override;
+
+    /**
+     *
      */
     std::unique_ptr<Entity> clone() override;
 };

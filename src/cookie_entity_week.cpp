@@ -27,6 +27,10 @@ unique_ptr<Entity> CookieEntityWeek::clone() {
     return make_unique<CookieEntityWeek>(*this);
 }
 
+void CookieEntityWeek::setValue(std::string value) {
+    this->value = value;
+}
+
 static tm operator+ (tm time, int spanInDays) {
     time.tm_mday += spanInDays;
     const auto t = mktime(addressof(time));

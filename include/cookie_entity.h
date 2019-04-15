@@ -40,6 +40,12 @@ public:
                  const char * domain = nullptr, const char *  path = nullptr, bool httpOnly = false);
 
     /**
+     *
+     * @param value
+     */
+    void setValue(std::string value) override;
+
+    /**
      * Method is used to serialize itself
      *
      * @return

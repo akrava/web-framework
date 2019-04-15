@@ -2,6 +2,7 @@
 
 #include "middleware.h"
 #include "cookie_entity.h"
+#include <cookie_entity_factory.h>
 
 /**
  * @brief inherited class to parse cookie from http request
@@ -9,7 +10,8 @@
  * CookieMiddleware is intended to parse cookie from http request, fill response with cookies
  */
 class CookieMiddleware : public Middleware {
-    std::unordered_map<std::string, CookieEntity> responseCookies;
+    std::unordered_map<std::string, std::unique_ptr<Entity>> responseCookies;
+    CookieEntityFactory cookieEntityFactory;
 public:
     /**
      * create middleware
@@ -40,12 +42,20 @@ public:
      * @param value
      *      CookieEntity object
      */
-    void addCookie(const char *key, CookieEntity &value);
+    void addCookie(const char *key, std::unique_ptr<Entity> value);
 
     /**
      * set response cookies in response headers
      */
     void insertInResponse();
+
+    /**
+     *
+     * @param entityType
+     * @param value
+     * @return
+     */
+    std::unique_ptr<Entity> createCookie(CookieEntityFactory::EntityType entityType, std::string & value);
 
     /**
      * delete all data, saved in internal values, set to default

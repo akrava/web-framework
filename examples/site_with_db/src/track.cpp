@@ -58,8 +58,8 @@ void HandlerTrack::exec() {
         if (cookie->getValueFromMap(varName.c_str(), temp) && temp != num) {
             toShift = true;
         } else {
-            CookieEntity cur{num.c_str()};
-            cookie->addCookie(varName.c_str(), cur);
+            auto cur = cookie->createCookie(CookieEntityFactory::EntityType::Default, num);
+            cookie->addCookie(varName.c_str(), std::move(cur));
             toShift = false;
             break;
         }
@@ -69,12 +69,12 @@ void HandlerTrack::exec() {
         string varNamePrev = "receipts_num" + to_string(i - 1);
         string prevVal;
         cookie->getValueFromMap(varNamePrev.c_str(), prevVal);
-        CookieEntity cur{prevVal.c_str()};
-        cookie->addCookie(varName.c_str(), cur);
+        auto cur = cookie->createCookie(CookieEntityFactory::EntityType::Default, prevVal);
+        cookie->addCookie(varName.c_str(), move(cur));
     }
     if (toShift) {
-        CookieEntity cur{num.c_str()};
-        cookie->addCookie("receipts_num1", cur);
+        auto cur = cookie->createCookie(CookieEntityFactory::EntityType::Default, num);
+        cookie->addCookie("receipts_num1", move(cur));
     }
     cookie->insertInResponse();
 

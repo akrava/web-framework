@@ -41,3 +41,7 @@ std::string CookieEntity::toString() {
 unique_ptr<Entity> CookieEntity::clone() {
     return make_unique<CookieEntity>(*this);
 }
+
+void CookieEntity::setValue(std::string value) {
+    this->value = value;
+}

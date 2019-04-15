@@ -16,6 +16,12 @@ public:
 
     /**
      *
+     * @param value
+     */
+    void setValue(std::string value) override;
+
+    /**
+     *
      */
     std::string toString() override;
 

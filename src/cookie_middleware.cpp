@@ -3,7 +3,7 @@
 using namespace std;
 
 CookieMiddleware::CookieMiddleware(const char * nameID) : Middleware (nameID) {
-    this->responseCookies = unordered_map<string, CookieEntity>();
+    this->responseCookies = unordered_map<string, unique_ptr<Entity>>();
 }
 
 bool CookieMiddleware::autoExec() {
@@ -15,12 +15,12 @@ bool CookieMiddleware::autoExec() {
     return false;
 }
 
-void CookieMiddleware::addCookie(const char *key, CookieEntity &value) {
+void CookieMiddleware::addCookie(const char *key, unique_ptr<Entity> value) {
     auto iterator = responseCookies.find(key);
     if (iterator != responseCookies.end()) {
         responseCookies.erase(iterator);
     }
-    responseCookies.insert({key, value});
+    responseCookies[key] = std::move(value);
 }
 
 void CookieMiddleware::exec() {
@@ -49,7 +49,7 @@ void CookieMiddleware::insertInResponse() {
         if (!isFirst) {
             value += "\r\nSet-Cookie: ";
         }
-        value += it.first + '=' + it.second.toString();
+        value += it.first + '=' + it.second->toString();
         isFirst = false;
     }
     if (!responseCookies.empty()) response->getHeaders()->add("Set-Cookie", value.c_str());
@@ -58,4 +58,8 @@ void CookieMiddleware::insertInResponse() {
 void CookieMiddleware::clear() {
     Middleware::clear();
     responseCookies.clear();
+}
+
+unique_ptr<Entity> CookieMiddleware::createCookie(CookieEntityFactory::EntityType entityType, string &value) {
+    return cookieEntityFactory.createCookie(entityType, value);
 }
