@@ -78,4 +78,11 @@ public:
      * 		reason phrase for code as string, returns Not Found if code not found among values
      */
     static std::string getReasonPhrase(int code);
+
+    /**
+     *
+     * @param extension
+     * @return
+     */
+    static std::string getMimeType(std::string & extension);
 };

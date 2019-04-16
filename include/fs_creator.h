@@ -10,6 +10,11 @@ class FsCreator {
 public:
     /**
      *
+     */
+    ~FsCreator();
+
+    /**
+     *
      * @param builder
      */
     void setBuilder(FsBuilder * builder);
