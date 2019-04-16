@@ -25,6 +25,13 @@ public:
 
     /**
      *
+     * @param name
+     * @param fullPath
+     */
+    FsFolder(const char * name);
+
+    /**
+     *
      * @return
      */
     std::string getName() override;

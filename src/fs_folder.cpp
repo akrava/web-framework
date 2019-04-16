@@ -7,6 +7,10 @@ FsFolder::FsFolder(string & name) {
     this->name = name;
 }
 
+FsFolder::FsFolder(const char * name) {
+    this->name = name;
+}
+
 string FsFolder::getFileContent() {
     throw RuntimeException("This operation is not supported by folder");
 }
