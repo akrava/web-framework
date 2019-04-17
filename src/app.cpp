@@ -130,6 +130,7 @@ bool App::run() {
         }
         auto * response = context.getResponse();
         string response_str = ParserHTTP::getStrFromResponse(*response);
+        context.setResponse(new Response());
         try {
             network.receiveData(response_str);
         } catch (RuntimeException & err) {

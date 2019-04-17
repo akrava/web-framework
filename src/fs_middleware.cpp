@@ -5,7 +5,7 @@
 using namespace std;
 
 FsMiddleware::FsMiddleware(const char *nameID, const char * folderPath, const char * mountPath) : Middleware(nameID) {
-    string mount = mountPath;
+    string mount = mountPath ? mountPath :  "/";
     creator.setBuilder(selectBuilder());
     if (mount.length() > 1) {
         if (mount[0] != '/') {

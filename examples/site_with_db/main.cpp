@@ -44,7 +44,7 @@ int main (int argc, char ** argv) {
 
 
 
-    website.addMiddleware(new FsMiddleware("FS", "./../src", "hmmm"));
+    website.addMiddleware(new FsMiddleware("FS", "./../assets"));
 
     website.addHandler(new HandlerCommon());
     website.addHandler(new HandlerTemplate());
@@ -68,11 +68,6 @@ int main (int argc, char ** argv) {
 
     website.addHandler(new HandlerApi("/api", HTTP::Method::ANY));
     website.addHandler(new HandlerTrack("/track", HTTP::Method::GET));
-    website.addHandler(new FileHandler("/common.css", (currentDir() + __PATH_TO_DATA"/common.css").c_str(), "text/css", false));
-    website.addHandler(new FileHandler("/logo.jpg", (currentDir() + __PATH_TO_DATA"/logo.jpg").c_str(), "image/jpeg", true));
-    website.addHandler(new FileHandler("/banner.jpg", (currentDir() + __PATH_TO_DATA"/banner.jpg").c_str(), "image/jpeg", true));
-    website.addHandler(new FileHandler("/news.png", (currentDir() + __PATH_TO_DATA"/news.png").c_str(), "image/png", true));
-
     website.addPermanentlyRedirect("/index", "/");
 
     website.addMiddleware(new JsonMiddleware("json"));
