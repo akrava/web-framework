@@ -73,7 +73,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -106,71 +106,79 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <map name="Entity" id="Entity">
 <area shape="rect" id="node1" href="classEntity.html" title="Entity" alt="" coords="5,81,61,108"/><area shape="rect" id="node2" href="classCookieEntity.html" title="Class wrapper for Cookies. Allow you adjust parameters od each http cookie. Used by CookieMiddleware..." alt="" coords="130,5,227,32"/><area shape="rect" id="node3" href="classCookieEntityDefault.html" title="CookieEntityDefault" alt="" coords="109,56,248,83"/><area shape="rect" id="node4" href="classCookieEntityHttp.html" title="CookieEntityHttp" alt="" coords="117,107,240,133"/><area shape="rect" id="node5" href="classCookieEntityWeek.html" title="CookieEntityWeek" alt="" coords="113,157,244,184"/></map>
 </td></tr>
-<tr><td><img src="inherit_graph_4.png" border="0" alt="" usemap="#FsBuilder"/>
+<tr><td><img src="inherit_graph_4.png" border="0" alt="" usemap="#FormEntity"/>
+<map name="FormEntity" id="FormEntity">
+<area shape="rect" id="node1" href="classFormEntity.html" title="FormEntity" alt="" coords="6,5,93,32"/></map>
+</td></tr>
+<tr><td><img src="inherit_graph_5.png" border="0" alt="" usemap="#FormParser"/>
+<map name="FormParser" id="FormParser">
+<area shape="rect" id="node1" href="classFormParser.html" title="FormParser" alt="" coords="5,31,96,57"/><area shape="rect" id="node2" href="classFormMultipart.html" title="FormMultipart" alt="" coords="153,5,255,32"/><area shape="rect" id="node3" href="classFormUrlEncoded.html" title="FormUrlEncoded" alt="" coords="144,56,264,83"/></map>
+</td></tr>
+<tr><td><img src="inherit_graph_6.png" border="0" alt="" usemap="#FsBuilder"/>
 <map name="FsBuilder" id="FsBuilder">
 <area shape="rect" id="node1" href="classFsBuilder.html" title="FsBuilder" alt="" coords="5,5,83,32"/></map>
 </td></tr>
-<tr><td><img src="inherit_graph_5.png" border="0" alt="" usemap="#FsComponent"/>
+<tr><td><img src="inherit_graph_7.png" border="0" alt="" usemap="#FsComponent"/>
 <map name="FsComponent" id="FsComponent">
 <area shape="rect" id="node1" href="classFsComponent.html" title="FsComponent" alt="" coords="5,31,109,57"/><area shape="rect" id="node2" href="classFsFile.html" title="FsFile" alt="" coords="165,5,224,32"/><area shape="rect" id="node3" href="classFsFolder.html" title="FsFolder" alt="" coords="158,56,231,83"/></map>
 </td></tr>
-<tr><td><img src="inherit_graph_6.png" border="0" alt="" usemap="#FsCreator"/>
+<tr><td><img src="inherit_graph_8.png" border="0" alt="" usemap="#FsCreator"/>
 <map name="FsCreator" id="FsCreator">
 <area shape="rect" id="node1" href="classFsCreator.html" title="FsCreator" alt="" coords="5,5,85,32"/></map>
 </td></tr>
-<tr><td><img src="inherit_graph_7.png" border="0" alt="" usemap="#Handler"/>
+<tr><td><img src="inherit_graph_9.png" border="0" alt="" usemap="#Handler"/>
 <map name="Handler" id="Handler">
 <area shape="rect" id="node1" href="classHandler.html" title="object of this class executes every time on new request, this object (and others) construct response ..." alt="" coords="5,5,72,32"/><area shape="rect" id="node2" href="classFileHandler.html" title="this class allow you to set any file of filesystem as response body " alt="" coords="120,5,208,32"/></map>
 </td></tr>
-<tr><td><img src="inherit_graph_8.png" border="0" alt="" usemap="#Headers"/>
+<tr><td><img src="inherit_graph_10.png" border="0" alt="" usemap="#Headers"/>
 <map name="Headers" id="Headers">
 <area shape="rect" id="node1" href="classHeaders.html" title="wrapper class for http headers " alt="" coords="6,5,77,32"/></map>
 </td></tr>
-<tr><td><img src="inherit_graph_9.png" border="0" alt="" usemap="#HTTP"/>
+<tr><td><img src="inherit_graph_11.png" border="0" alt="" usemap="#HTTP"/>
 <map name="HTTP" id="HTTP">
 <area shape="rect" id="node1" href="classHTTP.html" title="static class describes http method, version, and allow to convert it from/to string/enumeration ..." alt="" coords="6,5,63,32"/></map>
 </td></tr>
-<tr><td><img src="inherit_graph_10.png" border="0" alt="" usemap="#InitParams"/>
+<tr><td><img src="inherit_graph_12.png" border="0" alt="" usemap="#InitParams"/>
 <map name="InitParams" id="InitParams">
 <area shape="rect" id="node1" href="classInitParams.html" title="InitParams is intended to get web&#45;server configs from command line arguments. " alt="" coords="5,5,91,32"/></map>
 </td></tr>
-<tr><td><img src="inherit_graph_11.png" border="0" alt="" usemap="#LogManager"/>
+<tr><td><img src="inherit_graph_13.png" border="0" alt="" usemap="#LogManager"/>
 <map name="LogManager" id="LogManager">
 <area shape="rect" id="node1" href="classLogManager.html" title="logging info into file " alt="" coords="5,5,99,32"/></map>
 </td></tr>
-<tr><td><img src="inherit_graph_12.png" border="0" alt="" usemap="#MessageBody"/>
+<tr><td><img src="inherit_graph_14.png" border="0" alt="" usemap="#MessageBody"/>
 <map name="MessageBody" id="MessageBody">
 <area shape="rect" id="node1" href="classMessageBody.html" title="wrapper class for http body " alt="" coords="6,5,111,32"/></map>
 </td></tr>
-<tr><td><img src="inherit_graph_13.png" border="0" alt="" usemap="#Middleware"/>
+<tr><td><img src="inherit_graph_15.png" border="0" alt="" usemap="#Middleware"/>
 <map name="Middleware" id="Middleware">
 <area shape="rect" id="node1" href="classMiddleware.html" title="class wrapper for middleware " alt="" coords="5,107,93,133"/><area shape="rect" id="node2" href="classCookieMiddleware.html" title="inherited class to parse cookie from http request " alt="" coords="142,5,271,32"/><area shape="rect" id="node3" href="classFormMiddleware.html" title="inherited class to parse application/x&#45;www&#45;form&#45;urlencoded " alt="" coords="147,56,266,83"/><area shape="rect" id="node4" href="classFsMiddleware.html" title="FsMiddleware" alt="" coords="155,107,258,133"/><area shape="rect" id="node5" href="classHtmlMiddleware.html" title="inherited class to render html pages from templates " alt="" coords="149,157,265,184"/><area shape="rect" id="node6" href="classJsonMiddleware.html" title="inherited class to perform any actions with json data " alt="" coords="149,208,265,235"/></map>
 </td></tr>
-<tr><td><img src="inherit_graph_14.png" border="0" alt="" usemap="#Network"/>
+<tr><td><img src="inherit_graph_16.png" border="0" alt="" usemap="#Network"/>
 <map name="Network" id="Network">
 <area shape="rect" id="node1" href="classNetwork.html" title="Network" alt="" coords="6,5,77,32"/></map>
 </td></tr>
-<tr><td><img src="inherit_graph_15.png" border="0" alt="" usemap="#ParserHTTP"/>
+<tr><td><img src="inherit_graph_17.png" border="0" alt="" usemap="#ParserHTTP"/>
 <map name="ParserHTTP" id="ParserHTTP">
 <area shape="rect" id="node1" href="classParserHTTP.html" title="static class for parsing, encoding, decoding any http data " alt="" coords="6,5,101,32"/></map>
 </td></tr>
-<tr><td><img src="inherit_graph_16.png" border="0" alt="" usemap="#Request"/>
+<tr><td><img src="inherit_graph_18.png" border="0" alt="" usemap="#Request"/>
 <map name="Request" id="Request">
 <area shape="rect" id="node1" href="classRequest.html" title="class wrapper of HTTP request " alt="" coords="6,5,77,32"/></map>
 </td></tr>
-<tr><td><img src="inherit_graph_17.png" border="0" alt="" usemap="#Response"/>
+<tr><td><img src="inherit_graph_19.png" border="0" alt="" usemap="#Response"/>
 <map name="Response" id="Response">
 <area shape="rect" id="node1" href="classResponse.html" title="class wrapper of HTTP response " alt="" coords="6,31,87,57"/><area shape="rect" id="node2" href="classDefaultResponse.html" title="Response class which is intended to make sample html pages on status codes. " alt="" coords="140,5,263,32"/><area shape="rect" id="node3" href="classRedirectResponse.html" title="Response class which is intended to make http redirects. " alt="" coords="136,56,267,83"/></map>
 </td></tr>
-<tr><td><img src="inherit_graph_18.png" border="0" alt="" usemap="#RuntimeException"/>
+<tr><td><img src="inherit_graph_20.png" border="0" alt="" usemap="#RuntimeException"/>
 <map name="RuntimeException" id="RuntimeException">
 <area shape="rect" id="node2" href="classRuntimeException.html" title="exception class for program errors " alt="" coords="134,5,263,32"/></map>
 </td></tr>
-<tr><td><img src="inherit_graph_19.png" border="0" alt="" usemap="#SocketAPI"/>
+<tr><td><img src="inherit_graph_21.png" border="0" alt="" usemap="#SocketAPI"/>
 <map name="SocketAPI" id="SocketAPI">
 <area shape="rect" id="node1" href="classSocketAPI.html" title="SocketAPI" alt="" coords="5,5,91,32"/></map>
 </td></tr>
-<tr><td><img src="inherit_graph_20.png" border="0" alt="" usemap="#URI"/>
+<tr><td><img src="inherit_graph_22.png" border="0" alt="" usemap="#URI"/>
 <map name="URI" id="URI">
 <area shape="rect" id="node1" href="classURI.html" title="class represents http uri " alt="" coords="6,5,53,32"/></map>
 </td></tr>

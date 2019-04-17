@@ -5,6 +5,7 @@ var searchData=
   ['insertinresponse',['insertInResponse',['../classCookieMiddleware.html#afa81e809eb40752bc2a8779d7755628f',1,'CookieMiddleware']]],
   ['isclosed',['isClosed',['../classContext.html#a47659bfa5fdc6932058e65c393ef8014',1,'Context']]],
   ['iscomposite',['isComposite',['../classFsComponent.html#a6735b30f3e669dee80e8072194403fb0',1,'FsComponent::isComposite()'],['../classFsFile.html#a030632f7fa8878e2cc2447e6d9872509',1,'FsFile::isComposite()'],['../classFsFolder.html#a3a51abb57c85f793960e34a6875e8e92',1,'FsFolder::isComposite()']]],
+  ['isfilecontent',['isFileContent',['../classFormEntity.html#a1f4baae7dfa1a7324e72a8839ed5b985',1,'FormEntity']]],
   ['isfinalized',['isFinalized',['../classResponse.html#a23801f441ae937c3252fcbd9a000f355',1,'Response']]],
   ['isipv6',['isIPv6',['../classInitParams.html#afcfe557af23f33afc13ed54bd376edcd',1,'InitParams']]],
   ['isrouted',['isRouted',['../classHandler.html#a66a6e01e4ed09eb147d69e7e99b5e2ff',1,'Handler']]]

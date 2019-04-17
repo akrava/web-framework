@@ -62,6 +62,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
+      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -69,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -101,24 +102,27 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <a class="code" href="classHTTP.html#a1c8cb74462f162826b91c3c14afae23a">HTTP::Version</a> version;</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <a class="code" href="classHeaders.html">Headers</a> * headers;</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <a class="code" href="classMessageBody.html">MessageBody</a> * body;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <a class="code" href="classRequest.html#afaf8d8928de7ffff8a3767589489bd33">Request</a>();</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <a class="code" href="classRequest.html#afaf8d8928de7ffff8a3767589489bd33">Request</a>(<a class="code" href="classHTTP.html#aa9e5b42dac8b6629d834aa12f66b3ad9">HTTP::Method</a> method, std::string &amp; <a class="code" href="classURI.html">URI</a>, <a class="code" href="classHTTP.html#a1c8cb74462f162826b91c3c14afae23a">HTTP::Version</a> version,</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            std::string &amp; headers, std::string &amp; body);</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <a class="code" href="classRequest.html#a4d57c725686701f773eb3630630a7ea2">~Request</a>();</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <a class="code" href="classHTTP.html#aa9e5b42dac8b6629d834aa12f66b3ad9">HTTP::Method</a> <a class="code" href="classRequest.html#a5e619f0babe6a3a7019c0d95e2e3ed00">getMethod</a>();</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    URI * <a class="code" href="classRequest.html#a05de2f79f9517cf5eb68109ffcd0d853">getURI</a>();</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <a class="code" href="classHTTP.html#a1c8cb74462f162826b91c3c14afae23a">HTTP::Version</a> <a class="code" href="classRequest.html#ab762ffc033dae3cebd2d113c7447a8ef">getVersion</a>();</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <a class="code" href="classHeaders.html">Headers</a> * <a class="code" href="classRequest.html#a8a021b9ab488d255a276557672ffe388">getHeaders</a>();</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <a class="code" href="classMessageBody.html">MessageBody</a> * <a class="code" href="classRequest.html#a98c4af99bb6b8ec71372aa1ccb40036f">getMessageBody</a>();</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;};</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    std::string rawData;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <a class="code" href="classRequest.html#afaf8d8928de7ffff8a3767589489bd33">Request</a>();</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <a class="code" href="classRequest.html#afaf8d8928de7ffff8a3767589489bd33">Request</a>(<a class="code" href="classHTTP.html#aa9e5b42dac8b6629d834aa12f66b3ad9">HTTP::Method</a> method, std::string &amp; <a class="code" href="classURI.html">URI</a>, <a class="code" href="classHTTP.html#a1c8cb74462f162826b91c3c14afae23a">HTTP::Version</a> version,</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            std::string &amp; headers, std::string &amp; body, std::string raw);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <a class="code" href="classRequest.html#a4d57c725686701f773eb3630630a7ea2">~Request</a>();</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <a class="code" href="classHTTP.html#aa9e5b42dac8b6629d834aa12f66b3ad9">HTTP::Method</a> <a class="code" href="classRequest.html#a5e619f0babe6a3a7019c0d95e2e3ed00">getMethod</a>();</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    URI * <a class="code" href="classRequest.html#a05de2f79f9517cf5eb68109ffcd0d853">getURI</a>();</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <a class="code" href="classHTTP.html#a1c8cb74462f162826b91c3c14afae23a">HTTP::Version</a> <a class="code" href="classRequest.html#ab762ffc033dae3cebd2d113c7447a8ef">getVersion</a>();</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <a class="code" href="classHeaders.html">Headers</a> * <a class="code" href="classRequest.html#a8a021b9ab488d255a276557672ffe388">getHeaders</a>();</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <a class="code" href="classMessageBody.html">MessageBody</a> * <a class="code" href="classRequest.html#a98c4af99bb6b8ec71372aa1ccb40036f">getMessageBody</a>();</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    std::string <a class="code" href="classRequest.html#a317878771ecc1f43037896134bb28370">getRawData</a>();</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;};</div>
 <div class="ttc" id="classMessageBody_html"><div class="ttname"><a href="classMessageBody.html">MessageBody</a></div><div class="ttdoc">wrapper class for http body </div><div class="ttdef"><b>Definition:</b> message_body.h:10</div></div>
 <div class="ttc" id="classURI_html"><div class="ttname"><a href="classURI.html">URI</a></div><div class="ttdoc">class represents http uri </div><div class="ttdef"><b>Definition:</b> uri.h:12</div></div>
 <div class="ttc" id="message__body_8h_html"><div class="ttname"><a href="message__body_8h.html">message_body.h</a></div></div>
@@ -127,6 +131,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="ttc" id="classRequest_html_a5e619f0babe6a3a7019c0d95e2e3ed00"><div class="ttname"><a href="classRequest.html#a5e619f0babe6a3a7019c0d95e2e3ed00">Request::getMethod</a></div><div class="ttdeci">HTTP::Method getMethod()</div></div>
 <div class="ttc" id="classRequest_html"><div class="ttname"><a href="classRequest.html">Request</a></div><div class="ttdoc">class wrapper of HTTP request </div><div class="ttdef"><b>Definition:</b> request.h:14</div></div>
 <div class="ttc" id="http_8h_html"><div class="ttname"><a href="http_8h.html">http.h</a></div></div>
+<div class="ttc" id="classRequest_html_a317878771ecc1f43037896134bb28370"><div class="ttname"><a href="classRequest.html#a317878771ecc1f43037896134bb28370">Request::getRawData</a></div><div class="ttdeci">std::string getRawData()</div></div>
 <div class="ttc" id="classRequest_html_ab762ffc033dae3cebd2d113c7447a8ef"><div class="ttname"><a href="classRequest.html#ab762ffc033dae3cebd2d113c7447a8ef">Request::getVersion</a></div><div class="ttdeci">HTTP::Version getVersion()</div></div>
 <div class="ttc" id="classHTTP_html_a1c8cb74462f162826b91c3c14afae23a"><div class="ttname"><a href="classHTTP.html#a1c8cb74462f162826b91c3c14afae23a">HTTP::Version</a></div><div class="ttdeci">Version</div><div class="ttdef"><b>Definition:</b> http.h:33</div></div>
 <div class="ttc" id="classRequest_html_afaf8d8928de7ffff8a3767589489bd33"><div class="ttname"><a href="classRequest.html#afaf8d8928de7ffff8a3767589489bd33">Request::Request</a></div><div class="ttdeci">Request()</div></div>

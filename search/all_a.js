@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['loadfile',['loadFile',['../classFileHandler.html#abb550de58d4b794ae15deb281b4ce0e4',1,'FileHandler']]],
-  ['log_5fmanager_2eh',['log_manager.h',['../log__manager_8h.html',1,'']]],
-  ['logmanager',['LogManager',['../classLogManager.html',1,'LogManager'],['../classLogManager.html#acd0c01d67aa1116b6642e0bd33fe441e',1,'LogManager::LogManager()']]]
+  ['keycurrent',['keyCurrent',['../classFormParser.html#aef7cd6679ec4e07f00002c562c2e0297',1,'FormParser']]],
+  ['keyentitystorage',['KeyEntityStorage',['../form__parser_8h.html#aec7d4d2cc006ba3416a589b3a02c35fc',1,'form_parser.h']]],
+  ['keyvaluestorage',['KeyValueStorage',['../form__parser_8h.html#a0e53e50dc8123e854d5eb279bc485296',1,'form_parser.h']]]
 ];
