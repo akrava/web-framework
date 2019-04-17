@@ -1,9 +1,7 @@
 var searchData=
 [
-  ['init',['init',['../classApp.html#a49cd5d0a755aa8895f3c2996b66a9742',1,'App::init()'],['../classNetwork.html#a12210a4ad3ad823e59bba7624380a9e9',1,'Network::init()'],['../classSocketAPI.html#a2168fd9d55afb3fd5831337efd46088e',1,'SocketAPI::init()']]],
-  ['initparams',['InitParams',['../classInitParams.html#a0788f2bac8981ba2de413a8bee690d59',1,'InitParams::InitParams()'],['../classInitParams.html#af7b3f6db3ae3f14af644851e1e00cfe2',1,'InitParams::InitParams(int argc, char **argv)']]],
-  ['insertinresponse',['insertInResponse',['../classCookieMiddleware.html#afa81e809eb40752bc2a8779d7755628f',1,'CookieMiddleware']]],
-  ['isclosed',['isClosed',['../classContext.html#a47659bfa5fdc6932058e65c393ef8014',1,'Context']]],
-  ['isipv6',['isIPv6',['../classInitParams.html#afcfe557af23f33afc13ed54bd376edcd',1,'InitParams']]],
-  ['isrouted',['isRouted',['../classHandler.html#a66a6e01e4ed09eb147d69e7e99b5e2ff',1,'Handler']]]
+  ['handler',['Handler',['../classHandler.html#abbce47e92507f5640be217c3543e7d53',1,'Handler']]],
+  ['handlerequest',['handleRequest',['../classHandler.html#ac18b95901da144e89cdb5009107d1dae',1,'Handler']]],
+  ['headers',['Headers',['../classHeaders.html#a6059926b5b46d10973122569a14b0868',1,'Headers::Headers()'],['../classHeaders.html#a8397133dbfc6793be8bc10db3342885b',1,'Headers::Headers(std::string &amp;httpHeaders)']]],
+  ['htmlmiddleware',['HtmlMiddleware',['../classHtmlMiddleware.html#a04926ae98ba04b42cd28147ee5c070d3',1,'HtmlMiddleware']]]
 ];

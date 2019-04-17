@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['method',['Method',['../classHTTP.html#aa9e5b42dac8b6629d834aa12f66b3ad9',1,'HTTP']]]
+  ['entitytype',['EntityType',['../classCookieEntityFactory.html#aab6f1088d122f10fdef9189cbedfc106',1,'CookieEntityFactory']]]
 ];

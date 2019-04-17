@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['loadfile',['loadFile',['../classFileHandler.html#abb550de58d4b794ae15deb281b4ce0e4',1,'FileHandler']]],
-  ['log_5fmanager_2eh',['log_manager.h',['../log__manager_8h.html',1,'']]],
-  ['logmanager',['LogManager',['../classLogManager.html',1,'LogManager'],['../classLogManager.html#acd0c01d67aa1116b6642e0bd33fe441e',1,'LogManager::LogManager()']]]
+  ['json_5fmiddleware_2eh',['json_middleware.h',['../json__middleware_8h.html',1,'']]],
+  ['jsonmiddleware',['JsonMiddleware',['../classJsonMiddleware.html',1,'JsonMiddleware'],['../classJsonMiddleware.html#aaf7ac2dadc67c09b669932ed713f711d',1,'JsonMiddleware::JsonMiddleware()']]]
 ];

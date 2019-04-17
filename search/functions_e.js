@@ -1,22 +1,12 @@
 var searchData=
 [
-  ['setapi',['setAPI',['../classNetwork.html#a935aed4a4790e21d62e89c9ecc48302b',1,'Network']]],
-  ['setbody',['setBody',['../classMessageBody.html#aa059f8b624d25c7027777c38c8f9a6a9',1,'MessageBody::setBody()'],['../classResponse.html#a289e9ceae9fdf09882fe140a69be5f84',1,'Response::setBody()']]],
-  ['setcontent',['setContent',['../classMiddleware.html#a34da3f787b1a4d4e61b3b40b08f5a765',1,'Middleware']]],
-  ['setcontext',['setContext',['../classHandler.html#a3b9514da18e77326277b7b98ff54d862',1,'Handler']]],
-  ['setheaders',['setHeaders',['../classResponse.html#a1a2f10df7f5e4f68d9058ac896b10185',1,'Response']]],
-  ['setmiddlewarelist',['setMiddlewareList',['../classContext.html#ae027ca52192ddc50c1ee5e0d23c219f1',1,'Context']]],
-  ['setnext',['setNext',['../classHandler.html#a84870a45c795a91d72f2d81c0629f7a6',1,'Handler']]],
-  ['setparamsanduri',['setParamsAndUri',['../classURI.html#ad284f4115eca1f86f92dff9c8ae63d22',1,'URI']]],
-  ['setpermanent',['setPermanent',['../classRedirectResponse.html#af8a37d5ffc0e40f84165fc130c7c0175',1,'RedirectResponse']]],
-  ['setpermanentlyredirect',['setPermanentlyRedirect',['../classContext.html#ae3e37ba8d3634392a1991dd54928c07f',1,'Context']]],
-  ['setredirect',['setRedirect',['../classContext.html#a75747bd27962a61b48194890037aca66',1,'Context']]],
-  ['setredirectcode',['setRedirectCode',['../classRedirectResponse.html#ac6fc4e505443d493674d9eb629af6127',1,'RedirectResponse']]],
-  ['setrequest',['setRequest',['../classContext.html#a641824f175a2b74553e77463eee1ceb3',1,'Context']]],
-  ['setresponse',['setResponse',['../classContext.html#aa6cd6b84fa2f726c9897f55091cca674',1,'Context']]],
-  ['setstatus',['setStatus',['../classResponse.html#a74720570239e4c20409813f00263edf8',1,'Response']]],
-  ['settemporary',['setTemporary',['../classRedirectResponse.html#ad248bd90e36ab200217e904dc6af4c8e',1,'RedirectResponse']]],
-  ['settemporaryredirect',['setTemporaryRedirect',['../classContext.html#a4d4803bcd72832cc87d140567264359f',1,'Context']]],
-  ['setversion',['setVersion',['../classResponse.html#a69491a96e5de5676387be620d123100d',1,'Response']]],
-  ['setview',['setView',['../classHtmlMiddleware.html#af3baa498a97bb645e8623c518f2a1e67',1,'HtmlMiddleware']]]
+  ['readdata',['readData',['../classNetwork.html#a012fca7ef282e9b3d5234e58a64c502b',1,'Network']]],
+  ['receivedata',['receiveData',['../classNetwork.html#a9ec754135277e21d6cc0dbb8715a1998',1,'Network::receiveData()'],['../classSocketAPI.html#aa70dcb42fee1eff6a1ffbf8fdd5e9e7f',1,'SocketAPI::receiveData()']]],
+  ['redirectresponse',['RedirectResponse',['../classRedirectResponse.html#af2e14f870e5f948d66f355d8790b4048',1,'RedirectResponse']]],
+  ['remove',['remove',['../classFsComponent.html#a9d444920d6625a66b06711c4ff5d4ce8',1,'FsComponent::remove()'],['../classFsFile.html#a4124d9f7891a965a283b7723432c83d9',1,'FsFile::remove()'],['../classFsFolder.html#a0265101d8eceae97a35c130edc757bb8',1,'FsFolder::remove()']]],
+  ['request',['Request',['../classRequest.html#afaf8d8928de7ffff8a3767589489bd33',1,'Request::Request()'],['../classRequest.html#af254f8559831b8021f477d1f8bd4ee74',1,'Request::Request(HTTP::Method method, std::string &amp;URI, HTTP::Version version, std::string &amp;headers, std::string &amp;body)']]],
+  ['reset',['reset',['../classFsBuilder.html#ab7bc3464e1740775d86fcebd5d4e733a',1,'FsBuilder']]],
+  ['response',['Response',['../classResponse.html#aa9b6e391d77fce8daca8bac13730ec8e',1,'Response::Response()'],['../classResponse.html#a61843a26013e8a6833b40f694aecedf7',1,'Response::Response(const char *body)'],['../classResponse.html#a1ed0e4d732dddf227f72464ae11e4802',1,'Response::Response(HTTP::Version version, int status, Headers &amp;headers, MessageBody &amp;body)']]],
+  ['run',['run',['../classApp.html#a0e00b75967cb19a41f09a95aa3193275',1,'App']]],
+  ['runtimeexception',['RuntimeException',['../classRuntimeException.html#af8348c53f2c27df0506c5c67662c280e',1,'RuntimeException::RuntimeException(const std::string &amp;error)'],['../classRuntimeException.html#ad1a41a7736ff40a8f91c50011f7f17d2',1,'RuntimeException::RuntimeException(const char *error)']]]
 ];

@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['uri',['URI',['../classURI.html#afe5b04255d71cadd7d40cadda71913ae',1,'URI::URI()'],['../classURI.html#aaa27d39e9c01e96b2dfab42563373a80',1,'URI::URI(std::string &amp;uri)']]],
-  ['urldecode',['urlDecode',['../classParserHTTP.html#aeeb74e63d3fb76ba5b63c7582774bb5d',1,'ParserHTTP']]],
-  ['urlencode',['urlEncode',['../classParserHTTP.html#a2e636c0eb7b59e9830f4653c79b34e40',1,'ParserHTTP']]]
+  ['tostring',['toString',['../classCookieEntity.html#a6f75f7d69507b591c9aea1d152ea8b10',1,'CookieEntity::toString()'],['../classCookieEntityDefault.html#a1e695d6a8030ab958a73c3d8a57ad5e5',1,'CookieEntityDefault::toString()'],['../classCookieEntityHttp.html#a791b0d43937df86dd8351b1c89b12130',1,'CookieEntityHttp::toString()'],['../classCookieEntityWeek.html#ae1167a30b3e0936201f038c817b4b5bc',1,'CookieEntityWeek::toString()'],['../classEntity.html#ab7288e46324bcb15c1cd8feab1ac6fd7',1,'Entity::toString()'],['../classHeaders.html#af88322cd3d9e117843f0feffa81e6b59',1,'Headers::toString()'],['../classNetwork.html#a954f0a299d32f86e9ca1a786d5eaa6d3',1,'Network::toString()']]]
 ];

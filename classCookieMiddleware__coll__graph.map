@@ -1,5 +1,5 @@
 <map id="CookieMiddleware" name="CookieMiddleware">
-<area shape="rect" id="node2" href="$classMiddleware.html" title="class wrapper for middleware " alt="" coords="61,310,208,519"/>
-<area shape="rect" id="node3" href="$classResponse.html" title="class wrapper of HTTP response " alt="" coords="5,6,115,245"/>
-<area shape="rect" id="node4" href="$classRequest.html" title="class wrapper of HTTP request " alt="" coords="139,35,281,215"/>
+<area shape="rect" id="node2" href="$classMiddleware.html" title="class wrapper for middleware " alt="" coords="61,339,208,549"/>
+<area shape="rect" id="node3" href="$classResponse.html" title="class wrapper of HTTP response " alt="" coords="5,6,115,274"/>
+<area shape="rect" id="node4" href="$classRequest.html" title="class wrapper of HTTP request " alt="" coords="139,50,281,230"/>
 </map>

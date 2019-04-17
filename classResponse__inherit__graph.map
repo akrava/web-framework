@@ -1,4 +1,4 @@
 <map id="Response" name="Response">
-<area shape="rect" id="node2" href="$classDefaultResponse.html" title="Response class which is intended to make sample html pages on status codes. " alt="" coords="5,323,147,400"/>
-<area shape="rect" id="node3" href="$classRedirectResponse.html" title="Response class which is intended to make http redirects. " alt="" coords="171,293,321,429"/>
+<area shape="rect" id="node2" href="$classDefaultResponse.html" title="Response class which is intended to make sample html pages on status codes. " alt="" coords="5,352,147,429"/>
+<area shape="rect" id="node3" href="$classRedirectResponse.html" title="Response class which is intended to make http redirects. " alt="" coords="171,323,321,459"/>
 </map>

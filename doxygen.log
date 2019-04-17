@@ -32,6 +32,8 @@ Preprocessing /home/travis/build/akrava/web-framework/include/cookie_entity.h...
 Parsing file /home/travis/build/akrava/web-framework/include/cookie_entity.h...
 Preprocessing /home/travis/build/akrava/web-framework/include/cookie_entity_default.h...
 Parsing file /home/travis/build/akrava/web-framework/include/cookie_entity_default.h...
+Preprocessing /home/travis/build/akrava/web-framework/include/cookie_entity_factory.h...
+Parsing file /home/travis/build/akrava/web-framework/include/cookie_entity_factory.h...
 Preprocessing /home/travis/build/akrava/web-framework/include/cookie_entity_http.h...
 Parsing file /home/travis/build/akrava/web-framework/include/cookie_entity_http.h...
 Preprocessing /home/travis/build/akrava/web-framework/include/cookie_entity_week.h...
@@ -46,6 +48,22 @@ Preprocessing /home/travis/build/akrava/web-framework/include/file_handler.h...
 Parsing file /home/travis/build/akrava/web-framework/include/file_handler.h...
 Preprocessing /home/travis/build/akrava/web-framework/include/form_middleware.h...
 Parsing file /home/travis/build/akrava/web-framework/include/form_middleware.h...
+Preprocessing /home/travis/build/akrava/web-framework/include/fs_builder.h...
+Parsing file /home/travis/build/akrava/web-framework/include/fs_builder.h...
+Preprocessing /home/travis/build/akrava/web-framework/include/fs_component.h...
+Parsing file /home/travis/build/akrava/web-framework/include/fs_component.h...
+Preprocessing /home/travis/build/akrava/web-framework/include/fs_creator.h...
+Parsing file /home/travis/build/akrava/web-framework/include/fs_creator.h...
+Preprocessing /home/travis/build/akrava/web-framework/include/fs_file.h...
+Parsing file /home/travis/build/akrava/web-framework/include/fs_file.h...
+Preprocessing /home/travis/build/akrava/web-framework/include/fs_folder.h...
+Parsing file /home/travis/build/akrava/web-framework/include/fs_folder.h...
+Preprocessing /home/travis/build/akrava/web-framework/include/fs_middleware.h...
+Parsing file /home/travis/build/akrava/web-framework/include/fs_middleware.h...
+Preprocessing /home/travis/build/akrava/web-framework/include/fs_unix_builder.h...
+Parsing file /home/travis/build/akrava/web-framework/include/fs_unix_builder.h...
+Preprocessing /home/travis/build/akrava/web-framework/include/fs_windows_builder.h...
+Parsing file /home/travis/build/akrava/web-framework/include/fs_windows_builder.h...
 Preprocessing /home/travis/build/akrava/web-framework/include/handler.h...
 Parsing file /home/travis/build/akrava/web-framework/include/handler.h...
 Preprocessing /home/travis/build/akrava/web-framework/include/headers.h...
@@ -141,6 +159,7 @@ Generating code for file /home/travis/build/akrava/web-framework/include/app.h..
 Generating code for file /home/travis/build/akrava/web-framework/include/context.h...
 Generating code for file /home/travis/build/akrava/web-framework/include/cookie_entity.h...
 Generating code for file /home/travis/build/akrava/web-framework/include/cookie_entity_default.h...
+Generating code for file /home/travis/build/akrava/web-framework/include/cookie_entity_factory.h...
 Generating code for file /home/travis/build/akrava/web-framework/include/cookie_entity_http.h...
 Generating code for file /home/travis/build/akrava/web-framework/include/cookie_entity_week.h...
 Generating code for file /home/travis/build/akrava/web-framework/include/cookie_middleware.h...
@@ -148,6 +167,14 @@ Generating code for file /home/travis/build/akrava/web-framework/include/default
 Generating code for file /home/travis/build/akrava/web-framework/include/entity.h...
 Generating code for file /home/travis/build/akrava/web-framework/include/file_handler.h...
 Generating code for file /home/travis/build/akrava/web-framework/include/form_middleware.h...
+Generating code for file /home/travis/build/akrava/web-framework/include/fs_builder.h...
+Generating code for file /home/travis/build/akrava/web-framework/include/fs_component.h...
+Generating code for file /home/travis/build/akrava/web-framework/include/fs_creator.h...
+Generating code for file /home/travis/build/akrava/web-framework/include/fs_file.h...
+Generating code for file /home/travis/build/akrava/web-framework/include/fs_folder.h...
+Generating code for file /home/travis/build/akrava/web-framework/include/fs_middleware.h...
+Generating code for file /home/travis/build/akrava/web-framework/include/fs_unix_builder.h...
+Generating code for file /home/travis/build/akrava/web-framework/include/fs_windows_builder.h...
 Generating code for file /home/travis/build/akrava/web-framework/include/handler.h...
 Generating code for file /home/travis/build/akrava/web-framework/include/headers.h...
 Generating code for file /home/travis/build/akrava/web-framework/include/html_middleware.h...
@@ -172,7 +199,14 @@ Generating docs for file /home/travis/build/akrava/web-framework/docs/index.md..
 Generating docs for file /home/travis/build/akrava/web-framework/include/app.h...
 Generating docs for file /home/travis/build/akrava/web-framework/include/context.h...
 Generating docs for file /home/travis/build/akrava/web-framework/include/cookie_entity.h...
-Generating docs for file /home/travis/build/akrava/web-framework/include/cookie_entity_default.h...
+Generating docs for file /home/travis/build/akrava//home/travis/build/akrava/web-framework/include/cookie_entity_factory.h:28: warning: The following parameters of CookieEntityFactory::createCookie(EntityType entityType, std::string &value) are not documented:
+  parameter 'value'
+/home/travis/build/akrava/web-framework/include/fs_builder.h:27: warning: The following parameters of FsBuilder::buildFolder(std::string &folderPath, const char *folderName)=0 are not documented:
+  parameter 'folderName'
+/home/travis/build/akrava/web-framework/include/fs_folder.h:21: warning: argument 'fullPath' of command @param is not found in the argument list of FsFolder::FsFolder(std::string &name)
+/home/travis/build/akrava/web-framework/include/fs_folder.h:28: warning: argument 'fullPath' of command @param is not found in the argument list of FsFolder::FsFolder(const char *name)
+web-framework/include/cookie_entity_default.h...
+Generating docs for file /home/travis/build/akrava/web-framework/include/cookie_entity_factory.h...
 Generating docs for file /home/travis/build/akrava/web-framework/include/cookie_entity_http.h...
 Generating docs for file /home/travis/build/akrava/web-framework/include/cookie_entity_week.h...
 Generating docs for file /home/travis/build/akrava/web-framework/include/cookie_middleware.h...
@@ -180,6 +214,14 @@ Generating docs for file /home/travis/build/akrava/web-framework/include/default
 Generating docs for file /home/travis/build/akrava/web-framework/include/entity.h...
 Generating docs for file /home/travis/build/akrava/web-framework/include/file_handler.h...
 Generating docs for file /home/travis/build/akrava/web-framework/include/form_middleware.h...
+Generating docs for file /home/travis/build/akrava/web-framework/include/fs_builder.h...
+Generating docs for file /home/travis/build/akrava/web-framework/include/fs_component.h...
+Generating docs for file /home/travis/build/akrava/web-framework/include/fs_creator.h...
+Generating docs for file /home/travis/build/akrava/web-framework/include/fs_file.h...
+Generating docs for file /home/travis/build/akrava/web-framework/include/fs_folder.h...
+Generating docs for file /home/travis/build/akrava/web-framework/include/fs_middleware.h...
+Generating docs for file /home/travis/build/akrava/web-framework/include/fs_unix_builder.h...
+Generating docs for file /home/travis/build/akrava/web-framework/include/fs_windows_builder.h...
 Generating docs for file /home/travis/build/akrava/web-framework/include/handler.h...
 Generating docs for file /home/travis/build/akrava/web-framework/include/headers.h...
 Generating docs for file /home/travis/build/akrava/web-framework/include/html_middleware.h...
@@ -197,9 +239,7 @@ Generating docs for file /home/travis/build/akrava/web-framework/include/respons
 Generating docs for file /home/travis/build/akrava/web-framework/include/runtime_exception.h...
 Generating docs for file /home/travis/build/akrava/web-framework/include/socket_api.h...
 Generating docs for file /home/travis/build/akrava/web-framework/include/socket_unix_api.h...
-Generating docs for file /home/travis/bu/home/travis/build/akrava/web-framework/include/handler.h:29: warning: The following parameters of Handler::Handler(const char *route=nullptr, HTTP::Method method=HTTP::Method::ANY, Handler *next=nullptr) are not documented:
-  parameter 'next'
-ild/akrava/web-framework/include/socket_windows_api.h...
+Generating docs for file /home/travis/build/akrava/web-framework/include/socket_windows_api.h...
 Generating docs for file /home/travis/build/akrava/web-framework/include/uri.h...
 Generating page documentation...
 Generating group documentation...
@@ -208,6 +248,7 @@ Generating docs for compound App...
 Generating docs for compound Context...
 Generating docs for compound CookieEntity...
 Generating docs for compound CookieEntityDefault...
+Generating docs for compound CookieEntityFactory...
 Generating docs for compound CookieEntityHttp...
 Generating docs for compound CookieEntityWeek...
 Generating docs for compound CookieMiddleware...
@@ -215,6 +256,14 @@ Generating docs for compound DefaultResponse...
 Generating docs for compound Entity...
 Generating docs for compound FileHandler...
 Generating docs for compound FormMiddleware...
+Generating docs for compound FsBuilder...
+Generating docs for compound FsComponent...
+Generating docs for compound FsCreator...
+Generating docs for compound FsFile...
+Generating docs for compound FsFolder...
+G/home/travis/build/akrava/web-framework/include/handler.h:29: warning: The following parameters of Handler::Handler(const char *route=nullptr, HTTP::Method method=HTTP::Method::ANY, Handler *next=nullptr) are not documented:
+  parameter 'next'
+enerating docs for compound FsMiddleware...
 Generating docs for compound Handler...
 Generating docs for compound Headers...
 Generating docs for compound HtmlMiddleware...
@@ -252,169 +301,211 @@ Generating example index...
 finalizing index lists...
 Running dot...
 Generating dot graphs using 3 parallel threads...
-Running dot for graph 1/106
-Running dot for graph 2/106
-Running dot for graph 3/106
-Running dot for graph 4/106
-Running dot for graph 5/106
-Running dot for graph 6/106
-Running dot for graph 7/106
-Running dot for graph 8/106
-Running dot for graph 9/106
-Running dot for graph 10/106
-Running dot for graph 11/106
-Running dot for graph 12/106
-Running dot for graph 13/106
-Running dot for graph 14/106
-Running dot for graph 15/106
-Running dot for graph 16/106
-Running dot for graph 17/106
-Running dot for graph 18/106
-Running dot for graph 19/106
-Running dot for graph 20/106
-Running dot for graph 21/106
-Running dot for graph 22/106
-Running dot for graph 23/106
-Running dot for graph 24/106
-Running dot for graph 25/106
-Running dot for graph 26/106
-Running dot for graph 27/106
-Running dot for graph 28/106
-Running dot for graph 29/106
-Running dot for graph 30/106
-Running dot for graph 31/106
-Running dot for graph 32/106
-Running dot for graph 33/106
-Running dot for graph 34/106
-Running dot for graph 35/106
-Running dot for graph 36/106
-Running dot for graph 37/106
-Running dot for graph 38/106
-Running dot for graph 39/106
-Running dot for graph 40/106
-Running dot for graph 41/106
-Running dot for graph 42/106
-Running dot for graph 43/106
-Running dot for graph 44/106
-Running dot for graph 45/106
-Running dot for graph 46/106
-Running dot for graph 47/106
-Running dot for graph 48/106
-Running dot for graph 49/106
-Running dot for graph 50/106
-Running dot for graph 51/106
-Running dot for graph 52/106
-Running dot for graph 53/106
-Running dot for graph 54/106
-Running dot for graph 55/106
-Running dot for graph 56/106
-Running dot for graph 57/106
-Running dot for graph 58/106
-Running dot for graph 59/106
-Running dot for graph 60/106
-Running dot for graph 61/106
-Running dot for graph 62/106
-Running dot for graph 63/106
-Running dot for graph 64/106
-Running dot for graph 65/106
-Running dot for graph 66/106
-Running dot for graph 67/106
-Running dot for graph 68/106
-Running dot for graph 69/106
-Running dot for graph 70/106
-Running dot for graph 71/106
-Running dot for graph 72/106
-Running dot for graph 73/106
-Running dot for graph 74/106
-Running dot for graph 75/106
-Running dot for graph 76/106
-Running dot for graph 77/106
-Running dot for graph 78/106
-Running dot for graph 79/106
-Running dot for graph 80/106
-Running dot for graph 81/106
-Running dot for graph 82/106
-Running dot for graph 83/106
-Running dot for graph 84/106
-Running dot for graph 85/106
-Running dot for graph 86/106
-Running dot for graph 87/106
-Running dot for graph 88/106
-Running dot for graph 89/106
-Running dot for graph 90/106
-Running dot for graph 91/106
-Running dot for graph 92/106
-Running dot for graph 93/106
-Running dot for graph 94/106
-Running dot for graph 95/106
-Running dot for graph 96/106
-Running dot for graph 97/106
-Running dot for graph 98/106
-Running dot for graph 99/106
-Running dot for graph 100/106
-Running dot for graph 101/106
-Running dot for graph 102/106
-Running dot for graph 103/106
-Running dot for graph 104/106
-Running dot for graph 105/106
-Running dot for graph 106/106
-Patching output file 1/58
-Patching output file 2/58
-Patching output file 3/58
-Patching output file 4/58
-Patching output file 5/58
-Patching output file 6/58
-Patching output file 7/58
-Patching output file 8/58
-Patching output file 9/58
-Patching output file 10/58
-Patching output file 11/58
-Patching output file 12/58
-Patching output file 13/58
-Patching output file 14/58
-Patching output file 15/58
-Patching output file 16/58
-Patching output file 17/58
-Patching output file 18/58
-Patching output file 19/58
-Patching output file 20/58
-Patching output file 21/58
-Patching output file 22/58
-Patching output file 23/58
-Patching output file 24/58
-Patching output file 25/58
-Patching output file 26/58
-Patching output file 27/58
-Patching output file 28/58
-Patching output file 29/58
-Patching output file 30/58
-Patching output file 31/58
-Patching output file 32/58
-Patching output file 33/58
-Patching output file 34/58
-Patching output file 35/58
-Patching output file 36/58
-Patching output file 37/58
-Patching output file 38/58
-Patching output file 39/58
-Patching output file 40/58
-Patching output file 41/58
-Patching output file 42/58
-Patching output file 43/58
-Patching output file 44/58
-Patching output file 45/58
-Patching output file 46/58
-Patching output file 47/58
-Patching output file 48/58
-Patching output file 49/58
-Patching output file 50/58
-Patching output file 51/58
-Patching output file 52/58
-Patching output file 53/58
-Patching output file 54/58
-Patching output file 55/58
-Patching output file 56/58
-Patching output file 57/58
-Patching output file 58/58
-lookup cache used 395/65536 hits=1638 misses=413
+Running dot for graph 1/134
+Running dot for graph 2/134
+Running dot for graph 3/134
+Running dot for graph 4/134
+Running dot for graph 5/134
+Running dot for graph 6/134
+Running dot for graph 7/134
+Running dot for graph 8/134
+Running dot for graph 9/134
+Running dot for graph 10/134
+Running dot for graph 11/134
+Running dot for graph 12/134
+Running dot for graph 13/134
+Running dot for graph 14/134
+Running dot for graph 15/134
+Running dot for graph 16/134
+Running dot for graph 17/134
+Running dot for graph 18/134
+Running dot for graph 19/134
+Running dot for graph 20/134
+Running dot for graph 21/134
+Running dot for graph 22/134
+Running dot for graph 23/134
+Running dot for graph 24/134
+Running dot for graph 25/134
+Running dot for graph 26/134
+Running dot for graph 27/134
+Running dot for graph 28/134
+Running dot for graph 29/134
+Running dot for graph 30/134
+Running dot for graph 31/134
+Running dot for graph 32/134
+Running dot for graph 33/134
+Running dot for graph 34/134
+Running dot for graph 35/134
+Running dot for graph 36/134
+Running dot for graph 37/134
+Running dot for graph 38/134
+Running dot for graph 39/134
+Running dot for graph 40/134
+Running dot for graph 41/134
+Running dot for graph 42/134
+Running dot for graph 43/134
+Running dot for graph 44/134
+Running dot for graph 45/134
+Running dot for graph 46/134
+Running dot for graph 47/134
+Running dot for graph 48/134
+Running dot for graph 49/134
+Running dot for graph 50/134
+Running dot for graph 51/134
+Running dot for graph 52/134
+Running dot for graph 53/134
+Running dot for graph 54/134
+Running dot for graph 55/134
+Running dot for graph 56/134
+Running dot for graph 57/134
+Running dot for graph 58/134
+Running dot for graph 59/134
+Running dot for graph 60/134
+Running dot for graph 61/134
+Running dot for graph 62/134
+Running dot for graph 63/134
+Running dot for graph 64/134
+Running dot for graph 65/134
+Running dot for graph 66/134
+Running dot for graph 67/134
+Running dot for graph 68/134
+Running dot for graph 69/134
+Running dot for graph 70/134
+Running dot for graph 71/134
+Running dot for graph 72/134
+Running dot for graph 73/134
+Running dot for graph 74/134
+Running dot for graph 75/134
+Running dot for graph 76/134
+Running dot for graph 77/134
+Running dot for graph 78/134
+Running dot for graph 79/134
+Running dot for graph 80/134
+Running dot for graph 81/134
+Running dot for graph 82/134
+Running dot for graph 83/134
+Running dot for graph 84/134
+Running dot for graph 85/134
+Running dot for graph 86/134
+Running dot for graph 87/134
+Running dot for graph 88/134
+Running dot for graph 89/134
+Running dot for graph 90/134
+Running dot for graph 91/134
+Running dot for graph 92/134
+Running dot for graph 93/134
+Running dot for graph 94/134
+Running dot for graph 95/134
+Running dot for graph 96/134
+Running dot for graph 97/134
+Running dot for graph 98/134
+Running dot for graph 99/134
+Running dot for graph 100/134
+Running dot for graph 101/134
+Running dot for graph 102/134
+Running dot for graph 103/134
+Running dot for graph 104/134
+Running dot for graph 105/134
+Running dot for graph 106/134
+Running dot for graph 107/134
+Running dot for graph 108/134
+Running dot for graph 109/134
+Running dot for graph 110/134
+Running dot for graph 111/134
+Running dot for graph 112/134
+Running dot for graph 113/134
+Running dot for graph 114/134
+Running dot for graph 115/134
+Running dot for graph 116/134
+Running dot for graph 117/134
+Running dot for graph 118/134
+Running dot for graph 119/134
+Running dot for graph 120/134
+Running dot for graph 121/134
+Running dot for graph 122/134
+Running dot for graph 123/134
+Running dot for graph 124/134
+Running dot for graph 125/134
+Running dot for graph 126/134
+Running dot for graph 127/134
+Running dot for graph 128/134
+Running dot for graph 129/134
+Running dot for graph 130/134
+Running dot for graph 131/134
+Running dot for graph 132/134
+Running dot for graph 133/134
+Running dot for graph 134/134
+Patching output file 1/72
+Patching output file 2/72
+Patching output file 3/72
+Patching output file 4/72
+Patching output file 5/72
+Patching output file 6/72
+Patching output file 7/72
+Patching output file 8/72
+Patching output file 9/72
+Patching output file 10/72
+Patching output file 11/72
+Patching output file 12/72
+Patching output file 13/72
+Patching output file 14/72
+Patching output file 15/72
+Patching output file 16/72
+Patching output file 17/72
+Patching output file 18/72
+Patching output file 19/72
+Patching output file 20/72
+Patching output file 21/72
+Patching output file 22/72
+Patching output file 23/72
+Patching output file 24/72
+Patching output file 25/72
+Patching output file 26/72
+Patching output file 27/72
+Patching output file 28/72
+Patching output file 29/72
+Patching output file 30/72
+Patching output file 31/72
+Patching output file 32/72
+Patching output file 33/72
+Patching output file 34/72
+Patching output file 35/72
+Patching output file 36/72
+Patching output file 37/72
+Patching output file 38/72
+Patching output file 39/72
+Patching output file 40/72
+Patching output file 41/72
+Patching output file 42/72
+Patching output file 43/72
+Patching output file 44/72
+Patching output file 45/72
+Patching output file 46/72
+Patching output file 47/72
+Patching output file 48/72
+Patching output file 49/72
+Patching output file 50/72
+Patching output file 51/72
+Patching output file 52/72
+Patching output file 53/72
+Patching output file 54/72
+Patching output file 55/72
+Patching output file 56/72
+Patching output file 57/72
+Patching output file 58/72
+Patching output file 59/72
+Patching output file 60/72
+Patching output file 61/72
+Patching output file 62/72
+Patching output file 63/72
+Patching output file 64/72
+Patching output file 65/72
+Patching output file 66/72
+Patching output file 67/72
+Patching output file 68/72
+Patching output file 69/72
+Patching output file 70/72
+Patching output file 71/72
+Patching output file 72/72
+lookup cache used 504/65536 hits=2051 misses=528
 finished...

@@ -96,13 +96,16 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">public</span>:</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="classEntity.html#ac479d009ddde62dfb378ca0a70d81307">~Entity</a>() = <span class="keywordflow">default</span>;</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keyword">virtual</span> std::string <a class="code" href="classEntity.html#ab7288e46324bcb15c1cd8feab1ac6fd7">toString</a>() = 0;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classEntity.html#a1ee01669bfe6ff61418ff7f69e35328b">setValue</a>(std::string value) = 0;</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keyword">virtual</span> std::unique_ptr&lt;Entity&gt; <a class="code" href="classEntity.html#a876521fc4400a691833436ac0e6b2107">clone</a>() = 0;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;};</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keyword">virtual</span> std::string <a class="code" href="classEntity.html#ab7288e46324bcb15c1cd8feab1ac6fd7">toString</a>() = 0;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keyword">virtual</span> std::unique_ptr&lt;Entity&gt; <a class="code" href="classEntity.html#a876521fc4400a691833436ac0e6b2107">clone</a>() = 0;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;};</div>
 <div class="ttc" id="classEntity_html_ab7288e46324bcb15c1cd8feab1ac6fd7"><div class="ttname"><a href="classEntity.html#ab7288e46324bcb15c1cd8feab1ac6fd7">Entity::toString</a></div><div class="ttdeci">virtual std::string toString()=0</div></div>
 <div class="ttc" id="classEntity_html"><div class="ttname"><a href="classEntity.html">Entity</a></div><div class="ttdef"><b>Definition:</b> entity.h:8</div></div>
 <div class="ttc" id="classEntity_html_a876521fc4400a691833436ac0e6b2107"><div class="ttname"><a href="classEntity.html#a876521fc4400a691833436ac0e6b2107">Entity::clone</a></div><div class="ttdeci">virtual std::unique_ptr&lt; Entity &gt; clone()=0</div></div>
+<div class="ttc" id="classEntity_html_a1ee01669bfe6ff61418ff7f69e35328b"><div class="ttname"><a href="classEntity.html#a1ee01669bfe6ff61418ff7f69e35328b">Entity::setValue</a></div><div class="ttdeci">virtual void setValue(std::string value)=0</div></div>
 <div class="ttc" id="classEntity_html_ac479d009ddde62dfb378ca0a70d81307"><div class="ttname"><a href="classEntity.html#ac479d009ddde62dfb378ca0a70d81307">Entity::~Entity</a></div><div class="ttdeci">virtual ~Entity()=default</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->

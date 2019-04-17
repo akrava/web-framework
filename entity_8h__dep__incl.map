@@ -1,7 +1,8 @@
 <map id="/home/travis/build/akrava/web&#45;framework/include/entity.h" name="/home/travis/build/akrava/web&#45;framework/include/entity.h">
-<area shape="rect" id="node2" href="$cookie__entity_8h.html" title="/home/travis/build\l/akrava/web&#45;framework\l/include/cookie_entity.h" alt="" coords="22,117,180,173"/>
-<area shape="rect" id="node4" href="$cookie__entity__default_8h.html" title="/home/travis/build\l/akrava/web&#45;framework\l/include/cookie_entity\l_default.h" alt="" coords="205,110,363,181"/>
-<area shape="rect" id="node5" href="$cookie__entity__http_8h.html" title="/home/travis/build\l/akrava/web&#45;framework\l/include/cookie_entity\l_http.h" alt="" coords="387,110,545,181"/>
-<area shape="rect" id="node6" href="$cookie__entity__week_8h.html" title="/home/travis/build\l/akrava/web&#45;framework\l/include/cookie_entity\l_week.h" alt="" coords="570,110,728,181"/>
-<area shape="rect" id="node3" href="$cookie__middleware_8h.html" title="/home/travis/build\l/akrava/web&#45;framework\l/include/cookie_middleware.h" alt="" coords="5,229,197,285"/>
+<area shape="rect" id="node2" href="$cookie__entity_8h.html" title="/home/travis/build\l/akrava/web&#45;framework\l/include/cookie_entity.h" alt="" coords="5,117,163,173"/>
+<area shape="rect" id="node4" href="$cookie__entity__default_8h.html" title="/home/travis/build\l/akrava/web&#45;framework\l/include/cookie_entity\l_default.h" alt="" coords="187,110,345,181"/>
+<area shape="rect" id="node5" href="$cookie__entity__factory_8h.html" title="/home/travis/build\l/akrava/web&#45;framework\l/include/cookie_entity\l_factory.h" alt="" coords="370,110,528,181"/>
+<area shape="rect" id="node6" href="$cookie__entity__http_8h.html" title="/home/travis/build\l/akrava/web&#45;framework\l/include/cookie_entity\l_http.h" alt="" coords="553,110,711,181"/>
+<area shape="rect" id="node7" href="$cookie__entity__week_8h.html" title="/home/travis/build\l/akrava/web&#45;framework\l/include/cookie_entity\l_week.h" alt="" coords="735,110,893,181"/>
+<area shape="rect" id="node3" href="$cookie__middleware_8h.html" title="/home/travis/build\l/akrava/web&#45;framework\l/include/cookie_middleware.h" alt="" coords="170,229,363,285"/>
 </map>

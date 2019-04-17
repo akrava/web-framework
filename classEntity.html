@@ -97,7 +97,7 @@ Inheritance diagram for Entity:</div>
 <div class="dyncontent">
 <div class="center"><img src="classEntity__inherit__graph.png" border="0" usemap="#Entity_inherit__map" alt="Inheritance graph"/></div>
 <map name="Entity_inherit__map" id="Entity_inherit__map">
-<area shape="rect" id="node2" href="classCookieEntity.html" title="Class wrapper for Cookies. Allow you adjust parameters od each http cookie. Used by CookieMiddleware..." alt="" coords="5,160,121,267"/><area shape="rect" id="node3" href="classCookieEntityDefault.html" title="{CookieEntityDefault\n||+ CookieEntityDefault()\l+ toString()\l+ clone()\l}" alt="" coords="147,160,305,267"/><area shape="rect" id="node4" href="classCookieEntityHttp.html" title="{CookieEntityHttp\n||+ CookieEntityHttp()\l+ toString()\l+ clone()\l}" alt="" coords="330,160,472,267"/><area shape="rect" id="node5" href="classCookieEntityWeek.html" title="{CookieEntityWeek\n||+ CookieEntityWeek()\l+ toString()\l+ clone()\l}" alt="" coords="497,160,647,267"/></map>
+<area shape="rect" id="node2" href="classCookieEntity.html" title="Class wrapper for Cookies. Allow you adjust parameters od each http cookie. Used by CookieMiddleware..." alt="" coords="5,177,121,298"/><area shape="rect" id="node3" href="classCookieEntityDefault.html" title="{CookieEntityDefault\n||+ CookieEntityDefault()\l+ setValue()\l+ toString()\l+ clone()\l}" alt="" coords="147,177,305,298"/><area shape="rect" id="node4" href="classCookieEntityHttp.html" title="{CookieEntityHttp\n||+ CookieEntityHttp()\l+ toString()\l+ setValue()\l+ clone()\l}" alt="" coords="330,177,472,298"/><area shape="rect" id="node5" href="classCookieEntityWeek.html" title="{CookieEntityWeek\n||+ CookieEntityWeek()\l+ toString()\l+ setValue()\l+ clone()\l}" alt="" coords="497,177,647,298"/></map>
 </div>
 <div class="dynheader">
 Collaboration diagram for Entity:</div>
@@ -111,6 +111,8 @@ Collaboration diagram for Entity:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ac479d009ddde62dfb378ca0a70d81307"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEntity.html#ac479d009ddde62dfb378ca0a70d81307">~Entity</a> ()=default</td></tr>
 <tr class="separator:ac479d009ddde62dfb378ca0a70d81307"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ee01669bfe6ff61418ff7f69e35328b"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEntity.html#a1ee01669bfe6ff61418ff7f69e35328b">setValue</a> (std::string value)=0</td></tr>
+<tr class="separator:a1ee01669bfe6ff61418ff7f69e35328b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab7288e46324bcb15c1cd8feab1ac6fd7"><td class="memItemLeft" align="right" valign="top">virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEntity.html#ab7288e46324bcb15c1cd8feab1ac6fd7">toString</a> ()=0</td></tr>
 <tr class="separator:ab7288e46324bcb15c1cd8feab1ac6fd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a876521fc4400a691833436ac0e6b2107"><td class="memItemLeft" align="right" valign="top">virtual std::unique_ptr&lt; <a class="el" href="classEntity.html">Entity</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEntity.html#a876521fc4400a691833436ac0e6b2107">clone</a> ()=0</td></tr>
@@ -167,6 +169,38 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a1ee01669bfe6ff61418ff7f69e35328b"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void Entity::setValue </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implemented in <a class="el" href="classCookieEntity.html#a73c08641579866e3bd9d85fc392e4bb3">CookieEntity</a>, <a class="el" href="classCookieEntityWeek.html#a7adf8f9a2efa2dd2bcd8c9bfb24aacb8">CookieEntityWeek</a>, <a class="el" href="classCookieEntityHttp.html#abe0b58ee457e16524f4f20658ddd2ed4">CookieEntityHttp</a>, and <a class="el" href="classCookieEntityDefault.html#a75fc2765c7803e434e730680d752cba6">CookieEntityDefault</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="ab7288e46324bcb15c1cd8feab1ac6fd7"></a>
 <div class="memitem">
 <div class="memproto">
@@ -189,7 +223,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
-<p>Implemented in <a class="el" href="classCookieEntity.html#a6f75f7d69507b591c9aea1d152ea8b10">CookieEntity</a>, <a class="el" href="classCookieEntityWeek.html#ae1167a30b3e0936201f038c817b4b5bc">CookieEntityWeek</a>, <a class="el" href="classCookieEntityHttp.html#a791b0d43937df86dd8351b1c89b12130">CookieEntityHttp</a>, and <a class="el" href="classCookieEntityDefault.html#a1e695d6a8030ab958a73c3d8a57ad5e5">CookieEntityDefault</a>.</p>
+<p>Implemented in <a class="el" href="classCookieEntity.html#a6f75f7d69507b591c9aea1d152ea8b10">CookieEntity</a>, <a class="el" href="classCookieEntityDefault.html#a1e695d6a8030ab958a73c3d8a57ad5e5">CookieEntityDefault</a>, <a class="el" href="classCookieEntityWeek.html#ae1167a30b3e0936201f038c817b4b5bc">CookieEntityWeek</a>, and <a class="el" href="classCookieEntityHttp.html#a791b0d43937df86dd8351b1c89b12130">CookieEntityHttp</a>.</p>
 
 </div>
 </div>

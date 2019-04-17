@@ -1,6 +1,6 @@
 <map id="Entity" name="Entity">
-<area shape="rect" id="node2" href="$classCookieEntity.html" title="Class wrapper for Cookies. Allow you adjust parameters od each http cookie. Used by CookieMiddleware..." alt="" coords="5,160,121,267"/>
-<area shape="rect" id="node3" href="$classCookieEntityDefault.html" title="{CookieEntityDefault\n||+ CookieEntityDefault()\l+ toString()\l+ clone()\l}" alt="" coords="147,160,305,267"/>
-<area shape="rect" id="node4" href="$classCookieEntityHttp.html" title="{CookieEntityHttp\n||+ CookieEntityHttp()\l+ toString()\l+ clone()\l}" alt="" coords="330,160,472,267"/>
-<area shape="rect" id="node5" href="$classCookieEntityWeek.html" title="{CookieEntityWeek\n||+ CookieEntityWeek()\l+ toString()\l+ clone()\l}" alt="" coords="497,160,647,267"/>
+<area shape="rect" id="node2" href="$classCookieEntity.html" title="Class wrapper for Cookies. Allow you adjust parameters od each http cookie. Used by CookieMiddleware..." alt="" coords="5,177,121,298"/>
+<area shape="rect" id="node3" href="$classCookieEntityDefault.html" title="{CookieEntityDefault\n||+ CookieEntityDefault()\l+ setValue()\l+ toString()\l+ clone()\l}" alt="" coords="147,177,305,298"/>
+<area shape="rect" id="node4" href="$classCookieEntityHttp.html" title="{CookieEntityHttp\n||+ CookieEntityHttp()\l+ toString()\l+ setValue()\l+ clone()\l}" alt="" coords="330,177,472,298"/>
+<area shape="rect" id="node5" href="$classCookieEntityWeek.html" title="{CookieEntityWeek\n||+ CookieEntityWeek()\l+ toString()\l+ setValue()\l+ clone()\l}" alt="" coords="497,177,647,298"/>
 </map>
