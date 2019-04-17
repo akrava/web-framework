@@ -27,7 +27,7 @@ public:
      * @param folderPath
      * @return
      */
-    virtual FsFolder * buildFolder(std::string & folderPath) = 0;
+    virtual FsFolder * buildFolder(std::string & folderPath, const char * folderName) = 0;
 
     /**
      *

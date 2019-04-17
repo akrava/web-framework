@@ -1,3 +1,4 @@
+#include <fs_unix_builder.h>
 #include "fs_creator.h"
 #include "runtime_exception.h"
 
@@ -8,7 +9,7 @@ FsCreator::~FsCreator() {
 }
 
 void FsCreator::setBuilder(FsBuilder * builder) {
-    delete builder;
+    delete this->builder;
     this->builder = builder;
 }
 
@@ -17,7 +18,7 @@ void FsCreator::makeFs(string & folderPath) {
         throw RuntimeException("Builder wasn't set");
     }
     builder->reset();
-    builder->buildFolder(folderPath);
+    builder->buildFolder(folderPath, "");
 }
 
 void FsCreator::makeFs(FsBuilder *builder, string & folderPath) {

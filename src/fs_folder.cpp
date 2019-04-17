@@ -38,9 +38,10 @@ string FsFolder::findFileAndGetContent(string &filePath) {
     }
     auto next_delimiter_pos = filePath.find_first_of('/', 1);
     if (next_delimiter_pos == string::npos) {
+        string fileName = filePath.erase(0, 1);
         for (auto & cur : children) {
             if (!cur->isComposite()) {
-                auto result = cur->findFileAndGetContent(filePath.erase(0, 1));
+                auto result = cur->findFileAndGetContent(fileName);
                 if (!result.empty()) {
                     return result;
                 }
@@ -49,9 +50,10 @@ string FsFolder::findFileAndGetContent(string &filePath) {
         return "";
     }
     auto next_folder = filePath.substr(1, next_delimiter_pos - 1);
+    string folderName = filePath.erase(0, next_delimiter_pos);
     for (auto & cur : children) {
         if (cur->isComposite() && cur->getName() == next_folder) {
-            return cur->findFileAndGetContent(filePath.erase(0, next_delimiter_pos));
+            return cur->findFileAndGetContent(folderName);
         }
     }
     return "";

@@ -26,6 +26,7 @@
 #include <database_middleware.h>
 #include <akrava/web-server/form_middleware.h>
 #include <config.h>
+#include "fs_middleware.h"
 
 using namespace std;
 
@@ -40,6 +41,10 @@ int main (int argc, char ** argv) {
     }
     App website = App(cur);
     website.init();
+
+
+
+    website.addMiddleware(new FsMiddleware("FS", "./../src", "hmmm"));
 
     website.addHandler(new HandlerCommon());
     website.addHandler(new HandlerTemplate());

@@ -20,7 +20,7 @@ public:
      * @param folderPath
      * @return
      */
-    FsFolder * buildFolder(std::string folderPath) override;
+    FsFolder * buildFolder(std::string folderPath, const char * folderName) override;
 };
 
 #endif

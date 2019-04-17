@@ -4,18 +4,20 @@
 
 using namespace std;
 
-FsMiddleware::FsMiddleware(const char *nameID, string & folderPath, string & mountPath) : Middleware(nameID) {
+FsMiddleware::FsMiddleware(const char *nameID, const char * folderPath, const char * mountPath) : Middleware(nameID) {
+    string mount = mountPath;
     creator.setBuilder(selectBuilder());
-    if (mountPath.length() > 1) {
-        if (mountPath[0] != '/') {
-            mountPath.insert(0, "/");
+    if (mount.length() > 1) {
+        if (mount[0] != '/') {
+            mount.insert(0, "/");
         }
-        if (mountPath[mountPath.length() - 1] == '/') {
-            mountPath.erase(mountPath.length() - 1, 1);
+        if (mount[mount.length() - 1] == '/') {
+            mount.erase(mount.length() - 1, 1);
         }
-        this->mountPath = mountPath;
+        this->mountPath = mount;
     }
-    creator.makeFs(folderPath);
+    string f_path = folderPath;
+    creator.makeFs(f_path);
     folder = creator.getFs();
 }
 

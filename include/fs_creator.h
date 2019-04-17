@@ -6,7 +6,7 @@
  *
  */
 class FsCreator {
-    FsBuilder * builder;
+    FsBuilder * builder = nullptr;
 public:
     /**
      *

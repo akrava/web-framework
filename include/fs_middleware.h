@@ -16,7 +16,7 @@ public:
     /**
      *
      */
-    FsMiddleware(const char * nameID, std::string & folderPath, std::string & mountPath);
+    FsMiddleware(const char * nameID, const char * folderPath, const char * mountPath);
 
     /**
      *

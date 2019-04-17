@@ -7,9 +7,11 @@
 
 using namespace std;
 
+static string joinPath(string one, string & another);
+
 FsFile *FsUnixBuilder::buildFile(string & filePath) {
     auto delimiter_pos = filePath.find_last_of('/');
-    if (delimiter_pos == string::npos || delimiter_pos + 1 <= filePath.length()) {
+    if (delimiter_pos == string::npos || delimiter_pos + 1 > filePath.length()) {
         throw RuntimeException("Couldn't build file, filePath is wrong");
     }
     auto fileName = filePath;
@@ -17,27 +19,28 @@ FsFile *FsUnixBuilder::buildFile(string & filePath) {
     return new FsFile(fileName, filePath);
 }
 
-FsFolder *FsUnixBuilder::buildFolder(string & folderPath) {
+FsFolder *FsUnixBuilder::buildFolder(string & folderPath, const char * folderName) {
     auto dir = opendir(folderPath.c_str());
     if(dir == nullptr) {
         throw RuntimeException("Couldn't open directory" + folderPath);
     }
+    auto folder = new FsFolder(folderName);
     auto entity = readdir(dir);
-    auto * folder = new FsFolder(entity->d_name);
     while (entity != nullptr) {
         string name = entity->d_name;
+        string currentPath = joinPath(folderPath, name);
         if (entity->d_type == DT_DIR) {
             if (name[0] == '.') {
                 entity = readdir(dir);
                 continue;
             }
-            folder->add(buildFolder(name));
+            folder->add(buildFolder(currentPath, entity->d_name));
             entity = readdir(dir);
             continue;
         }
         if (entity->d_type == DT_REG) {
             char buf[PATH_MAX + 1];
-            realpath(entity->d_name, buf);
+            realpath(currentPath.c_str(), buf);
             string filePath = buf;
             folder->add(buildFile(filePath));
         }
@@ -48,5 +51,11 @@ FsFolder *FsUnixBuilder::buildFolder(string & folderPath) {
     return folder;
 }
 
+string joinPath(string one, string & another) {
+    if (one[one.length() - 1] != '/') {
+        one.append("/");
+    }
+    return one + another;
+}
 
 #endif
