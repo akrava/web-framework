@@ -106,13 +106,11 @@ bool App::run() {
                 continue;
             }
         }
-        cout << ctime(nullptr) << endl;
         for (auto * cur : middlewareList) {
             cur->clear();
             cur->setContent(context.getRequest(), context.getResponse());
             if (cur->autoExec()) cur->exec();
         }
-        cout << ctime(nullptr) << endl;
         bool executed = handler;
         if (handler) {
             handler->handleRequest();

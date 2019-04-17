@@ -7,6 +7,7 @@ Response::Response() {
 	status = 501;
 	headers = new Headers();
 	body = new MessageBody();
+	finalized = false;
 }
 
 Response::Response(const char * body) {
@@ -14,6 +15,7 @@ Response::Response(const char * body) {
 	status = 200;
 	headers = new Headers();
 	this->body = new MessageBody(body);
+    finalized = false;
 }
 
 Response::Response(HTTP::Version version, int status, Headers & headers, MessageBody & body) {
@@ -21,6 +23,7 @@ Response::Response(HTTP::Version version, int status, Headers & headers, Message
 	this->status = status;
 	this->headers = new Headers(headers);
 	this->body = new MessageBody(body);
+    finalized = false;
 }
 
 void Response::setVersion(HTTP::Version version) {
@@ -62,4 +65,12 @@ Response::~Response() {
 	headers = nullptr;
 	delete body;
 	body = nullptr;
+}
+
+void Response::finalize() {
+    finalized = true;
+}
+
+bool Response::isFinalized() {
+    return finalized;
 }

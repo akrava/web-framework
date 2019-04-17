@@ -23,6 +23,11 @@ void Handler::add(Handler * handler) {
 }
 
 void Handler::handleRequest() {
+    if (context && context->getResponse()) {
+        if (context->getResponse()->isFinalized()) {
+            return;
+        }
+    }
     if (shouldHandleRequest()) {
         exec();
     }

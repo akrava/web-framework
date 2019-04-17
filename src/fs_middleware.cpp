@@ -38,11 +38,12 @@ void FsMiddleware::exec() {
     auto extension_pos = request_uri.find_last_of('.');
     string extension = request_uri;
     if (extension_pos != string::npos && extension_pos + 1 < request_uri.length()) {
-        extension.erase(extension_pos + 1);
+        extension.erase(0, extension_pos + 1);
     } else {
         extension = "";
     }
     response->getHeaders()->add("Content-Type", HTTP::getMimeType(extension).c_str());
+    response->finalize();
 }
 
 FsBuilder * FsMiddleware::selectBuilder() {

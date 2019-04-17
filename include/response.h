@@ -14,6 +14,7 @@ class Response {
     int status;
     Headers * headers;
     MessageBody * body;
+    bool finalized;
 public:
     /**
      * Create empty response with code status 501 and http version HTTP_UNDEFINED
@@ -112,4 +113,15 @@ public:
      *      http response body as MessageBody object
      */
     MessageBody * getBody();
+
+    /**
+     *
+     */
+    void finalize();
+
+    /**
+     *
+     * @return
+     */
+    bool isFinalized();
 };
