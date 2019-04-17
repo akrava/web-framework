@@ -34,10 +34,10 @@ addons:
       - graphviz
 before_install:
   - echo -n | openssl s_client -connect https://scan.coverity.com:443 | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' | sudo tee -a /etc/ssl/certs/ca-
-  - sudo ln -s /usr/bin/gcc-5 /usr/local/bin/gcc
-  - sudo ln -s /usr/bin/g++-5 /usr/local/bin/g++
-  - export CC=/usr/bin/gcc-5
-  - export CXX=/usr/bin/g++-5
+  - sudo ln -s /usr/bin/gcc-7 /usr/local/bin/gcc
+  - sudo ln -s /usr/bin/g++-7 /usr/local/bin/g++
+  - export CC=/usr/bin/gcc-7
+  - export CXX=/usr/bin/g++-7
   - sudo apt-get -qq update
   - sudo apt-get install lcov
   - sudo apt-get install git
