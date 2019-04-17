@@ -17,6 +17,7 @@ class Request {
     HTTP::Version version;
     Headers * headers;
     MessageBody * body;
+    std::string rawData;
 public:
     /**
      * Makes empty Request object, where method and version is undefined
@@ -38,7 +39,7 @@ public:
      *      http request body string, which is used to construct MessageBody object
      */
     Request(HTTP::Method method, std::string & URI, HTTP::Version version,
-            std::string & headers, std::string & body);
+            std::string & headers, std::string & body, std::string raw);
 
     /**
      * deletes URI, Headers and MessageBody objects
@@ -84,4 +85,9 @@ public:
      *      MessageBody request object
      */
     MessageBody * getMessageBody();
+
+    /**
+     *
+     */
+    std::string getRawData();
 };

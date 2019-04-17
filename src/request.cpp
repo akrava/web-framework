@@ -11,13 +11,14 @@ Request::Request() {
 }
 
 Request::Request(HTTP::Method method, std::string & uri, HTTP::Version version,
-				 std::string & headers, std::string & body)
+				 std::string & headers, std::string & body, string raw)
 {
 	this->method = method;
 	this->version = version;
 	this->uri = new URI(uri);
 	this->headers = new Headers(headers);
 	this->body = new MessageBody(body);
+	rawData = raw;
 }
 
 HTTP::Method Request::getMethod() {
@@ -47,4 +48,8 @@ Request::~Request() {
 	uri = nullptr;
 	headers = nullptr;
 	body = nullptr;
+}
+
+string Request::getRawData() {
+    return rawData;
 }

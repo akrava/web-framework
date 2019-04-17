@@ -61,4 +61,11 @@ public:
      *      date stamp as string
      */
     static std::string getTime(const time_t * time_struct = nullptr, const char * format = "%Y.%m.%d");
+
+    /**
+     *
+     * @param str
+     * @return
+     */
+    static std::string trim(std::string & str);
 };

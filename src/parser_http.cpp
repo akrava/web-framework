@@ -1,3 +1,5 @@
+#include <algorithm>
+#include <locale>
 #include <cctype>
 #include <iomanip>
 #include <sstream>
@@ -28,7 +30,7 @@ Request * ParserHTTP::getRequestFromStr(string & str) {
     string headersStr = str.substr(versionEndPos + 2, headersEndPos - versionEndPos - 2);
 
     string bodyStr = str.substr(headersEndPos + 4);
-    return new Request(method, uriStr, version, headersStr, bodyStr);
+    return new Request(method, uriStr, version, headersStr, bodyStr, str);
 }
 
 string ParserHTTP::getStrFromResponse(Response & response) {
@@ -99,5 +101,32 @@ std::string ParserHTTP::getTime(const time_t * time_struct, const char * format)
     char time_str[1024];
     strftime(time_str, sizeof(time_str), format, time_cur);
     std::string res{time_str};
+    return res;
+}
+
+// https://stackoverflow.com/a/217605/9431509
+// trim from start (in place)
+void ltrim(std::string &s) {
+    s.erase(s.begin(), std::find_if(s.begin(), s.end(), [](int ch) {
+        return !std::isspace(ch);
+    }));
+}
+
+// trim from end (in place)
+void rtrim(std::string &s) {
+    s.erase(std::find_if(s.rbegin(), s.rend(), [](int ch) {
+        return !std::isspace(ch);
+    }).base(), s.end());
+}
+
+// trim from both ends (in place)
+void trim_both(std::string &s) {
+    ltrim(s);
+    rtrim(s);
+}
+
+string ParserHTTP::trim(string &str) {
+    string res = str;
+    trim_both(res);
     return res;
 }
