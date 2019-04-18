@@ -14,14 +14,14 @@ KeyEntityStorage FormParser::parseForm(std::string & httpRequest, KeyValueStorag
         if (endKeyPos == string::npos || endKeyPos <= position) {
             break;
         }
-        parseNextKey(position, endKeyPos - 1);
-        actionBeforeValueParsing(position, endKeyPos - 1);
+        parseNextKey(position, endKeyPos);
+        actionBeforeValueParsing(position, endKeyPos);
         position = endKeyPos + valuesDelimiter.length();
         size_t endValuePos = formBody.find(pairsDelimiter, position);
         if (endValuePos == string::npos || endValuePos <= position) {
-            break;
+            endValuePos = formBody.length();
         }
-        parseNextValue(position, endValuePos - 1);
+        parseNextValue(position, endValuePos);
         values.insert({keyCurrent, valueCurrent});
         position = endValuePos + pairsDelimiter.length();
     }
@@ -33,8 +33,8 @@ KeyEntityStorage FormParser::parseForm(std::string & httpRequest, KeyValueStorag
 
 void FormParser::selectFormBody() {
     string source = formBody;
-    size_t headersEndPos = source.find_first_of("\r\n\r\n");
-    if (headersEndPos == string::npos || headersEndPos + 4 <= source.length()) {
+    size_t headersEndPos = source.find("\r\n\r\n");
+    if (headersEndPos == string::npos || headersEndPos + 4 >= source.length()) {
         throw RuntimeException("Request body is invalid");
     }
     formBody = source.substr(headersEndPos + 4);
