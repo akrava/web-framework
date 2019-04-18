@@ -27,7 +27,9 @@ public:
      */
     Middleware(const char * nameID);
 
-
+    /**
+     *
+     */
     virtual ~Middleware();
 
     /**

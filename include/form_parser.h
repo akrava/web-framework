@@ -23,6 +23,11 @@ public:
      *
      */
     KeyEntityStorage parseForm(std::string & httpRequest, KeyValueStorage * KVPStorage = nullptr);
+
+    /**
+     *
+     */
+    virtual ~FormParser() = default;
 protected:
     /**
      *

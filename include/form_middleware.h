@@ -1,6 +1,7 @@
 #pragma once
 
 #include "middleware.h"
+#include "form_parser.h"
 
 /**
  * @brief inherited class to parse application/x-www-form-urlencoded
@@ -8,6 +9,7 @@
  * FormMiddleware is intended to parse forms from http request and decode it
  */
 class FormMiddleware : public Middleware {
+    FormParser * currentParser = nullptr;
 public:
     /**
      * create middleware
@@ -16,6 +18,11 @@ public:
      *      name id
      */
     FormMiddleware(const char * nameID) : Middleware(nameID) {}
+
+    /**
+     *
+     */
+    ~FormMiddleware();
 
     /**
      * Check if request is application/x-www-form-urlencoded
@@ -34,4 +41,16 @@ public:
      * delete all data, saved in internal values, set to default
      */
     void clear() { Middleware::clear(); }
+
+    /**
+     *
+     * @param parser
+     */
+    void setParser(FormParser * parser);
+
+    /**
+     *
+     * @return
+     */
+    FormParser * getParser();
 };
