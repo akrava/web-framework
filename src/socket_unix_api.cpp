@@ -78,7 +78,7 @@ std::string SocketUnixAPI::getData() {
         try {
             string length_str = data.substr(startKey + 16, endValue - startKey - 16);
             length = stoul(length_str);
-            cur = data.length() - startBody - 3;
+            cur = data.length() - startBody - 4;
         } catch (out_of_range & err) {
         } catch (invalid_argument & err) {
         }
@@ -91,9 +91,11 @@ std::string SocketUnixAPI::getData() {
             delete[] buffer;
             return std::string();
         }
+        string temp;
+        temp.assign(buffer, length_cur);
         buffer[length_cur] = 0;
         cur += length_cur;
-        data += buffer;
+        data += temp;
     }
     delete [] buffer;
     return data;

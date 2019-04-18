@@ -3,7 +3,7 @@
 
 using namespace std;
 
-KeyEntityStorage FormParser::parseForm(std::string & httpRequest, KeyValueStorage *KVPStorage) {
+KeyEntityStorage * FormParser::parseForm(std::string & httpRequest, KeyValueStorage *KVPStorage) {
     formBody = httpRequest;
     actionBeforeSelectingBody();
     selectFormBody();
@@ -22,7 +22,7 @@ KeyEntityStorage FormParser::parseForm(std::string & httpRequest, KeyValueStorag
             endValuePos = formBody.length();
         }
         parseNextValue(position, endValuePos);
-        values.insert({keyCurrent, valueCurrent});
+        values->insert({keyCurrent, valueCurrent});
         position = endValuePos + pairsDelimiter.length();
     }
     if (KVPStorage) {
@@ -42,7 +42,7 @@ void FormParser::selectFormBody() {
 
 KeyValueStorage FormParser::getKeyValuePairs() {
     KeyValueStorage result;
-    for (auto & cur : values) {
+    for (auto & cur : *values) {
         result.insert({cur.first, cur.second->getValue()});
     }
     return result;

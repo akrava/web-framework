@@ -4,6 +4,7 @@
 #include <akrava/web-server/file_handler.h>
 #include <database_middleware.h>
 #include <config.h>
+#include <fstream>
 
 using namespace std;
 
@@ -28,7 +29,16 @@ void HandlerFeedbackPost::exec() {
     if (!form->getValueFromMap("name", name_str)) error = true;
     if (!form->getValueFromMap("email", email_str)) error = true;
     if (!form->getValueFromMap("comment", comment_str)) error = true;
-    form->getValueFromMap("photo", file_str);
+    if (form->getValueFromMap("photo", file_str)) {
+        auto file = form->getFormEntity("photo");
+        string baseFolder = ".";
+        baseFolder += __PATH_TO_DATA"/";
+        std::ofstream outputFile(baseFolder + file->getFileName());
+        if (outputFile) {
+            outputFile << file->getValue();
+        }
+        outputFile.close();
+    }
 
     const char * data[] = {
             name_str.c_str(),

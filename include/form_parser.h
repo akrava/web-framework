@@ -12,7 +12,7 @@ typedef std::unordered_map<std::string, FormEntity *> KeyEntityStorage;
  */
 class FormParser {
 protected:
-    KeyEntityStorage values;
+    KeyEntityStorage * values = nullptr;
     FormEntity * valueCurrent;
     std::string keyCurrent;
     std::string formBody;
@@ -22,7 +22,7 @@ public:
     /**
      *
      */
-    KeyEntityStorage parseForm(std::string & httpRequest, KeyValueStorage * KVPStorage = nullptr);
+    KeyEntityStorage * parseForm(std::string & httpRequest, KeyValueStorage * KVPStorage = nullptr);
 
     /**
      *

@@ -9,6 +9,7 @@
  * FormMiddleware is intended to parse forms from http request and decode it
  */
 class FormMiddleware : public Middleware {
+    KeyEntityStorage * keysStorage = nullptr;
     FormParser * currentParser = nullptr;
 public:
     /**
@@ -47,6 +48,11 @@ public:
      * @param parser
      */
     void setParser(FormParser * parser);
+
+    /**
+     *
+     */
+    FormEntity * getFormEntity(const char * key);
 
     /**
      *

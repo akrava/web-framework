@@ -24,7 +24,8 @@ bool FormMiddleware::autoExec() {
 
 void FormMiddleware::exec() {
     string data = request->getRawData();
-    currentParser->parseForm(data, map);
+    delete keysStorage;
+    keysStorage = currentParser->parseForm(data, map);
 }
 
 FormMiddleware::~FormMiddleware() {
@@ -39,4 +40,11 @@ void FormMiddleware::setParser(FormParser *parser) {
 
 FormParser *FormMiddleware::getParser() {
     return currentParser;
+}
+
+FormEntity *FormMiddleware::getFormEntity(const char * key) {
+    if (keysStorage->at(key)) {
+        return keysStorage->at(key);
+    }
+    return nullptr;
 }

@@ -1,4 +1,5 @@
 #include <cstring>
+#include <iostream>
 #include "form_multipart_data.h"
 #include "runtime_exception.h"
 #include "parser_http.h"
@@ -10,6 +11,7 @@ static string getValue(string & source, const char * pre, const char * after);
 
 void FormMultipart::actionBeforeSelectingBody() {
     string contentType = getValue(formBody, "Content-Type:", "\n");
+    std::cout << formBody << endl;
     string boundary = getValue(contentType, "boundary=", "\n");
     pairsDelimiter = "--" + ParserHTTP::trim(boundary) + "\r\n";
 
@@ -60,6 +62,7 @@ void FormMultipart::actionBeforeValueParsing(size_t keyStart, size_t keyEnd) {
 
 FormMultipart::FormMultipart() {
     valuesDelimiter = "\r\n\r\n";
+    values = new KeyEntityStorage();
 }
 
 string getValue(string & source, const char * pre, const char * after) {

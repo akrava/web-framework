@@ -17,4 +17,5 @@ void FormUrlEncoded::parseNextValue(size_t startPosition, size_t endPosition) {
 FormUrlEncoded::FormUrlEncoded() {
     pairsDelimiter = "&";
     valuesDelimiter = "=";
+    values = new KeyEntityStorage();
 }

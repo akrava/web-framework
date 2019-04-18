@@ -96,6 +96,7 @@ bool App::run() {
             error = true;
             break;
         }
+        std::cout << request_str << endl;
         Request * request = ParserHTTP::getRequestFromStr(request_str);
         log << "Got request: " + request->getURI()->getRawData();
         context.setRequest(request);
