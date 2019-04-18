@@ -32,11 +32,11 @@ string FsFolder::getName() {
 }
 
 string FsFolder::findFileAndGetContent(string &filePath) {
-    auto delimiter_pos = filePath.find_first_of('/');
+    auto delimiter_pos = filePath.find('/');
     if (delimiter_pos != 0 || filePath.length() <= 1) {
         return "";
     }
-    auto next_delimiter_pos = filePath.find_first_of('/', 1);
+    auto next_delimiter_pos = filePath.find('/', 1);
     if (next_delimiter_pos == string::npos) {
         string fileName = filePath.erase(0, 1);
         for (auto & cur : children) {

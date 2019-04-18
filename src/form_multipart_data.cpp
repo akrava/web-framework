@@ -11,8 +11,15 @@ static string getValue(string & source, const char * pre, const char * after);
 void FormMultipart::actionBeforeSelectingBody() {
     string contentType = getValue(formBody, "Content-Type:", "\n");
     string boundary = getValue(contentType, "boundary=", "\n");
-    pairsDelimiter = "--" + ParserHTTP::trim(boundary);
-    string lastDelimiter = pairsDelimiter + "--";
+    pairsDelimiter = "--" + ParserHTTP::trim(boundary) + "\r\n";
+
+    size_t firstDelimiterPos = formBody.find(pairsDelimiter);
+    if (firstDelimiterPos == string::npos) {
+        throw RuntimeException("Couldn't parse multipart/form-data");
+    }
+    formBody.erase(firstDelimiterPos, pairsDelimiter.length());
+    string delimiter = pairsDelimiter;
+    string lastDelimiter = delimiter.insert(delimiter.length() - 2, "--");
     size_t lastDelimiterPos = formBody.find(lastDelimiter);
     if (lastDelimiterPos == string::npos) {
         throw RuntimeException("Couldn't parse multipart/form-data");
@@ -44,21 +51,21 @@ void FormMultipart::actionBeforeValueParsing(size_t keyStart, size_t keyEnd) {
         contentType = ParserHTTP::trim(contentType);
         valueCurrent->setContentType(contentType);
     }
-    if (current.find("Content-Type:") != string::npos) {
-        string contentType = getValue(current, "Content-Type:", "\n");
+    if (current.find("charset=") != string::npos) {
+        string contentType = getValue(current, "charset=", "\n");
         contentType = ParserHTTP::trim(contentType);
         valueCurrent->setContentType(contentType);
     }
 }
 
 FormMultipart::FormMultipart() {
-    valuesDelimiter = '\n';
+    valuesDelimiter = "\r\n\r\n";
 }
 
 string getValue(string & source, const char * pre, const char * after) {
     size_t startPos = source.find(pre);
     int prefixLength = strlen(pre);
-    if (startPos == string::npos || startPos + prefixLength <= source.length()) {
+    if (startPos == string::npos || startPos + prefixLength >= source.length()) {
         throw RuntimeException("Couldn't parse multipart/form-data");
     }
     size_t endPos = source.find(after, startPos + prefixLength);

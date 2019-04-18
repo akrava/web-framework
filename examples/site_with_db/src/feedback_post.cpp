@@ -23,24 +23,27 @@ void HandlerFeedbackPost::exec() {
     string name_str;
     string email_str;
     string comment_str;
+    string file_str;
 
     if (!form->getValueFromMap("name", name_str)) error = true;
     if (!form->getValueFromMap("email", email_str)) error = true;
     if (!form->getValueFromMap("comment", comment_str)) error = true;
+    form->getValueFromMap("photo", file_str);
 
     const char * data[] = {
             name_str.c_str(),
             email_str.c_str(),
-            comment_str.c_str()
+            comment_str.c_str(),
+            file_str.empty() ? nullptr : file_str.c_str()
     };
 
     vector<vector<string>> res_query;
     if (!db->execQuery(
-            "INSERT INTO reviews ( `name`,`email`,`text`) "
-            "VALUES (?, ?, ?);",
+            "INSERT INTO reviews ( `name`,`email`,`text`, `photo`) "
+            "VALUES (?, ?, ?, ?);",
             res_query,
             (char **)data,
-            3)
+            4)
     ) return;
 
     if (!res_query.empty()) error = true;

@@ -1,5 +1,5 @@
 <p class="first">Залиште feedback</p>
-<form id="feedback" action="{{uri_feedback}}" method="POST">
+<form id="feedback" action="{{uri_feedback}}" method="POST" enctype="multipart/form-data">
     <div class="wrapper table">
         <table class="data">
             <tr class="order row">
@@ -18,6 +18,12 @@
                 <td class="name">Відгук</td>
                 <td class="value">
                     <textarea required id="comment" name="comment" rows="10" cols="50" maxlength="1000"></textarea>
+                </td>
+            </tr>
+            <tr class="order row">
+                <td class="name">Фото</td>
+                <td class="value">
+                    <input id="photo" name="photo" type="file" accept="image/*">
                 </td>
             </tr>
         </table>

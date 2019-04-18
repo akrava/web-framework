@@ -62,8 +62,8 @@ InitParams::InitParams(int argc, char ** argv) : InitParams() {
                 string domain = argv[i];
                 size_t portPosition = domain.find_last_of(':');
                 size_t squareBracketPos = domain.find_last_of(']');
-                if (portPosition == string::npos || ((domain.find_first_of("http://") == 0
-                    || domain.find_first_of("https://") == 0) && portPosition < 7)
+                if (portPosition == string::npos || ((domain.find("http://") == 0
+                    || domain.find("https://") == 0) && portPosition < 7)
                     || (portPosition < squareBracketPos && squareBracketPos != string::npos)) {
                     port = def_port;
                     portPosition = domain.length();
@@ -85,13 +85,13 @@ InitParams::InitParams(int argc, char ** argv) : InitParams() {
                     if (isValidIP(IPv4, &isIPv6) && !isIPv6) {
                         this->IPv6 = false;
                         host = IPv4;
-                    } else if (domain.find_first_of("http://") == 0 && domain.length() > 8) {
+                    } else if (domain.find("http://") == 0 && domain.length() > 8) {
                         string curDomain = IPv4.substr(8);
                         if (!isValidHostName(curDomain)) throw RuntimeException(errorMsg);
                         bool checkIfIPv6;
                         host = Network::getIpFromDomain(curDomain, false, &checkIfIPv6);
                         IPv6 = checkIfIPv6;
-                    } else if (domain.find_first_of("https://") == 0 && domain.length() > 9) {
+                    } else if (domain.find("https://") == 0 && domain.length() > 9) {
                         string curDomain = IPv4.substr(9);
                         if (!isValidHostName(curDomain)) throw RuntimeException(errorMsg);
                         bool checkIfIPv6;

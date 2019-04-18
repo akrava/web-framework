@@ -23,7 +23,7 @@ FsMiddleware::FsMiddleware(const char *nameID, const char * folderPath, const ch
 
 bool FsMiddleware::autoExec() {
     auto request_uri = request->getURI()->getPath();
-    if (!mountPath.empty() && request_uri.find_first_of(mountPath) == 0) {
+    if (!mountPath.empty() && request_uri.find(mountPath) == 0) {
         request_uri.erase(0, mountPath.length());
     }
     value = folder->findFileAndGetContent(request_uri);
