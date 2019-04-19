@@ -68,4 +68,26 @@ public:
      * @return
      */
     static std::string trim(std::string & str);
+
+    /**
+     *
+     * @param key
+     * @param message
+     * @return
+     */
+    static std::string sha256(std::string & key, std::string & message);
+
+    /**
+     *
+     * @param value
+     * @return
+     */
+    static std::string base64Encode(std::string & value);
+
+    /**
+     *
+     * @param value
+     * @return
+     */
+    static std::string base64Decode(std::string & value);
 };

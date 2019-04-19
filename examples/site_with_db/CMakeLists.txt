@@ -8,6 +8,7 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "C:\\Program Files\\CMake\\share\\cma
 find_package(mstch)
 find_package(nlohmann_json)
 find_package(Boost REQUIRED)
+find_package(crypto REQUIRED)
 
 file(GLOB APP_SOURCES "src/*.cpp")
 file(GLOB MIDDLEWARE_SOURCES "middleware/*.cpp")
@@ -35,7 +36,7 @@ set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -Wall")
 
 # DEBUG
 add_executable(${PROJECT_NAME} ${SOURCES} ${APP_SOURCES} ${MIDDLEWARE_SOURCES} main.cpp src/database_middleware.cpp include/database_middleware.h)
-target_link_libraries(${PROJECT_NAME} nlohmann_json::nlohmann_json mstch::mstch sqlite3)
+target_link_libraries(${PROJECT_NAME} nlohmann_json::nlohmann_json mstch::mstch sqlite3 crypto)
 # DEBUG
 
 
