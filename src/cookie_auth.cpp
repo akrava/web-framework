@@ -45,4 +45,5 @@ void CookieAuth::serializeAndSetValueToResponse(std::string & value) {
     auto cookieType = CookieEntityFactory::EntityType::HttpOnly;
     cookie->addCookie("X-Access-Token", cookie->createCookie(cookieType, value));
     cookie->addCookie("X-Access-Sign", cookie->createCookie(cookieType, sign));
+    cookie->insertInResponse();
 }

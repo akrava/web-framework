@@ -1,0 +1,24 @@
+<p class="first">Перелік активнх відправлень</p>
+<table id="map-data" class="data padding">
+    <tr class="map row">
+        <th class="name">Номер</th>
+        <th class="name">Відправник</th>
+        <th class="name">Одержувач</th>
+        <th class="name">Ціна</th>
+    </tr>
+    {{#orders}}
+        <tr class="map row">
+            <td class="value">{{num}}</td>
+            <td class="value">{{sender}}</td>
+            <td class="value">{{receiver}}</td>
+            <td class="value">{{price}}</td>
+        </tr>
+    {{/orders}}
+    {{^orders}}
+        <tr class="map row">
+            <td class="one-cell" colspan="5">
+                <span class="error">На жаль, заданої інформації не знайдено</span>
+            </td>
+        </tr>
+    {{/orders}}
+</table>

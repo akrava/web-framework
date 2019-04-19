@@ -10,6 +10,6 @@ DefaultResponse::DefaultResponse(int status_code, const char *body) {
     data += title;
     data += "</title></head><body><h1>";
     data += title;
-    data += "</h1><hr><address>Web-framework (c++) 2018</address></body></html>";
+    data += "</h1><hr><address>Web-framework (c++) 2019</address></body></html>";
     getBody()->setBody(data);
 }

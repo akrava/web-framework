@@ -5,12 +5,12 @@
 
 AuthorizedHandler::AuthorizedHandler(
         Handler *realHandler, const char* id, std::function<bool(Entity *)> checkAccess
-    ) {
+    ) : Handler(realHandler->getRoute().c_str(), realHandler->getMethod()) {
         authMiddlewareID = id;
         handler = realHandler;
         if (checkAccess) {
             this->checkAccess = checkAccess;
-    }
+        }
 }
 
 AuthorizedHandler::~AuthorizedHandler() {
@@ -33,6 +33,7 @@ void AuthorizedHandler::exec() {
         return;
     }
     if (checkAccess(user)) {
+        handler->setContext(getContext());
         handler->exec();
     } else {
         auto accessTroubleResponse = new DefaultResponse{403, "Forbidden "};

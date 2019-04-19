@@ -22,6 +22,8 @@
 #include <login.h>
 #include <user.h>
 #include <auth.h>
+#include <logout.h>
+#include <receipts.h>
 #include <akrava/web-server/file_handler.h>
 #include <akrava/web-server/json_middleware.h>
 #include <akrava/web-server/cookie_middleware.h>
@@ -29,12 +31,15 @@
 #include <akrava/web-server/auth_middleware.h>
 #include <database_middleware.h>
 #include <akrava/web-server/form_middleware.h>
-#include <cookie_auth.h>
+#include <akrava/web-server/authorized_handler.h>
+#include <akrava/web-server/cookie_auth.h>
 #include <config.h>
-#include "fs_middleware.h"
-#include "parser_http.h"
+#include "akrava/web-server/fs_middleware.h"
+#include "akrava/web-server/parser_http.h"
 
 using namespace std;
+
+static bool checkAccess(Entity * entity);
 
 int main (int argc, char ** argv) {
 
@@ -58,6 +63,10 @@ int main (int argc, char ** argv) {
     website.addHandler(new HandlerRenderTemplate());
 
     website.addHandler(new HandlerLogin("/login", HTTP::Method::GET));
+    website.addHandler(new HandlerLogout("/logout", HTTP::Method::GET));
+    auto receipts = new HandlerReceipts("/receipts", HTTP::Method::GET);
+    auto authorizedReceipts = new AuthorizedHandler(receipts, "auth", checkAccess);
+    website.addHandler(authorizedReceipts);
     website.addHandler(new HandlerIndex("/", HTTP::Method::GET));
     website.addHandler(new HandlerCalculate("/calculate", HTTP::Method::GET));
     website.addHandler(new HandlerCalculatePost("/calculate", HTTP::Method::POST));
@@ -91,4 +100,8 @@ int main (int argc, char ** argv) {
     website.addMiddleware(DatabaseMiddleware::getInstance("db", (currentDir() + "/../db/db_file").c_str()));
 
     return website.run();
+}
+
+static bool checkAccess(Entity * entity) {
+    return entity->toString() == "9caef165-76c5-4a20-8db4-8fbebca47124";
 }

@@ -2,6 +2,8 @@
 #include <akrava/web-server/html_middleware.h>
 #include <database_middleware.h>
 #include <config.h>
+#include <auth_middleware.h>
+#include <user.h>
 
 using namespace std;
 
@@ -10,6 +12,7 @@ void HandlerRenderTemplate::exec() {
     Response * response = getContext()->getResponse();
     Middleware * middleware = getContext()->getMiddlewareByNameID("html");
     DatabaseMiddleware * db = (DatabaseMiddleware *) getContext()->getMiddlewareByNameID("db");
+    AuthMiddleware * auth = (AuthMiddleware *) getContext()->getMiddlewareByNameID("auth");
     if (!middleware) return;
     auto * html = (HtmlMiddleware *) (void *) middleware;
     if (html->getView().empty()) return;
@@ -91,5 +94,11 @@ void HandlerRenderTemplate::exec() {
     }
     html->getContext()->insert({"title", title});
     html->getContext()->insert({"content", body});
+    mstch::map user;
+    auto uObject = (User *)auth->getUser();
+    if (uObject) {
+        user.insert({"name", uObject->getName()});
+        html->getContext()->insert({"user", user});
+    }
     html->exec();
 }

@@ -53,7 +53,7 @@
             <div style="clear: both"></div>
         </div>
         <div id = "footer">
-            <p>[<a href="/login">Вхід</a>] Web-framework (c++) 2019</p>
+            <p>{{#user}}[Доброго дня, {{name}} | <a href="/receipts">Відправлення</a> | <a href="/logout">Вихід</a>]{{/user}}{{^user}}[<a href="/login">Вхід</a>]{{/user}} Web-framework (c++) 2019</p>
         </div>
     </div>
 </body>

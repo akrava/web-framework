@@ -55,7 +55,8 @@ Entity * User::checkLogin(std::string &username, std::string &value) {
     auto db = DatabaseMiddleware::getInstance("db", (currentDir() + "/../db/db_file").c_str());
 
     char * data[] = { (char *)username.c_str() };
-    vector<vector<string>> result_user;
+    vector<vector<string>> result_user{};
+    string f =f;
     if (!db->execQuery(
             "SELECT * FROM users WHERE email = ?",
             result_user,
@@ -74,4 +75,8 @@ Entity * User::checkLogin(std::string &username, std::string &value) {
             std::stoi(result_user[0][0]), result_user[0][1], result_user[0][2],
             result_user[0][3], result_user[0][4]
     );
+}
+
+std::string User::getName() {
+    return name;
 }

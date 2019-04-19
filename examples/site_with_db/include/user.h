@@ -23,4 +23,6 @@ public:
     static Entity * deserialize(std::string & value);
 
     static Entity * checkLogin(std::string & username, std::string & value);
+
+    std::string getName();
 };
