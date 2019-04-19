@@ -13,6 +13,7 @@ var searchData=
   ['setmiddlewarelist',['setMiddlewareList',['../classContext.html#ae027ca52192ddc50c1ee5e0d23c219f1',1,'Context']]],
   ['setnext',['setNext',['../classFormEntity.html#a98d171dc6dae75abde9499b230df1568',1,'FormEntity::setNext()'],['../classHandler.html#a84870a45c795a91d72f2d81c0629f7a6',1,'Handler::setNext()']]],
   ['setparamsanduri',['setParamsAndUri',['../classURI.html#ad284f4115eca1f86f92dff9c8ae63d22',1,'URI']]],
+  ['setparser',['setParser',['../classFormMiddleware.html#a8b03a02800ee9ea118abeda3149238c9',1,'FormMiddleware']]],
   ['setpermanent',['setPermanent',['../classRedirectResponse.html#af8a37d5ffc0e40f84165fc130c7c0175',1,'RedirectResponse']]],
   ['setpermanentlyredirect',['setPermanentlyRedirect',['../classContext.html#ae3e37ba8d3634392a1991dd54928c07f',1,'Context']]],
   ['setredirect',['setRedirect',['../classContext.html#a75747bd27962a61b48194890037aca66',1,'Context']]],

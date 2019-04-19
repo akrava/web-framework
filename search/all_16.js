@@ -4,6 +4,8 @@ var searchData=
   ['_7econtext',['~Context',['../classContext.html#a2d34e4556448e40693f61d15e091b604',1,'Context']]],
   ['_7eentity',['~Entity',['../classEntity.html#ac479d009ddde62dfb378ca0a70d81307',1,'Entity']]],
   ['_7eformentity',['~FormEntity',['../classFormEntity.html#a8be2cebece11ef4633a92807b6ec6b76',1,'FormEntity']]],
+  ['_7eformmiddleware',['~FormMiddleware',['../classFormMiddleware.html#a58036fa3346d184895a421f7dfe0f658',1,'FormMiddleware']]],
+  ['_7eformparser',['~FormParser',['../classFormParser.html#a3e2b24d85e63683d432d776a7debf81f',1,'FormParser']]],
   ['_7efsbuilder',['~FsBuilder',['../classFsBuilder.html#a04a1c127878828c4673c9767623846e6',1,'FsBuilder']]],
   ['_7efscomponent',['~FsComponent',['../classFsComponent.html#a85885ccfd55db77a2a2a8368a6e3cf47',1,'FsComponent']]],
   ['_7efscreator',['~FsCreator',['../classFsCreator.html#a5cc54d829def3dc81d6c5be22c4db32c',1,'FsCreator']]],

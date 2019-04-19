@@ -98,14 +98,14 @@ Inheritance diagram for FormUrlEncoded:</div>
 <div class="dyncontent">
 <div class="center"><img src="classFormUrlEncoded__inherit__graph.png" border="0" usemap="#FormUrlEncoded_inherit__map" alt="Inheritance graph"/></div>
 <map name="FormUrlEncoded_inherit__map" id="FormUrlEncoded_inherit__map">
-<area shape="rect" id="node2" href="classFormParser.html" title="{FormParser\n|# values\l# valueCurrent\l# keyCurrent\l# formBody\l# valuesDelimiter\l# pairsDelimiter\l|+ parseForm()\l# selectFormBody()\l# actionBeforeSelectingBody()\l# parseNextKey()\l# parseNextValue()\l# actionBeforeValueParsing()\l# getKeyValuePairs()\l}" alt="" coords="5,6,203,245"/></map>
+<area shape="rect" id="node2" href="classFormParser.html" title="{FormParser\n|# values\l# valueCurrent\l# keyCurrent\l# formBody\l# valuesDelimiter\l# pairsDelimiter\l|+ parseForm()\l+ ~FormParser()\l# selectFormBody()\l# actionBeforeSelectingBody()\l# parseNextKey()\l# parseNextValue()\l# actionBeforeValueParsing()\l# getKeyValuePairs()\l}" alt="" coords="5,5,203,259"/></map>
 </div>
 <div class="dynheader">
 Collaboration diagram for FormUrlEncoded:</div>
 <div class="dyncontent">
 <div class="center"><img src="classFormUrlEncoded__coll__graph.png" border="0" usemap="#FormUrlEncoded_coll__map" alt="Collaboration graph"/></div>
 <map name="FormUrlEncoded_coll__map" id="FormUrlEncoded_coll__map">
-<area shape="rect" id="node2" href="classFormParser.html" title="{FormParser\n|# values\l# keyCurrent\l# formBody\l# valuesDelimiter\l# pairsDelimiter\l|+ parseForm()\l# selectFormBody()\l# actionBeforeSelectingBody()\l# parseNextKey()\l# parseNextValue()\l# actionBeforeValueParsing()\l# getKeyValuePairs()\l}" alt="" coords="5,339,203,563"/><area shape="rect" id="node3" href="classFormEntity.html" title="{FormEntity\n||+ FormEntity()\l+ ~FormEntity()\l+ setFileName()\l+ getFileName()\l+ setContentType()\l+ getContentType()\l+ setCharset()\l+ getCharset()\l+ setValue()\l+ getValue()\l+ isFileContent()\l+ setNext()\l+ getNext()\l+ getArrayValue()\l}" alt="" coords="37,6,171,274"/></map>
+<area shape="rect" id="node2" href="classFormParser.html" title="{FormParser\n|# values\l# keyCurrent\l# formBody\l# valuesDelimiter\l# pairsDelimiter\l|+ parseForm()\l+ ~FormParser()\l# selectFormBody()\l# actionBeforeSelectingBody()\l# parseNextKey()\l# parseNextValue()\l# actionBeforeValueParsing()\l# getKeyValuePairs()\l}" alt="" coords="5,339,203,578"/><area shape="rect" id="node3" href="classFormEntity.html" title="{FormEntity\n||+ FormEntity()\l+ ~FormEntity()\l+ setFileName()\l+ getFileName()\l+ setContentType()\l+ getContentType()\l+ setCharset()\l+ getCharset()\l+ setValue()\l+ getValue()\l+ isFileContent()\l+ setNext()\l+ getNext()\l+ getArrayValue()\l}" alt="" coords="37,6,171,274"/></map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -113,8 +113,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a898919698c8b6088774b2db544493ef6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFormUrlEncoded.html#a898919698c8b6088774b2db544493ef6">FormUrlEncoded</a> ()</td></tr>
 <tr class="separator:a898919698c8b6088774b2db544493ef6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classFormParser"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classFormParser')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classFormParser.html">FormParser</a></td></tr>
-<tr class="memitem:a0bea163a48981344bed77bb951e66cfc inherit pub_methods_classFormParser"><td class="memItemLeft" align="right" valign="top"><a class="el" href="form__parser_8h.html#aec7d4d2cc006ba3416a589b3a02c35fc">KeyEntityStorage</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFormParser.html#a0bea163a48981344bed77bb951e66cfc">parseForm</a> (std::string &amp;httpRequest, <a class="el" href="form__parser_8h.html#a0e53e50dc8123e854d5eb279bc485296">KeyValueStorage</a> *KVPStorage=nullptr)</td></tr>
-<tr class="separator:a0bea163a48981344bed77bb951e66cfc inherit pub_methods_classFormParser"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a785a36d8413ffc912840c63aa945a1d7 inherit pub_methods_classFormParser"><td class="memItemLeft" align="right" valign="top"><a class="el" href="form__parser_8h.html#aec7d4d2cc006ba3416a589b3a02c35fc">KeyEntityStorage</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFormParser.html#a785a36d8413ffc912840c63aa945a1d7">parseForm</a> (std::string &amp;httpRequest, <a class="el" href="form__parser_8h.html#a0e53e50dc8123e854d5eb279bc485296">KeyValueStorage</a> *KVPStorage=nullptr)</td></tr>
+<tr class="separator:a785a36d8413ffc912840c63aa945a1d7 inherit pub_methods_classFormParser"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e2b24d85e63683d432d776a7debf81f inherit pub_methods_classFormParser"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFormParser.html#a3e2b24d85e63683d432d776a7debf81f">~FormParser</a> ()=default</td></tr>
+<tr class="separator:a3e2b24d85e63683d432d776a7debf81f inherit pub_methods_classFormParser"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
@@ -135,8 +137,8 @@ Protected Member Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pro_attribs_classFormParser"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classFormParser')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classFormParser.html">FormParser</a></td></tr>
-<tr class="memitem:a18f0066aa6ec714d69d125c073e191f4 inherit pro_attribs_classFormParser"><td class="memItemLeft" align="right" valign="top"><a class="el" href="form__parser_8h.html#aec7d4d2cc006ba3416a589b3a02c35fc">KeyEntityStorage</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFormParser.html#a18f0066aa6ec714d69d125c073e191f4">values</a></td></tr>
-<tr class="separator:a18f0066aa6ec714d69d125c073e191f4 inherit pro_attribs_classFormParser"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab02dd59954715685a671eddbf6a45028 inherit pro_attribs_classFormParser"><td class="memItemLeft" align="right" valign="top"><a class="el" href="form__parser_8h.html#aec7d4d2cc006ba3416a589b3a02c35fc">KeyEntityStorage</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFormParser.html#ab02dd59954715685a671eddbf6a45028">values</a> = nullptr</td></tr>
+<tr class="separator:ab02dd59954715685a671eddbf6a45028 inherit pro_attribs_classFormParser"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afc32e8f44e4db1cce95b0be31438329c inherit pro_attribs_classFormParser"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classFormEntity.html">FormEntity</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFormParser.html#afc32e8f44e4db1cce95b0be31438329c">valueCurrent</a></td></tr>
 <tr class="separator:afc32e8f44e4db1cce95b0be31438329c inherit pro_attribs_classFormParser"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aef7cd6679ec4e07f00002c562c2e0297 inherit pro_attribs_classFormParser"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFormParser.html#aef7cd6679ec4e07f00002c562c2e0297">keyCurrent</a></td></tr>

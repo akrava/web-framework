@@ -114,12 +114,20 @@ Collaboration diagram for FormMiddleware:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a574db55bfbdef350a1896c0246d52ee4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFormMiddleware.html#a574db55bfbdef350a1896c0246d52ee4">FormMiddleware</a> (const char *nameID)</td></tr>
 <tr class="separator:a574db55bfbdef350a1896c0246d52ee4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a58036fa3346d184895a421f7dfe0f658"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFormMiddleware.html#a58036fa3346d184895a421f7dfe0f658">~FormMiddleware</a> ()</td></tr>
+<tr class="separator:a58036fa3346d184895a421f7dfe0f658"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae53e6df2b45356f521db65518f191636"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFormMiddleware.html#ae53e6df2b45356f521db65518f191636">autoExec</a> ()</td></tr>
 <tr class="separator:ae53e6df2b45356f521db65518f191636"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4cdeec033d213d7ef8c6aceb072e0221"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFormMiddleware.html#a4cdeec033d213d7ef8c6aceb072e0221">exec</a> ()</td></tr>
 <tr class="separator:a4cdeec033d213d7ef8c6aceb072e0221"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af084a6aa3dfef7a16b4f7811a426ed3d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFormMiddleware.html#af084a6aa3dfef7a16b4f7811a426ed3d">clear</a> ()</td></tr>
 <tr class="separator:af084a6aa3dfef7a16b4f7811a426ed3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b03a02800ee9ea118abeda3149238c9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFormMiddleware.html#a8b03a02800ee9ea118abeda3149238c9">setParser</a> (<a class="el" href="classFormParser.html">FormParser</a> *parser)</td></tr>
+<tr class="separator:a8b03a02800ee9ea118abeda3149238c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae154c5f5bf78c89cbb6695bf1d88d42d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classFormEntity.html">FormEntity</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFormMiddleware.html#ae154c5f5bf78c89cbb6695bf1d88d42d">getFormEntity</a> (const char *key)</td></tr>
+<tr class="separator:ae154c5f5bf78c89cbb6695bf1d88d42d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af329e035baf09ac6ff676534346f1d5f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classFormParser.html">FormParser</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFormMiddleware.html#af329e035baf09ac6ff676534346f1d5f">getParser</a> ()</td></tr>
+<tr class="separator:af329e035baf09ac6ff676534346f1d5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classMiddleware"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classMiddleware')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classMiddleware.html">Middleware</a></td></tr>
 <tr class="memitem:a76498c41fb6d7032ab5e8c69a75a96e8 inherit pub_methods_classMiddleware"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMiddleware.html#a76498c41fb6d7032ab5e8c69a75a96e8">Middleware</a> (const char *nameID)</td></tr>
 <tr class="separator:a76498c41fb6d7032ab5e8c69a75a96e8 inherit pub_methods_classMiddleware"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -180,6 +188,21 @@ Additional Inherited Members</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a class="anchor" id="a58036fa3346d184895a421f7dfe0f658"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">FormMiddleware::~FormMiddleware </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -260,6 +283,60 @@ Additional Inherited Members</h2></td></tr>
 <p>parse form in http request </p>
 
 <p>Implements <a class="el" href="classMiddleware.html#a37d46da167012da356cc400e425de92c">Middleware</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ae154c5f5bf78c89cbb6695bf1d88d42d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classFormEntity.html">FormEntity</a>* FormMiddleware::getFormEntity </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>key</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="af329e035baf09ac6ff676534346f1d5f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classFormParser.html">FormParser</a>* FormMiddleware::getParser </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a8b03a02800ee9ea118abeda3149238c9"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void FormMiddleware::setParser </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classFormParser.html">FormParser</a> *&#160;</td>
+          <td class="paramname"><em>parser</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">parser</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
