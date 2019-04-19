@@ -11,7 +11,6 @@ static string getValue(string & source, const char * pre, const char * after);
 
 void FormMultipart::actionBeforeSelectingBody() {
     string contentType = getValue(formBody, "Content-Type:", "\n");
-    std::cout << formBody << endl;
     string boundary = getValue(contentType, "boundary=", "\n");
     pairsDelimiter = "--" + ParserHTTP::trim(boundary) + "\r\n";
 
