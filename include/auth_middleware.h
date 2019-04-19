@@ -36,35 +36,51 @@ public:
     ~AuthMiddleware() override;
 
     /**
-     * set serialization of user
+     * Set serialization of user
      *
      * @param serialize
-     *      fumction that create
+     *      function that convert user object to string
      */
     void setOnSerialize(std::function<std::string(Entity *)> serialize);
 
     /**
+     * Set deserialization of user
      *
+     * @param deserialize
+     *      function that get user object from string
      */
     void setOnDeserialize(std::function<Entity *(std::string &)> deserialize);
 
     /**
+     * Set function for authentication
      *
+     * @param login
+     *      get User object from username and password
      */
     void setOnLogin(std::function<Entity *(std::string &, std::string &)> login);
 
     /**
+     * Check authentication
      *
+     * @param userName
+     *      user id
+     * @param password
+     *      user pass
+     * @return
+     *  true if authenticated successfully
      */
     bool login(std::string & userName, std::string & password);
 
     /**
+     * If found users credentials, perform exec
      *
+     * @return
+     *      true if should execute
      */
     bool autoExec() override;
 
     /**
-     *
+     * Perform operation to check users credentials
      */
     void exec() override;
 
@@ -74,19 +90,26 @@ public:
     void clear() override { Middleware::clear(); currentUser = nullptr; }
 
     /**
+     * Get current authenticated user
      *
      * @return
+     *      user object
      */
     Entity * getUser();
 
     /**
+     * Set current authenticated user
      *
-     * @param id
+     * @param user
+     *      user object
      */
     void setUser(Entity * user);
 
-    /**
-     *
-     */
+   /**
+    * Set template strategy
+    *
+    * @param strategy
+    *       concrete strategy
+    */
     void setStrategy(AuthStrategy * strategy);
 };

@@ -5,16 +5,17 @@
 #include "response.h"
 
 /**
- *
+ * Interface for auth strategy
  */
 class AuthStrategy {
 public:
     /**
-     *
+     * Destructor
      */
     virtual ~AuthStrategy() = default;
 
     /**
+     * Parse
      *
      * @param headers
      * @return
