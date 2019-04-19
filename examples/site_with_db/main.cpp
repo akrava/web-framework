@@ -19,14 +19,20 @@
 #include <feedback_post.h>
 #include <api.h>
 #include <track.h>
+#include <login.h>
+#include <user.h>
+#include <auth.h>
 #include <akrava/web-server/file_handler.h>
 #include <akrava/web-server/json_middleware.h>
 #include <akrava/web-server/cookie_middleware.h>
 #include <akrava/web-server/html_middleware.h>
+#include <akrava/web-server/auth_middleware.h>
 #include <database_middleware.h>
 #include <akrava/web-server/form_middleware.h>
+#include <cookie_auth.h>
 #include <config.h>
 #include "fs_middleware.h"
+#include "parser_http.h"
 
 using namespace std;
 
@@ -51,6 +57,7 @@ int main (int argc, char ** argv) {
     website.addHandler(new HandlerCookie());
     website.addHandler(new HandlerRenderTemplate());
 
+    website.addHandler(new HandlerLogin("/login", HTTP::Method::GET));
     website.addHandler(new HandlerIndex("/", HTTP::Method::GET));
     website.addHandler(new HandlerCalculate("/calculate", HTTP::Method::GET));
     website.addHandler(new HandlerCalculatePost("/calculate", HTTP::Method::POST));
@@ -65,16 +72,23 @@ int main (int argc, char ** argv) {
     website.addHandler(new HandlerFeedback("/feedback", HTTP::Method::GET));
     website.addHandler(new HandlerFeedbackPost("/feedback",  HTTP::Method::POST));
     website.addHandler(new HandlerCommonInfo("timetable_content", "/timetable", HTTP::Method::GET));
-
+    website.addHandler(new AuthHandler("/auth", HTTP::Method::POST));
     website.addHandler(new HandlerApi("/api", HTTP::Method::ANY));
     website.addHandler(new HandlerTrack("/track", HTTP::Method::GET));
     website.addPermanentlyRedirect("/index", "/");
 
     website.addMiddleware(new JsonMiddleware("json"));
-    website.addMiddleware(new CookieMiddleware("cookie"));
+    auto cookie = new CookieMiddleware("cookie");
+    website.addMiddleware(cookie);
     website.addMiddleware(new FormMiddleware("form"));
     website.addMiddleware(new HtmlMiddleware("html"));
-    website.addMiddleware(new DatabaseMiddleware("db", (currentDir() + "/../db/db_file").c_str()));
+    auto middleware = new AuthMiddleware("auth", "cookie", "json");
+    middleware->setOnSerialize(User::serialize);
+    middleware->setOnDeserialize(User::deserialize);
+    middleware->setOnLogin(User::checkLogin);
+    middleware->setStrategy(new CookieAuth(__SECRET, cookie));
+    website.addMiddleware(middleware);
+    website.addMiddleware(DatabaseMiddleware::getInstance("db", (currentDir() + "/../db/db_file").c_str()));
 
     return website.run();
 }

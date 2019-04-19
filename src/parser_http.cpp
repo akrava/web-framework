@@ -146,7 +146,7 @@ std::string ParserHTTP::sha256(std::string &key, std::string & message) {
     std::stringstream ss;
     ss << std::setfill('0');
     for (int i = 0; i < len; i++) {
-        ss  << hash[i];
+        ss << hex << ( unsigned int ) hash[i];
     }
     HMAC_CTX_free(hmac);
     return (ss.str());

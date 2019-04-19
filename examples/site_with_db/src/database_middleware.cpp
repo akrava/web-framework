@@ -1,4 +1,5 @@
 #include <database_middleware.h>
+#include <memory>
 
 using namespace std;
 
@@ -30,4 +31,9 @@ DatabaseMiddleware::execQuery(const char *statement, std::vector<std::vector<std
     if (sqlite3_clear_bindings(stmt) != SQLITE_OK) return false;
     if (sqlite3_reset(stmt) != SQLITE_OK) return false;
     return sqlite3_finalize(stmt) == SQLITE_OK;
+}
+
+DatabaseMiddleware *DatabaseMiddleware::getInstance(const char *nameID, const char *filePath) {
+    static DatabaseMiddleware instance{nameID, filePath};
+    return &instance;
 }

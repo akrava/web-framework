@@ -5,12 +5,14 @@
 #include <vector>
 
 class DatabaseMiddleware : public Middleware {
+    DatabaseMiddleware * instance;
     sqlite3 *db;
-public:
     DatabaseMiddleware(const char *nameID, const char * filePath);
-
     ~DatabaseMiddleware();
-
+public:
+    static DatabaseMiddleware * getInstance(const char *nameID, const char * filePath);
+    DatabaseMiddleware(DatabaseMiddleware const&) = delete;
+    DatabaseMiddleware& operator= (DatabaseMiddleware const&) = delete;
     /**
      * Execute SQL statement, with binding values by escaping with '?' in statement
      *      and including them in data array

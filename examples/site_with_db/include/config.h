@@ -4,6 +4,7 @@
 
 #define __PATH_TO_DATA "/../assets"
 #define __PATH_TO_TEMPLATES "/../templates"
+#define __SECRET  "secret"
 
 std::string currentDir();
 

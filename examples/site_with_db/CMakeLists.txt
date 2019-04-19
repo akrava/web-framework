@@ -8,7 +8,7 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "C:\\Program Files\\CMake\\share\\cma
 find_package(mstch)
 find_package(nlohmann_json)
 find_package(Boost REQUIRED)
-find_package(crypto REQUIRED)
+find_package(OpenSSL REQUIRED)
 
 file(GLOB APP_SOURCES "src/*.cpp")
 file(GLOB MIDDLEWARE_SOURCES "middleware/*.cpp")
