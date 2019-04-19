@@ -4,7 +4,7 @@
 #include <list>
 
 /**
- *
+ * @brief Wrapper for form value
  */
 class FormEntity {
     std::string value;

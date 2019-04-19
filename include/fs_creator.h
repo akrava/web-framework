@@ -3,7 +3,7 @@
 #include "fs_builder.h"
 
 /**
- *
+ * @brief Director for builder template for fs middleware
  */
 class FsCreator {
     FsBuilder * builder = nullptr;

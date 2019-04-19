@@ -4,7 +4,7 @@
 #include "fs_component.h"
 
 /**
- *
+ * @brief Wrapper for fs folder
  */
 class FsFolder : public FsComponent {
     std::string name;

@@ -3,7 +3,7 @@
 #include <string>
 
 /**
- *
+ * @brief Interface for fs entity
  */
 class FsComponent {
 public:

@@ -5,7 +5,7 @@
 #include "response.h"
 
 /**
- * Interface for auth strategy
+ * @brief Interface for auth strategy
  */
 class AuthStrategy {
 public:
@@ -15,17 +15,20 @@ public:
     virtual ~AuthStrategy() = default;
 
     /**
-     * Parse
+     * Parse headers to get serialized user credentials
      *
      * @param headers
+     *      current request headers
      * @return
+     *      serialized user
      */
     virtual std::string getSerializedValue(Headers * headers) = 0;
 
     /**
+     * Set to response user credentials
      *
-     * @param req
      * @param value
+     *      serialized user
      */
     virtual void serializeAndSetValueToResponse(std::string & value) = 0;
 };

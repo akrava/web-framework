@@ -4,7 +4,7 @@
 #include <entity.h>
 
 /**
- *
+ * @brief Cookie entity with default params
  */
 class CookieEntityDefault : public Entity {
     std::string value;

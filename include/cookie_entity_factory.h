@@ -5,7 +5,7 @@
 #include <entity.h>
 
 /**
- *
+ * @brief Clone prototypes of cookie entities
  */
 class CookieEntityFactory {
 public:

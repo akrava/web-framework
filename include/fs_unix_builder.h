@@ -3,7 +3,7 @@
 #include "fs_builder.h"
 
 /**
- *
+ * @brief Unix builder for fs
  */
 class FsUnixBuilder : public FsBuilder {
 public:

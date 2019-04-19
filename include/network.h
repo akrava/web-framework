@@ -4,7 +4,7 @@
 #include "init_params.h"
 
 /**
- *
+ * @brief Network bridge pattern
  */
 class Network {
     std::string ip;

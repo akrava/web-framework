@@ -8,7 +8,7 @@ typedef std::unordered_map<std::string, std::string> KeyValueStorage;
 typedef std::unordered_map<std::string, FormEntity *> KeyEntityStorage;
 
 /**
- *
+ * @brief Template methods pattern for parsing form
  */
 class FormParser {
 protected:

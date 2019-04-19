@@ -5,6 +5,9 @@
 #include <winsock2.h>
 #include "socket_api.h"
 
+/**
+ * @brief Windows realization for network
+ */
 class SocketWindowsAPI : public SocketAPI {
 	SOCKET serverSocket;
 	SOCKET clientSocket;

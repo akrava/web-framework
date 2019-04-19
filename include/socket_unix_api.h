@@ -5,6 +5,9 @@
 #include <sys/socket.h>
 #include "socket_api.h"
 
+/**
+ * @brief Unix realization for network
+ */
 class SocketUnixAPI : public SocketAPI {
     sockaddr * socketAddress;
     int socket_fd;

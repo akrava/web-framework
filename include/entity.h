@@ -3,7 +3,7 @@
 #include <memory>
 
 /**
- *
+ * @brief Cloneable interface
  */
 class Entity {
 public:

@@ -4,7 +4,7 @@
 #include <entity.h>
 
 /**
- *
+ * @brief Cookie entity with Http only param
  */
 class CookieEntityHttp : public Entity {
     std::string value;

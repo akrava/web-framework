@@ -3,7 +3,7 @@
 #include "fs_component.h"
 
 /**
- *
+ * @brief Wrapper for fs file
  */
 class FsFile : public FsComponent {
     std::string fullPath;

@@ -3,7 +3,7 @@
 #include "form_parser.h"
 
 /**
- *
+ * @brief Methods for parsing urlencoded form
  */
 class FormUrlEncoded : public FormParser {
 public:

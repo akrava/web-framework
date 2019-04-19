@@ -4,7 +4,7 @@
 #include "middleware.h"
 
 /**
- *
+ * @brief Cookie strategy of aurh
  */
 class CookieAuth : public AuthStrategy {
     std::string secret;

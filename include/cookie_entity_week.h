@@ -5,7 +5,7 @@
 #include <ctime>
 
 /**
- *
+ * @brief Cookie entity expires in a week
  */
 class CookieEntityWeek : public Entity {
     std::string value;

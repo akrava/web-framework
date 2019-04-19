@@ -3,7 +3,7 @@
 #include "form_parser.h"
 
 /**
- *
+ * @brief Methods for parsing form multipart/form-data
  */
 class FormMultipart : public FormParser {
 public:

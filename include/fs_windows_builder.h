@@ -4,7 +4,7 @@
 #include "fs_builder.h"
 
 /**
- *
+ * @brief Windows builder for fs
  */
 class FsWindowsBuilder : public FsBuilder {
 public:

@@ -1,7 +1,7 @@
 #pragma once
 
 /**
- *
+ * @brief interface for network realization
  */
 class SocketAPI {
 public:

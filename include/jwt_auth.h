@@ -3,6 +3,9 @@
 #include "auth_strategy.h"
 #include "middleware.h"
 
+/**
+ * @brief JWT auth strategy
+ */
 class  JwtAuth : public AuthStrategy {
     std::string secret;
     Middleware * middleware;

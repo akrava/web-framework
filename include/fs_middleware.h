@@ -5,7 +5,7 @@
 #include "fs_creator.h"
 
 /**
- *
+ * @brief Middleware to host directories with files
  */
 class FsMiddleware : public Middleware {
     FsComponent * folder;

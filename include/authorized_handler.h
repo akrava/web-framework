@@ -5,7 +5,7 @@
 #include "entity.h"
 
 /**
- *
+ * @brief Proxy handler to control access to another resources
  */
 class AuthorizedHandler : public Handler {
     const char * authMiddlewareID;
@@ -13,7 +13,10 @@ class AuthorizedHandler : public Handler {
     std::function<bool(Entity *)> checkAccess;
 public:
     /**
-     *
+     * Create proxy
+     * @param realHandler
+     * @param middlewareID
+     * @param checkAccess
      */
     AuthorizedHandler(
         Handler * realHandler,
@@ -22,17 +25,20 @@ public:
     );
 
     /**
-     *
+     * Destructor
      */
     ~AuthorizedHandler() override;
 
     /**
-     *
+     * Execute real handler, if user has access
      */
     void exec() override;
 
     /**
+     * Set function, that checks if user could access
      *
+     * @param checkAccess
+     *      return true if user has access
      */
     void setAccessCheck(std::function<bool(Entity *)> checkAccess);
 };

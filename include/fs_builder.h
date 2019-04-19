@@ -4,7 +4,7 @@
 #include "fs_folder.h"
 
 /**
- *
+ * @brief Builder template for fs middleware
  */
 class FsBuilder {
 protected:
