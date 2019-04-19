@@ -1,7 +1,7 @@
 #pragma once
 
 #include <string>
-#include "entity.h"
+#include <akrava/web-server/entity.h>
 
 class User : public Entity {
     int id;

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "handler.h"
+#include <akrava/web-server/handler.h>
 
 class HandlerLogout : public Handler {
 public:

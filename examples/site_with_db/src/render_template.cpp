@@ -2,7 +2,7 @@
 #include <akrava/web-server/html_middleware.h>
 #include <database_middleware.h>
 #include <config.h>
-#include <auth_middleware.h>
+#include <akrava/web-server/auth_middleware.h>
 #include <user.h>
 
 using namespace std;

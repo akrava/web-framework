@@ -120,9 +120,6 @@ bool App::run() {
             context.getResponse()->setStatus(200);
             handlersRoutes[request->getURI()->getPath()]->handleRequest();
             executed = true;
-        } else if (routedHandler && false) {
-            auto * res = new DefaultResponse{405};
-            context.setResponse(res);
         }
         if (!executed) {
             auto * res = new DefaultResponse{-1, "Add some handlers..."};

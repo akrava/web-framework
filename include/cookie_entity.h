@@ -2,7 +2,7 @@
 
 #include <string>
 #include <ctime>
-#include <entity.h>
+#include "entity.h"
 
 /**
  * @brief Class wrapper for Cookies. Allow you adjust parameters od each http cookie.
