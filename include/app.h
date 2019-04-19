@@ -12,7 +12,6 @@
 #include "middleware.h"
 #include "context.h"
 
-
 /**
  * @brief The main class of the framework. Each object of this class
  *      is an independent web-application, which could be configured

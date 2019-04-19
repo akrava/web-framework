@@ -5,6 +5,9 @@
 #include "entity.h"
 #include "auth_strategy.h"
 
+/**
+ * @brief This middleware checks authentication
+ */
 class AuthMiddleware : public Middleware {
     const char * cookieMiddlewareID;
     const char * jsonMiddlewareID;
@@ -15,21 +18,28 @@ class AuthMiddleware : public Middleware {
     std::function<Entity *(std::string &)> onDeserialize = nullptr;
 public:
     /**
-     * create middleware
+     * Create new auth middleware. Depends on cookie and json middleware
      *
      * @param nameID
-     *      name id
+     *      id of itself
+     * @param cookieID
+     *      string id of cookie middleware
+     * @param jsonID
+     *      string id of json middleware
      */
     AuthMiddleware(const char * nameID, const char * cookieID, const char * jsonID)
         : Middleware(nameID), cookieMiddlewareID(cookieID), jsonMiddlewareID(jsonID) {}
 
     /**
-     *
+     * Destructs inner objects
      */
     ~AuthMiddleware() override;
 
     /**
+     * set serialization of user
      *
+     * @param serialize
+     *      fumction that create
      */
     void setOnSerialize(std::function<std::string(Entity *)> serialize);
 
