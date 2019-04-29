@@ -4,7 +4,6 @@ dist: xenial
 os: linux
 env:
   global:
-    - secure: "Ml/5COYd+J36SsZ4TU1FWANPAcL5mUmw1+Jc8iworWh7P8JCXxWB0MADugpBnEThbsr0L11nUH8+4zKevrimirbQsa6JLcpUQ14Npt0cajD/6Ph+ij/cze9+OElN87i3IaCBZ1fY0KAcQ+wlzokoKZcOHa3Agi7/6l3xmujHXLpKTwjYW2iSQwTVKU9a44BeH3onFki5ZPjafaCb3Ln1CEYnCm6BkmOuT+KgvI5ELJ1z12iqucRHFaHYk9/lLLDSqRKXkoYMyQ2MaEYgTZ/9/MQ/tu52ZSCYuwHe6U64VoP8ItQBNnlXHalEtM3+wcDVXoNzYtsHAkk5Y15a66lJU+F/o9sySC5iHy0EEyebNeVXQZHfx0oHYZZHAhvSuzDLjS5MFGN3r/L/qikv98dMqU2OdCARe5sO2WjrsQyLn8dij9PPm9j6vwtXNH8Q5EtPP4fIc0eB8531SRDkyPobs3li50BG91Muc6Q65uZq0h1Xdw971yDwyLwUB/SdXmPlobZwRuR4EzJPbzh2hRFEW14Sx9GNW7slWKre3CemKqL/WDLG/wPlCvcgFlkWESpp/VkNynorpT7xB2O85gJz1fUFTEKjTLjGALXjufdYNOX3beHKHUu0kPZPDSZsQrf4vIPT1uUXkPIbpRgx62KDJfYjCD3ylFdKSWkDKJFU6Bk="
     - GH_REPO_NAME: web-framework
     - DOXYFILE: $TRAVIS_BUILD_DIR/docs/Doxyfile_html
     - GH_REPO_REF: github.com/akrava/web-framework.git
@@ -32,6 +31,7 @@ addons:
       - doxygen-latex
       - doxygen-gui
       - graphviz
+      - libssl-dev
 before_install:
   - echo -n | openssl s_client -connect https://scan.coverity.com:443 | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' | sudo tee -a /etc/ssl/certs/ca-
   - sudo ln -s /usr/bin/gcc-7 /usr/local/bin/gcc
@@ -59,7 +59,7 @@ install:
   - sudo make install
   - cd ..
 before_script:
-  - cmake . -DOPENSSL_INCLUDE_DIR=/usr/include/openssl-1.0 -DOPENSSL_SSL_LIBRARY=/usr/lib/openssl-1.0/libssl.so -DOPENSSL_CRYPTO_LIBRARY=/usr/lib/openssl-1.0/libcrypto.so
+  - cmake .
 script:
   - make
   - sudo make install

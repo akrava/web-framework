@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/akrava/web-framework.svg?branch=master)](https://travis-ci.org/akrava/web-framework)
-[![Coverity Scan Build Status](https://scan.coverity.com/projects/16090/badge.svg)](https://scan.coverity.com/projects/akrava-web-framework)
+[![Coverity Scan Build Status](https://img.shields.io/coverity/scan/16090.svg)](https://scan.coverity.com/projects/akrava-web-framework)
 [![Documentation](https://img.shields.io/badge/docs-doxygen-blue.svg)](http://akrava.github.io/web-framework)
 ## How to use
 ### 1. Pre-install
