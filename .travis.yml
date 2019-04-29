@@ -18,7 +18,7 @@ addons:
     notification_email: arkadiy@ex.ua
     build_command_prepend: "git clone https://github.com/no1msd/mstch.git; cd mstch; cmake .; make; sudo make install; cd ..; git clone https://github.com/nlohmann/json.git; cd json; cmake .; make; sudo make install; cd ..; cmake .; make"
     build_command: "sudo make install"
-    branch_pattern: coverity_scan
+    branch_pattern: master
   apt:
     sources:
       - ubuntu-toolchain-r-test
@@ -31,33 +31,24 @@ addons:
       - doxygen-latex
       - doxygen-gui
       - graphviz
-      - libssl-dev
+      - lcov
+      - git
+      - libboost-all-dev
 before_install:
+  - wget https://www.openssl.org/source/old/1.1.0/openssl-1.1.0g.tar.gz && tar xzvf openssl-1.1.0g.tar.gz && cd openssl-1.1.0g && ./config && sudo make install
+  - openssl version -a # check version of openssl
   - echo -n | openssl s_client -connect https://scan.coverity.com:443 | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' | sudo tee -a /etc/ssl/certs/ca-
   - sudo ln -s /usr/bin/gcc-7 /usr/local/bin/gcc
   - sudo ln -s /usr/bin/g++-7 /usr/local/bin/g++
   - export CC=/usr/bin/gcc-7
   - export CXX=/usr/bin/g++-7
   - sudo apt-get -qq update
-  - sudo apt-get install lcov
-  - sudo apt-get install git
-  - sudo apt-get install libboost-all-dev
 install:
   - wget https://github.com/libcheck/check/releases/download/0.11.0/check-0.11.0.tar.gz
   - tar -xzvf check-0.11.0.tar.gz
   - pushd check-0.11.0 && ./configure --prefix=/usr && make && sudo make install && popd
-  - git clone https://github.com/no1msd/mstch.git
-  - cd mstch
-  - cmake .
-  - make
-  - sudo make install
-  - cd ..
-  - git clone https://github.com/nlohmann/json.git
-  - cd json
-  - cmake .
-  - make
-  - sudo make install
-  - cd ..
+  - git clone https://github.com/no1msd/mstch.git && cd mstch && cmake . && sudo make install && cd ..
+  - git clone https://github.com/nlohmann/json.git && cd json && cmake . && sudo make install && cd ..
 before_script:
   - cmake .
 script:
