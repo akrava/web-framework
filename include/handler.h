@@ -38,7 +38,7 @@ public:
     /**
      * destructs local variables
      */
-    virtual ~Handler() = default;
+    virtual ~Handler();
 
     /**
      * @brief 
@@ -46,7 +46,7 @@ public:
      * @return true 
      * @return false 
      */
-    void setNext(Handler * next);
+    virtual void setNext(Handler * next);
 
     /**
      * @brief 
@@ -54,12 +54,7 @@ public:
      * @return true 
      * @return false 
      */
-    void add(Handler * handler);
-
-    /**
-     *
-     */
-    void cleanNextHandlers();
+    virtual void add(Handler * handler);
 
     /**
      * check, if route is set

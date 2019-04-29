@@ -5,7 +5,6 @@
 #include "response.h"
 #include "middleware.h"
 
-
 /**
  * @brief This class is wrapper for important data (like Response, DB, Middleware etc.),
  *      which is needed to handlers

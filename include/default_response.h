@@ -19,5 +19,5 @@ public:
      * @param body
      *      custom body page
      */
-    DefaultResponse(int status_code, const char * body = nullptr);
+    explicit DefaultResponse(int status_code, const char * body = nullptr);
 };

@@ -5,7 +5,13 @@
 #include "entity.h"
 
 /**
- * @brief Proxy handler to control access to another resources
+ * @brief Proxy handler template to control access to another handlers
+ *
+ * Any handlers or chain of handlers could be wrapped by this handler. All
+ *      that you need is to create an example of this class and pass a concrete
+ *      handler, which should be controlled, and function, which checks if
+ *      current user could access such resource. Could substitute passed
+ *      handlers with 403 or 401 error pages
  */
 class AuthorizedHandler : public Handler {
     const char * authMiddlewareID;
@@ -13,10 +19,16 @@ class AuthorizedHandler : public Handler {
     std::function<bool(Entity *)> checkAccess;
 public:
     /**
-     * Create proxy
+     * Create proxy handler, which wraps passed one
+     *
      * @param realHandler
+     *      handler and other handlers connected after it, which should be wrapped
      * @param middlewareID
+     *      ID of AuthMiddleware, added to application
      * @param checkAccess
+     *      function, that checks, if current user could see such resource. If not,
+     *      user should see 403 forbidden error page, if there are no user authenticated -
+     *      401 unauthenticated error page
      */
     AuthorizedHandler(
         Handler * realHandler,
@@ -25,7 +37,7 @@ public:
     );
 
     /**
-     * Destructor
+     * destructs inner oblects
      */
     ~AuthorizedHandler() override;
 
@@ -35,10 +47,26 @@ public:
     void exec() override;
 
     /**
-     * Set function, that checks if user could access
+     * Set function, that checks if user could access resource
      *
      * @param checkAccess
-     *      return true if user has access
+     *      function that return true if user has access
      */
     void setAccessCheck(std::function<bool(Entity *)> checkAccess);
+
+    /**
+     * Set next handler after wrapped handler
+     *
+     * @param next
+     *      handler object
+     */
+    void setNext(Handler * next) override;
+
+   /**
+    * Add handler to tail of wrapped handler chain of responsibility
+    *
+    * @param handler
+    *       handler object
+    */
+    void add(Handler * handler) override;
 };

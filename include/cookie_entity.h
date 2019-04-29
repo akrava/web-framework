@@ -36,12 +36,20 @@ public:
      * @param httpOnly
      *      HTTP-only cookies aren't accessible via JavaScript
      */
-    CookieEntity(const char * value, time_t expires = -1, size_t maxAge_sec = std::string::npos,
-                 const char * domain = nullptr, const char *  path = nullptr, bool httpOnly = false);
+    explicit CookieEntity(
+        const char * value,
+        time_t expires = -1,
+        size_t maxAge_sec = std::string::npos,
+        const char * domain = nullptr,
+        const char *  path = nullptr,
+        bool httpOnly = false
+    );
 
     /**
+     * Set value of this cookie
      *
      * @param value
+     *      serialized to string value
      */
     void setValue(std::string value) override;
 
@@ -54,7 +62,10 @@ public:
     std::string toString() override;
 
     /**
+     * Clone itself
      *
+     * @return
+     *      new CookieEntity object
      */
     std::unique_ptr<Entity> clone() override;
 };

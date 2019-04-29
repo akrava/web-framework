@@ -40,12 +40,6 @@ bool Handler::shouldHandleRequest() {
     return method == HTTP::Method::ANY || context->getRequest()->getMethod() == method;
 }
 
-void Handler::cleanNextHandlers() {
-    if (!next) return;
-    next->cleanNextHandlers();
-    delete next;
-}
-
 Context * Handler::getContext() {
     return context;
 }
@@ -64,4 +58,9 @@ void Handler::setContext(Context * context) {
 
 HTTP::Method Handler::getMethod() {
     return method;
+}
+
+Handler::~Handler() {
+    delete next;
+    next = nullptr;
 }

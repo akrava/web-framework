@@ -18,12 +18,12 @@ public:
      * @param nameID
      *      name id
      */
-    FormMiddleware(const char * nameID) : Middleware(nameID) {}
+    explicit FormMiddleware(const char * nameID) : Middleware(nameID) {}
 
     /**
-     *
+     * delete internal objects
      */
-    ~FormMiddleware();
+    ~FormMiddleware() override;
 
     /**
      * Check if request is application/x-www-form-urlencoded
@@ -31,32 +31,41 @@ public:
      * @return
      *      true, if content type of http request is form
      */
-    bool autoExec();
+    bool autoExec() override;
 
     /**
      * parse form in http request
      */
-    void exec();
+    void exec() override;
 
     /**
      * delete all data, saved in internal values, set to default
      */
-    void clear() { Middleware::clear(); }
+    void clear() override { Middleware::clear(); }
 
     /**
+     * get entity value form by key
+     *
+     * @param key
+     *      name of value form
+     * @return
+     *      FormEntity object
+     */
+    FormEntity * getFormEntity(const char * key);
+private:
+    /**
+     * set template method of FormParser
      *
      * @param parser
+     *      object of template FormParser method
      */
     void setParser(FormParser * parser);
 
     /**
-     *
-     */
-    FormEntity * getFormEntity(const char * key);
-
-    /**
+     * get template method of FormParser
      *
      * @return
+     *      object of template FormParser method
      */
     FormParser * getParser();
 };

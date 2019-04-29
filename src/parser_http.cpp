@@ -139,7 +139,7 @@ string ParserHTTP::trim(string &str) {
 std::string ParserHTTP::sha256(std::string &key, std::string & message) {
     unsigned char hash[32];
     HMAC_CTX *hmac = HMAC_CTX_new();
-    HMAC_Init_ex(hmac, &key[0], key.length(), EVP_sha256(), NULL);
+    HMAC_Init_ex(hmac, &key[0], key.length(), EVP_sha256(), nullptr);
     HMAC_Update(hmac, ( unsigned char* )&message[0], message.length());
     unsigned int len = 32;
     HMAC_Final(hmac, hash, &len);

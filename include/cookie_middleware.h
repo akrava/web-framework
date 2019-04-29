@@ -19,7 +19,7 @@ public:
      * @param nameID
      *      name id
      */
-    CookieMiddleware(const char * nameID);
+    explicit CookieMiddleware(const char * nameID);
 
     /**
      * Check if there are cookie in request
@@ -27,12 +27,12 @@ public:
      * @return
      *      true, if there are cookie in request
      */
-    bool autoExec();
+    bool autoExec() override;
 
     /**
      * parse cookies from http request
      */
-    void exec();
+    void exec() override;
 
     /**
      * add CookieEntity to response cookies
@@ -50,15 +50,19 @@ public:
     void insertInResponse();
 
     /**
+     * Get new cookie entity with passed type and value
      *
      * @param entityType
+     *      type from EntityType enumeration
      * @param value
+     *      serialized value of cookie
      * @return
+     *      new CookieEntity object
      */
     std::unique_ptr<Entity> createCookie(CookieEntityFactory::EntityType entityType, std::string & value);
 
     /**
      * delete all data, saved in internal values, set to default
      */
-     void clear();
+     void clear() override;
 };

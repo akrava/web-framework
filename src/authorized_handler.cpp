@@ -36,7 +36,7 @@ void AuthorizedHandler::exec() {
         handler->setContext(getContext());
         handler->exec();
     } else {
-        auto accessTroubleResponse = new DefaultResponse{403, "Forbidden "};
+        auto accessTroubleResponse = new DefaultResponse{403, "Forbidden"};
         accessTroubleResponse->finalize();
         getContext()->setResponse(accessTroubleResponse);
     }
@@ -44,4 +44,16 @@ void AuthorizedHandler::exec() {
 
 void AuthorizedHandler::setAccessCheck(std::function<bool(Entity *)> checkAccess) {
     this->checkAccess = checkAccess;
+}
+
+void AuthorizedHandler::setNext(Handler *next) {
+    if (handler) {
+        handler->setNext(next);
+    }
+}
+
+void AuthorizedHandler::add(Handler *handler) {
+    if (handler) {
+        handler->add(handler);
+    }
 }

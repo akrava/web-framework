@@ -30,7 +30,7 @@ public:
     /**
      * make http body of response object as file in filePath
      */
-    void exec();
+    void exec() override;
 
     /**
      * static function that read all data from file to string

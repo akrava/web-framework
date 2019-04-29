@@ -110,7 +110,8 @@ public:
     Entity * getUser();
 
     /**
-     * Set template strategy.
+     * Add different auth strategies. By default, you can add CookieAuth or/and
+     *      JwtAuth strategy, or write your and add it
      *
      * @param strategy
      *       concrete strategy
@@ -126,7 +127,7 @@ private:
     void setUser(Entity * user);
 
     /**
-    * Set template strategy.
+    * Set current template strategy
     *
     * @param strategy
     *       concrete strategy
