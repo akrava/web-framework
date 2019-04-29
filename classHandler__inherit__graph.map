@@ -1,3 +1,4 @@
 <map id="Handler" name="Handler">
-<area shape="rect" id="node2" href="$classFileHandler.html" title="this class allow you to set any file of filesystem as response body " alt="" coords="27,293,135,400"/>
+<area shape="rect" id="node2" href="$classAuthorizedHandler.html" title="Proxy handler to control access to another resources. " alt="" coords="5,292,163,413"/>
+<area shape="rect" id="node3" href="$classFileHandler.html" title="this class allow you to set any file of filesystem as response body " alt="" coords="187,299,295,406"/>
 </map>

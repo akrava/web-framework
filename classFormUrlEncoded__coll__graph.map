@@ -1,4 +1,4 @@
 <map id="FormUrlEncoded" name="FormUrlEncoded">
-<area shape="rect" id="node2" href="$classFormParser.html" title="{FormParser\n|# values\l# keyCurrent\l# formBody\l# valuesDelimiter\l# pairsDelimiter\l|+ parseForm()\l+ ~FormParser()\l# selectFormBody()\l# actionBeforeSelectingBody()\l# parseNextKey()\l# parseNextValue()\l# actionBeforeValueParsing()\l# getKeyValuePairs()\l}" alt="" coords="5,339,203,578"/>
-<area shape="rect" id="node3" href="$classFormEntity.html" title="{FormEntity\n||+ FormEntity()\l+ ~FormEntity()\l+ setFileName()\l+ getFileName()\l+ setContentType()\l+ getContentType()\l+ setCharset()\l+ getCharset()\l+ setValue()\l+ getValue()\l+ isFileContent()\l+ setNext()\l+ getNext()\l+ getArrayValue()\l}" alt="" coords="37,6,171,274"/>
+<area shape="rect" id="node2" href="$classFormParser.html" title="Template methods pattern for parsing form. " alt="" coords="5,336,204,575"/>
+<area shape="rect" id="node3" href="$classFormEntity.html" title="Wrapper for form value. " alt="" coords="37,5,172,273"/>
 </map>

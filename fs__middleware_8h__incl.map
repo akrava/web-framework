@@ -1,14 +1,14 @@
 <map id="/home/travis/build/akrava/web&#45;framework/include/fs_middleware.h" name="/home/travis/build/akrava/web&#45;framework/include/fs_middleware.h">
-<area shape="rect" id="node2" href="$middleware_8h.html" title="middleware.h" alt="" coords="169,184,268,211"/>
-<area shape="rect" id="node11" href="$fs__component_8h.html" title="fs_component.h" alt="" coords="435,333,549,360"/>
-<area shape="rect" id="node12" href="$fs__creator_8h.html" title="fs_creator.h" alt="" coords="452,109,543,136"/>
-<area shape="rect" id="node3" href="$response_8h.html" title="response.h" alt="" coords="227,259,313,285"/>
-<area shape="rect" id="node9" href="$request_8h.html" title="request.h" alt="" coords="127,259,203,285"/>
-<area shape="rect" id="node4" href="$http_8h.html" title="http.h" alt="" coords="355,333,409,360"/>
-<area shape="rect" id="node6" href="$headers_8h.html" title="headers.h" alt="" coords="107,333,185,360"/>
-<area shape="rect" id="node8" href="$message__body_8h.html" title="message_body.h" alt="" coords="210,333,331,360"/>
-<area shape="rect" id="node10" href="$uri_8h.html" title="uri.h" alt="" coords="37,333,83,360"/>
-<area shape="rect" id="node13" href="$fs__builder_8h.html" title="fs_builder.h" alt="" coords="453,184,541,211"/>
-<area shape="rect" id="node14" href="$fs__file_8h.html" title="fs_file.h" alt="" coords="458,259,525,285"/>
-<area shape="rect" id="node15" href="$fs__folder_8h.html" title="fs_folder.h" alt="" coords="551,259,632,285"/>
+<area shape="rect" id="node2" href="$middleware_8h.html" title="middleware.h" alt="" coords="170,184,269,211"/>
+<area shape="rect" id="node11" href="$fs__component_8h.html" title="fs_component.h" alt="" coords="435,333,550,360"/>
+<area shape="rect" id="node12" href="$fs__creator_8h.html" title="fs_creator.h" alt="" coords="453,109,543,136"/>
+<area shape="rect" id="node3" href="$response_8h.html" title="response.h" alt="" coords="228,259,315,285"/>
+<area shape="rect" id="node9" href="$request_8h.html" title="request.h" alt="" coords="128,259,204,285"/>
+<area shape="rect" id="node4" href="$http_8h.html" title="http.h" alt="" coords="356,333,411,360"/>
+<area shape="rect" id="node6" href="$headers_8h.html" title="headers.h" alt="" coords="108,333,187,360"/>
+<area shape="rect" id="node8" href="$message__body_8h.html" title="message_body.h" alt="" coords="211,333,332,360"/>
+<area shape="rect" id="node10" href="$uri_8h.html" title="uri.h" alt="" coords="37,333,84,360"/>
+<area shape="rect" id="node13" href="$fs__builder_8h.html" title="fs_builder.h" alt="" coords="453,184,543,211"/>
+<area shape="rect" id="node14" href="$fs__file_8h.html" title="fs_file.h" alt="" coords="459,259,527,285"/>
+<area shape="rect" id="node15" href="$fs__folder_8h.html" title="fs_folder.h" alt="" coords="551,259,634,285"/>
 </map>

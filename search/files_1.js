@@ -1,6 +1,7 @@
 var searchData=
 [
   ['context_2eh',['context.h',['../context_8h.html',1,'']]],
+  ['cookie_5fauth_2eh',['cookie_auth.h',['../cookie__auth_8h.html',1,'']]],
   ['cookie_5fentity_2eh',['cookie_entity.h',['../cookie__entity_8h.html',1,'']]],
   ['cookie_5fentity_5fdefault_2eh',['cookie_entity_default.h',['../cookie__entity__default_8h.html',1,'']]],
   ['cookie_5fentity_5ffactory_2eh',['cookie_entity_factory.h',['../cookie__entity__factory_8h.html',1,'']]],

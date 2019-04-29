@@ -13,5 +13,11 @@ var searchData=
   ['any',['ANY',['../classHTTP.html#aa9e5b42dac8b6629d834aa12f66b3ad9a140ecf2d126f1d9b564f9df41465c95a',1,'HTTP']]],
   ['app',['App',['../classApp.html',1,'App'],['../classApp.html#a4d47c8cea0e7ec6741fafae03091267d',1,'App::App(const char *ip=&quot;127.0.0.1&quot;, int port=80, bool isIPv6=false, const char *logFilePath=nullptr)'],['../classApp.html#a0ace9b21ece86acaa43a7102af9345bf',1,'App::App(InitParams &amp;params)']]],
   ['app_2eh',['app.h',['../app_8h.html',1,'']]],
-  ['autoexec',['autoExec',['../classCookieMiddleware.html#ab98db48b0cace8ef0a9154cab54cf46f',1,'CookieMiddleware::autoExec()'],['../classFormMiddleware.html#ae53e6df2b45356f521db65518f191636',1,'FormMiddleware::autoExec()'],['../classFsMiddleware.html#add2d7cea4a89b3195950c93f9ced5253',1,'FsMiddleware::autoExec()'],['../classHtmlMiddleware.html#a76ed61e165b494f1c88a0fc187299e55',1,'HtmlMiddleware::autoExec()'],['../classJsonMiddleware.html#a05c891e2888c2be7047ba87f4a0547e1',1,'JsonMiddleware::autoExec()'],['../classMiddleware.html#a9806e1db436af4e850be5a02e9d21df8',1,'Middleware::autoExec()']]]
+  ['auth_5fmiddleware_2eh',['auth_middleware.h',['../auth__middleware_8h.html',1,'']]],
+  ['auth_5fstrategy_2eh',['auth_strategy.h',['../auth__strategy_8h.html',1,'']]],
+  ['authmiddleware',['AuthMiddleware',['../classAuthMiddleware.html',1,'AuthMiddleware'],['../classAuthMiddleware.html#a8d7266026a37ac9a600f5a325f1a10dc',1,'AuthMiddleware::AuthMiddleware()']]],
+  ['authorized_5fhandler_2eh',['authorized_handler.h',['../authorized__handler_8h.html',1,'']]],
+  ['authorizedhandler',['AuthorizedHandler',['../classAuthorizedHandler.html',1,'AuthorizedHandler'],['../classAuthorizedHandler.html#a4a64e5c671346be105112432c41d4374',1,'AuthorizedHandler::AuthorizedHandler()']]],
+  ['authstrategy',['AuthStrategy',['../classAuthStrategy.html',1,'']]],
+  ['autoexec',['autoExec',['../classAuthMiddleware.html#a95f462f7f664f82c3d4dfc4f610a2fb5',1,'AuthMiddleware::autoExec()'],['../classCookieMiddleware.html#ab98db48b0cace8ef0a9154cab54cf46f',1,'CookieMiddleware::autoExec()'],['../classFormMiddleware.html#ae53e6df2b45356f521db65518f191636',1,'FormMiddleware::autoExec()'],['../classFsMiddleware.html#add2d7cea4a89b3195950c93f9ced5253',1,'FsMiddleware::autoExec()'],['../classHtmlMiddleware.html#a76ed61e165b494f1c88a0fc187299e55',1,'HtmlMiddleware::autoExec()'],['../classJsonMiddleware.html#a05c891e2888c2be7047ba87f4a0547e1',1,'JsonMiddleware::autoExec()'],['../classMiddleware.html#a9806e1db436af4e850be5a02e9d21df8',1,'Middleware::autoExec()']]]
 ];

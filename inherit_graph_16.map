@@ -1,3 +1,9 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classNetwork.html" title="Network" alt="" coords="6,5,77,32"/>
+<area shape="rect" id="node1" href="$classMiddleware.html" title="class wrapper for middleware " alt="" coords="5,132,93,159"/>
+<area shape="rect" id="node2" href="$classAuthMiddleware.html" title="This middleware checks authentication. " alt="" coords="149,5,263,32"/>
+<area shape="rect" id="node3" href="$classCookieMiddleware.html" title="inherited class to parse cookie from http request " alt="" coords="141,56,271,83"/>
+<area shape="rect" id="node4" href="$classFormMiddleware.html" title="inherited class to parse application/x&#45;www&#45;form&#45;urlencoded " alt="" coords="147,107,265,133"/>
+<area shape="rect" id="node5" href="$classFsMiddleware.html" title="Middleware to host directories with files. " alt="" coords="155,157,257,184"/>
+<area shape="rect" id="node6" href="$classHtmlMiddleware.html" title="inherited class to render html pages from templates " alt="" coords="148,208,264,235"/>
+<area shape="rect" id="node7" href="$classJsonMiddleware.html" title="inherited class to perform any actions with json data " alt="" coords="148,259,264,285"/>
 </map>

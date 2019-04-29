@@ -1,9 +1,9 @@
 <map id="/home/travis/build/akrava/web&#45;framework/include/context.h" name="/home/travis/build/akrava/web&#45;framework/include/context.h">
-<area shape="rect" id="node3" href="$request_8h.html" title="request.h" alt="" coords="237,184,312,211"/>
-<area shape="rect" id="node10" href="$response_8h.html" title="response.h" alt="" coords="126,184,212,211"/>
-<area shape="rect" id="node11" href="$middleware_8h.html" title="middleware.h" alt="" coords="257,109,356,136"/>
-<area shape="rect" id="node4" href="$http_8h.html" title="http.h" alt="" coords="150,259,204,285"/>
-<area shape="rect" id="node6" href="$message__body_8h.html" title="message_body.h" alt="" coords="5,259,125,285"/>
-<area shape="rect" id="node7" href="$uri_8h.html" title="uri.h" alt="" coords="331,259,377,285"/>
-<area shape="rect" id="node9" href="$headers_8h.html" title="headers.h" alt="" coords="229,259,307,285"/>
+<area shape="rect" id="node3" href="$request_8h.html" title="request.h" alt="" coords="237,184,313,211"/>
+<area shape="rect" id="node10" href="$response_8h.html" title="response.h" alt="" coords="127,184,213,211"/>
+<area shape="rect" id="node11" href="$middleware_8h.html" title="middleware.h" alt="" coords="258,109,357,136"/>
+<area shape="rect" id="node4" href="$http_8h.html" title="http.h" alt="" coords="151,259,205,285"/>
+<area shape="rect" id="node6" href="$message__body_8h.html" title="message_body.h" alt="" coords="5,259,127,285"/>
+<area shape="rect" id="node7" href="$uri_8h.html" title="uri.h" alt="" coords="332,259,379,285"/>
+<area shape="rect" id="node9" href="$headers_8h.html" title="headers.h" alt="" coords="229,259,308,285"/>
 </map>

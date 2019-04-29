@@ -1,3 +1,7 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classFormEntity.html" title="FormEntity" alt="" coords="6,5,93,32"/>
+<area shape="rect" id="node1" href="$classEntity.html" title="Cloneable interface. " alt="" coords="5,81,61,108"/>
+<area shape="rect" id="node2" href="$classCookieEntity.html" title="Class wrapper for Cookies. Allow you adjust parameters od each http cookie. Used by CookieMiddleware..." alt="" coords="130,5,227,32"/>
+<area shape="rect" id="node3" href="$classCookieEntityDefault.html" title="Cookie entity with default params. " alt="" coords="109,56,248,83"/>
+<area shape="rect" id="node4" href="$classCookieEntityHttp.html" title="Cookie entity with Http only param. " alt="" coords="117,107,240,133"/>
+<area shape="rect" id="node5" href="$classCookieEntityWeek.html" title="Cookie entity expires in a week. " alt="" coords="113,157,244,184"/>
 </map>

@@ -1,12 +1,12 @@
 <map id="/home/travis/build/akrava/web&#45;framework/include/cookie_middleware.h" name="/home/travis/build/akrava/web&#45;framework/include/cookie_middleware.h">
-<area shape="rect" id="node2" href="$middleware_8h.html" title="middleware.h" alt="" coords="267,109,365,136"/>
-<area shape="rect" id="node11" href="$cookie__entity_8h.html" title="cookie_entity.h" alt="" coords="438,109,548,136"/>
-<area shape="rect" id="node15" href="$cookie__entity__factory_8h.html" title="cookie_entity_factory.h" alt="" coords="573,109,731,136"/>
-<area shape="rect" id="node3" href="$response_8h.html" title="response.h" alt="" coords="110,184,196,211"/>
-<area shape="rect" id="node9" href="$request_8h.html" title="request.h" alt="" coords="230,184,305,211"/>
-<area shape="rect" id="node4" href="$http_8h.html" title="http.h" alt="" coords="5,259,59,285"/>
-<area shape="rect" id="node6" href="$headers_8h.html" title="headers.h" alt="" coords="229,259,307,285"/>
-<area shape="rect" id="node8" href="$message__body_8h.html" title="message_body.h" alt="" coords="83,259,204,285"/>
-<area shape="rect" id="node10" href="$uri_8h.html" title="uri.h" alt="" coords="383,259,429,285"/>
-<area shape="rect" id="node13" href="$entity_8h.html" title="entity.h" alt="" coords="549,184,613,211"/>
+<area shape="rect" id="node2" href="$middleware_8h.html" title="middleware.h" alt="" coords="267,109,366,136"/>
+<area shape="rect" id="node11" href="$cookie__entity_8h.html" title="cookie_entity.h" alt="" coords="439,109,549,136"/>
+<area shape="rect" id="node15" href="$cookie__entity__factory_8h.html" title="cookie_entity_factory.h" alt="" coords="574,109,731,136"/>
+<area shape="rect" id="node3" href="$response_8h.html" title="response.h" alt="" coords="111,184,197,211"/>
+<area shape="rect" id="node9" href="$request_8h.html" title="request.h" alt="" coords="231,184,307,211"/>
+<area shape="rect" id="node4" href="$http_8h.html" title="http.h" alt="" coords="5,259,60,285"/>
+<area shape="rect" id="node6" href="$headers_8h.html" title="headers.h" alt="" coords="229,259,308,285"/>
+<area shape="rect" id="node8" href="$message__body_8h.html" title="message_body.h" alt="" coords="84,259,205,285"/>
+<area shape="rect" id="node10" href="$uri_8h.html" title="uri.h" alt="" coords="384,259,431,285"/>
+<area shape="rect" id="node13" href="$entity_8h.html" title="entity.h" alt="" coords="549,184,615,211"/>
 </map>

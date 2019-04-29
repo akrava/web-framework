@@ -1,3 +1,3 @@
 <map id="FormMultipart" name="FormMultipart">
-<area shape="rect" id="node2" href="$classFormParser.html" title="{FormParser\n|# values\l# valueCurrent\l# keyCurrent\l# formBody\l# valuesDelimiter\l# pairsDelimiter\l|+ parseForm()\l+ ~FormParser()\l# selectFormBody()\l# actionBeforeSelectingBody()\l# parseNextKey()\l# parseNextValue()\l# actionBeforeValueParsing()\l# getKeyValuePairs()\l}" alt="" coords="5,5,203,259"/>
+<area shape="rect" id="node2" href="$classFormParser.html" title="Template methods pattern for parsing form. " alt="" coords="5,5,204,259"/>
 </map>

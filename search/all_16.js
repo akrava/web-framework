@@ -1,6 +1,9 @@
 var searchData=
 [
   ['_7eapp',['~App',['../classApp.html#a34f1f253b1cef5f4ecbac66eaf6964ec',1,'App']]],
+  ['_7eauthmiddleware',['~AuthMiddleware',['../classAuthMiddleware.html#ab136822b683a9ada4412eb0e369f3f1a',1,'AuthMiddleware']]],
+  ['_7eauthorizedhandler',['~AuthorizedHandler',['../classAuthorizedHandler.html#aa1ceeeb7cd7b863588ad39f1aa83c731',1,'AuthorizedHandler']]],
+  ['_7eauthstrategy',['~AuthStrategy',['../classAuthStrategy.html#adba2d637ca27431acef75ab1adcc1986',1,'AuthStrategy']]],
   ['_7econtext',['~Context',['../classContext.html#a2d34e4556448e40693f61d15e091b604',1,'Context']]],
   ['_7eentity',['~Entity',['../classEntity.html#ac479d009ddde62dfb378ca0a70d81307',1,'Entity']]],
   ['_7eformentity',['~FormEntity',['../classFormEntity.html#a8be2cebece11ef4633a92807b6ec6b76',1,'FormEntity']]],

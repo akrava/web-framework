@@ -1,6 +1,8 @@
 var searchData=
 [
   ['selectformbody',['selectFormBody',['../classFormParser.html#a8a0552602aa43b4168da0c4c2fb7ccfc',1,'FormParser']]],
+  ['serializeandsetvaluetoresponse',['serializeAndSetValueToResponse',['../classAuthStrategy.html#adfe506746a07e0591f9a58329c904812',1,'AuthStrategy::serializeAndSetValueToResponse()'],['../classCookieAuth.html#a55e1013b0c1256f057319046366461ad',1,'CookieAuth::serializeAndSetValueToResponse()'],['../classJwtAuth.html#ab3ff1fa38b195e7e5e4a27ed98372f4a',1,'JwtAuth::serializeAndSetValueToResponse()']]],
+  ['setaccesscheck',['setAccessCheck',['../classAuthorizedHandler.html#a8a2a07713e333114955b3dbb0369c831',1,'AuthorizedHandler']]],
   ['setapi',['setAPI',['../classNetwork.html#a935aed4a4790e21d62e89c9ecc48302b',1,'Network']]],
   ['setbody',['setBody',['../classMessageBody.html#aa059f8b624d25c7027777c38c8f9a6a9',1,'MessageBody::setBody()'],['../classResponse.html#a289e9ceae9fdf09882fe140a69be5f84',1,'Response::setBody()']]],
   ['setbuilder',['setBuilder',['../classFsCreator.html#a63f10bbe8e736f865eda7fa44084ef91',1,'FsCreator']]],
@@ -12,6 +14,9 @@ var searchData=
   ['setheaders',['setHeaders',['../classResponse.html#a1a2f10df7f5e4f68d9058ac896b10185',1,'Response']]],
   ['setmiddlewarelist',['setMiddlewareList',['../classContext.html#ae027ca52192ddc50c1ee5e0d23c219f1',1,'Context']]],
   ['setnext',['setNext',['../classFormEntity.html#a98d171dc6dae75abde9499b230df1568',1,'FormEntity::setNext()'],['../classHandler.html#a84870a45c795a91d72f2d81c0629f7a6',1,'Handler::setNext()']]],
+  ['setondeserialize',['setOnDeserialize',['../classAuthMiddleware.html#ac491bafb3d9250c696fa3780ba1ccf04',1,'AuthMiddleware']]],
+  ['setonlogin',['setOnLogin',['../classAuthMiddleware.html#abe8c0f04428db46c73e659db1134f482',1,'AuthMiddleware']]],
+  ['setonserialize',['setOnSerialize',['../classAuthMiddleware.html#a6e363239afa61a701e5110b2997a8435',1,'AuthMiddleware']]],
   ['setparamsanduri',['setParamsAndUri',['../classURI.html#ad284f4115eca1f86f92dff9c8ae63d22',1,'URI']]],
   ['setparser',['setParser',['../classFormMiddleware.html#a8b03a02800ee9ea118abeda3149238c9',1,'FormMiddleware']]],
   ['setpermanent',['setPermanent',['../classRedirectResponse.html#af8a37d5ffc0e40f84165fc130c7c0175',1,'RedirectResponse']]],
@@ -21,9 +26,12 @@ var searchData=
   ['setrequest',['setRequest',['../classContext.html#a641824f175a2b74553e77463eee1ceb3',1,'Context']]],
   ['setresponse',['setResponse',['../classContext.html#aa6cd6b84fa2f726c9897f55091cca674',1,'Context']]],
   ['setstatus',['setStatus',['../classResponse.html#a74720570239e4c20409813f00263edf8',1,'Response']]],
+  ['setstrategy',['setStrategy',['../classAuthMiddleware.html#a97d71c3f1c03a8759fa85f011c31f52a',1,'AuthMiddleware']]],
   ['settemporary',['setTemporary',['../classRedirectResponse.html#ad248bd90e36ab200217e904dc6af4c8e',1,'RedirectResponse']]],
   ['settemporaryredirect',['setTemporaryRedirect',['../classContext.html#a4d4803bcd72832cc87d140567264359f',1,'Context']]],
+  ['setuser',['setUser',['../classAuthMiddleware.html#a34469765eec69216a62dd5180610d319',1,'AuthMiddleware']]],
   ['setvalue',['setValue',['../classCookieEntity.html#a73c08641579866e3bd9d85fc392e4bb3',1,'CookieEntity::setValue()'],['../classCookieEntityDefault.html#a75fc2765c7803e434e730680d752cba6',1,'CookieEntityDefault::setValue()'],['../classCookieEntityHttp.html#abe0b58ee457e16524f4f20658ddd2ed4',1,'CookieEntityHttp::setValue()'],['../classCookieEntityWeek.html#a7adf8f9a2efa2dd2bcd8c9bfb24aacb8',1,'CookieEntityWeek::setValue()'],['../classEntity.html#a1ee01669bfe6ff61418ff7f69e35328b',1,'Entity::setValue()'],['../classFormEntity.html#a719dc0133d7be33742c61f1493f128ee',1,'FormEntity::setValue()']]],
   ['setversion',['setVersion',['../classResponse.html#a69491a96e5de5676387be620d123100d',1,'Response']]],
-  ['setview',['setView',['../classHtmlMiddleware.html#af3baa498a97bb645e8623c518f2a1e67',1,'HtmlMiddleware']]]
+  ['setview',['setView',['../classHtmlMiddleware.html#af3baa498a97bb645e8623c518f2a1e67',1,'HtmlMiddleware']]],
+  ['sha256',['sha256',['../classParserHTTP.html#a5b26dbda6f415c02bb0cadec6937dd29',1,'ParserHTTP']]]
 ];

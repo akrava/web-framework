@@ -1,3 +1,5 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classFsCreator.html" title="FsCreator" alt="" coords="5,5,85,32"/>
+<area shape="rect" id="node1" href="$classFsComponent.html" title="Interface for fs entity. " alt="" coords="5,31,109,57"/>
+<area shape="rect" id="node2" href="$classFsFile.html" title="Wrapper for fs file. " alt="" coords="165,5,223,32"/>
+<area shape="rect" id="node3" href="$classFsFolder.html" title="Wrapper for fs folder. " alt="" coords="157,56,231,83"/>
 </map>

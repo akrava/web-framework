@@ -1,7 +1,8 @@
 <map id="Middleware" name="Middleware">
-<area shape="rect" id="node2" href="$classCookieMiddleware.html" title="inherited class to parse cookie from http request " alt="" coords="5,301,153,467"/>
-<area shape="rect" id="node3" href="$classFormMiddleware.html" title="inherited class to parse application/x&#45;www&#45;form&#45;urlencoded " alt="" coords="179,294,325,474"/>
-<area shape="rect" id="node4" href="$classFsMiddleware.html" title="{FsMiddleware\n||+ FsMiddleware()\l+ autoExec()\l+ exec()\l}" alt="" coords="349,331,472,437"/>
-<area shape="rect" id="node5" href="$classHtmlMiddleware.html" title="inherited class to render html pages from templates " alt="" coords="496,294,640,474"/>
-<area shape="rect" id="node6" href="$classJsonMiddleware.html" title="inherited class to perform any actions with json data " alt="" coords="664,294,811,474"/>
+<area shape="rect" id="node2" href="$classAuthMiddleware.html" title="This middleware checks authentication. " alt="" coords="5,292,148,531"/>
+<area shape="rect" id="node3" href="$classCookieMiddleware.html" title="inherited class to parse cookie from http request " alt="" coords="171,329,321,494"/>
+<area shape="rect" id="node4" href="$classFormMiddleware.html" title="inherited class to parse application/x&#45;www&#45;form&#45;urlencoded " alt="" coords="345,321,491,501"/>
+<area shape="rect" id="node5" href="$classFsMiddleware.html" title="Middleware to host directories with files. " alt="" coords="515,358,638,465"/>
+<area shape="rect" id="node6" href="$classHtmlMiddleware.html" title="inherited class to render html pages from templates " alt="" coords="662,321,806,501"/>
+<area shape="rect" id="node7" href="$classJsonMiddleware.html" title="inherited class to perform any actions with json data " alt="" coords="830,321,977,501"/>
 </map>

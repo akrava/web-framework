@@ -1,4 +1,4 @@
 <map id="FsComponent" name="FsComponent">
-<area shape="rect" id="node2" href="$classFsFile.html" title="{FsFile\n||+ FsFile()\l+ getName()\l+ getFileContent()\l+ findFileAndGetContent()\l+ add()\l+ remove()\l+ isComposite()\l}" alt="" coords="5,233,179,399"/>
-<area shape="rect" id="node3" href="$classFsFolder.html" title="{FsFolder\n|# children\l|+ ~FsFolder()\l+ FsFolder()\l+ FsFolder()\l+ getName()\l+ getFileContent()\l+ findFileAndGetContent()\l+ add()\l+ remove()\l+ isComposite()\l}" alt="" coords="203,219,377,413"/>
+<area shape="rect" id="node2" href="$classFsFile.html" title="Wrapper for fs file. " alt="" coords="5,233,180,399"/>
+<area shape="rect" id="node3" href="$classFsFolder.html" title="Wrapper for fs folder. " alt="" coords="204,219,379,413"/>
 </map>

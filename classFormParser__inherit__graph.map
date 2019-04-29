@@ -1,4 +1,4 @@
 <map id="FormParser" name="FormParser">
-<area shape="rect" id="node2" href="$classFormMultipart.html" title="{FormMultipart\n||+ FormMultipart()\l# actionBeforeSelectingBody()\l# parseNextKey()\l# parseNextValue()\l# actionBeforeValueParsing()\l}" alt="" coords="5,307,203,443"/>
-<area shape="rect" id="node3" href="$classFormUrlEncoded.html" title="{FormUrlEncoded\n||+ FormUrlEncoded()\l# parseNextKey()\l# parseNextValue()\l}" alt="" coords="227,321,367,428"/>
+<area shape="rect" id="node2" href="$classFormMultipart.html" title="Methods for parsing form multipart/form&#45;data. " alt="" coords="5,307,204,443"/>
+<area shape="rect" id="node3" href="$classFormUrlEncoded.html" title="Methods for parsing urlencoded form. " alt="" coords="228,321,368,428"/>
 </map>
