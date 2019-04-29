@@ -23,7 +23,6 @@
  *      adjust it.
  */
 class App {
-    // Socket socket;
     Network network;
     std::unordered_map<std::string, Handler *> handlersRoutes;
     Handler * handler;

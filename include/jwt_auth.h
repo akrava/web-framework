@@ -6,7 +6,7 @@
 /**
  * @brief JWT auth strategy
  */
-class  JwtAuth : public AuthStrategy {
+class JwtAuth : public AuthStrategy {
     std::string secret;
     Middleware * middleware;
     std::string headersToken;
@@ -21,7 +21,7 @@ public:
      * @param headers
      * @return
      */
-    static bool checkHeadersToParse(Headers * headers);
+    bool checkHeadersToParse(Headers * headers) override;
 
     /**
      *

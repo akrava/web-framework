@@ -29,7 +29,13 @@ void AuthMiddleware::setOnLogin(std::function<Entity *(std::string &, std::strin
 
 bool AuthMiddleware::autoExec() {
     auto headers = request->getHeaders();
-    return CookieAuth::checkHeadersToParse(headers) || JwtAuth::checkHeadersToParse(headers);
+    for (auto & cur : allStrategies) {
+        if (cur->checkHeadersToParse(headers)) {
+            setStrategy(cur);
+            return true;
+        }
+    }
+    return false;
 }
 
 void AuthMiddleware::exec() {
@@ -45,13 +51,15 @@ void AuthMiddleware::exec() {
 }
 
 void AuthMiddleware::setStrategy(AuthStrategy * strategy) {
-    delete this->strategy;
     this->strategy = strategy;
 }
 
 AuthMiddleware::~AuthMiddleware() {
     delete currentUser;
     delete strategy;
+    for (auto & cur : allStrategies) {
+        delete cur;
+    }
 }
 
 bool AuthMiddleware::login(std::string & userName, std::string & password) {
@@ -63,5 +71,11 @@ bool AuthMiddleware::login(std::string & userName, std::string & password) {
         std::string serializedUser = onSerialize(userObject);
         strategy->serializeAndSetValueToResponse(serializedUser);
         return true;
+    }
+}
+
+void AuthMiddleware::addStrategy(AuthStrategy *strategy) {
+    if (strategy) {
+        allStrategies.push_back(strategy);
     }
 }

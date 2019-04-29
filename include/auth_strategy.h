@@ -25,6 +25,13 @@ public:
     virtual std::string getSerializedValue(Headers * headers) = 0;
 
     /**
+     *
+     * @param headers
+     * @return
+     */
+    virtual bool checkHeadersToParse(Headers * headers) = 0;
+
+    /**
      * Set to response user credentials
      *
      * @param value

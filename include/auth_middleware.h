@@ -6,13 +6,19 @@
 #include "auth_strategy.h"
 
 /**
- * @brief This middleware checks authentication
+ * @brief This middleware performs authentication on your application
+ *
+ * AuthMiddleware is intended to parse cookies or other data in headers
+ *      with CookieMiddleware or JsonMiddleware, and then get information
+ *      about authenticated user, also it could generate special technical
+ *      data for responses to identificate clients
  */
 class AuthMiddleware : public Middleware {
     const char * cookieMiddlewareID;
     const char * jsonMiddlewareID;
     Entity * currentUser = nullptr;
     AuthStrategy * strategy = nullptr;
+    std::vector<AuthStrategy *> allStrategies;
     std::function<Entity *(std::string &, std::string &)> onLogin = nullptr;
     std::function<std::string(Entity *)> onSerialize = nullptr;
     std::function<Entity *(std::string &)> onDeserialize = nullptr;
@@ -28,7 +34,7 @@ public:
      *      string id of json middleware
      */
     AuthMiddleware(const char * nameID, const char * cookieID, const char * jsonID)
-        : Middleware(nameID), cookieMiddlewareID(cookieID), jsonMiddlewareID(jsonID) {}
+        : Middleware(nameID), cookieMiddlewareID(cookieID), jsonMiddlewareID(jsonID), allStrategies() {}
 
     /**
      * Destructs inner objects
@@ -36,7 +42,9 @@ public:
     ~AuthMiddleware() override;
 
     /**
-     * Set serialization of user
+     * Set function, that perform serialization of user object.
+     *      This data will be available on each call of deserialization
+     *      function
      *
      * @param serialize
      *      function that convert user object to string
@@ -44,7 +52,9 @@ public:
     void setOnSerialize(std::function<std::string(Entity *)> serialize);
 
     /**
-     * Set deserialization of user
+     * Set deserialization function of user. From passed string this function
+     *      should get user object from string if everything all right or null
+     *      otherwise
      *
      * @param deserialize
      *      function that get user object from string
@@ -55,19 +65,21 @@ public:
      * Set function for authentication
      *
      * @param login
-     *      get User object from username and password
+     *      get User object from username and password. If something is wrong return
+     *      null
      */
     void setOnLogin(std::function<Entity *(std::string &, std::string &)> login);
 
     /**
-     * Check authentication
+     * Check authentication. Could be used in any client defined handler, where is
+     *      processing user login to application
      *
      * @param userName
      *      user id
      * @param password
      *      user pass
      * @return
-     *  true if authenticated successfully
+     *      true if authenticated successfully
      */
     bool login(std::string & userName, std::string & password);
 
@@ -80,7 +92,7 @@ public:
     bool autoExec() override;
 
     /**
-     * Perform operation to check users credentials
+     * Perform operations to check users credentials and proceed them
      */
     void exec() override;
 
@@ -90,13 +102,21 @@ public:
     void clear() override { Middleware::clear(); currentUser = nullptr; }
 
     /**
-     * Get current authenticated user
+     * Get current authenticated user. Could be used by any client defined handlers.
      *
      * @return
-     *      user object
+     *      user object, or null if anyone was authorised
      */
     Entity * getUser();
 
+    /**
+     * Set template strategy.
+     *
+     * @param strategy
+     *       concrete strategy
+     */
+    void addStrategy(AuthStrategy * strategy);
+private:
     /**
      * Set current authenticated user
      *
@@ -105,8 +125,8 @@ public:
      */
     void setUser(Entity * user);
 
-   /**
-    * Set template strategy
+    /**
+    * Set template strategy.
     *
     * @param strategy
     *       concrete strategy

@@ -95,7 +95,7 @@ int main (int argc, char ** argv) {
     middleware->setOnSerialize(User::serialize);
     middleware->setOnDeserialize(User::deserialize);
     middleware->setOnLogin(User::checkLogin);
-    middleware->setStrategy(new CookieAuth(__SECRET, cookie));
+    middleware->addStrategy(new CookieAuth(__SECRET, cookie));
     website.addMiddleware(middleware);
     website.addMiddleware(DatabaseMiddleware::getInstance("db", (currentDir() + "/../db/db_file").c_str()));
 

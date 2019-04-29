@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/akrava/web-framework.svg?branch=master)](https://travis-ci.org/akrava/web-framework)
 [![Coverity Scan Build Status](https://img.shields.io/coverity/scan/16090.svg)](https://scan.coverity.com/projects/akrava-web-framework)
-[![Documentation](https://img.shields.io/badge/docs-doxygen-blue.svg)](http://akrava.github.io/web-framework)
+[![Documentation](https://img.shields.io/badge/docs-doxygen-blue.svg)](https://akrava.github.io/web-framework)
 [![GitHub License](https://img.shields.io/github/license/akrava/web-framework.svg)](https://raw.githubusercontent.com/akrava/web-framework/master/LICENSE)
 ## How to use
 ### 1. Pre-install
@@ -23,4 +23,4 @@ target_link_libraries(${PROJECT_NAME} akrava::akrava_web-server nlohmann_json::n
 ## Examples 
 See [here](examples/)
 ## Documentation
-see documentation [here](docs/refman.pdf)
+see documentation: [online](https://akrava.github.io/web-framework) | [pdf](docs/refman.pdf)

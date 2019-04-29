@@ -20,7 +20,7 @@ public:
      * @param headers
      * @return
      */
-    static bool checkHeadersToParse(Headers * headers);
+    bool checkHeadersToParse(Headers * headers) override;
 
     /**
      *
