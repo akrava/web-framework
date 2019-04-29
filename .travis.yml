@@ -36,7 +36,7 @@ addons:
       - libboost-all-dev
 before_install:
   - wget https://www.openssl.org/source/old/1.1.0/openssl-1.1.0g.tar.gz && tar xzvf openssl-1.1.0g.tar.gz && cd openssl-1.1.0g && export LD_LIBRARY_PATH=/usr/local/lib:/usr/local/lib64 && ./config > /dev/null && sudo make install > /dev/null && sudo ldconfig && cd ..
-  - echo -n | openssl s_client -connect https://scan.coverity.com:443 | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' | sudo tee -a /etc/ssl/certs/ca-
+  - sudo bash -c "echo -n | openssl s_client -showcerts -connect https://scan.coverity.com:443 2>/dev/null  | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p'  >> curl-config --ca"
   - sudo ln -s /usr/bin/gcc-7 /usr/local/bin/gcc
   - sudo ln -s /usr/bin/g++-7 /usr/local/bin/g++
   - export CC=/usr/bin/gcc-7
