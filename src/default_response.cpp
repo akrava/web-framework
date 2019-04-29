@@ -2,7 +2,7 @@
 
 using namespace std;
 
-DefaultResponse::DefaultResponse(int status_code, const char *body) {
+DefaultResponse::DefaultResponse(int status_code, const char *body) : statusCode(status_code) {
     string title = status_code < 0 ? body : to_string(status_code) + " "
                                                               + HTTP::getReasonPhrase(status_code);
     getHeaders()->add("Content-Type", "text/html; charset=utf-8");

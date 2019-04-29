@@ -84,13 +84,14 @@ std::string SocketUnixAPI::getData() {
         }
     }
     while (cur < length) {
-        ssize_t length_cur = recv(client_fd, buffer, 1024, 0);
-        if (numRead < 1) {
+        auto bytes_read = recv(client_fd, buffer, 1024, 0);
+        if (bytes_read < 1) {
             perror("The client was not read from");
             close(client_fd);
             delete[] buffer;
             return std::string();
         }
+        size_t length_cur = bytes_read;
         string temp;
         temp.assign(buffer, length_cur);
         buffer[length_cur] = 0;

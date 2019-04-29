@@ -27,6 +27,7 @@ InitParams::InitParams() {
     port = -1;
     logFilePath = string();
     host = string();
+    IPv6 = false;
 }
 
 InitParams::InitParams(int argc, char ** argv) : InitParams() {

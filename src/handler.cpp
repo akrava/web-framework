@@ -23,13 +23,13 @@ void Handler::add(Handler * handler) {
 }
 
 void Handler::handleRequest() {
-    if (context && context->getResponse()) {
-        if (context->getResponse()->isFinalized()) {
+    if (context) {
+        if (context->getResponse() && context->getResponse()->isFinalized()) {
             return;
         }
-    }
-    if (shouldHandleRequest()) {
-        exec();
+        if (context->getRequest() && shouldHandleRequest()) {
+            exec();
+        }
     }
     if (next) {
         next->handleRequest();
