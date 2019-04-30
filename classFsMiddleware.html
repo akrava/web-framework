@@ -24,7 +24,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Web framework C++
-   &#160;<span id="projectnumber">1.0.0</span>
+   &#160;<span id="projectnumber">2.0.0</span>
    </div>
    <div id="projectbrief">Simple web framework on c++ designed to easily create web pages, etc</div>
   </td>
@@ -92,7 +92,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 
-<p><a class="el" href="classMiddleware.html" title="class wrapper for middleware ">Middleware</a> to host directories with files.  
+<p><a class="el" href="classMiddleware.html" title="class wrapper for middleware ">Middleware</a> to host directories with inner files.  
  <a href="classFsMiddleware.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="fs__middleware_8h_source.html">fs_middleware.h</a>&gt;</code></p>
@@ -152,7 +152,8 @@ Additional Inherited Members</h2></td></tr>
 <tr class="separator:ae5677fa3be638be88585f6e93fffebeb inherit pro_attribs_classMiddleware"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p><a class="el" href="classMiddleware.html" title="class wrapper for middleware ">Middleware</a> to host directories with files. </p>
+<div class="textblock"><p><a class="el" href="classMiddleware.html" title="class wrapper for middleware ">Middleware</a> to host directories with inner files. </p>
+<p>This middleware provide an opportunity to share many files in directories and subdirectories by passing path to root directory and mount point of this directory. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a1b2923b5a609bf04c1ff17ff73227c05"></a>
 <div class="memitem">
@@ -183,6 +184,15 @@ Additional Inherited Members</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>create <a class="el" href="classFsMiddleware.html" title="Middleware to host directories with inner files. ">FsMiddleware</a> to serve all files from provided directory filesystem hierarchy</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nameID</td><td>string ID of this middleware </td></tr>
+    <tr><td class="paramname">folderPath</td><td>relative or full path to hosted folder </td></tr>
+    <tr><td class="paramname">mountPath</td><td>path, that would be added before relative path of files and all target requests uri should begin with this mount path </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -207,8 +217,7 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Check if current request allow do exec method</p>
-<dl class="section return"><dt>Returns</dt><dd>true, if need do exec with current request, false otherwise </dd></dl>
+<p>check, if current request is file in hierarchy of hosted directory </p><dl class="section return"><dt>Returns</dt><dd>true, if there is a needed file, false otherwise </dd></dl>
 
 <p>Implements <a class="el" href="classMiddleware.html#a9806e1db436af4e850be5a02e9d21df8">Middleware</a>.</p>
 
@@ -234,7 +243,7 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>perform operation with request and response objects </p>
+<p>execute current middleware </p>
 
 <p>Implements <a class="el" href="classMiddleware.html#a37d46da167012da356cc400e425de92c">Middleware</a>.</p>
 

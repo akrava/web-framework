@@ -1,4 +1,4 @@
 <map id="FsComponent" name="FsComponent">
-<area shape="rect" id="node2" href="$classFsFile.html" title="Wrapper for fs file. " alt="" coords="5,233,180,399"/>
-<area shape="rect" id="node3" href="$classFsFolder.html" title="Wrapper for fs folder. " alt="" coords="204,219,379,413"/>
+<area shape="rect" id="node2" href="$classFsFile.html" title="Representation of file in filesystem. " alt="" coords="5,233,180,399"/>
+<area shape="rect" id="node3" href="$classFsFolder.html" title="Representation of folder in filesystem. " alt="" coords="204,219,379,413"/>
 </map>

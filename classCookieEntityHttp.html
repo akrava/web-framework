@@ -24,7 +24,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Web framework C++
-   &#160;<span id="projectnumber">1.0.0</span>
+   &#160;<span id="projectnumber">2.0.0</span>
    </div>
    <div id="projectbrief">Simple web framework on c++ designed to easily create web pages, etc</div>
   </td>
@@ -92,7 +92,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 
-<p>Cookie entity with Http only param.  
+<p>Default <a class="el" href="classCookieEntity.html" title="Class wrapper for Cookies. Allow you adjust parameters od each http cookie. Used by CookieMiddleware...">CookieEntity</a> with http only feature.  
  <a href="classCookieEntityHttp.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="cookie__entity__http_8h_source.html">cookie_entity_http.h</a>&gt;</code></p>
@@ -101,7 +101,7 @@ Inheritance diagram for CookieEntityHttp:</div>
 <div class="dyncontent">
 <div class="center"><img src="classCookieEntityHttp__inherit__graph.png" border="0" usemap="#CookieEntityHttp_inherit__map" alt="Inheritance graph"/></div>
 <map name="CookieEntityHttp_inherit__map" id="CookieEntityHttp_inherit__map">
-<area shape="rect" id="node2" href="classEntity.html" title="Cloneable interface. " alt="" coords="30,5,123,127"/>
+<area shape="rect" id="node2" href="classEntity.html" title="Cloneable interface of object wth value and serializable method. " alt="" coords="30,5,123,127"/>
 </map>
 </div>
 <div class="dynheader">
@@ -109,7 +109,7 @@ Collaboration diagram for CookieEntityHttp:</div>
 <div class="dyncontent">
 <div class="center"><img src="classCookieEntityHttp__coll__graph.png" border="0" usemap="#CookieEntityHttp_coll__map" alt="Collaboration graph"/></div>
 <map name="CookieEntityHttp_coll__map" id="CookieEntityHttp_coll__map">
-<area shape="rect" id="node2" href="classEntity.html" title="Cloneable interface. " alt="" coords="30,5,123,127"/>
+<area shape="rect" id="node2" href="classEntity.html" title="Cloneable interface of object wth value and serializable method. " alt="" coords="30,5,123,127"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -128,11 +128,15 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ac479d009ddde62dfb378ca0a70d81307 inherit pub_methods_classEntity"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Cookie entity with Http only param. </p>
+<div class="textblock"><p>Default <a class="el" href="classCookieEntity.html" title="Class wrapper for Cookies. Allow you adjust parameters od each http cookie. Used by CookieMiddleware...">CookieEntity</a> with http only feature. </p>
+<p>Concrete prototype of cookie entity with all default fields and http only property </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="aa1fa1ec209086f44760912125926e60e"></a>
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">CookieEntityHttp::CookieEntityHttp </td>
@@ -142,7 +146,19 @@ Public Member Functions</h2></td></tr>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
+<p>Create default cookie entity with http only feature</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>serialized value </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -167,7 +183,8 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+<p>Clone default cookie entity with http only feature</p>
+<dl class="section return"><dt>Returns</dt><dd>new <a class="el" href="classCookieEntityHttp.html" title="Default CookieEntity with http only feature. ">CookieEntityHttp</a> object </dd></dl>
 
 <p>Implements <a class="el" href="classEntity.html#a876521fc4400a691833436ac0e6b2107">Entity</a>.</p>
 
@@ -194,9 +211,10 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Set value of cookie</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">value</td><td></td></tr>
+    <tr><td class="paramname">value</td><td>serialized data </td></tr>
   </table>
   </dd>
 </dl>
@@ -225,7 +243,8 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+<p>Serialize this cookie to string</p>
+<dl class="section return"><dt>Returns</dt><dd>serialized cookie value </dd></dl>
 
 <p>Implements <a class="el" href="classEntity.html#ab7288e46324bcb15c1cd8feab1ac6fd7">Entity</a>.</p>
 

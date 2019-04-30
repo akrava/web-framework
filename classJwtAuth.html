@@ -24,7 +24,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Web framework C++
-   &#160;<span id="projectnumber">1.0.0</span>
+   &#160;<span id="projectnumber">2.0.0</span>
    </div>
    <div id="projectbrief">Simple web framework on c++ designed to easily create web pages, etc</div>
   </td>
@@ -86,7 +86,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="classJwtAuth-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">JwtAuth Class Reference</div>  </div>
@@ -102,7 +101,7 @@ Inheritance diagram for JwtAuth:</div>
 <div class="dyncontent">
 <div class="center"><img src="classJwtAuth__inherit__graph.png" border="0" usemap="#JwtAuth_inherit__map" alt="Inheritance graph"/></div>
 <map name="JwtAuth_inherit__map" id="JwtAuth_inherit__map">
-<area shape="rect" id="node2" href="classAuthStrategy.html" title="Interface for auth strategy. " alt="" coords="5,5,245,112"/>
+<area shape="rect" id="node2" href="classAuthStrategy.html" title="Interface for auth strategy template. " alt="" coords="5,5,245,127"/>
 </map>
 </div>
 <div class="dynheader">
@@ -110,7 +109,7 @@ Collaboration diagram for JwtAuth:</div>
 <div class="dyncontent">
 <div class="center"><img src="classJwtAuth__coll__graph.png" border="0" usemap="#JwtAuth_coll__map" alt="Collaboration graph"/></div>
 <map name="JwtAuth_coll__map" id="JwtAuth_coll__map">
-<area shape="rect" id="node2" href="classAuthStrategy.html" title="Interface for auth strategy. " alt="" coords="5,5,245,112"/>
+<area shape="rect" id="node2" href="classAuthStrategy.html" title="Interface for auth strategy template. " alt="" coords="5,5,245,127"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -118,6 +117,8 @@ Collaboration diagram for JwtAuth:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a2890b392a05c76d4e047f06234ba36f3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJwtAuth.html#a2890b392a05c76d4e047f06234ba36f3">JwtAuth</a> (const char *secret, <a class="el" href="classMiddleware.html">Middleware</a> *json)</td></tr>
 <tr class="separator:a2890b392a05c76d4e047f06234ba36f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83d1557ae919c05b0e522b7c90b904d6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJwtAuth.html#a83d1557ae919c05b0e522b7c90b904d6">checkHeadersToParse</a> (<a class="el" href="classHeaders.html">Headers</a> *headers) override</td></tr>
+<tr class="separator:a83d1557ae919c05b0e522b7c90b904d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae495682d9135a73652241efb77c10935"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJwtAuth.html#ae495682d9135a73652241efb77c10935">getSerializedValue</a> (<a class="el" href="classHeaders.html">Headers</a> *headers) override</td></tr>
 <tr class="separator:ae495682d9135a73652241efb77c10935"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab3ff1fa38b195e7e5e4a27ed98372f4a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJwtAuth.html#ab3ff1fa38b195e7e5e4a27ed98372f4a">serializeAndSetValueToResponse</a> (std::string &amp;value) override</td></tr>
@@ -125,11 +126,6 @@ Public Member Functions</h2></td></tr>
 <tr class="inherit_header pub_methods_classAuthStrategy"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classAuthStrategy')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classAuthStrategy.html">AuthStrategy</a></td></tr>
 <tr class="memitem:adba2d637ca27431acef75ab1adcc1986 inherit pub_methods_classAuthStrategy"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAuthStrategy.html#adba2d637ca27431acef75ab1adcc1986">~AuthStrategy</a> ()=default</td></tr>
 <tr class="separator:adba2d637ca27431acef75ab1adcc1986 inherit pub_methods_classAuthStrategy"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
-Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a0d42c95df5c64900d88810644fca70f9"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJwtAuth.html#a0d42c95df5c64900d88810644fca70f9">checkHeadersToParse</a> (<a class="el" href="classHeaders.html">Headers</a> *headers)</td></tr>
-<tr class="separator:a0d42c95df5c64900d88810644fca70f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>JWT auth strategy. </p>
@@ -161,7 +157,7 @@ Static Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="a0d42c95df5c64900d88810644fca70f9"></a>
+<a class="anchor" id="a83d1557ae919c05b0e522b7c90b904d6"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -169,7 +165,7 @@ Static Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static bool JwtAuth::checkHeadersToParse </td>
+          <td class="memname">bool JwtAuth::checkHeadersToParse </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classHeaders.html">Headers</a> *&#160;</td>
           <td class="paramname"><em>headers</em></td><td>)</td>
@@ -178,7 +174,7 @@ Static Public Member Functions</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -189,6 +185,8 @@ Static Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+<p>Implements <a class="el" href="classAuthStrategy.html#ae2e258dfa98f8632d4e3b057ff6d852e">AuthStrategy</a>.</p>
 
 </div>
 </div>

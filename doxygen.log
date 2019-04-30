@@ -234,14 +234,7 @@ Generating docs for file /home/travis/build/akrava/web-framework/include/form_pa
 Generating docs for file /home/travis/build/akrava/web-framework/include/form_urlencoded.h...
 Generating docs for file /home/travis/build/akrava/web-framework/include/fs_builder.h...
 Generating docs for file /home/travis/build/akrava/web-framework/include/fs_component.h...
-Generating docs for file /home/travis/build/akrava/web-framework/include/home/travis/build/akrava/web-framework/include/cookie_auth.h:34: warning: argument 'req' of command @param is not found in the argument list of CookieAuth::serializeAndSetValueToResponse(std::string &value)
-/home/travis/build/akrava/web-framework/include/cookie_entity_factory.h:31: warning: The following parameters of CookieEntityFactory::createCookie(EntityType entityType, std::string &value) are not documented:
-  parameter 'value'
-/home/travis/build/akrava/web-framework/include/fs_builder.h:30: warning: The following parameters of FsBuilder::buildFolder(std::string &folderPath, const char *folderName)=0 are not documented:
-  parameter 'folderName'
-/home/travis/build/akrava/web-framework/include/fs_folder.h:21: warning: argument 'fullPath' of command @param is not found in the argument list of FsFolder::FsFolder(std::string &name)
-/home/travis/build/akrava/web-framework/include/fs_folder.h:28: warning: argument 'fullPath' of command @param is not found in the argument list of FsFolder::FsFolder(const char *name)
-/home/travis/build/akrava/web-framework/include/handler.h:36: warning: The following parameters of Handler::Handler(const char *route=nullptr, HTTP::Method method=HTTP::Method::ANY, Handler *next=nullptr) are not documented:
+Generating docs for file /home/travis/build/akrava/web-framework/include/home/travis/build/akrava/web-framework/include/handler.h:36: warning: The following parameters of Handler::Handler(const char *route=nullptr, HTTP::Method method=HTTP::Method::ANY, Handler *next=nullptr) are not documented:
   parameter 'next'
 /home/travis/build/akrava/web-framework/include/jwt_auth.h:35: warning: argument 'req' of command @param is not found in the argument list of JwtAuth::serializeAndSetValueToResponse(std::string &value)
 /fs_creator.h...
@@ -593,5 +586,5 @@ Patching output file 86/89
 Patching output file 87/89
 Patching output file 88/89
 Patching output file 89/89
-lookup cache used 653/65536 hits=2569 misses=684
+lookup cache used 658/65536 hits=2599 misses=689
 finished...

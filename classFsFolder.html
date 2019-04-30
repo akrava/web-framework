@@ -24,7 +24,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Web framework C++
-   &#160;<span id="projectnumber">1.0.0</span>
+   &#160;<span id="projectnumber">2.0.0</span>
    </div>
    <div id="projectbrief">Simple web framework on c++ designed to easily create web pages, etc</div>
   </td>
@@ -93,7 +93,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 
-<p>Wrapper for fs folder.  
+<p>Representation of folder in filesystem.  
  <a href="classFsFolder.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="fs__folder_8h_source.html">fs_folder.h</a>&gt;</code></p>
@@ -102,7 +102,7 @@ Inheritance diagram for FsFolder:</div>
 <div class="dyncontent">
 <div class="center"><img src="classFsFolder__inherit__graph.png" border="0" usemap="#FsFolder_inherit__map" alt="Inheritance graph"/></div>
 <map name="FsFolder_inherit__map" id="FsFolder_inherit__map">
-<area shape="rect" id="node2" href="classFsComponent.html" title="Interface for fs entity. " alt="" coords="5,5,180,171"/>
+<area shape="rect" id="node2" href="classFsComponent.html" title="Interface for filesystem entity &#45; file or path. Composite template. " alt="" coords="5,5,180,171"/>
 </map>
 </div>
 <div class="dynheader">
@@ -110,7 +110,7 @@ Collaboration diagram for FsFolder:</div>
 <div class="dyncontent">
 <div class="center"><img src="classFsFolder__coll__graph.png" border="0" usemap="#FsFolder_coll__map" alt="Collaboration graph"/></div>
 <map name="FsFolder_coll__map" id="FsFolder_coll__map">
-<area shape="rect" id="node2" href="classFsComponent.html" title="Interface for fs entity. " alt="" coords="5,5,180,171"/>
+<area shape="rect" id="node2" href="classFsComponent.html" title="Interface for filesystem entity &#45; file or path. Composite template. " alt="" coords="5,5,180,171"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -144,7 +144,8 @@ Protected Attributes</h2></td></tr>
 <tr class="separator:a13ce8ecb02bfcc6cf3344663b0470507"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Wrapper for fs folder. </p>
+<div class="textblock"><p>Representation of folder in filesystem. </p>
+<p>This class is intended to represent a folder in filesystem hierarchy </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a2699127d497ea378c341282ed9124bad"></a>
 <div class="memitem">
@@ -166,12 +167,16 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>delete all inner hierarchy </p>
 
 </div>
 </div>
 <a class="anchor" id="a3a6b91bc706771566e0082dbf775e4b4"></a>
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">FsFolder::FsFolder </td>
@@ -181,11 +186,16 @@ Protected Attributes</h2></td></tr>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
+<p>Create a <a class="el" href="classFsFolder.html" title="Representation of folder in filesystem. ">FsFolder</a> object with specified name</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">name</td><td></td></tr>
-    <tr><td class="paramname">fullPath</td><td></td></tr>
+    <tr><td class="paramname">name</td><td>name of current folder as string </td></tr>
   </table>
   </dd>
 </dl>
@@ -195,6 +205,9 @@ Protected Attributes</h2></td></tr>
 <a class="anchor" id="aec87211d9615757392e769eb23574857"></a>
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">FsFolder::FsFolder </td>
@@ -204,11 +217,16 @@ Protected Attributes</h2></td></tr>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
+<p>Create a <a class="el" href="classFsFolder.html" title="Representation of folder in filesystem. ">FsFolder</a> object with specified name</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">name</td><td></td></tr>
-    <tr><td class="paramname">fullPath</td><td></td></tr>
+    <tr><td class="paramname">name</td><td>name of current folder as const char * </td></tr>
   </table>
   </dd>
 </dl>
@@ -237,6 +255,13 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Add <a class="el" href="classFsComponent.html" title="Interface for filesystem entity - file or path. Composite template. ">FsComponent</a> to current entity's children</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">component</td><td><a class="el" href="classFsComponent.html" title="Interface for filesystem entity - file or path. Composite template. ">FsComponent</a> object - file or folder </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p>Implements <a class="el" href="classFsComponent.html#a7b9ef9f2a2182a1babee8dca69559565">FsComponent</a>.</p>
 
@@ -263,13 +288,14 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>recursively find a file with such path in folder hierarchy and read it's content</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">filePath</td><td></td></tr>
+    <tr><td class="paramname">filePath</td><td>file path of file relatively root folder </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>content, that was read from file with specified filepath </dd></dl>
 
 <p>Implements <a class="el" href="classFsComponent.html#ab0300e8fdecfc702c76528b8f9049ad4">FsComponent</a>.</p>
 
@@ -295,7 +321,12 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="classRuntimeException.html" title="exception class for program errors ">RuntimeException</a>,if</td><td>this component was not a file </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p>Implements <a class="el" href="classFsComponent.html#abaaca33b65ad3468c28e928133093b78">FsComponent</a>.</p>
 
@@ -321,7 +352,8 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+<p>get name of current folder</p>
+<dl class="section return"><dt>Returns</dt><dd>name of folder as string </dd></dl>
 
 <p>Implements <a class="el" href="classFsComponent.html#a637427427210ba367083521e7dced0d0">FsComponent</a>.</p>
 
@@ -347,7 +379,8 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+<p>Check, if current entity is composite and have children</p>
+<dl class="section return"><dt>Returns</dt><dd>true, because it's a folder </dd></dl>
 
 <p>Implements <a class="el" href="classFsComponent.html#a6735b30f3e669dee80e8072194403fb0">FsComponent</a>.</p>
 
@@ -374,9 +407,10 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Remove <a class="el" href="classFsComponent.html" title="Interface for filesystem entity - file or path. Composite template. ">FsComponent</a> from current entity's children</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">component</td><td></td></tr>
+    <tr><td class="paramname">component</td><td><a class="el" href="classFsComponent.html" title="Interface for filesystem entity - file or path. Composite template. ">FsComponent</a> object - file or folder </td></tr>
   </table>
   </dd>
 </dl>

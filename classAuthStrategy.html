@@ -24,7 +24,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Web framework C++
-   &#160;<span id="projectnumber">1.0.0</span>
+   &#160;<span id="projectnumber">2.0.0</span>
    </div>
    <div id="projectbrief">Simple web framework on c++ designed to easily create web pages, etc</div>
   </td>
@@ -92,7 +92,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 
-<p>Interface for auth strategy.  
+<p>Interface for auth strategy template.  
  <a href="classAuthStrategy.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="auth__strategy_8h_source.html">auth_strategy.h</a>&gt;</code></p>
@@ -101,8 +101,8 @@ Inheritance diagram for AuthStrategy:</div>
 <div class="dyncontent">
 <div class="center"><img src="classAuthStrategy__inherit__graph.png" border="0" usemap="#AuthStrategy_inherit__map" alt="Inheritance graph"/></div>
 <map name="AuthStrategy_inherit__map" id="AuthStrategy_inherit__map">
-<area shape="rect" id="node2" href="classCookieAuth.html" title="Cookie strategy of aurh. " alt="" coords="5,160,245,281"/>
-<area shape="rect" id="node3" href="classJwtAuth.html" title="JWT auth strategy. " alt="" coords="269,160,509,281"/>
+<area shape="rect" id="node2" href="classCookieAuth.html" title="Concrete cookie strategy of AuthStrategy. " alt="" coords="5,175,245,296"/>
+<area shape="rect" id="node3" href="classJwtAuth.html" title="JWT auth strategy. " alt="" coords="269,175,509,296"/>
 </map>
 </div>
 <div class="dynheader">
@@ -119,11 +119,14 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:adba2d637ca27431acef75ab1adcc1986"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a21fb783d5eda86b821344bf21b4ca496"><td class="memItemLeft" align="right" valign="top">virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAuthStrategy.html#a21fb783d5eda86b821344bf21b4ca496">getSerializedValue</a> (<a class="el" href="classHeaders.html">Headers</a> *headers)=0</td></tr>
 <tr class="separator:a21fb783d5eda86b821344bf21b4ca496"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae2e258dfa98f8632d4e3b057ff6d852e"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAuthStrategy.html#ae2e258dfa98f8632d4e3b057ff6d852e">checkHeadersToParse</a> (<a class="el" href="classHeaders.html">Headers</a> *headers)=0</td></tr>
+<tr class="separator:ae2e258dfa98f8632d4e3b057ff6d852e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adfe506746a07e0591f9a58329c904812"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAuthStrategy.html#adfe506746a07e0591f9a58329c904812">serializeAndSetValueToResponse</a> (std::string &amp;value)=0</td></tr>
 <tr class="separator:adfe506746a07e0591f9a58329c904812"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Interface for auth strategy. </p>
+<div class="textblock"><p>Interface for auth strategy template. </p>
+<p>This is abstract class for authentication strategies. You can create your own strategy, which inherits <a class="el" href="classAuthStrategy.html" title="Interface for auth strategy template. ">AuthStrategy</a> class and implements all methods below. <a class="el" href="classCookieAuth.html" title="Concrete cookie strategy of AuthStrategy. ">CookieAuth</a> and <a class="el" href="classJwtAuth.html" title="JWT auth strategy. ">JwtAuth</a> are defined in this framework. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="adba2d637ca27431acef75ab1adcc1986"></a>
 <div class="memitem">
@@ -145,11 +148,45 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Destructor </p>
+<p>virtual destructor </p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="ae2e258dfa98f8632d4e3b057ff6d852e"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool AuthStrategy::checkHeadersToParse </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classHeaders.html">Headers</a> *&#160;</td>
+          <td class="paramname"><em>headers</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Check, if this strategy could be executed with such request headers</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">headers</td><td>current request headers </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true, if there are some data in headers, which this strategy could proceed, false otherwise </dd></dl>
+
+<p>Implemented in <a class="el" href="classCookieAuth.html#a8b9e270d33847606eb642650e2380ea9">CookieAuth</a>, and <a class="el" href="classJwtAuth.html#a83d1557ae919c05b0e522b7c90b904d6">JwtAuth</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a21fb783d5eda86b821344bf21b4ca496"></a>
 <div class="memitem">
 <div class="memproto">
@@ -178,9 +215,9 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>serialized user </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>serialized user in string </dd></dl>
 
-<p>Implemented in <a class="el" href="classJwtAuth.html#ae495682d9135a73652241efb77c10935">JwtAuth</a>, and <a class="el" href="classCookieAuth.html#aed9c9c2a0c48615bc06e19e28fb9e8cd">CookieAuth</a>.</p>
+<p>Implemented in <a class="el" href="classCookieAuth.html#aed9c9c2a0c48615bc06e19e28fb9e8cd">CookieAuth</a>, and <a class="el" href="classJwtAuth.html#ae495682d9135a73652241efb77c10935">JwtAuth</a>.</p>
 
 </div>
 </div>
@@ -205,7 +242,7 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Set to response user credentials</p>
+<p>Set to current response user credentials</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">value</td><td>serialized user </td></tr>
@@ -213,7 +250,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Implemented in <a class="el" href="classJwtAuth.html#ab3ff1fa38b195e7e5e4a27ed98372f4a">JwtAuth</a>, and <a class="el" href="classCookieAuth.html#a55e1013b0c1256f057319046366461ad">CookieAuth</a>.</p>
+<p>Implemented in <a class="el" href="classCookieAuth.html#a55e1013b0c1256f057319046366461ad">CookieAuth</a>, and <a class="el" href="classJwtAuth.html#ab3ff1fa38b195e7e5e4a27ed98372f4a">JwtAuth</a>.</p>
 
 </div>
 </div>

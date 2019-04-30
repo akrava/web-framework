@@ -1,6 +1,6 @@
 <map id="Entity" name="Entity">
 <area shape="rect" id="node2" href="$classCookieEntity.html" title="Class wrapper for Cookies. Allow you adjust parameters od each http cookie. Used by CookieMiddleware..." alt="" coords="5,175,123,296"/>
 <area shape="rect" id="node3" href="$classCookieEntityDefault.html" title="Cookie entity with default params. " alt="" coords="147,175,306,296"/>
-<area shape="rect" id="node4" href="$classCookieEntityHttp.html" title="Cookie entity with Http only param. " alt="" coords="330,175,473,296"/>
-<area shape="rect" id="node5" href="$classCookieEntityWeek.html" title="Cookie entity expires in a week. " alt="" coords="497,175,647,296"/>
+<area shape="rect" id="node4" href="$classCookieEntityHttp.html" title="Default CookieEntity with http only feature. " alt="" coords="330,175,473,296"/>
+<area shape="rect" id="node5" href="$classCookieEntityWeek.html" title="Default CookieEntity which expires in a week since created. " alt="" coords="497,175,647,296"/>
 </map>

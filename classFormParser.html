@@ -24,7 +24,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Web framework C++
-   &#160;<span id="projectnumber">1.0.0</span>
+   &#160;<span id="projectnumber">2.0.0</span>
    </div>
    <div id="projectbrief">Simple web framework on c++ designed to easily create web pages, etc</div>
   </td>
@@ -103,8 +103,8 @@ Inheritance diagram for FormParser:</div>
 <div class="dyncontent">
 <div class="center"><img src="classFormParser__inherit__graph.png" border="0" usemap="#FormParser_inherit__map" alt="Inheritance graph"/></div>
 <map name="FormParser_inherit__map" id="FormParser_inherit__map">
-<area shape="rect" id="node2" href="classFormMultipart.html" title="Methods for parsing form multipart/form&#45;data. " alt="" coords="5,307,204,443"/>
-<area shape="rect" id="node3" href="classFormUrlEncoded.html" title="Methods for parsing urlencoded form. " alt="" coords="228,321,368,428"/>
+<area shape="rect" id="node2" href="classFormMultipart.html" title="Concrete template method pattern for parsing form encoded as multipart/from&#45;data. ..." alt="" coords="5,307,204,443"/>
+<area shape="rect" id="node3" href="classFormUrlEncoded.html" title="Concrete template method pattern for parsing form encoded as application/x&#45;www&#45;form&#45;urlencoded. " alt="" coords="228,321,368,428"/>
 </map>
 </div>
 <div class="dynheader">
@@ -112,7 +112,7 @@ Collaboration diagram for FormParser:</div>
 <div class="dyncontent">
 <div class="center"><img src="classFormParser__coll__graph.png" border="0" usemap="#FormParser_coll__map" alt="Collaboration graph"/></div>
 <map name="FormParser_coll__map" id="FormParser_coll__map">
-<area shape="rect" id="node2" href="classFormEntity.html" title="Wrapper for form value. " alt="" coords="37,5,172,273"/>
+<area shape="rect" id="node2" href="classFormEntity.html" title="Wrapper class for value form. " alt="" coords="37,5,172,273"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -155,6 +155,7 @@ Protected Attributes</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Template methods pattern for parsing form. </p>
+<p>This abstract class is intend to parse html form with different encodings. Template method is parseForm, which consists of abstracts methods, that could be implemented. There are FormMultipartData and FormUrlencoded concrete template methods in framework </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a3e2b24d85e63683d432d776a7debf81f"></a>
 <div class="memitem">
@@ -176,6 +177,7 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>delete internal values </p>
 
 </div>
 </div>
@@ -200,6 +202,7 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>not required method to perform actions before finding body of form. By default do nothing </p>
 
 <p>Reimplemented in <a class="el" href="classFormMultipart.html#a911ec727c0d3319278417c4af6804833">FormMultipart</a>.</p>
 
@@ -236,6 +239,14 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>not required method to perform actions before parsing key of form. By default do nothing</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">keyStart</td><td>start position of key in form body </td></tr>
+    <tr><td class="paramname">keyEnd</td><td>end position of key in form body, exclusive </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p>Reimplemented in <a class="el" href="classFormMultipart.html#a9de0d5e833d8005ce1390b6ee1593d5c">FormMultipart</a>.</p>
 
@@ -261,6 +272,8 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>generate key value (string, string) pairs from from</p>
+<dl class="section return"><dt>Returns</dt><dd>key value pairs (string, string) </dd></dl>
 
 </div>
 </div>
@@ -287,6 +300,15 @@ Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Template method to parse html forms</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">httpRequest</td><td>serialized http request </td></tr>
+    <tr><td class="paramname">KVPStorage</td><td>out parameter. If not null, write key value pairs (string, string) to out parameter </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>key value pairs (string, <a class="el" href="classFormEntity.html" title="Wrapper class for value form. ">FormEntity</a> object) </dd></dl>
 
 </div>
 </div>
@@ -321,6 +343,14 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Parse key of html form</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">startPosition</td><td>start position of key in form body </td></tr>
+    <tr><td class="paramname">endPosition</td><td>end position of key in form body, exclusive </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p>Implemented in <a class="el" href="classFormMultipart.html#aeb4c1c986f3faf421ae357b1fe9e79c5">FormMultipart</a>, and <a class="el" href="classFormUrlEncoded.html#a6a4aa0ff5ea50025edc22cf5e2cc4e8b">FormUrlEncoded</a>.</p>
 
@@ -357,6 +387,14 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Parse value of html form</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">startPosition</td><td>start position of value in form body </td></tr>
+    <tr><td class="paramname">endPosition</td><td>end position of value in form body, exclusive </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p>Implemented in <a class="el" href="classFormMultipart.html#a88cc5abb25f3ae14c8060ea0143ddfb7">FormMultipart</a>, and <a class="el" href="classFormUrlEncoded.html#a1eec8b19813568883a852bc4d29be26e">FormUrlEncoded</a>.</p>
 
@@ -382,6 +420,7 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Parse http request to find body of form and then store it in parser </p>
 
 </div>
 </div>

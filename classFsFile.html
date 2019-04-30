@@ -24,7 +24,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Web framework C++
-   &#160;<span id="projectnumber">1.0.0</span>
+   &#160;<span id="projectnumber">2.0.0</span>
    </div>
    <div id="projectbrief">Simple web framework on c++ designed to easily create web pages, etc</div>
   </td>
@@ -92,7 +92,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 
-<p>Wrapper for fs file.  
+<p>Representation of file in filesystem.  
  <a href="classFsFile.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="fs__file_8h_source.html">fs_file.h</a>&gt;</code></p>
@@ -101,7 +101,7 @@ Inheritance diagram for FsFile:</div>
 <div class="dyncontent">
 <div class="center"><img src="classFsFile__inherit__graph.png" border="0" usemap="#FsFile_inherit__map" alt="Inheritance graph"/></div>
 <map name="FsFile_inherit__map" id="FsFile_inherit__map">
-<area shape="rect" id="node2" href="classFsComponent.html" title="Interface for fs entity. " alt="" coords="5,5,180,171"/>
+<area shape="rect" id="node2" href="classFsComponent.html" title="Interface for filesystem entity &#45; file or path. Composite template. " alt="" coords="5,5,180,171"/>
 </map>
 </div>
 <div class="dynheader">
@@ -109,7 +109,7 @@ Collaboration diagram for FsFile:</div>
 <div class="dyncontent">
 <div class="center"><img src="classFsFile__coll__graph.png" border="0" usemap="#FsFile_coll__map" alt="Collaboration graph"/></div>
 <map name="FsFile_coll__map" id="FsFile_coll__map">
-<area shape="rect" id="node2" href="classFsComponent.html" title="Interface for fs entity. " alt="" coords="5,5,180,171"/>
+<area shape="rect" id="node2" href="classFsComponent.html" title="Interface for filesystem entity &#45; file or path. Composite template. " alt="" coords="5,5,180,171"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -134,7 +134,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a85885ccfd55db77a2a2a8368a6e3cf47 inherit pub_methods_classFsComponent"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Wrapper for fs file. </p>
+<div class="textblock"><p>Representation of file in filesystem. </p>
+<p>This class is intended to represent a file in filesystem hierarchy </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a7cbfe7df15199ce9f1fb8a3639729e4b"></a>
 <div class="memitem">
@@ -159,10 +160,11 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Create a <a class="el" href="classFsFile.html" title="Representation of file in filesystem. ">FsFile</a> object with specified name and full path</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">name</td><td></td></tr>
-    <tr><td class="paramname">fullPath</td><td></td></tr>
+    <tr><td class="paramname">name</td><td>file name </td></tr>
+    <tr><td class="paramname">fullPath</td><td>full path to file </td></tr>
   </table>
   </dd>
 </dl>
@@ -191,6 +193,12 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="classRuntimeException.html" title="exception class for program errors ">RuntimeException</a>,because</td><td>it's not a folder </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p>Implements <a class="el" href="classFsComponent.html#a7b9ef9f2a2182a1babee8dca69559565">FsComponent</a>.</p>
 
@@ -217,13 +225,12 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">filePath</td><td></td></tr>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="classRuntimeException.html" title="exception class for program errors ">RuntimeException</a>,because</td><td>it's not a folder </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
 <p>Implements <a class="el" href="classFsComponent.html#ab0300e8fdecfc702c76528b8f9049ad4">FsComponent</a>.</p>
 
@@ -249,7 +256,8 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+<p>returns a content, stored in this file.</p>
+<dl class="section return"><dt>Returns</dt><dd>content, that was read from file </dd></dl>
 
 <p>Implements <a class="el" href="classFsComponent.html#abaaca33b65ad3468c28e928133093b78">FsComponent</a>.</p>
 
@@ -275,7 +283,8 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+<p>get name of current file</p>
+<dl class="section return"><dt>Returns</dt><dd>name of file as string </dd></dl>
 
 <p>Implements <a class="el" href="classFsComponent.html#a637427427210ba367083521e7dced0d0">FsComponent</a>.</p>
 
@@ -301,7 +310,8 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+<p>Check, if current entity is composite and have children</p>
+<dl class="section return"><dt>Returns</dt><dd>false, because it's not a folder </dd></dl>
 
 <p>Implements <a class="el" href="classFsComponent.html#a6735b30f3e669dee80e8072194403fb0">FsComponent</a>.</p>
 
@@ -328,9 +338,9 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">component</td><td></td></tr>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="classRuntimeException.html" title="exception class for program errors ">RuntimeException</a>,because</td><td>it's not a folder </td></tr>
   </table>
   </dd>
 </dl>

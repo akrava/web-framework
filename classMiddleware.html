@@ -24,7 +24,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Web framework C++
-   &#160;<span id="projectnumber">1.0.0</span>
+   &#160;<span id="projectnumber">2.0.0</span>
    </div>
    <div id="projectbrief">Simple web framework on c++ designed to easily create web pages, etc</div>
   </td>
@@ -102,12 +102,12 @@ Inheritance diagram for Middleware:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMiddleware__inherit__graph.png" border="0" usemap="#Middleware_inherit__map" alt="Inheritance graph"/></div>
 <map name="Middleware_inherit__map" id="Middleware_inherit__map">
-<area shape="rect" id="node2" href="classAuthMiddleware.html" title="This middleware checks authentication. " alt="" coords="5,292,148,531"/>
-<area shape="rect" id="node3" href="classCookieMiddleware.html" title="inherited class to parse cookie from http request " alt="" coords="171,329,321,494"/>
-<area shape="rect" id="node4" href="classFormMiddleware.html" title="inherited class to parse application/x&#45;www&#45;form&#45;urlencoded " alt="" coords="345,321,491,501"/>
-<area shape="rect" id="node5" href="classFsMiddleware.html" title="Middleware to host directories with files. " alt="" coords="515,358,638,465"/>
-<area shape="rect" id="node6" href="classHtmlMiddleware.html" title="inherited class to render html pages from templates " alt="" coords="662,321,806,501"/>
-<area shape="rect" id="node7" href="classJsonMiddleware.html" title="inherited class to perform any actions with json data " alt="" coords="830,321,977,501"/>
+<area shape="rect" id="node2" href="classAuthMiddleware.html" title="This middleware performs authentication on your application. " alt="" coords="5,292,148,516"/>
+<area shape="rect" id="node3" href="classCookieMiddleware.html" title="inherited class to parse cookie from http request " alt="" coords="171,321,321,487"/>
+<area shape="rect" id="node4" href="classFormMiddleware.html" title="inherited class to parse application/x&#45;www&#45;form&#45;urlencoded " alt="" coords="345,329,491,479"/>
+<area shape="rect" id="node5" href="classFsMiddleware.html" title="Middleware to host directories with inner files. " alt="" coords="515,351,638,457"/>
+<area shape="rect" id="node6" href="classHtmlMiddleware.html" title="inherited class to render html pages from templates " alt="" coords="662,314,806,494"/>
+<area shape="rect" id="node7" href="classJsonMiddleware.html" title="inherited class to perform any actions with json data " alt="" coords="830,314,977,494"/>
 </map>
 </div>
 <div class="dynheader">
@@ -260,7 +260,7 @@ Protected Attributes</h2></td></tr>
 <p>Check if current request allow do exec method</p>
 <dl class="section return"><dt>Returns</dt><dd>true, if need do exec with current request, false otherwise </dd></dl>
 
-<p>Implemented in <a class="el" href="classAuthMiddleware.html#a95f462f7f664f82c3d4dfc4f610a2fb5">AuthMiddleware</a>, <a class="el" href="classJsonMiddleware.html#a05c891e2888c2be7047ba87f4a0547e1">JsonMiddleware</a>, <a class="el" href="classFormMiddleware.html#ae53e6df2b45356f521db65518f191636">FormMiddleware</a>, <a class="el" href="classHtmlMiddleware.html#a76ed61e165b494f1c88a0fc187299e55">HtmlMiddleware</a>, <a class="el" href="classCookieMiddleware.html#ab98db48b0cace8ef0a9154cab54cf46f">CookieMiddleware</a>, and <a class="el" href="classFsMiddleware.html#add2d7cea4a89b3195950c93f9ced5253">FsMiddleware</a>.</p>
+<p>Implemented in <a class="el" href="classAuthMiddleware.html#a95f462f7f664f82c3d4dfc4f610a2fb5">AuthMiddleware</a>, <a class="el" href="classFsMiddleware.html#add2d7cea4a89b3195950c93f9ced5253">FsMiddleware</a>, <a class="el" href="classJsonMiddleware.html#a0a12d4150071310c019b20ebe59c942f">JsonMiddleware</a>, <a class="el" href="classFormMiddleware.html#adf870796819b7361fd692808b9fb21cc">FormMiddleware</a>, <a class="el" href="classHtmlMiddleware.html#a92dcc98e6ebe2b33e0f7f0daf645db1d">HtmlMiddleware</a>, and <a class="el" href="classCookieMiddleware.html#a49d38659ee7f5cc6fb1f2176387cfa32">CookieMiddleware</a>.</p>
 
 </div>
 </div>
@@ -286,7 +286,7 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>delete all data, saved in internal values, set to default </p>
 
-<p>Reimplemented in <a class="el" href="classAuthMiddleware.html#a7642e46804b900b12f163b153fd66064">AuthMiddleware</a>, <a class="el" href="classHtmlMiddleware.html#a59f4f0b6f47810e9d61d280a4ab3b1e4">HtmlMiddleware</a>, <a class="el" href="classJsonMiddleware.html#aa0213dd235fa80ff2f85adc8fa5f1e45">JsonMiddleware</a>, <a class="el" href="classCookieMiddleware.html#a176dfb146353f79f73d18879819129c3">CookieMiddleware</a>, and <a class="el" href="classFormMiddleware.html#af084a6aa3dfef7a16b4f7811a426ed3d">FormMiddleware</a>.</p>
+<p>Reimplemented in <a class="el" href="classAuthMiddleware.html#a7642e46804b900b12f163b153fd66064">AuthMiddleware</a>, <a class="el" href="classHtmlMiddleware.html#ab8c3a0594269fa9628febd5e41025397">HtmlMiddleware</a>, <a class="el" href="classCookieMiddleware.html#adac7b014c558bc648ae5af026815bea7">CookieMiddleware</a>, <a class="el" href="classJsonMiddleware.html#a51955267f90d584594b421839a0450bd">JsonMiddleware</a>, and <a class="el" href="classFormMiddleware.html#a3a74d8c91d7d0c17167d9f91efc9fba9">FormMiddleware</a>.</p>
 
 </div>
 </div>
@@ -312,7 +312,7 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>perform operation with request and response objects </p>
 
-<p>Implemented in <a class="el" href="classAuthMiddleware.html#a725505e70d5721d1f8e43c9df77227fb">AuthMiddleware</a>, <a class="el" href="classJsonMiddleware.html#a87cfebc0d3f77b9fc34972a4275f8c93">JsonMiddleware</a>, <a class="el" href="classFormMiddleware.html#a4cdeec033d213d7ef8c6aceb072e0221">FormMiddleware</a>, <a class="el" href="classHtmlMiddleware.html#a98c115cc5667692544abf14e542e40ef">HtmlMiddleware</a>, <a class="el" href="classCookieMiddleware.html#ad61700264d9b59e6ef523a0c13595030">CookieMiddleware</a>, and <a class="el" href="classFsMiddleware.html#aaeb1438bbe2c7443f9177062d15a8e1e">FsMiddleware</a>.</p>
+<p>Implemented in <a class="el" href="classAuthMiddleware.html#a725505e70d5721d1f8e43c9df77227fb">AuthMiddleware</a>, <a class="el" href="classFsMiddleware.html#aaeb1438bbe2c7443f9177062d15a8e1e">FsMiddleware</a>, <a class="el" href="classJsonMiddleware.html#af074d5d272c50a6b0328ff8bbf1b5842">JsonMiddleware</a>, <a class="el" href="classFormMiddleware.html#af820d4a87d1dde4da8e599a7b954b853">FormMiddleware</a>, <a class="el" href="classHtmlMiddleware.html#a4478b06ab2247962c54751a117da5923">HtmlMiddleware</a>, and <a class="el" href="classCookieMiddleware.html#a3685bb7d8faafcd30b64a840fb4dba75">CookieMiddleware</a>.</p>
 
 </div>
 </div>

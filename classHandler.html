@@ -24,7 +24,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Web framework C++
-   &#160;<span id="projectnumber">1.0.0</span>
+   &#160;<span id="projectnumber">2.0.0</span>
    </div>
    <div id="projectbrief">Simple web framework on c++ designed to easily create web pages, etc</div>
   </td>
@@ -102,7 +102,7 @@ Inheritance diagram for Handler:</div>
 <div class="dyncontent">
 <div class="center"><img src="classHandler__inherit__graph.png" border="0" usemap="#Handler_inherit__map" alt="Inheritance graph"/></div>
 <map name="Handler_inherit__map" id="Handler_inherit__map">
-<area shape="rect" id="node2" href="classAuthorizedHandler.html" title="Proxy handler to control access to another resources. " alt="" coords="5,292,163,413"/>
+<area shape="rect" id="node2" href="classAuthorizedHandler.html" title="Proxy handler template to control access to another handlers. " alt="" coords="5,277,163,428"/>
 <area shape="rect" id="node3" href="classFileHandler.html" title="this class allow you to set any file of filesystem as response body " alt="" coords="187,299,295,406"/>
 </map>
 </div>
@@ -118,14 +118,12 @@ Collaboration diagram for Handler:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:abbce47e92507f5640be217c3543e7d53"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHandler.html#abbce47e92507f5640be217c3543e7d53">Handler</a> (const char *route=nullptr, <a class="el" href="classHTTP.html#aa9e5b42dac8b6629d834aa12f66b3ad9">HTTP::Method</a> method=HTTP::Method::ANY, <a class="el" href="classHandler.html">Handler</a> *next=nullptr)</td></tr>
 <tr class="separator:abbce47e92507f5640be217c3543e7d53"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aae990cbd425b7c030285cba901583ee9"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHandler.html#aae990cbd425b7c030285cba901583ee9">~Handler</a> ()=default</td></tr>
-<tr class="separator:aae990cbd425b7c030285cba901583ee9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a84870a45c795a91d72f2d81c0629f7a6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHandler.html#a84870a45c795a91d72f2d81c0629f7a6">setNext</a> (<a class="el" href="classHandler.html">Handler</a> *next)</td></tr>
-<tr class="separator:a84870a45c795a91d72f2d81c0629f7a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aec7d6c65034170c5f5acacf72ea1cccf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHandler.html#aec7d6c65034170c5f5acacf72ea1cccf">add</a> (<a class="el" href="classHandler.html">Handler</a> *handler)</td></tr>
-<tr class="separator:aec7d6c65034170c5f5acacf72ea1cccf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1305e15cb91a5fe4998cc45a2f11f7f3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHandler.html#a1305e15cb91a5fe4998cc45a2f11f7f3">cleanNextHandlers</a> ()</td></tr>
-<tr class="separator:a1305e15cb91a5fe4998cc45a2f11f7f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa0eb1d454ce3dbb5de2d99b57fcc0039"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHandler.html#aa0eb1d454ce3dbb5de2d99b57fcc0039">~Handler</a> ()</td></tr>
+<tr class="separator:aa0eb1d454ce3dbb5de2d99b57fcc0039"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8d36adb76bcd694b66365d6b38cecfe9"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHandler.html#a8d36adb76bcd694b66365d6b38cecfe9">setNext</a> (<a class="el" href="classHandler.html">Handler</a> *next)</td></tr>
+<tr class="separator:a8d36adb76bcd694b66365d6b38cecfe9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a975094f2acb1cdb44e8e5188d24b4bcb"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHandler.html#a975094f2acb1cdb44e8e5188d24b4bcb">add</a> (<a class="el" href="classHandler.html">Handler</a> *handler)</td></tr>
+<tr class="separator:a975094f2acb1cdb44e8e5188d24b4bcb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a66a6e01e4ed09eb147d69e7e99b5e2ff"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHandler.html#a66a6e01e4ed09eb147d69e7e99b5e2ff">isRouted</a> ()</td></tr>
 <tr class="separator:a66a6e01e4ed09eb147d69e7e99b5e2ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad560d98ca0a26143629a6555ab899b42"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHandler.html#ad560d98ca0a26143629a6555ab899b42">getRoute</a> ()</td></tr>
@@ -196,7 +194,7 @@ Protected Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="aae990cbd425b7c030285cba901583ee9"></a>
+<a class="anchor" id="aa0eb1d454ce3dbb5de2d99b57fcc0039"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -212,7 +210,7 @@ Protected Member Functions</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span><span class="mlabel">default</span></span>  </td>
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -221,37 +219,36 @@ Protected Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="aec7d6c65034170c5f5acacf72ea1cccf"></a>
+<a class="anchor" id="a975094f2acb1cdb44e8e5188d24b4bcb"></a>
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void Handler::add </td>
+          <td class="memname">virtual void Handler::add </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classHandler.html">Handler</a> *&#160;</td>
           <td class="paramname"><em>handler</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd>true </dd>
-<dd>
-false </dd></dl>
+<p>add handler to end of current chain</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">handler</td><td><a class="el" href="classHandler.html" title="object of this class executes every time on new request, this object (and others) construct response ...">Handler</a> object </td></tr>
+  </table>
+  </dd>
+</dl>
 
-</div>
-</div>
-<a class="anchor" id="a1305e15cb91a5fe4998cc45a2f11f7f3"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Handler::cleanNextHandlers </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
+<p>Reimplemented in <a class="el" href="classAuthorizedHandler.html#a6fad3728e9c48b73245f728515481a72">AuthorizedHandler</a>.</p>
 
 </div>
 </div>
@@ -277,7 +274,7 @@ false </dd></dl>
 </div><div class="memdoc">
 <p>this method will be executed on every request (or uri path if set) </p>
 
-<p>Implemented in <a class="el" href="classAuthorizedHandler.html#af1d21cc4a31112e85b120cdceeea786a">AuthorizedHandler</a>, and <a class="el" href="classFileHandler.html#a5254b5cad0de302a8d0468ce38bebeda">FileHandler</a>.</p>
+<p>Implemented in <a class="el" href="classAuthorizedHandler.html#af1d21cc4a31112e85b120cdceeea786a">AuthorizedHandler</a>, and <a class="el" href="classFileHandler.html#a23e51dda733a99e53f98ca72663f968c">FileHandler</a>.</p>
 
 </div>
 </div>
@@ -352,6 +349,7 @@ false </dd></dl>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>if method shouldHandleRequest returns true, method exec is executed and if there is a next handler, call method handleRequest </p>
 
 </div>
 </div>
@@ -395,22 +393,36 @@ false </dd></dl>
 
 </div>
 </div>
-<a class="anchor" id="a84870a45c795a91d72f2d81c0629f7a6"></a>
+<a class="anchor" id="a8d36adb76bcd694b66365d6b38cecfe9"></a>
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void Handler::setNext </td>
+          <td class="memname">virtual void Handler::setNext </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classHandler.html">Handler</a> *&#160;</td>
           <td class="paramname"><em>next</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd>true </dd>
-<dd>
-false </dd></dl>
+<p>set next handler to execute</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">next</td><td><a class="el" href="classHandler.html" title="object of this class executes every time on new request, this object (and others) construct response ...">Handler</a> object </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Reimplemented in <a class="el" href="classAuthorizedHandler.html#ae680bdb03d378176ddc862b4d974439d">AuthorizedHandler</a>.</p>
 
 </div>
 </div>

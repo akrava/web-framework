@@ -26,7 +26,6 @@ var searchData=
   ['getnameid',['getNameID',['../classMiddleware.html#aec55361dbc6bdbad3930a15cefebfcfb',1,'Middleware']]],
   ['getnext',['getNext',['../classFormEntity.html#a27e4877692e6ddc7921fe711a6e80d10',1,'FormEntity']]],
   ['getparams',['getParams',['../classURI.html#a1248a6c76cf0247f99965e17572608e6',1,'URI']]],
-  ['getparser',['getParser',['../classFormMiddleware.html#af329e035baf09ac6ff676534346f1d5f',1,'FormMiddleware']]],
   ['getpath',['getPath',['../classURI.html#abb6c5166defe252fa1ff194ee6daa651',1,'URI']]],
   ['getport',['getPort',['../classInitParams.html#a5634f49362ceba03c024068dd34505a8',1,'InitParams']]],
   ['getrawdata',['getRawData',['../classRequest.html#a317878771ecc1f43037896134bb28370',1,'Request::getRawData()'],['../classURI.html#af496c1bb8d40d5034072296a47617be5',1,'URI::getRawData()']]],

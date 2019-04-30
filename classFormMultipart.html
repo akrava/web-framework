@@ -24,7 +24,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Web framework C++
-   &#160;<span id="projectnumber">1.0.0</span>
+   &#160;<span id="projectnumber">2.0.0</span>
    </div>
    <div id="projectbrief">Simple web framework on c++ designed to easily create web pages, etc</div>
   </td>
@@ -93,7 +93,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 
-<p>Methods for parsing form multipart/form-data.  
+<p>Concrete template method pattern for parsing form encoded as multipart/from-data.  
  <a href="classFormMultipart.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="form__multipart__data_8h_source.html">form_multipart_data.h</a>&gt;</code></p>
@@ -111,7 +111,7 @@ Collaboration diagram for FormMultipart:</div>
 <div class="center"><img src="classFormMultipart__coll__graph.png" border="0" usemap="#FormMultipart_coll__map" alt="Collaboration graph"/></div>
 <map name="FormMultipart_coll__map" id="FormMultipart_coll__map">
 <area shape="rect" id="node2" href="classFormParser.html" title="Template methods pattern for parsing form. " alt="" coords="5,336,204,575"/>
-<area shape="rect" id="node3" href="classFormEntity.html" title="Wrapper for form value. " alt="" coords="37,5,172,273"/>
+<area shape="rect" id="node3" href="classFormEntity.html" title="Wrapper class for value form. " alt="" coords="37,5,172,273"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -158,7 +158,8 @@ Additional Inherited Members</h2></td></tr>
 <tr class="separator:a13b874b53d7ca34b5613bee52c2f399a inherit pro_attribs_classFormParser"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Methods for parsing form multipart/form-data. </p>
+<div class="textblock"><p>Concrete template method pattern for parsing form encoded as multipart/from-data. </p>
+<p>This abstract class is intend to parse multipart/from-data html forms </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a6e7e3a469e5be79543bf2fb98ec87c7d"></a>
 <div class="memitem">
@@ -172,6 +173,7 @@ Additional Inherited Members</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>create concrete template method to parse multipart/from-data html forms </p>
 
 </div>
 </div>
@@ -196,6 +198,7 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>parse delimiters between key value pairs in headers, trim form body </p>
 
 <p>Reimplemented from <a class="el" href="classFormParser.html#ad0a09a3b6b960c00b3819f6e891aa81e">FormParser</a>.</p>
 
@@ -232,6 +235,14 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>parse additional form value properties (if value is file)</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">keyStart</td><td>start position of key in form body </td></tr>
+    <tr><td class="paramname">keyEnd</td><td>end position of key in form body, exclusive </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p>Reimplemented from <a class="el" href="classFormParser.html#a035ee1cfdfb1a2196f11a0d669666269">FormParser</a>.</p>
 
@@ -268,6 +279,14 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Parse key of form with multipart/from-data enctype</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">startPosition</td><td>start position of key in form body </td></tr>
+    <tr><td class="paramname">endPosition</td><td>end position of key in form body, exclusive </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p>Implements <a class="el" href="classFormParser.html#a13ac1aa32ebb4a2d1e58c5a8562bb804">FormParser</a>.</p>
 
@@ -304,6 +323,14 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Parse value of form with multipart/from-data enctype</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">startPosition</td><td>start position of value in form body </td></tr>
+    <tr><td class="paramname">endPosition</td><td>end position of value in form body, exclusive </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p>Implements <a class="el" href="classFormParser.html#a108c4624fdbef9a474af3272f6cbf27b">FormParser</a>.</p>
 

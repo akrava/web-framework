@@ -24,7 +24,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Web framework C++
-   &#160;<span id="projectnumber">1.0.0</span>
+   &#160;<span id="projectnumber">2.0.0</span>
    </div>
    <div id="projectbrief">Simple web framework on c++ designed to easily create web pages, etc</div>
   </td>
@@ -93,7 +93,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 
-<p>Builder template for fs middleware.  
+<p>Builder template for <a class="el" href="classFsMiddleware.html" title="Middleware to host directories with inner files. ">FsMiddleware</a>.  
  <a href="classFsBuilder.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="fs__builder_8h_source.html">fs_builder.h</a>&gt;</code></p>
@@ -102,7 +102,7 @@ Collaboration diagram for FsBuilder:</div>
 <div class="dyncontent">
 <div class="center"><img src="classFsBuilder__coll__graph.png" border="0" usemap="#FsBuilder_coll__map" alt="Collaboration graph"/></div>
 <map name="FsBuilder_coll__map" id="FsBuilder_coll__map">
-<area shape="rect" id="node2" href="classFsComponent.html" title="Interface for fs entity. " alt="" coords="5,5,180,171"/>
+<area shape="rect" id="node2" href="classFsComponent.html" title="Interface for filesystem entity &#45; file or path. Composite template. " alt="" coords="5,5,180,171"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -125,7 +125,8 @@ Protected Attributes</h2></td></tr>
 <tr class="separator:aad9c61eb26e35d72ab1e338437b4b582"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Builder template for fs middleware. </p>
+<div class="textblock"><p>Builder template for <a class="el" href="classFsMiddleware.html" title="Middleware to host directories with inner files. ">FsMiddleware</a>. </p>
+<p>This class is intended to create a file system hierarchy for specified folder by given path. <a class="el" href="classFsBuilder.html" title="Builder template for FsMiddleware. ">FsBuilder</a> as a builder template make hierarchy for composite template, that represents file system: <a class="el" href="classFsComponent.html" title="Interface for filesystem entity - file or path. Composite template. ">FsComponent</a>, <a class="el" href="classFsFile.html" title="Representation of file in filesystem. ">FsFile</a>,<a class="el" href="classFsFolder.html" title="Representation of folder in filesystem. ">FsFolder</a>. By default, there are two builders: FsUnixBuilder and FsWindowsBuilder. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a04a1c127878828c4673c9767623846e6"></a>
 <div class="memitem">
@@ -147,6 +148,7 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>virtual destructor </p>
 
 </div>
 </div>
@@ -172,13 +174,14 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>make a <a class="el" href="classFsComponent.html" title="Interface for filesystem entity - file or path. Composite template. ">FsComponent</a> wrapper for files - leaves of hierarchy</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">filePath</td><td></td></tr>
+    <tr><td class="paramname">filePath</td><td>full path to concrete file </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classFsFile.html" title="Representation of file in filesystem. ">FsFile</a> object </dd></dl>
 
 </div>
 </div>
@@ -213,13 +216,15 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>make a <a class="el" href="classFsComponent.html" title="Interface for filesystem entity - file or path. Composite template. ">FsComponent</a> wrapper for folder, and then recursively build hierarchy from inner folder and files</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">folderPath</td><td></td></tr>
+    <tr><td class="paramname">folderPath</td><td>path to folder </td></tr>
+    <tr><td class="paramname">folderName</td><td>name of folder </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classFsFolder.html" title="Representation of folder in filesystem. ">FsFolder</a> object </dd></dl>
 
 </div>
 </div>
@@ -243,7 +248,8 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+<p>get result of produced hierarchy by buildFolder method</p>
+<dl class="section return"><dt>Returns</dt><dd>root <a class="el" href="classFsComponent.html" title="Interface for filesystem entity - file or path. Composite template. ">FsComponent</a> entity </dd></dl>
 
 </div>
 </div>
@@ -267,6 +273,7 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>reset state before making new composition </p>
 
 </div>
 </div>

@@ -24,7 +24,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Web framework C++
-   &#160;<span id="projectnumber">1.0.0</span>
+   &#160;<span id="projectnumber">2.0.0</span>
    </div>
    <div id="projectbrief">Simple web framework on c++ designed to easily create web pages, etc</div>
   </td>
@@ -92,7 +92,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 
-<p>Interface for fs entity.  
+<p>Interface for filesystem entity - file or path. Composite template.  
  <a href="classFsComponent.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="fs__component_8h_source.html">fs_component.h</a>&gt;</code></p>
@@ -101,8 +101,8 @@ Inheritance diagram for FsComponent:</div>
 <div class="dyncontent">
 <div class="center"><img src="classFsComponent__inherit__graph.png" border="0" usemap="#FsComponent_inherit__map" alt="Inheritance graph"/></div>
 <map name="FsComponent_inherit__map" id="FsComponent_inherit__map">
-<area shape="rect" id="node2" href="classFsFile.html" title="Wrapper for fs file. " alt="" coords="5,233,180,399"/>
-<area shape="rect" id="node3" href="classFsFolder.html" title="Wrapper for fs folder. " alt="" coords="204,219,379,413"/>
+<area shape="rect" id="node2" href="classFsFile.html" title="Representation of file in filesystem. " alt="" coords="5,233,180,399"/>
+<area shape="rect" id="node3" href="classFsFolder.html" title="Representation of folder in filesystem. " alt="" coords="204,219,379,413"/>
 </map>
 </div>
 <div class="dynheader">
@@ -131,7 +131,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a6735b30f3e669dee80e8072194403fb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Interface for fs entity. </p>
+<div class="textblock"><p>Interface for filesystem entity - file or path. Composite template. </p>
+<p>This class is intended to represent a filesystem hierarchy as composite template and quickly find any file with specified path and get it's content. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a85885ccfd55db77a2a2a8368a6e3cf47"></a>
 <div class="memitem">
@@ -153,6 +154,7 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>virtual destructor </p>
 
 </div>
 </div>
@@ -178,6 +180,19 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Add <a class="el" href="classFsComponent.html" title="Interface for filesystem entity - file or path. Composite template. ">FsComponent</a> to current entity's children</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">component</td><td><a class="el" href="classFsComponent.html" title="Interface for filesystem entity - file or path. Composite template. ">FsComponent</a> object - file or folder </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="classRuntimeException.html" title="exception class for program errors ">RuntimeException</a>,if</td><td>this component was not a folder </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p>Implemented in <a class="el" href="classFsFolder.html#a0a9471f33608990f6b25e6853f08ef5f">FsFolder</a>, and <a class="el" href="classFsFile.html#afff527f7316bfeff220bf6b0f96fc926">FsFile</a>.</p>
 
@@ -204,13 +219,20 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>recursively find a file with such path in folder hierarchy and read it's content</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">filePath</td><td></td></tr>
+    <tr><td class="paramname">filePath</td><td>file path of file relatively root folder </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>content, that was read from file with specified filepath </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="classRuntimeException.html" title="exception class for program errors ">RuntimeException</a>,if</td><td>this component was not a folder </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p>Implemented in <a class="el" href="classFsFolder.html#a99adb873692eb981946fd3e0db5bf9e5">FsFolder</a>, and <a class="el" href="classFsFile.html#a41d9dcd05bf6658f3b3d0a4cc2e1f15c">FsFile</a>.</p>
 
@@ -236,7 +258,14 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+<p>returns a content, stored in this file.</p>
+<dl class="section return"><dt>Returns</dt><dd>content, that was read from file </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="classRuntimeException.html" title="exception class for program errors ">RuntimeException</a>,if</td><td>this component was not a file </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p>Implemented in <a class="el" href="classFsFolder.html#a5eb689ca2fb8b3d5e01e5e58f86b367c">FsFolder</a>, and <a class="el" href="classFsFile.html#a4c12fbb4739a16612cabeca203b52992">FsFile</a>.</p>
 
@@ -262,7 +291,8 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+<p>get name of current component</p>
+<dl class="section return"><dt>Returns</dt><dd>name of component as string </dd></dl>
 
 <p>Implemented in <a class="el" href="classFsFolder.html#a6c967f6c4cbd914e93a1cc101d47dfcb">FsFolder</a>, and <a class="el" href="classFsFile.html#af1d89d32e7202dc1c4b383766223addf">FsFile</a>.</p>
 
@@ -288,7 +318,8 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+<p>Check, if current entity is composite and have children</p>
+<dl class="section return"><dt>Returns</dt><dd>true, if this component is folder, false otherwise </dd></dl>
 
 <p>Implemented in <a class="el" href="classFsFolder.html#a3a51abb57c85f793960e34a6875e8e92">FsFolder</a>, and <a class="el" href="classFsFile.html#a030632f7fa8878e2cc2447e6d9872509">FsFile</a>.</p>
 
@@ -315,9 +346,16 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Remove <a class="el" href="classFsComponent.html" title="Interface for filesystem entity - file or path. Composite template. ">FsComponent</a> from current entity's children</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">component</td><td></td></tr>
+    <tr><td class="paramname">component</td><td><a class="el" href="classFsComponent.html" title="Interface for filesystem entity - file or path. Composite template. ">FsComponent</a> object - file or folder </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="classRuntimeException.html" title="exception class for program errors ">RuntimeException</a>,if</td><td>this component was not a folder </td></tr>
   </table>
   </dd>
 </dl>

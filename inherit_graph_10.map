@@ -1,5 +1,5 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
 <area shape="rect" id="node1" href="$classHandler.html" title="object of this class executes every time on new request, this object (and others) construct response ..." alt="" coords="5,31,72,57"/>
-<area shape="rect" id="node2" href="$classAuthorizedHandler.html" title="Proxy handler to control access to another resources. " alt="" coords="120,5,249,32"/>
+<area shape="rect" id="node2" href="$classAuthorizedHandler.html" title="Proxy handler template to control access to another handlers. " alt="" coords="120,5,249,32"/>
 <area shape="rect" id="node3" href="$classFileHandler.html" title="this class allow you to set any file of filesystem as response body " alt="" coords="141,56,229,83"/>
 </map>

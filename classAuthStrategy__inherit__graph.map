@@ -1,4 +1,4 @@
 <map id="AuthStrategy" name="AuthStrategy">
-<area shape="rect" id="node2" href="$classCookieAuth.html" title="Cookie strategy of aurh. " alt="" coords="5,160,245,281"/>
-<area shape="rect" id="node3" href="$classJwtAuth.html" title="JWT auth strategy. " alt="" coords="269,160,509,281"/>
+<area shape="rect" id="node2" href="$classCookieAuth.html" title="Concrete cookie strategy of AuthStrategy. " alt="" coords="5,175,245,296"/>
+<area shape="rect" id="node3" href="$classJwtAuth.html" title="JWT auth strategy. " alt="" coords="269,175,509,296"/>
 </map>

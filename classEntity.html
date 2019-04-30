@@ -24,7 +24,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Web framework C++
-   &#160;<span id="projectnumber">1.0.0</span>
+   &#160;<span id="projectnumber">2.0.0</span>
    </div>
    <div id="projectbrief">Simple web framework on c++ designed to easily create web pages, etc</div>
   </td>
@@ -92,7 +92,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 
-<p>Cloneable interface.  
+<p>Cloneable interface of object wth value and serializable method.  
  <a href="classEntity.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="entity_8h_source.html">entity.h</a>&gt;</code></p>
@@ -103,8 +103,8 @@ Inheritance diagram for Entity:</div>
 <map name="Entity_inherit__map" id="Entity_inherit__map">
 <area shape="rect" id="node2" href="classCookieEntity.html" title="Class wrapper for Cookies. Allow you adjust parameters od each http cookie. Used by CookieMiddleware..." alt="" coords="5,175,123,296"/>
 <area shape="rect" id="node3" href="classCookieEntityDefault.html" title="Cookie entity with default params. " alt="" coords="147,175,306,296"/>
-<area shape="rect" id="node4" href="classCookieEntityHttp.html" title="Cookie entity with Http only param. " alt="" coords="330,175,473,296"/>
-<area shape="rect" id="node5" href="classCookieEntityWeek.html" title="Cookie entity expires in a week. " alt="" coords="497,175,647,296"/>
+<area shape="rect" id="node4" href="classCookieEntityHttp.html" title="Default CookieEntity with http only feature. " alt="" coords="330,175,473,296"/>
+<area shape="rect" id="node5" href="classCookieEntityWeek.html" title="Default CookieEntity which expires in a week since created. " alt="" coords="497,175,647,296"/>
 </map>
 </div>
 <div class="dynheader">
@@ -127,7 +127,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a876521fc4400a691833436ac0e6b2107"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Cloneable interface. </p>
+<div class="textblock"><p>Cloneable interface of object wth value and serializable method. </p>
+<p>Abstract class with value and some methods. Could be cloned by method clone </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="ac479d009ddde62dfb378ca0a70d81307"></a>
 <div class="memitem">
@@ -149,6 +150,7 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>default destructor </p>
 
 </div>
 </div>
@@ -173,7 +175,8 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+<p>Clone this object</p>
+<dl class="section return"><dt>Returns</dt><dd>new <a class="el" href="classEntity.html" title="Cloneable interface of object wth value and serializable method. ">Entity</a> object </dd></dl>
 
 <p>Implemented in <a class="el" href="classCookieEntity.html#a5ae51770d9ff4cfe94c45aff9aa7354c">CookieEntity</a>, <a class="el" href="classCookieEntityWeek.html#af39381eb08bf74abacfbbcd61e3d1666">CookieEntityWeek</a>, <a class="el" href="classCookieEntityHttp.html#aa2faf0565653d501fa29938c1a6745c8">CookieEntityHttp</a>, and <a class="el" href="classCookieEntityDefault.html#a4ffe1ca1961564300c96a0cf5ff6aaf2">CookieEntityDefault</a>.</p>
 
@@ -200,9 +203,10 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Set serialized value</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">value</td><td></td></tr>
+    <tr><td class="paramname">value</td><td>serialized value </td></tr>
   </table>
   </dd>
 </dl>
@@ -231,7 +235,8 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+<p>Serialize current entity</p>
+<dl class="section return"><dt>Returns</dt><dd>get string representation </dd></dl>
 
 <p>Implemented in <a class="el" href="classCookieEntity.html#a6f75f7d69507b591c9aea1d152ea8b10">CookieEntity</a>, <a class="el" href="classCookieEntityDefault.html#a1e695d6a8030ab958a73c3d8a57ad5e5">CookieEntityDefault</a>, <a class="el" href="classCookieEntityWeek.html#ae1167a30b3e0936201f038c817b4b5bc">CookieEntityWeek</a>, and <a class="el" href="classCookieEntityHttp.html#a791b0d43937df86dd8351b1c89b12130">CookieEntityHttp</a>.</p>
 

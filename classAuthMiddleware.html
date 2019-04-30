@@ -24,7 +24,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Web framework C++
-   &#160;<span id="projectnumber">1.0.0</span>
+   &#160;<span id="projectnumber">2.0.0</span>
    </div>
    <div id="projectbrief">Simple web framework on c++ designed to easily create web pages, etc</div>
   </td>
@@ -92,7 +92,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 
-<p>This middleware checks authentication.  
+<p>This middleware performs authentication on your application.  
  <a href="classAuthMiddleware.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="auth__middleware_8h_source.html">auth_middleware.h</a>&gt;</code></p>
@@ -137,10 +137,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a7642e46804b900b12f163b153fd66064"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a15f34c00d5f109b665b6f6834f901c24"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classEntity.html">Entity</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAuthMiddleware.html#a15f34c00d5f109b665b6f6834f901c24">getUser</a> ()</td></tr>
 <tr class="separator:a15f34c00d5f109b665b6f6834f901c24"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a34469765eec69216a62dd5180610d319"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAuthMiddleware.html#a34469765eec69216a62dd5180610d319">setUser</a> (<a class="el" href="classEntity.html">Entity</a> *user)</td></tr>
-<tr class="separator:a34469765eec69216a62dd5180610d319"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a97d71c3f1c03a8759fa85f011c31f52a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAuthMiddleware.html#a97d71c3f1c03a8759fa85f011c31f52a">setStrategy</a> (<a class="el" href="classAuthStrategy.html">AuthStrategy</a> *strategy)</td></tr>
-<tr class="separator:a97d71c3f1c03a8759fa85f011c31f52a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a30a69d7bd5963e30d138d14aba86435d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAuthMiddleware.html#a30a69d7bd5963e30d138d14aba86435d">addStrategy</a> (<a class="el" href="classAuthStrategy.html">AuthStrategy</a> *strategy)</td></tr>
+<tr class="separator:a30a69d7bd5963e30d138d14aba86435d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classMiddleware"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classMiddleware')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classMiddleware.html">Middleware</a></td></tr>
 <tr class="memitem:a76498c41fb6d7032ab5e8c69a75a96e8 inherit pub_methods_classMiddleware"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMiddleware.html#a76498c41fb6d7032ab5e8c69a75a96e8">Middleware</a> (const char *nameID)</td></tr>
 <tr class="separator:a76498c41fb6d7032ab5e8c69a75a96e8 inherit pub_methods_classMiddleware"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -168,7 +166,8 @@ Additional Inherited Members</h2></td></tr>
 <tr class="separator:ae5677fa3be638be88585f6e93fffebeb inherit pro_attribs_classMiddleware"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>This middleware checks authentication. </p>
+<div class="textblock"><p>This middleware performs authentication on your application. </p>
+<p><a class="el" href="classAuthMiddleware.html" title="This middleware performs authentication on your application. ">AuthMiddleware</a> is intended to parse cookies or other data in headers with <a class="el" href="classCookieMiddleware.html" title="inherited class to parse cookie from http request ">CookieMiddleware</a> or <a class="el" href="classJsonMiddleware.html" title="inherited class to perform any actions with json data ">JsonMiddleware</a>, and then get information about authenticated user, also it could generate special technical data for responses to identificate clients </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a8d7266026a37ac9a600f5a325f1a10dc"></a>
 <div class="memitem">
@@ -244,6 +243,29 @@ Additional Inherited Members</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a30a69d7bd5963e30d138d14aba86435d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AuthMiddleware::addStrategy </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classAuthStrategy.html">AuthStrategy</a> *&#160;</td>
+          <td class="paramname"><em>strategy</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Add different auth strategies. By default, you can add <a class="el" href="classCookieAuth.html" title="Concrete cookie strategy of AuthStrategy. ">CookieAuth</a> or/and <a class="el" href="classJwtAuth.html" title="JWT auth strategy. ">JwtAuth</a> strategy, or write your and add it</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">strategy</td><td>concrete strategy </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a class="anchor" id="a95f462f7f664f82c3d4dfc4f610a2fb5"></a>
 <div class="memitem">
 <div class="memproto">
@@ -317,7 +339,7 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Perform operation to check users credentials </p>
+<p>Perform operations to check users credentials and proceed them </p>
 
 <p>Implements <a class="el" href="classMiddleware.html#a37d46da167012da356cc400e425de92c">Middleware</a>.</p>
 
@@ -335,8 +357,8 @@ Additional Inherited Members</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Get current authenticated user</p>
-<dl class="section return"><dt>Returns</dt><dd>user object </dd></dl>
+<p>Get current authenticated user. Could be used by any client defined handlers.</p>
+<dl class="section return"><dt>Returns</dt><dd>user object, or null if anyone was authorised </dd></dl>
 
 </div>
 </div>
@@ -363,7 +385,7 @@ Additional Inherited Members</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Check authentication</p>
+<p>Check authentication. Could be used in any client defined handler, where is processing user login to application</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">userName</td><td>user id </td></tr>
@@ -388,7 +410,7 @@ Additional Inherited Members</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Set deserialization of user</p>
+<p>Set deserialization function of user. From passed string this function should get user object from string if everything all right or null otherwise</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">deserialize</td><td>function that get user object from string </td></tr>
@@ -414,7 +436,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Set function for authentication</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">login</td><td>get User object from username and password </td></tr>
+    <tr><td class="paramname">login</td><td>get User object from username and password. If something is wrong return null </td></tr>
   </table>
   </dd>
 </dl>
@@ -434,56 +456,10 @@ Additional Inherited Members</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Set serialization of user</p>
+<p>Set function, that perform serialization of user object. This data will be available on each call of deserialization function</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">serialize</td><td>function that convert user object to string </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a class="anchor" id="a97d71c3f1c03a8759fa85f011c31f52a"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void AuthMiddleware::setStrategy </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classAuthStrategy.html">AuthStrategy</a> *&#160;</td>
-          <td class="paramname"><em>strategy</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Set template strategy</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">strategy</td><td>concrete strategy </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a class="anchor" id="a34469765eec69216a62dd5180610d319"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void AuthMiddleware::setUser </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classEntity.html">Entity</a> *&#160;</td>
-          <td class="paramname"><em>user</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Set current authenticated user</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">user</td><td>user object </td></tr>
   </table>
   </dd>
 </dl>

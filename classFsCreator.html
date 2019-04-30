@@ -24,7 +24,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Web framework C++
-   &#160;<span id="projectnumber">1.0.0</span>
+   &#160;<span id="projectnumber">2.0.0</span>
    </div>
    <div id="projectbrief">Simple web framework on c++ designed to easily create web pages, etc</div>
   </td>
@@ -92,7 +92,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 
-<p>Director for builder template for fs middleware.  
+<p>Director template for builder template of <a class="el" href="classFsMiddleware.html" title="Middleware to host directories with inner files. ">FsMiddleware</a>.  
  <a href="classFsCreator.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="fs__creator_8h_source.html">fs_creator.h</a>&gt;</code></p>
@@ -118,7 +118,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a4ae7260e61957764fcea9087845772b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Director for builder template for fs middleware. </p>
+<div class="textblock"><p>Director template for builder template of <a class="el" href="classFsMiddleware.html" title="Middleware to host directories with inner files. ">FsMiddleware</a>. </p>
+<p>This class makes a filesystem hierarchy, delegating this work to concrete builders, which could be specified </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a5cc54d829def3dc81d6c5be22c4db32c"></a>
 <div class="memitem">
@@ -132,6 +133,7 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>delete inner objects </p>
 
 </div>
 </div>
@@ -148,7 +150,8 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+<p>after making filesystem by makeFs method, you can get produced hierarchy</p>
+<dl class="section return"><dt>Returns</dt><dd>root <a class="el" href="classFsComponent.html" title="Interface for filesystem entity - file or path. Composite template. ">FsComponent</a> of fs hierarchy </dd></dl>
 
 </div>
 </div>
@@ -165,9 +168,10 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>build filesystem hierarchy, passing a folder path</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">folderPath</td><td></td></tr>
+    <tr><td class="paramname">folderPath</td><td>build filesystem hierarchy, passing a folder path </td></tr>
   </table>
   </dd>
 </dl>
@@ -197,10 +201,11 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>build filesystem hierarchy, passing a folder path</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">builder</td><td></td></tr>
-    <tr><td class="paramname">folderPath</td><td></td></tr>
+    <tr><td class="paramname">builder</td><td>set concrete builder </td></tr>
+    <tr><td class="paramname">folderPath</td><td>build filesystem hierarchy, passing a folder path </td></tr>
   </table>
   </dd>
 </dl>
@@ -220,9 +225,10 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>set concrete builder</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">builder</td><td></td></tr>
+    <tr><td class="paramname">builder</td><td><a class="el" href="classFsBuilder.html" title="Builder template for FsMiddleware. ">FsBuilder</a> object </td></tr>
   </table>
   </dd>
 </dl>
