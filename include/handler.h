@@ -41,18 +41,18 @@ public:
     virtual ~Handler();
 
     /**
-     * @brief 
-     * 
-     * @return true 
-     * @return false 
+     * set next handler to execute
+     *
+     * @param next
+     *      Handler object
      */
     virtual void setNext(Handler * next);
 
     /**
-     * @brief 
-     * 
-     * @return true 
-     * @return false 
+     * add handler to end of current chain
+     *
+     * @param handler
+     *      Handler object
      */
     virtual void add(Handler * handler);
 
@@ -89,7 +89,8 @@ public:
     void setContext(Context * context);
 
     /**
-     *
+     * if method shouldHandleRequest returns true, method exec is executed
+     *      and if there is a next handler, call method handleRequest
      */
     void handleRequest();
 
@@ -99,8 +100,11 @@ public:
     virtual void exec() = 0;
 private:
     /**
+     * if context is not finalized, and this handler should not stop
+     *      executing chain of others handlers, return true
      *
      * @return
+     *      true, if this handler should exec, false otherwise
      */
     bool shouldHandleRequest();
 };

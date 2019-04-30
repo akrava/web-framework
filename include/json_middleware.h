@@ -20,12 +20,12 @@ public:
      * @param nameID
      *      name id
      */
-    JsonMiddleware(const char * nameID);
+    explicit JsonMiddleware(const char * nameID);
 
     /**
      * delete json request and response objects
      */
-    ~JsonMiddleware();
+    ~JsonMiddleware() override;
 
     /**
      * Check if request is json data
@@ -33,12 +33,12 @@ public:
      * @return
      *      true, if content type of http request is json
      */
-    bool autoExec();
+    bool autoExec() override;
 
     /**
      * parse json from http request
      */
-    void exec();
+    void exec() override;
 
     /**
      * get json request object
@@ -64,5 +64,5 @@ public:
     /**
      * delete all data, saved in internal values, set to default
      */
-     void clear();
+     void clear() override;
 };

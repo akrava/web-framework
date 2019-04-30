@@ -11,7 +11,7 @@
 class HTTP {
 public:
 	/**
-	*   Flags to define combinations of HTTP Request methods
+	* Flags to define combinations of HTTP Request methods
 	*/
 	enum Method {
 	    UNDEFINED,
@@ -28,7 +28,7 @@ public:
 	};
 
 	/**
-	 *  Flags to define combinations of HTTP Version
+	 * Flags to define combinations of HTTP Version
 	 */
 	enum Version {
         HTTP_UNDEFINED,
@@ -80,9 +80,12 @@ public:
     static std::string getReasonPhrase(int code);
 
     /**
+     * Get mime-type of file by its extension
      *
      * @param extension
+     *      extension of file without a dot
      * @return
+     *      mime-type of current file
      */
     static std::string getMimeType(std::string & extension);
 };

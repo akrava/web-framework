@@ -27,7 +27,7 @@ public:
      * @param httpHeaders
      *      input http headers string
      */
-    Headers(std::string & httpHeaders);
+    explicit Headers(std::string & httpHeaders);
 
     /**
      * serialize Headers to string

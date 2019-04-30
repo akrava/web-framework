@@ -9,5 +9,4 @@ FsFolder *FsWindowsBuilder::buildFolder(std::string folderPath) {
     return nullptr;
 }
 
-
 #endif

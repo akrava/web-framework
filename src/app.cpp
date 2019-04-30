@@ -146,11 +146,10 @@ bool App::run() {
 App::~App() {
     log << "App destroyed";
     for (auto & it : handlersRoutes) {
-        it.second->cleanNextHandlers();
+        delete it.second;
     }
-    if (handler) {
-        handler->cleanNextHandlers();
-    }
+    delete handler;
+    handler = nullptr;
     for (auto * it : middlewareList) {
         delete it;
     }

@@ -1,7 +1,7 @@
 #ifdef __linux__
 
 #include <dirent.h>
-#include <limits.h>
+#include <climits>
 #include "fs_unix_builder.h"
 #include "runtime_exception.h"
 

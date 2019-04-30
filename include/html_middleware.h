@@ -18,12 +18,12 @@ public:
      * @param nameID
      *      name id
      */
-    HtmlMiddleware(const char * nameID);
+    explicit HtmlMiddleware(const char * nameID);
 
     /**
      * delete context map, used fot rendering
      */
-    ~HtmlMiddleware();
+    ~HtmlMiddleware() override;
 
     /**
      * Cleanup context map
@@ -31,12 +31,12 @@ public:
      * @return
      *      true, if ready to render
      */
-    bool autoExec();
+    bool autoExec() override;
 
     /**
      * render template and set to response body
      */
-    void exec();
+    void exec() override;
 
     /**
      * get current context map
@@ -65,5 +65,5 @@ public:
     /**
      * delete all data, saved in internal values, set to default
      */
-     void clear();
+     void clear() override;
 };
