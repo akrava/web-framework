@@ -64,7 +64,6 @@ FsFolder *FsWindowsBuilder::buildFolder(std::string & folderPath, const char * f
 			if (retval == 0) {
 				// Handle an error condition.
 				throw RuntimeException("GetFullPathName failed");
-				return;
 			}
 			std::string fullPath = buffer;
 			folder->add(buildFile(fullPath));

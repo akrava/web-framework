@@ -14,6 +14,7 @@ set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall")
 #set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -Wall")
 
 if(WIN32)
+	include_directories("C:\\Program Files\\OpenSSL-Win64\\include")
     include_directories("C:\\Program Files (x86)\\nlohmann_json\\include")
 	include_directories("C:\\Program Files\\boost\\include\\boost-1_70")
 	include_directories("C:\\Program Files (x86)\\mstch\\include")
