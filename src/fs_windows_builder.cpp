@@ -10,7 +10,7 @@
 static std::string joinPath(std::string one, std::string & another);
 
 FsFile *FsWindowsBuilder::buildFile(std::string & filePath) {
-	auto delimiter_pos = filePath.find_last_of('/');
+	auto delimiter_pos = filePath.find_last_of('\\');
 	if (delimiter_pos == std::string::npos || delimiter_pos + 1 > filePath.length()) {
 		throw RuntimeException("Couldn't build file, filePath is wrong");
 	}
@@ -42,7 +42,9 @@ FsFolder *FsWindowsBuilder::buildFolder(std::string & folderPath, const char * f
 	auto folder = new FsFolder(folderName);
 	// List all the files in the directory with some info about them.
 	do {
-		if (ffd.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY) {
+		if (strcmp(ffd.cFileName, ".") == 0 || strcmp(ffd.cFileName, "..") == 0) {
+			continue;
+		} else if (ffd.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY) {
 			std::string name = ffd.cFileName;
 			std::string currentPath = joinPath(folderPath, name);
 			folder->add(buildFolder(currentPath, ffd.cFileName));
@@ -79,8 +81,8 @@ FsFolder *FsWindowsBuilder::buildFolder(std::string & folderPath, const char * f
 }
 
 std::string joinPath(std::string one, std::string & another) {
-	if (one[one.length() - 1] != '/') {
-		one.append("/");
+	if (one[one.length() - 1] != '\\') {
+		one.append("\\");
 	}
 	return one + another;
 }

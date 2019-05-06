@@ -53,9 +53,7 @@ int main (int argc, char ** argv) {
     App website = App(cur);
     website.init();
 
-
-
-    website.addMiddleware(new FsMiddleware("FS", "./../assets"));
+    website.addMiddleware(new FsMiddleware("FS", (__PATH_TO_SHARED_FOLDER)));
 
     website.addHandler(new HandlerCommon());
     website.addHandler(new HandlerTemplate());

@@ -1,5 +1,6 @@
 #include <database_middleware.h>
 #include <memory>
+#pragma comment(lib, "sqlite3.dll")
 
 using namespace std;
 

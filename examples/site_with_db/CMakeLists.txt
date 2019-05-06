@@ -23,7 +23,10 @@ include_directories("include")
 # DEBUG
 
 IF (WIN32)
-	include_directories("C:\\Program Files (x86)\\nlohmann_json\\include")
+	link_directories("C:\\Program Files\\sqlite3")
+	include_directories("C:\\Program Files\\sqlite3")
+	include_directories("C:\\Program Files\\OpenSSL-Win64\\include")
+    include_directories("C:\\Program Files (x86)\\nlohmann_json\\include")
 	include_directories("C:\\Program Files\\boost\\include\\boost-1_70")
 	include_directories("C:\\Program Files (x86)\\mstch\\include")
 	include_directories("C:\\Program Files (x86)\\akrava_web-server\\include")
@@ -38,7 +41,7 @@ add_executable(${PROJECT_NAME} ${APP_SOURCES} ${MIDDLEWARE_SOURCES} main.cpp)
 target_link_libraries(${PROJECT_NAME} akrava::akrava_web-server nlohmann_json::nlohmann_json mstch::mstch sqlite3 OpenSSL::Crypto)
 
 # DEBUG
-#add_executable(${PROJECT_NAME} ${SOURCES} ${APP_SOURCES} ${MIDDLEWARE_SOURCES} main.cpp src/database_middleware.cpp include/database_middleware.h)
+#add_executable(${PROJECT_NAME} ${SOURCES} ${APP_SOURCES} ${MIDDLEWARE_SOURCES} main.cpp )
 #target_link_libraries(${PROJECT_NAME} nlohmann_json::nlohmann_json mstch::mstch sqlite3 OpenSSL::Crypto)
 # DEBUG
 

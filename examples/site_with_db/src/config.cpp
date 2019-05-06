@@ -1,5 +1,7 @@
 #include <config.h>
+#ifdef __linux__
 #include <unistd.h>
+#endif
 #include <sstream>
 #include <iomanip>
 #ifdef _WIN32
@@ -14,7 +16,7 @@ string currentDir() {
         if (getcwd(cwd, sizeof(cwd)) != nullptr)
             return string(cwd);
     #else
-        if (GetModuleFileName(nullptr, cwd, sizeof(cwd)) != nullptr)
+        if (GetModuleFileName(nullptr, cwd, sizeof(cwd)))
             return string(cwd);
     #endif
     return ".";
