@@ -18,7 +18,7 @@ public:
      * @return
      *      FsFile object
      */
-    FsFile * buildFile(std::string filePath) override;
+	FsFile * buildFile(std::string & filePath);
 
     /**
      * make a FsComponent wrapper for folder, and then recursively
@@ -31,7 +31,7 @@ public:
      * @return
      *      FsFolder object
      */
-    FsFolder * buildFolder(std::string folderPath, const char * folderName) override;
+    FsFolder * buildFolder(std::string & folderPath, const char * folderName) override;
 };
 
 #endif
