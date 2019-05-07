@@ -19,7 +19,7 @@ void HandlerNews::exec() {
     auto body = html->getContext()->find("content");
 
     string template_news;
-    if (!FileHandler::loadFile((currentDir() + __PATH_TO_TEMPLATES"/news.mustache").c_str(), template_news)) return;
+    if (!FileHandler::loadFile(__PATH_TO_TEMPLATES"news.mustache", template_news)) return;
     mstch::map news_content;
 
     news_content.insert({"uri_news", request->getURI()->getPath()});

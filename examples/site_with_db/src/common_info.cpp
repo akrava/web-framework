@@ -35,7 +35,7 @@ void HandlerCommonInfo::exec() {
     if (result_header.size() != 1 || result_header[0].size() != 1) return;
 
     string template_info;
-    if (!FileHandler::loadFile((currentDir() + __PATH_TO_TEMPLATES"/info.mustache").c_str(), template_info)) return;
+    if (!FileHandler::loadFile(__PATH_TO_TEMPLATES"info.mustache", template_info)) return;
     mstch::map info_content{{"header", result_header[0][0]}};
 
     info_content.insert({"content", result_data[0][0]});

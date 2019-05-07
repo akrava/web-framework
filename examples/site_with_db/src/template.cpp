@@ -8,7 +8,7 @@ using namespace std;
 void HandlerTemplate::exec() {
     getContext()->getResponse()->getHeaders()->add("Content-Type", "text/html; charset=utf-8");
     string template_str;
-    bool found_template = FileHandler::loadFile((currentDir() + __PATH_TO_TEMPLATES"/common.mustache").c_str(), template_str);
+    bool found_template = FileHandler::loadFile(__PATH_TO_TEMPLATES"common.mustache", template_str);
     string data = "<html><head><title>";
     data += to_string(getContext()->getResponse()->getStatus());
     data += " " + HTTP::getReasonPhrase(getContext()->getResponse()->getStatus());

@@ -16,7 +16,7 @@ void HandlerCalculate::exec() {
     auto body = html->getContext()->find("content");
 
     string template_calculate;
-    if (!FileHandler::loadFile((currentDir() + __PATH_TO_TEMPLATES"/calculate.mustache").c_str(), template_calculate)) return;
+    if (!FileHandler::loadFile(__PATH_TO_TEMPLATES"calculate.mustache", template_calculate)) return;
     mstch::map calculate_content;
 
     vector<vector<string>> result_cities;

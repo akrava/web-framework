@@ -7,7 +7,7 @@
 #include <sys/time.h>
 #include <netdb.h>
 #include "socket_unix_api.h"
-#define __BUFFER_SIZE 1024
+#define __BUFFER_SIZE 2048
 
 using namespace std;
 

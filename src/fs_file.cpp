@@ -11,7 +11,7 @@ FsFile::FsFile(string & name, string & fullPath) {
 }
 
 string FsFile::getFileContent() {
-    ifstream in(fullPath, ifstream::in);
+    ifstream in(fullPath, ifstream::in | ifstream::binary);
     if (in.is_open()) {
         stringstream str_stream;
         str_stream << in.rdbuf();

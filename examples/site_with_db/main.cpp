@@ -53,7 +53,7 @@ int main (int argc, char ** argv) {
     App website = App(cur);
     website.init();
 
-    website.addMiddleware(new FsMiddleware("FS", (__PATH_TO_SHARED_FOLDER)));
+    website.addMiddleware(new FsMiddleware("FS", (__PATH_TO_DATA)));
 
     website.addHandler(new HandlerCommon());
     website.addHandler(new HandlerTemplate());
@@ -95,7 +95,7 @@ int main (int argc, char ** argv) {
     middleware->setOnLogin(User::checkLogin);
     middleware->addStrategy(new CookieAuth(__SECRET, cookie));
     website.addMiddleware(middleware);
-    website.addMiddleware(DatabaseMiddleware::getInstance("db", (currentDir() + "/../db/db_file").c_str()));
+    website.addMiddleware(DatabaseMiddleware::getInstance("db", __PATH_TO_DB));
 
     return website.run();
 }

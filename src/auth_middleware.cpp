@@ -69,7 +69,7 @@ bool AuthMiddleware::login(std::string & userName, std::string & password) {
     } else {
         setUser(userObject);
         std::string serializedUser = onSerialize(userObject);
-        strategy->serializeAndSetValueToResponse(serializedUser);
+		allStrategies[0]->serializeAndSetValueToResponse(serializedUser);
         return true;
     }
 }

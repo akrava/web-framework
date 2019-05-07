@@ -16,7 +16,7 @@ void HandlerFeedback::exec() {
     auto body = html->getContext()->find("content");
 
     string template_order;
-    if (!FileHandler::loadFile((currentDir() + __PATH_TO_TEMPLATES"/feedback.mustache").c_str(), template_order)) return;
+    if (!FileHandler::loadFile(__PATH_TO_TEMPLATES"feedback.mustache", template_order)) return;
     mstch::map order_content;
 
     vector<vector<string>> result_uri;

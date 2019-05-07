@@ -19,7 +19,7 @@ void HandlerTrack::exec() {
     auto body = html->getContext()->find("content");
 
     string template_track;
-    if (!FileHandler::loadFile((currentDir() + __PATH_TO_TEMPLATES"/track.mustache").c_str(), template_track)) return;
+    if (!FileHandler::loadFile(__PATH_TO_TEMPLATES"track.mustache", template_track)) return;
     mstch::map track_content;
 
     string num;

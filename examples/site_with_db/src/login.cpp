@@ -12,7 +12,7 @@ void HandlerLogin::exec() {
     if (html->getView().empty()) return;
     auto body = html->getContext()->find("content");
     string login_order;
-    if (!FileHandler::loadFile((currentDir() + __PATH_TO_TEMPLATES"/login.mustache").c_str(), login_order)) return;
+    if (!FileHandler::loadFile(__PATH_TO_TEMPLATES"login.mustache", login_order)) return;
     mstch::map order_content;
     string content = mstch::render(login_order, order_content);
     body->second = content;

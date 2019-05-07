@@ -19,7 +19,7 @@ void HandlerApi::exec() {
     auto * json = (JsonMiddleware *) (void *) m_json;
     if (json->getJsonRequest()->empty()) {
         string template_info;
-        if (!FileHandler::loadFile((currentDir() + __PATH_TO_TEMPLATES"/info.mustache").c_str(), template_info)) {
+        if (!FileHandler::loadFile(__PATH_TO_TEMPLATES"info.mustache", template_info)) {
             return;
         }
         mstch::map info_content{{"header", string{"API"}}};

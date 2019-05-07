@@ -31,9 +31,8 @@ void HandlerFeedbackPost::exec() {
     if (!form->getValueFromMap("comment", comment_str)) error = true;
     if (form->getValueFromMap("photo", file_str)) {
         auto file = form->getFormEntity("photo");
-        string baseFolder = ".";
-        baseFolder += __PATH_TO_DATA"/";
-        std::ofstream outputFile(baseFolder + file->getFileName());
+        string baseFolder = __PATH_TO_DATA __PATH_SEPARATOR;
+        std::ofstream outputFile(baseFolder + file->getFileName(), ofstream::out | ofstream::binary);
         if (outputFile) {
             outputFile << file->getValue();
         }
@@ -59,7 +58,7 @@ void HandlerFeedbackPost::exec() {
     if (!res_query.empty()) error = true;
 
     string template_info;
-    if (!FileHandler::loadFile((currentDir() + __PATH_TO_TEMPLATES"/info.mustache").c_str(), template_info)) return;
+    if (!FileHandler::loadFile(__PATH_TO_TEMPLATES"info.mustache", template_info)) return;
     mstch::map info_content{{"header", string{"Feedback"}}};
 
     if (error) {

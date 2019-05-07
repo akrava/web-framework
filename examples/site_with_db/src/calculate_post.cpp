@@ -111,7 +111,7 @@ void HandlerCalculatePost::exec() {
     if (weight <= 0 || height <= 0 || length <= 0 || width <= 0) error = true;
 
     string template_info;
-    if (!FileHandler::loadFile((currentDir() + __PATH_TO_TEMPLATES"/info.mustache").c_str(), template_info)) return;
+    if (!FileHandler::loadFile( __PATH_TO_TEMPLATES"info.mustache", template_info)) return;
     mstch::map info_content{{"header", string{"Вартість доставки"}}};
 
     if (error) {

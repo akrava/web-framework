@@ -14,7 +14,7 @@ void HandlerOrder::exec() {
     if (html->getView().empty()) return;
     auto body = html->getContext()->find("content");
     string template_order;
-    if (!FileHandler::loadFile((currentDir() + __PATH_TO_TEMPLATES"/order.mustache").c_str(), template_order)) return;
+    if (!FileHandler::loadFile(__PATH_TO_TEMPLATES"order.mustache", template_order)) return;
     mstch::map order_content;
 
     vector<vector<string>> result_cities;

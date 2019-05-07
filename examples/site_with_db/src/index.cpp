@@ -18,7 +18,7 @@ void HandlerIndex::exec() {
     auto body = html->getContext()->find("content");
 
     string template_index;
-    if (!FileHandler::loadFile((currentDir() + __PATH_TO_TEMPLATES"/index.mustache").c_str(), template_index)) {
+    if (!FileHandler::loadFile(__PATH_TO_TEMPLATES"index.mustache", template_index)) {
         return;
     }
     mstch::map index_content;

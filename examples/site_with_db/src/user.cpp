@@ -31,7 +31,7 @@ std::string User::serialize(Entity * entity) {
 }
 
 Entity *User::deserialize(std::string & value) {
-    auto db = DatabaseMiddleware::getInstance("db", (currentDir() + "/../db/db_file").c_str());
+    auto db = DatabaseMiddleware::getInstance("db", __PATH_TO_DB);
 
     char * data[] = { (char *)value.c_str() };
     vector<vector<string>> result_user;
@@ -52,7 +52,7 @@ Entity *User::deserialize(std::string & value) {
 }
 
 Entity * User::checkLogin(std::string &username, std::string &value) {
-    auto db = DatabaseMiddleware::getInstance("db", (currentDir() + "/../db/db_file").c_str());
+    auto db = DatabaseMiddleware::getInstance("db", __PATH_TO_DB);
 
     char * data[] = { (char *)username.c_str() };
     vector<vector<string>> result_user{};

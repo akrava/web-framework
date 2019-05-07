@@ -15,7 +15,7 @@ void HandlerReceipts::exec() {
     auto body = html->getContext()->find("content");
 
     string template_cur;
-    if (!FileHandler::loadFile((currentDir() + __PATH_TO_TEMPLATES"/receipts.mustache").c_str(), template_cur)) return;
+    if (!FileHandler::loadFile(__PATH_TO_TEMPLATES"receipts.mustache", template_cur)) return;
     mstch::map map_content;
 
     string curTarget;

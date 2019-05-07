@@ -16,7 +16,7 @@ void HandlerMap::exec() {
     auto body = html->getContext()->find("content");
 
     string template_map;
-    if (!FileHandler::loadFile((currentDir() + __PATH_TO_TEMPLATES"/map.mustache").c_str(), template_map)) return;
+    if (!FileHandler::loadFile(__PATH_TO_TEMPLATES"map.mustache", template_map)) return;
     mstch::map map_content;
 
     string curTarget;
