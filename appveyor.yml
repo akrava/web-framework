@@ -1,0 +1,49 @@
+version: '{build}'
+
+environment:
+  matrix:
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+      platform: x86
+      GENERATOR: Visual Studio 14 2015
+      BOOST_ROOT: "C:\\Libraries\\boost_1_69_0"
+      BOOST_LIBRARYDIR: "C:\\Libraries\\boost_1_69_0\\lib32-msvc-14.0"
+
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+      platform: x86
+      GENERATOR: Visual Studio 15 2017
+      BOOST_ROOT: "C:\\Libraries\\boost_1_69_0"
+      BOOST_LIBRARYDIR: "C:\\Libraries\\boost_1_69_0\\lib32-msvc-15.0"
+
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+      platform: x64
+      GENERATOR: Visual Studio 14 2015 Win64
+      BOOST_ROOT: "C:\\Libraries\\boost_1_69_0"
+      BOOST_LIBRARYDIR: "C:\\Libraries\\boost_1_69_0\\lib32-msvc-14.0"
+
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+      platform: x64
+      GENERATOR: Visual Studio 15 2017 Win64
+      BOOST_ROOT: "C:\\Libraries\\boost_1_69_0"
+      BOOST_LIBRARYDIR: "C:\\Libraries\\boost_1_69_0\\lib32-msvc-15.0"
+
+init:
+  - cmake --version
+  - msbuild /version
+
+install:
+  - git clone https://github.com/no1msd/mstch.git && cd mstch
+  - cmake . -G "%GENERATOR%" -DCMAKE_IGNORE_PATH="C:/Program Files/Git/usr/bin" -DBOOST_ROOT="%BOOST_ROOT%" -DBOOST_LIBRARYDIR="%BOOST_LIBRARYDIR%" -DBoost_USE_STATIC_LIBS=ON ..
+  - cmake --build . --target install
+  - cd ..
+  - git clone https://github.com/nlohmann/json.git && cd json
+  - cmake . -G "%GENERATOR%" ..
+  - cmake --build . --target install
+  - cd ..
+
+before_build:
+  - mkdir build
+  - cd build
+  - cmake . -G "%GENERATOR%" -DCMAKE_IGNORE_PATH="C:/Program Files/Git/usr/bin" -DBOOST_ROOT="%BOOST_ROOT%" -DBOOST_LIBRARYDIR="%BOOST_LIBRARYDIR%" -DBoost_USE_STATIC_LIBS=ON ..
+
+build_script:
+  - cmake --build . --config Release

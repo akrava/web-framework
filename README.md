@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/akrava/web-framework.svg?branch=master)](https://travis-ci.org/akrava/web-framework)
+[![Build status](https://ci.appveyor.com/api/projects/status/atvlw7afab2vyn4n?svg=true)](https://ci.appveyor.com/project/a_krava/web-framework)
 [![Coverity Scan Build Status](https://img.shields.io/coverity/scan/16090.svg)](https://scan.coverity.com/projects/akrava-web-framework)
 [![Documentation](https://img.shields.io/badge/docs-doxygen-blue.svg)](https://akrava.github.io/web-framework)
 [![GitHub License](https://img.shields.io/github/license/akrava/web-framework.svg)](https://raw.githubusercontent.com/akrava/web-framework/master/LICENSE)

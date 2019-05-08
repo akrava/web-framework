@@ -11,6 +11,11 @@
 
 using namespace std;
 
+static void copyToString(std::string & data, const char * input, int len);
+static size_t getContentLength(const std::string & data);
+static size_t getCurrentLength(const std::string & data);
+static bool endsWithTwoNewLines(const std::string & data);
+
 SocketUnixAPI::~SocketUnixAPI() {
     close(socket_fd);
     free(socketAddress);
@@ -58,47 +63,32 @@ std::string SocketUnixAPI::getData() {
     }
     cout << "A client is connected from " << inet_ntoa(sender.sin_addr) << ":"
          << to_string(ntohs(sender.sin_port)) << endl;
+    char buffer[__BUFFER_SIZE];
     string data;
-    auto * buffer = new char[__BUFFER_SIZE + 1];
-    ssize_t numRead = recv(client_fd, buffer, __BUFFER_SIZE, 0);
-    if (numRead < 0) {
-        perror("The client was not read from");
-        close(client_fd);
-        delete [] buffer;
-        return string();
-    }
-    buffer[numRead] = 0;
-    data += buffer;
-    size_t length = 0;
+    size_t length = string::npos;
     size_t cur = 0;
-    size_t startKey = data.find("Content-Length: ");
-    size_t endValue = data.find("\r\n", startKey + 16);
-    size_t startBody = data.find("\r\n\r\n");
-    if (startKey != string::npos && endValue != string::npos && startBody != string::npos) {
-        try {
-            string length_str = data.substr(startKey + 16, endValue - startKey - 16);
-            length = stoul(length_str);
-            cur = data.length() - startBody - 4;
-        } catch (out_of_range & err) {
-        } catch (invalid_argument & err) {
-        }
-    }
-    while (cur < length) {
-        auto bytes_read = recv(client_fd, buffer, 1024, 0);
-        if (bytes_read < 1) {
+    do {
+        size_t numRead = recv(client_fd, buffer, __BUFFER_SIZE, 0);
+        if (numRead == 0) {
+            break;
+        } else if (numRead < 0) {
             perror("The client was not read from");
             close(client_fd);
-            delete[] buffer;
-            return std::string();
+            return string();
         }
-        size_t length_cur = bytes_read;
-        string temp;
-        temp.assign(buffer, length_cur);
-        buffer[length_cur] = 0;
-        cur += length_cur;
-        data += temp;
-    }
-    delete [] buffer;
+        copyToString(data, buffer, numRead);
+        if (length == string::npos) {
+            length = getContentLength(data);
+        }
+        if (cur == 0) {
+            cur = getCurrentLength(data);
+        } else {
+            cur += numRead;
+        }
+        if (cur == 0 && length == string::npos && endsWithTwoNewLines(data)) {
+            break;
+        }
+    } while (cur < length);
     return data;
 }
 
@@ -141,5 +131,44 @@ void SocketUnixAPI::receiveData(const std::string &data) {
 	freeaddrinfo(serverInfo);
 	return ip;
 }
+
+void copyToString(std::string & data, const char * input, int len) {
+    string temp;
+    temp.assign(input, len);
+    data += temp;
+}
+
+size_t getContentLength(const std::string & data) {
+    size_t startKey = data.find("Content-Length: ");
+    size_t endValue = data.find("\r\n", startKey + 16);
+    if (startKey != string::npos && endValue != string::npos) {
+        try {
+            string length_str = data.substr(startKey + 16, endValue - startKey - 16);
+            return stoul(length_str);
+        }
+        catch (out_of_range & err) {
+        }
+        catch (invalid_argument & err) {
+        }
+    }
+    return string::npos;
+}
+
+size_t getCurrentLength(const std::string & data) {
+    size_t startBody = data.find("\r\n\r\n");
+    if (startBody != string::npos) {
+        return data.length() - startBody - 4;
+    }
+    return 0;
+}
+
+bool endsWithTwoNewLines(const std::string & data) {
+    size_t position = data.find("\r\n\r\n");
+    if (position == string::npos) {
+        return false;
+    }
+    return position + 4 == data.length();
+}
+
 
 #endif // __linux__
