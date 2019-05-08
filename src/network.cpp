@@ -54,7 +54,7 @@ bool Network::receiveData(const std::string & data) {
 SocketAPI * Network::createNewSocket() {
 	#ifdef __linux__
 		return new SocketUnixAPI();
-	#elif defined(_WIN32) || defined(_WIN64)
+	#elif defined(_WIN32)
 		return new SocketWindowsAPI();
 	#else
 		return nullptr;

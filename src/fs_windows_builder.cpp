@@ -1,4 +1,4 @@
-#if defined(_WIN32) || defined(_WIN64)
+#ifdef _WIN32
 #include <windows.h>
 #include <tchar.h> 
 #include <strsafe.h>

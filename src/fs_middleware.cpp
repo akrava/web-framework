@@ -49,7 +49,7 @@ void FsMiddleware::exec() {
 FsBuilder * FsMiddleware::selectBuilder() {
     #ifdef __linux__
         return new FsUnixBuilder();
-    #elif defined(_WIN32) || defined(_WIN64)
+    #elif defined(_WIN32)
         return new FsWindowsBuilder();
     #else
         return nullptr;
