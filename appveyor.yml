@@ -31,16 +31,12 @@ init:
   - msbuild /version
 
 install:
-  - git clone https://github.com/no1msd/mstch.git
-  - cd mstch
-  - cmake . -G "%GENERATOR%" -DCMAKE_IGNORE_PATH="C:/Program Files/Git/usr/bin" -DBOOST_ROOT="%BOOST_ROOT%" -DBOOST_LIBRARYDIR="%BOOST_LIBRARYDIR%" -DBoost_USE_STATIC_LIBS=ON ..
-  - cmake --build . --target install
-  - cd ..
-  - git clone https://github.com/nlohmann/json.git
-  - cd json
-  - cmake . -G "%GENERATOR%" ..
-  - cmake --build . --target install
-  - cd ..
+  - git clone https://github.com/no1msd/mstch.git && cd mstch
+  - cmake . -G "%GENERATOR%" -DCMAKE_IGNORE_PATH="C:/Program Files/Git/usr/bin" -DBOOST_ROOT="%BOOST_ROOT%" -DBOOST_LIBRARYDIR="%BOOST_LIBRARYDIR%" -DBoost_USE_STATIC_LIBS=ON .
+  - cmake --build . --target install && cd ..
+  - git clone https://github.com/nlohmann/json.git && cd json
+  - cmake . -G "%GENERATOR%" .
+  - cmake --build . --target install && cd ..
 
 before_build:
   - mkdir build
