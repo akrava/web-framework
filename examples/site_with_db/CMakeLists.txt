@@ -25,17 +25,22 @@ include_directories("include")
 IF (WIN32)
 	link_directories("C:\\Program Files\\sqlite3")
 	include_directories("C:\\Program Files\\sqlite3")
-	include_directories("C:\\Program Files\\OpenSSL-Win64\\include")
-    include_directories("C:\\Program Files (x86)\\nlohmann_json\\include")
-	include_directories("C:\\Program Files\\boost\\include\\boost-1_70")
-	include_directories("C:\\Program Files (x86)\\mstch\\include")
-	include_directories("C:\\Program Files (x86)\\akrava_web-server\\include")
+
+    include_directories(${OPENSSL_INCLUDE_DIR})
+    include_directories(${nlohmann_json_DIR}/../../../include)
+	if(DEFINED ENV{BOOST_ROOT})
+		include_directories(${BOOST_ROOT})
+	else()
+		include_directories(${Boost_DIR}/../../../include/boost-${Boost_VERSION_MAJOR}_${Boost_VERSION_MINOR})
+	endif()
+	include_directories(${mstch_DIR}/../../../include)
+
+	include_directories(${akrava_web-server_DIR}/../../../include)
 ENDIF()
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -Wall")
 
-#add_library(LIB SHARED libpqxx::pqxx_shared)
 # RELEASE
 add_executable(${PROJECT_NAME} ${APP_SOURCES} ${MIDDLEWARE_SOURCES} main.cpp)
 target_link_libraries(${PROJECT_NAME} akrava::akrava_web-server nlohmann_json::nlohmann_json mstch::mstch sqlite3 OpenSSL::Crypto)
@@ -44,16 +49,3 @@ target_link_libraries(${PROJECT_NAME} akrava::akrava_web-server nlohmann_json::n
 #add_executable(${PROJECT_NAME} ${SOURCES} ${APP_SOURCES} ${MIDDLEWARE_SOURCES} main.cpp )
 #target_link_libraries(${PROJECT_NAME} nlohmann_json::nlohmann_json mstch::mstch sqlite3 OpenSSL::Crypto)
 # DEBUG
-
-
-#target_include_directories(${PROJECT_NAME} PUBLIC "C:\\Program Files\\PostgreSQL\\11\\lib")
-
-#add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD        # Adds a post-build event to MyTest
-#    COMMAND ${CMAKE_COMMAND} -E copy_if_different  # which executes "cmake - E copy_if_different..."
-#        "C:\\Program Files\\libpqxx\\bin\\pqxx.dll"                       # <--this is in-file
-#        $<TARGET_FILE_DIR:${PROJECT_NAME}>)        # <--this is out-file path
-#
-#add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD        # Adds a post-build event to MyTest
-#    COMMAND ${CMAKE_COMMAND} -E copy_if_different  # which executes "cmake - E copy_if_different..."
-#        "C:\\Program Files\\PostgreSQL\\11\\lib\\libpq.dll"                       # <--this is in-file
-#        $<TARGET_FILE_DIR:${PROJECT_NAME}>)        # <--this is out-file path
