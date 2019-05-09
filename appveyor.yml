@@ -7,28 +7,32 @@ environment:
       GENERATOR: Visual Studio 14 2015
       BOOST_ROOT: "C:\\Libraries\\boost_1_69_0"
       BOOST_LIBRARYDIR: "C:\\Libraries\\boost_1_69_0\\lib32-msvc-14.0"
-      OPENSSL_DIR: "C:\\OpenSSL-v111-Win32\\"
+      OPENSSL_DIR: "C:\\OpenSSL-v111-Win32"
+      OPENSSL_LIBRARIES: "C:\\OpenSSL-v111-Win32\\lib"
 
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
       platform: x86
       GENERATOR: Visual Studio 15 2017
       BOOST_ROOT: "C:\\Libraries\\boost_1_69_0"
       BOOST_LIBRARYDIR: "C:\\Libraries\\boost_1_69_0\\lib32-msvc-15.0"
-      OPENSSL_DIR: "C:\\OpenSSL-v111-Win32\\"
+      OPENSSL_DIR: "C:\\OpenSSL-v111-Win32"
+      OPENSSL_LIBRARIES: "C:\\OpenSSL-v111-Win32\\lib"
 
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
       platform: x64
       GENERATOR: Visual Studio 14 2015 Win64
       BOOST_ROOT: "C:\\Libraries\\boost_1_69_0"
       BOOST_LIBRARYDIR: "C:\\Libraries\\boost_1_69_0\\lib64-msvc-14.0"
-      OPENSSL_DIR: "C:\\OpenSSL-v111-Win64\\"
+      OPENSSL_DIR: "C:\\OpenSSL-v111-Win64"
+      OPENSSL_LIBRARIES: "C:\\OpenSSL-v111-Win64\\lib"
 
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
       platform: x64
       GENERATOR: Visual Studio 15 2017 Win64
       BOOST_ROOT: "C:\\Libraries\\boost_1_69_0"
       BOOST_LIBRARYDIR: "C:\\Libraries\\boost_1_69_0\\lib64-msvc-15.0"
-      OPENSSL_DIR: "C:\\OpenSSL-v111-Win64\\"
+      OPENSSL_DIR: "C:\\OpenSSL-v111-Win64"
+      OPENSSL_LIBRARIES: "C:\\OpenSSL-v111-Win64\\lib"
 
 init:
   - cmake --version
@@ -45,7 +49,7 @@ install:
 before_build:
   - mkdir build
   - cd build
-  - cmake . -G "%GENERATOR%" -DOPENSSL_ROOT_DIR=C:\Program Files\OpenSSL-Win64 -DCMAKE_IGNORE_PATH="C:/Program Files/Git/usr/bin" -DBOOST_ROOT="%BOOST_ROOT%" -DBOOST_LIBRARYDIR="%BOOST_LIBRARYDIR%" -DBoost_USE_STATIC_LIBS=ON ..
+  - cmake . -G "%GENERATOR%" -DOPENSSL_ROOT_DIR="%OPENSSL_DIR%" -DOPENSSL_LIBRARIES="%OPENSSL_LIBRARIES%" -DCMAKE_IGNORE_PATH="C:/Program Files/Git/usr/bin" -DBOOST_ROOT="%BOOST_ROOT%" -DBOOST_LIBRARYDIR="%BOOST_LIBRARYDIR%" -DBoost_USE_STATIC_LIBS=ON ..
 
 build_script:
   - cmake --build . --config Release

@@ -2,9 +2,6 @@ cmake_minimum_required(VERSION 3.8)
 
 project(akrava_web-server VERSION 2.0.0 LANGUAGES CXX)
 
-SET(CMAKE_FIND_PACKAGE_SORT_ORDER NATURAL)
-SET(CMAKE_FIND_PACKAGE_SORT_DIRECTION DEC)
-
 find_package(Boost REQUIRED)
 find_package(nlohmann_json REQUIRED)
 find_package(mstch REQUIRED)
