@@ -2,10 +2,13 @@ cmake_minimum_required(VERSION 3.8)
 
 project(akrava_web-server VERSION 2.0.0 LANGUAGES CXX)
 
+SET(CMAKE_FIND_PACKAGE_SORT_ORDER NATURAL)
+SET(CMAKE_FIND_PACKAGE_SORT_DIRECTION DEC)
+
 find_package(Boost REQUIRED)
 find_package(nlohmann_json REQUIRED)
 find_package(mstch REQUIRED)
-find_package(OpenSSL 1.1.1 EXACT REQUIRED)
+find_package(OpenSSL REQUIRED)
 if(OPENSSL_FOUND)
 	set(OPENSSL_USE_STATIC_LIBS TRUE)
 endif()
