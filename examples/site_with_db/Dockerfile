@@ -10,4 +10,4 @@ RUN cmake . && make
 
 EXPOSE 80
 
-CMD ["./simple-site", "0.0.0.0:%PORT%"]
+CMD ["./simple-site", "0.0.0.0:$PORT"]
