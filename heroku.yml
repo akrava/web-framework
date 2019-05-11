@@ -1,0 +1,3 @@
+build:
+  docker:
+    web: examples/site_with_db/Dockerfile
