@@ -3,10 +3,10 @@
 #include <string>
 
 #ifdef __linux__
-#define __PATH_TO_DATA "./assets"
+#define __PATH_TO_DATA "./../assets"
 #define __PATH_SEPARATOR "/"
-#define __PATH_TO_TEMPLATES "./templates/"
-#define __PATH_TO_DB "./db/db_file"
+#define __PATH_TO_TEMPLATES "./../templates/"
+#define __PATH_TO_DB "./../db/db_file"
 #elif _WIN32
 #define __PATH_TO_DATA "F:\\Projects\\github\\web-framework\\examples\\site_with_db\\assets"
 #define __PATH_SEPARATOR "\\"
