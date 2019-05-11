@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.org/akrava/web-framework.svg?branch=master)](https://travis-ci.org/akrava/web-framework)
 [![Build status](https://ci.appveyor.com/api/projects/status/atvlw7afab2vyn4n?svg=true)](https://ci.appveyor.com/project/a_krava/web-framework)
+[![Docker Pulls](https://img.shields.io/docker/pulls/akrava/web-framework.svg)](https://hub.docker.com/r/akrava/web-framework)
 [![Coverity Scan Build Status](https://img.shields.io/coverity/scan/16090.svg)](https://scan.coverity.com/projects/akrava-web-framework)
 [![Documentation](https://img.shields.io/badge/docs-doxygen-blue.svg)](https://akrava.github.io/web-framework)
 [![GitHub License](https://img.shields.io/github/license/akrava/web-framework.svg)](https://raw.githubusercontent.com/akrava/web-framework/master/LICENSE)
@@ -23,5 +24,10 @@ target_link_libraries(${PROJECT_NAME} akrava::akrava_web-server nlohmann_json::n
 ```
 ## Examples 
 See [here](examples/)
+
+Deployed demo-site could be found [here](https://web-framework.herokuapp.com)
 ## Documentation
 see documentation: [online](https://akrava.github.io/web-framework) | [pdf](docs/refman.pdf)
+
+## Docker image
+see [here](https://hub.docker.com/r/akrava/web-framework)
