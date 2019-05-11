@@ -526,3 +526,11 @@ code {
     border-radius: 4px;
     white-space: pre;
 }
+
+.receipt-value {
+    width: 160px;
+}
+
+.d-in-b {
+    display: inline-block;
+}

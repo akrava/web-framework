@@ -54,6 +54,7 @@ void AuthorizedHandler::setNext(Handler *next) {
 
 void AuthorizedHandler::add(Handler *handler) {
     if (handler) {
-        handler->add(handler);
+        this->handler->add(handler);
+        Handler::setNext(handler);
     }
 }

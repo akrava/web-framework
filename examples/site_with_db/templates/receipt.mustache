@@ -1,0 +1,52 @@
+<p class="first">{{#num}}Редагування{{/num}}{{^num}}Створення{{/num}} відправлення</p>
+<form id="order" action="{{uri_action}}" method="POST">
+    <input type="hidden" name="num" value="{{#num}}{{num}}{{/num}}{{^num}}null{{/num}}">
+    <div class="wrapper table">
+        <table class="data">
+            <tr class="order row">
+                <td class="name">Відправник</td>
+                <td class="value">
+                    <input required id="recipient" name="recipient" type="text" value="{{recipient}}">
+                </td>
+            </tr>
+            <tr class="order row">
+                <td class="name">Отримувач</td>
+                <td class="value">
+                    <input required id="receiver" name="receiver" type="text" value="{{receiver}}">
+                </td>
+            </tr>
+            <tr class="order row">
+                <td class="name">Дата відправленя</td>
+                <td class="value">
+                    <input required type="date" id="departure_date" name="departure_date" value="{{departure_date}}">
+                </td>
+            </tr>
+            <tr class="order row">
+                <td class="name">Дата прибуття</td>
+                <td class="value">
+                    <input required type="date" id="arrival_date" name="arrival_date" value="{{arrival_date}}">
+                </td>
+            </tr>
+            <tr class="order row">
+                <td class="name">Місто</td>
+                <td class="value">
+                    <select id="departure" required name="departure">
+                        {{#cities}}
+                            <option {{#selected}}selected{{/selected}} value="{{id}}">{{name}}</option>
+                        {{/cities}}
+                    </select>
+                </td>
+            </tr>
+            <tr class="order row">
+                <td class="name">Вартість</td>
+                <td class="value">
+                    <input required id="cost" name="cost" type="number" step=".01" value="{{cost}}"><label for="cost">грн.</label>
+                </td>
+            </tr>
+        </table>
+        <div class="send-table">
+            <input type="submit" value="{{#num}}Змінити{{/num}}{{^num}}Створити{{/num}}">
+            <input type="reset" value="Очистити">
+        </div>
+    </div>
+</form>

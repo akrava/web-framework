@@ -1,17 +1,22 @@
 <p class="first">Перелік активнх відправлень</p>
+<p class="info"><a href="/receipts/add">Додати</a> нове відправлення</p>
 <table id="map-data" class="data padding">
     <tr class="map row">
         <th class="name">Номер</th>
         <th class="name">Відправник</th>
         <th class="name">Одержувач</th>
         <th class="name">Ціна</th>
+        <th class="name">Дії</th>
     </tr>
     {{#orders}}
         <tr class="map row">
-            <td class="value">{{num}}</td>
+            <td class="value"><a href="/track?cargo_number={{num}}">{{num}}</a></td>
             <td class="value">{{sender}}</td>
             <td class="value">{{receiver}}</td>
             <td class="value">{{price}}</td>
+            <td class="value receipt-value"><form
+                 action="/receipts/edit" class="d-in-b"><input type="hidden" name="num" value="{{num}}"><input type="submit" value="Edit"/></form><form
+                 action="/receipts/delete" class="d-in-b" onsubmit="if(!confirm('Are you sure?')) event.preventDefault()" style="margin-left: 5px;"><input type="hidden" name="num" value="{{num}}"><input type="submit" value="Delete"/></form></td>
         </tr>
     {{/orders}}
     {{^orders}}

@@ -24,6 +24,11 @@
 #include <auth.h>
 #include <logout.h>
 #include <receipts.h>
+#include "receipts_delete.h"
+#include "receipts_create.h"
+#include "receipts_edit.h"
+#include "receipts_add.h"
+#include "receipts_change.h"
 #include <akrava/web-server/file_handler.h>
 #include <akrava/web-server/json_middleware.h>
 #include <akrava/web-server/cookie_middleware.h>
@@ -63,6 +68,21 @@ int main (int argc, char ** argv) {
     website.addHandler(new HandlerLogin("/login", HTTP::Method::GET));
     website.addHandler(new HandlerLogout("/logout", HTTP::Method::GET));
     auto receipts = new HandlerReceipts("/receipts", HTTP::Method::GET);
+    website.addHandler(new AuthorizedHandler(
+            new HandlerReceiptsDelete("/receipts/delete", HTTP::Method::GET), "auth", checkAccess
+    ));
+    website.addHandler(new AuthorizedHandler(
+            new HandlerReceiptsCreate("/receipts/add", HTTP::Method::GET), "auth", checkAccess
+    ));
+    website.addHandler(new AuthorizedHandler(
+            new HandlerReceiptsAdd("/receipts/add", HTTP::Method::POST), "auth", checkAccess
+    ));
+    website.addHandler(new AuthorizedHandler(
+            new HandlerReceiptsChange("/receipts/edit", HTTP::Method::GET), "auth", checkAccess
+    ));
+    website.addHandler(new AuthorizedHandler(
+            new HandlerReceiptsEdit("/receipts/edit", HTTP::Method::POST), "auth", checkAccess
+    ));
     auto authorizedReceipts = new AuthorizedHandler(receipts, "auth", checkAccess);
     website.addHandler(authorizedReceipts);
     website.addHandler(new HandlerIndex("/", HTTP::Method::GET));
