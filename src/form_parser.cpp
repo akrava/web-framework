@@ -47,3 +47,8 @@ KeyValueStorage FormParser::getKeyValuePairs() {
     }
     return result;
 }
+
+void FormParser::setCurrentValue(FormEntity * value) {
+    delete this->valueCurrent;
+    this->valueCurrent = value;
+}

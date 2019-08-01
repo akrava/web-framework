@@ -42,7 +42,7 @@ void FormMultipart::parseNextValue(size_t startPosition, size_t endPosition) {
 
 void FormMultipart::actionBeforeValueParsing(size_t keyStart, size_t keyEnd) {
     string current = formBody.substr(keyStart, keyEnd - keyStart);
-    valueCurrent = new FormEntity(current);
+    setCurrentValue(new FormEntity(current));
     if (current.find("filename=\"") != string::npos) {
         string fileName = getValue(current, "filename=\"", "\"");
         valueCurrent->setFileName(fileName);

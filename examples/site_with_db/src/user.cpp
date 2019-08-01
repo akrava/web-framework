@@ -56,7 +56,6 @@ Entity * User::checkLogin(std::string &username, std::string &value) {
 
     char * data[] = { (char *)username.c_str() };
     vector<vector<string>> result_user{};
-    string f =f;
     if (!db->execQuery(
             "SELECT * FROM users WHERE email = ?",
             result_user,

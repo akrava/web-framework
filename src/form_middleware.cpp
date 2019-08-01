@@ -11,10 +11,10 @@ bool FormMiddleware::autoExec() {
         auto urlencoded = value.find("application/x-www-form-urlencoded") == 0;
         auto multipart = value.find("multipart/form-data") == 0;
         if (urlencoded) {
-            currentParser = new FormUrlEncoded();
+            setParser(new FormUrlEncoded());
         }
         if (multipart) {
-            currentParser = new FormMultipart();
+            setParser(new FormMultipart());
         }
         return urlencoded || multipart;
     } else {

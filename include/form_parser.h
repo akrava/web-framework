@@ -18,7 +18,7 @@ typedef std::unordered_map<std::string, FormEntity *> KeyEntityStorage;
 class FormParser {
 protected:
     KeyEntityStorage * values = nullptr;
-    FormEntity * valueCurrent;
+    FormEntity * valueCurrent = nullptr;
     std::string keyCurrent;
     std::string formBody;
     std::string valuesDelimiter;
@@ -91,4 +91,10 @@ protected:
      *      key value pairs (string, string)
      */
     KeyValueStorage getKeyValuePairs();
+
+    /**
+     *
+     * @param valueCurrent
+     */
+    void setCurrentValue(FormEntity * valueCurrent);
 };

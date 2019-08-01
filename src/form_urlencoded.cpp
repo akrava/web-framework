@@ -11,7 +11,7 @@ void FormUrlEncoded::parseNextKey(size_t startPosition, size_t endPosition) {
 void FormUrlEncoded::parseNextValue(size_t startPosition, size_t endPosition) {
     string value = formBody.substr(startPosition, endPosition - startPosition);
     value = ParserHTTP::urlDecode(value);
-    valueCurrent = new FormEntity(value);
+    setCurrentValue(new FormEntity(value));
 }
 
 FormUrlEncoded::FormUrlEncoded() {
