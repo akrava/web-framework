@@ -40,7 +40,7 @@ public:
     /**
      * delete internal values
      */
-    virtual ~FormParser() = default;
+    virtual ~FormParser();
 protected:
     /**
      * Parse http request to find body of form and then store it in parser

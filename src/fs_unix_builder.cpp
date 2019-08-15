@@ -40,8 +40,7 @@ FsFolder *FsUnixBuilder::buildFolder(string & folderPath, const char * folderNam
         }
         if (entity->d_type == DT_REG) {
             char buf[PATH_MAX + 1];
-            realpath(currentPath.c_str(), buf);
-            string filePath = buf;
+            string filePath = realpath(currentPath.c_str(), buf);
             folder->add(buildFile(filePath));
         }
         entity = readdir(dir);

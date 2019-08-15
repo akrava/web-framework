@@ -45,6 +45,7 @@ string ParserHTTP::getStrFromResponse(Response & response) {
     string body = response.getBody()->getBody();
     response.getHeaders()->add("Content-length", std::to_string(body.length()).c_str());
     response.getHeaders()->add("Connection", "close");
+    response.getHeaders()->add("Elapsed-time", std::to_string(response.getElapsedTime().count()).c_str());
     string headers = response.getHeaders()->toString();
     return version + " " + status + " " + reasonPhrase + "\r\n" + headers + "\r\n\r\n" + body;
 }
@@ -145,7 +146,7 @@ std::string ParserHTTP::sha256(std::string &key, std::string & message) {
     HMAC_Final(hmac, hash, &len);
     std::stringstream ss;
     ss << std::setfill('0');
-    for (int i = 0; i < len; i++) {
+    for (unsigned int i = 0; i < len; i++) {
         ss << hex << ( unsigned int ) hash[i];
     }
     HMAC_CTX_free(hmac);

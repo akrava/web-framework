@@ -1,5 +1,6 @@
 #pragma once
 
+#include <chrono>
 #include "http.h"
 #include "headers.h"
 #include "message_body.h"
@@ -15,6 +16,7 @@ class Response {
     Headers * headers;
     MessageBody * body;
     bool finalized;
+    std::chrono::duration<double, std::milli> elapsedTime;
 public:
     /**
      * Create empty response with code status 501 and http version HTTP_UNDEFINED
@@ -124,4 +126,16 @@ public:
      * @return
      */
     bool isFinalized();
+
+    /**
+     *
+     * @param ms
+     */
+    void setElapsedTime(std::chrono::duration<double, std::milli> ms);
+
+    /**
+     *
+     * @return
+     */
+    std::chrono::duration<double, std::milli> getElapsedTime();
 };

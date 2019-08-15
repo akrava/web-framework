@@ -96,6 +96,7 @@ bool App::run() {
             error = true;
             break;
         }
+        const auto before = std::chrono::system_clock::now();
         Request * request = ParserHTTP::getRequestFromStr(request_str);
         log << "Got request: " + request->getURI()->getRawData();
         context.setRequest(request);
@@ -126,6 +127,8 @@ bool App::run() {
             context.setResponse(res);
         }
         auto * response = context.getResponse();
+        const auto duration = std::chrono::system_clock::now() - before;
+        response->setElapsedTime(duration);
         string response_str = ParserHTTP::getStrFromResponse(*response);
         context.setResponse(new Response());
         try {

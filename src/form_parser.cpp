@@ -52,3 +52,7 @@ void FormParser::setCurrentValue(FormEntity * value) {
     delete this->valueCurrent;
     this->valueCurrent = value;
 }
+
+FormParser::~FormParser() {
+    delete valueCurrent;
+}

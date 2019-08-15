@@ -74,3 +74,11 @@ void Response::finalize() {
 bool Response::isFinalized() {
     return finalized;
 }
+
+std::chrono::duration<double, std::milli> Response::getElapsedTime() {
+    return elapsedTime;
+}
+
+void Response::setElapsedTime(std::chrono::duration<double, std::milli> ms) {
+    elapsedTime = ms;
+}
