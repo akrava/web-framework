@@ -49,10 +49,11 @@ KeyValueStorage FormParser::getKeyValuePairs() {
 }
 
 void FormParser::setCurrentValue(FormEntity * value) {
-    delete this->valueCurrent;
     this->valueCurrent = value;
 }
 
 FormParser::~FormParser() {
-    delete valueCurrent;
+    for (auto & cur : *values) {
+        delete cur.second;
+    }
 }

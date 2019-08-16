@@ -62,12 +62,12 @@ void HandlerRenderTemplate::exec() {
     html->getContext()->insert({"uri_receipt", string{result_uri_receipt[0][0]}});
     
     if (request->getURI()->getPath().empty()) return;
-    char * data[] = { (char *) request->getURI()->getPath().c_str()};
+    const char * data[] = { request->getURI()->getPath().c_str() };
     vector<vector<string>> result_title;
     if (!db->execQuery(
             "SELECT title FROM pages WHERE link = ?",
             result_title,
-            data,
+            (char **) data,
             1)
     ) return;
 

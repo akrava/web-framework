@@ -4,10 +4,7 @@
 #include "jwt_auth.h"
 
 Entity * AuthMiddleware::getUser() {
-    if (currentUser) {
-        return currentUser;
-    }
-    return nullptr;
+    return currentUser;
 }
 
 void AuthMiddleware::setUser(Entity * user) {

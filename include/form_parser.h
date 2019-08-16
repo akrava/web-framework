@@ -3,8 +3,8 @@
 #include <unordered_map>
 #include "form_entity.h"
 
-typedef std::unordered_map<std::string, std::string> KeyValueStorage;
-typedef std::unordered_map<std::string, FormEntity *> KeyEntityStorage;
+using KeyValueStorage = std::unordered_map<std::string, std::string>;
+using KeyEntityStorage = std::unordered_map<std::string, FormEntity *>;
 
 /**
  * @brief Template methods pattern for parsing form

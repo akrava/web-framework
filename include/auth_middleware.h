@@ -99,7 +99,7 @@ public:
     /**
      * delete all data, saved in internal values, set to default
      */
-    void clear() override { Middleware::clear(); currentUser = nullptr; }
+    void clear() override { Middleware::clear(); setUser(nullptr); }
 
     /**
      * Get current authenticated user. Could be used by any client defined handlers.
