@@ -9,7 +9,7 @@ KeyEntityStorage * FormParser::parseForm(std::string & httpRequest, KeyValueStor
     selectFormBody();
     size_t position = 0;
     while (position < formBody.length()) {
-        valueCurrent = nullptr;
+        setCurrentValue(nullptr);
         size_t endKeyPos = formBody.find(valuesDelimiter, position);
         if (endKeyPos == string::npos || endKeyPos <= position) {
             break;
