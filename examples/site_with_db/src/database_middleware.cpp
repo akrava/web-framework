@@ -25,7 +25,8 @@ DatabaseMiddleware::execQuery(const char *statement, std::vector<std::vector<std
         vector<string> row;
         for (int colIndex = 0; colIndex < sqlite3_column_count(stmt); colIndex++) {
             auto * result = (char *)sqlite3_column_text(stmt, colIndex);
-            row.emplace_back(result ? result : "");
+            string res = result ? result : "";
+            row.emplace_back(res);
         }
         result_vec.push_back(row);
     }
