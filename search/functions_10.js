@@ -10,6 +10,8 @@ var searchData=
   ['setcontent',['setContent',['../classMiddleware.html#a34da3f787b1a4d4e61b3b40b08f5a765',1,'Middleware']]],
   ['setcontenttype',['setContentType',['../classFormEntity.html#a92ae4436b2a44a2d2ca0526556f0a671',1,'FormEntity']]],
   ['setcontext',['setContext',['../classHandler.html#a3b9514da18e77326277b7b98ff54d862',1,'Handler']]],
+  ['setcurrentvalue',['setCurrentValue',['../classFormParser.html#a5672f4fac29654b836267d5520a51b46',1,'FormParser']]],
+  ['setelapsedtime',['setElapsedTime',['../classResponse.html#a1905d80c1c73053911f80dc65da7299b',1,'Response']]],
   ['setfilename',['setFileName',['../classFormEntity.html#a0415e6c261d66b49ff9671a87e58dcec',1,'FormEntity']]],
   ['setheaders',['setHeaders',['../classResponse.html#a1a2f10df7f5e4f68d9058ac896b10185',1,'Response']]],
   ['setmiddlewarelist',['setMiddlewareList',['../classContext.html#ae027ca52192ddc50c1ee5e0d23c219f1',1,'Context']]],

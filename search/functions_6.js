@@ -6,6 +6,7 @@ var searchData=
   ['getcontenttype',['getContentType',['../classFormEntity.html#a1d097e196d93da5047db5bc24af353ad',1,'FormEntity']]],
   ['getcontext',['getContext',['../classHandler.html#a1251ff0f085ad8b043a5261dc3811cd5',1,'Handler::getContext()'],['../classHtmlMiddleware.html#a64a3bec682e8ed9886e9dc6ccbd43834',1,'HtmlMiddleware::getContext()']]],
   ['getdata',['getData',['../classSocketAPI.html#ab7dfcb178d77096848602f62dc40795a',1,'SocketAPI']]],
+  ['getelapsedtime',['getElapsedTime',['../classResponse.html#ae73bf83c7d4acf3b0e4c3d0473af6caa',1,'Response']]],
   ['getfilecontent',['getFileContent',['../classFsComponent.html#abaaca33b65ad3468c28e928133093b78',1,'FsComponent::getFileContent()'],['../classFsFile.html#a4c12fbb4739a16612cabeca203b52992',1,'FsFile::getFileContent()'],['../classFsFolder.html#a5eb689ca2fb8b3d5e01e5e58f86b367c',1,'FsFolder::getFileContent()']]],
   ['getfilename',['getFileName',['../classFormEntity.html#a235ac24d490ab8c27947ff5a47f8d2cb',1,'FormEntity']]],
   ['getfilepath',['getFilePath',['../classInitParams.html#aa8c634bb7a8842050fffc3d1fdd11226',1,'InitParams']]],

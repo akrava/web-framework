@@ -101,8 +101,8 @@ Inheritance diagram for Response:</div>
 <div class="dyncontent">
 <div class="center"><img src="classResponse__inherit__graph.png" border="0" usemap="#Response_inherit__map" alt="Inheritance graph"/></div>
 <map name="Response_inherit__map" id="Response_inherit__map">
-<area shape="rect" id="node2" href="classDefaultResponse.html" title="Response class which is intended to make sample html pages on status codes. " alt="" coords="5,351,148,428"/>
-<area shape="rect" id="node3" href="classRedirectResponse.html" title="Response class which is intended to make http redirects. " alt="" coords="172,321,323,457"/>
+<area shape="rect" id="node2" href="classDefaultResponse.html" title="Response class which is intended to make sample html pages on status codes. " alt="" coords="5,307,148,384"/>
+<area shape="rect" id="node3" href="classRedirectResponse.html" title="Response class which is intended to make http redirects. " alt="" coords="172,277,323,413"/>
 </map>
 </div>
 <div class="dynheader">
@@ -143,6 +143,10 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a41a66d0cd11ee35ee94a7680bb43b497"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a23801f441ae937c3252fcbd9a000f355"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classResponse.html#a23801f441ae937c3252fcbd9a000f355">isFinalized</a> ()</td></tr>
 <tr class="separator:a23801f441ae937c3252fcbd9a000f355"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1905d80c1c73053911f80dc65da7299b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classResponse.html#a1905d80c1c73053911f80dc65da7299b">setElapsedTime</a> (std::chrono::duration&lt; double, std::milli &gt; ms)</td></tr>
+<tr class="separator:a1905d80c1c73053911f80dc65da7299b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae73bf83c7d4acf3b0e4c3d0473af6caa"><td class="memItemLeft" align="right" valign="top">std::chrono::duration&lt; double, std::milli &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classResponse.html#ae73bf83c7d4acf3b0e4c3d0473af6caa">getElapsedTime</a> ()</td></tr>
+<tr class="separator:ae73bf83c7d4acf3b0e4c3d0473af6caa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>class wrapper of <a class="el" href="classHTTP.html" title="static class describes http method, version, and allow to convert it from/to string/enumeration ...">HTTP</a> response </p>
@@ -284,6 +288,22 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="ae73bf83c7d4acf3b0e4c3d0473af6caa"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::chrono::duration&lt;double, std::milli&gt; Response::getElapsedTime </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="adf54221c2433ca22da5124429e5f6b72"></a>
 <div class="memitem">
 <div class="memproto">
@@ -368,6 +388,28 @@ Public Member Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">body</td><td><a class="el" href="classMessageBody.html" title="wrapper class for http body ">MessageBody</a> object </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a1905d80c1c73053911f80dc65da7299b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Response::setElapsedTime </td>
+          <td>(</td>
+          <td class="paramtype">std::chrono::duration&lt; double, std::milli &gt;&#160;</td>
+          <td class="paramname"><em>ms</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ms</td><td></td></tr>
   </table>
   </dd>
 </dl>

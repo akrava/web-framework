@@ -1,4 +1,4 @@
 <map id="FormParser" name="FormParser">
-<area shape="rect" id="node2" href="$classFormMultipart.html" title="Concrete template method pattern for parsing form encoded as multipart/from&#45;data. ..." alt="" coords="5,307,204,443"/>
-<area shape="rect" id="node3" href="$classFormUrlEncoded.html" title="Concrete template method pattern for parsing form encoded as application/x&#45;www&#45;form&#45;urlencoded. " alt="" coords="228,321,368,428"/>
+<area shape="rect" id="node2" href="$classFormMultipart.html" title="Concrete template method pattern for parsing form encoded as multipart/from&#45;data. ..." alt="" coords="5,321,204,457"/>
+<area shape="rect" id="node3" href="$classFormUrlEncoded.html" title="Concrete template method pattern for parsing form encoded as application/x&#45;www&#45;form&#45;urlencoded. " alt="" coords="228,336,368,443"/>
 </map>

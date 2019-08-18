@@ -103,8 +103,8 @@ Inheritance diagram for FormParser:</div>
 <div class="dyncontent">
 <div class="center"><img src="classFormParser__inherit__graph.png" border="0" usemap="#FormParser_inherit__map" alt="Inheritance graph"/></div>
 <map name="FormParser_inherit__map" id="FormParser_inherit__map">
-<area shape="rect" id="node2" href="classFormMultipart.html" title="Concrete template method pattern for parsing form encoded as multipart/from&#45;data. ..." alt="" coords="5,307,204,443"/>
-<area shape="rect" id="node3" href="classFormUrlEncoded.html" title="Concrete template method pattern for parsing form encoded as application/x&#45;www&#45;form&#45;urlencoded. " alt="" coords="228,321,368,428"/>
+<area shape="rect" id="node2" href="classFormMultipart.html" title="Concrete template method pattern for parsing form encoded as multipart/from&#45;data. ..." alt="" coords="5,321,204,457"/>
+<area shape="rect" id="node3" href="classFormUrlEncoded.html" title="Concrete template method pattern for parsing form encoded as application/x&#45;www&#45;form&#45;urlencoded. " alt="" coords="228,336,368,443"/>
 </map>
 </div>
 <div class="dynheader">
@@ -118,10 +118,10 @@ Collaboration diagram for FormParser:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a785a36d8413ffc912840c63aa945a1d7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="form__parser_8h.html#aec7d4d2cc006ba3416a589b3a02c35fc">KeyEntityStorage</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFormParser.html#a785a36d8413ffc912840c63aa945a1d7">parseForm</a> (std::string &amp;httpRequest, <a class="el" href="form__parser_8h.html#a0e53e50dc8123e854d5eb279bc485296">KeyValueStorage</a> *KVPStorage=nullptr)</td></tr>
+<tr class="memitem:a785a36d8413ffc912840c63aa945a1d7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="form__parser_8h.html#a8593e75242d3dc4e502358a3c02772b3">KeyEntityStorage</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFormParser.html#a785a36d8413ffc912840c63aa945a1d7">parseForm</a> (std::string &amp;httpRequest, <a class="el" href="form__parser_8h.html#a4d0f43f2670e85b47be412a3bcb7ec9d">KeyValueStorage</a> *KVPStorage=nullptr)</td></tr>
 <tr class="separator:a785a36d8413ffc912840c63aa945a1d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3e2b24d85e63683d432d776a7debf81f"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFormParser.html#a3e2b24d85e63683d432d776a7debf81f">~FormParser</a> ()=default</td></tr>
-<tr class="separator:a3e2b24d85e63683d432d776a7debf81f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac1047fd6aa6d478950f0a8d5fa0a1158"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFormParser.html#ac1047fd6aa6d478950f0a8d5fa0a1158">~FormParser</a> ()</td></tr>
+<tr class="separator:ac1047fd6aa6d478950f0a8d5fa0a1158"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
@@ -135,14 +135,16 @@ Protected Member Functions</h2></td></tr>
 <tr class="separator:a108c4624fdbef9a474af3272f6cbf27b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a035ee1cfdfb1a2196f11a0d669666269"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFormParser.html#a035ee1cfdfb1a2196f11a0d669666269">actionBeforeValueParsing</a> (size_t keyStart, size_t keyEnd)</td></tr>
 <tr class="separator:a035ee1cfdfb1a2196f11a0d669666269"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3e2b172d3978a32badd1cbe4858c7e91"><td class="memItemLeft" align="right" valign="top"><a class="el" href="form__parser_8h.html#a0e53e50dc8123e854d5eb279bc485296">KeyValueStorage</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFormParser.html#a3e2b172d3978a32badd1cbe4858c7e91">getKeyValuePairs</a> ()</td></tr>
+<tr class="memitem:a3e2b172d3978a32badd1cbe4858c7e91"><td class="memItemLeft" align="right" valign="top"><a class="el" href="form__parser_8h.html#a4d0f43f2670e85b47be412a3bcb7ec9d">KeyValueStorage</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFormParser.html#a3e2b172d3978a32badd1cbe4858c7e91">getKeyValuePairs</a> ()</td></tr>
 <tr class="separator:a3e2b172d3978a32badd1cbe4858c7e91"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5672f4fac29654b836267d5520a51b46"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFormParser.html#a5672f4fac29654b836267d5520a51b46">setCurrentValue</a> (<a class="el" href="classFormEntity.html">FormEntity</a> *<a class="el" href="classFormParser.html#afc32e8f44e4db1cce95b0be31438329c">valueCurrent</a>)</td></tr>
+<tr class="separator:a5672f4fac29654b836267d5520a51b46"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr class="memitem:ab02dd59954715685a671eddbf6a45028"><td class="memItemLeft" align="right" valign="top"><a class="el" href="form__parser_8h.html#aec7d4d2cc006ba3416a589b3a02c35fc">KeyEntityStorage</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFormParser.html#ab02dd59954715685a671eddbf6a45028">values</a> = nullptr</td></tr>
+<tr class="memitem:ab02dd59954715685a671eddbf6a45028"><td class="memItemLeft" align="right" valign="top"><a class="el" href="form__parser_8h.html#a8593e75242d3dc4e502358a3c02772b3">KeyEntityStorage</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFormParser.html#ab02dd59954715685a671eddbf6a45028">values</a> = nullptr</td></tr>
 <tr class="separator:ab02dd59954715685a671eddbf6a45028"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afc32e8f44e4db1cce95b0be31438329c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classFormEntity.html">FormEntity</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFormParser.html#afc32e8f44e4db1cce95b0be31438329c">valueCurrent</a></td></tr>
+<tr class="memitem:afc32e8f44e4db1cce95b0be31438329c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classFormEntity.html">FormEntity</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFormParser.html#afc32e8f44e4db1cce95b0be31438329c">valueCurrent</a> = nullptr</td></tr>
 <tr class="separator:afc32e8f44e4db1cce95b0be31438329c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aef7cd6679ec4e07f00002c562c2e0297"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFormParser.html#aef7cd6679ec4e07f00002c562c2e0297">keyCurrent</a></td></tr>
 <tr class="separator:aef7cd6679ec4e07f00002c562c2e0297"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -157,7 +159,7 @@ Protected Attributes</h2></td></tr>
 <div class="textblock"><p>Template methods pattern for parsing form. </p>
 <p>This abstract class is intend to parse html form with different encodings. Template method is parseForm, which consists of abstracts methods, that could be implemented. There are FormMultipartData and FormUrlencoded concrete template methods in framework </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a3e2b24d85e63683d432d776a7debf81f"></a>
+<a class="anchor" id="ac1047fd6aa6d478950f0a8d5fa0a1158"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -173,7 +175,7 @@ Protected Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span><span class="mlabel">default</span></span>  </td>
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -260,7 +262,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="form__parser_8h.html#a0e53e50dc8123e854d5eb279bc485296">KeyValueStorage</a> FormParser::getKeyValuePairs </td>
+          <td class="memname"><a class="el" href="form__parser_8h.html#a4d0f43f2670e85b47be412a3bcb7ec9d">KeyValueStorage</a> FormParser::getKeyValuePairs </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -282,7 +284,7 @@ Protected Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="form__parser_8h.html#aec7d4d2cc006ba3416a589b3a02c35fc">KeyEntityStorage</a>* FormParser::parseForm </td>
+          <td class="memname"><a class="el" href="form__parser_8h.html#a8593e75242d3dc4e502358a3c02772b3">KeyEntityStorage</a>* FormParser::parseForm </td>
           <td>(</td>
           <td class="paramtype">std::string &amp;&#160;</td>
           <td class="paramname"><em>httpRequest</em>, </td>
@@ -290,7 +292,7 @@ Protected Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="form__parser_8h.html#a0e53e50dc8123e854d5eb279bc485296">KeyValueStorage</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="form__parser_8h.html#a4d0f43f2670e85b47be412a3bcb7ec9d">KeyValueStorage</a> *&#160;</td>
           <td class="paramname"><em>KVPStorage</em> = <code>nullptr</code>&#160;</td>
         </tr>
         <tr>
@@ -424,6 +426,36 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a5672f4fac29654b836267d5520a51b46"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void FormParser::setCurrentValue </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classFormEntity.html">FormEntity</a> *&#160;</td>
+          <td class="paramname"><em>valueCurrent</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">valueCurrent</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <h2 class="groupheader">Member Data Documentation</h2>
 <a class="anchor" id="ac7855f13fe6a8914a737665aa944941d"></a>
 <div class="memitem">
@@ -493,7 +525,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classFormEntity.html">FormEntity</a>* FormParser::valueCurrent</td>
+          <td class="memname"><a class="el" href="classFormEntity.html">FormEntity</a>* FormParser::valueCurrent = nullptr</td>
         </tr>
       </table>
   </td>
@@ -513,7 +545,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="form__parser_8h.html#aec7d4d2cc006ba3416a589b3a02c35fc">KeyEntityStorage</a>* FormParser::values = nullptr</td>
+          <td class="memname"><a class="el" href="form__parser_8h.html#a8593e75242d3dc4e502358a3c02772b3">KeyEntityStorage</a>* FormParser::values = nullptr</td>
         </tr>
       </table>
   </td>
